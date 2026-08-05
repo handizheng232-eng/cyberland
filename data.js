@@ -40,6 +40,56 @@ const YONGAN_DATA = {
    "report": "IGO June 2026 Quarterly Activities Report（2026-07-28 发布，FY26 Q4 / 日历26Q2）",
    "source_url": "https://www.igo.com.au/site/investor-center/investor-center1",
    "equity_note": "100% 资产口径（Talison 运营）；IGO→TLEA 49%，TLEA/Windfield→Greenbushes 51%，Albemarle 49%",
+   "history_labels": [
+    [
+     "production",
+     "精矿产量（万吨）"
+    ],
+    [
+     "lce",
+     "精矿产量（6%,LCE）"
+    ],
+    [
+     "tech_grade",
+     "技术级精矿产量（万吨）"
+    ],
+    [
+     "chem_grade",
+     "化学级精矿产量（万吨）"
+    ],
+    [
+     "sales",
+     "销量（万吨）"
+    ],
+    [
+     "inv_change",
+     "库存变动量（万吨）"
+    ],
+    [
+     "inventory",
+     "库存（万吨）"
+    ],
+    [
+     "prod_sales_ratio",
+     "产销比"
+    ],
+    [
+     "avg_price",
+     "平均售价（US$/t）"
+    ],
+    [
+     "cost_with_royalty",
+     "单位成本—含权益金（A$/t）"
+    ],
+    [
+     "cost_no_royalty",
+     "单位成本—不含权益金（A$/t）"
+    ],
+    [
+     "cash_cost",
+     "cash cost（A$/t）"
+    ]
+   ],
    "status_26q2": {
     "existing_lines": [
      {
@@ -467,6 +517,32 @@ const YONGAN_DATA = {
    "report": "PLS June 2026 Quarterly Activities Report（2026-07-30 发布，FY26 Q4 / 日历26Q2）；FY25 Annual Report",
    "source_url": "https://www.pls.com/invest/asx-announcements",
    "equity_note": "100% 资产口径（PLS 全资拥有并运营）；Pilgangoora 为世界最大独立拥有的硬岩锂矿",
+   "history_labels": [
+    [
+     "production",
+     "精矿产量（万吨）"
+    ],
+    [
+     "sales",
+     "销量（万吨）"
+    ],
+    [
+     "prod_sales_ratio",
+     "产销比"
+    ],
+    [
+     "avg_price",
+     "平均售价（US$/t，CIF China ~SC5.2）"
+    ],
+    [
+     "cash_cost",
+     "单位成本 FOB（A$/t）"
+    ],
+    [
+     "cif_cost",
+     "单位成本 CIF（A$/t）"
+    ]
+   ],
    "status_26q2": {
     "existing_lines": [
      {
@@ -1666,6 +1742,40 @@ const YONGAN_DATA = {
     585,
     520,
     616,
+    null,
+    null
+   ],
+   "cif_cost": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    717,
+    733,
+    845,
     null,
     null
    ]

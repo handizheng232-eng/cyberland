@@ -222,7 +222,7 @@ const m = MINE;
       <div class="table-wrap">
         <table class="hist-table" id="hist_${m.mine}"></table>
       </div>
-      <div class="note" style="margin-top:8px">${D.meta.color_legend}。产销比=销量/产量；库存为产销差滚动推算（期初 22Q4=29.6 万吨），非官方披露绝对库存。</div>
+      <div class="note" style="margin-top:8px">${D.meta.color_legend}。产销比=销量/产量${m.mine === 'Greenbushes' ? '；库存为产销差滚动推算（期初 22Q4=29.6 万吨），非官方披露绝对库存' : ''}。</div>
     </div>
     <div class="cat">
       <h3>⑤ 2027 年产量预测<span class="q">（研究性判断 · 日历年度 · 100% 资产口径）</span></h3>
@@ -352,7 +352,8 @@ const m = MINE;
 
 // ---------- 历史数据表 ----------
 function renderHist(mine) {
-  const labels = D.history_labels;
+  // 每矿山自带的指标行定义（各矿山披露口径不同，未披露的指标行不展示）
+  const labels = MINE.history_labels || D.history_labels;
   let html = '<thead><tr><th>指标 \\ 季度</th>';
   Q.forEach(q => html += `<th>${q}</th>`);
   html += '</tr></thead><tbody>';
