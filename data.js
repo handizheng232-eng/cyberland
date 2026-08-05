@@ -58,7 +58,7 @@ const YONGAN_DATA = {
    "history_labels": [
     [
      "production",
-     "精矿产量（万吨）"
+     "精矿产量（万吨，SC6 折算 6% Li₂O）"
     ],
     [
      "lce",
@@ -66,15 +66,15 @@ const YONGAN_DATA = {
     ],
     [
      "tech_grade",
-     "技术级精矿产量（万吨）"
+     "技术级精矿产量（万吨，实际品位）"
     ],
     [
      "chem_grade",
-     "化学级精矿产量（万吨）"
+     "化学级精矿产量（万吨，实际品位）"
     ],
     [
      "sales",
-     "销量（万吨）"
+     "销量（万吨，SC6 折算 6% Li₂O）"
     ],
     [
      "inv_change",
@@ -90,19 +90,19 @@ const YONGAN_DATA = {
     ],
     [
      "avg_price",
-     "平均售价（US$/t）"
+     "平均售价（US$/t，SC6）"
     ],
     [
      "cost_with_royalty",
-     "单位成本—含权益金（A$/t）"
+     "单位成本—含权益金（A$/t，FOB SC6）"
     ],
     [
      "cost_no_royalty",
-     "单位成本—不含权益金（A$/t）"
+     "单位成本—不含权益金（A$/t，FOB SC6）"
     ],
     [
      "cash_cost",
-     "cash cost（A$/t）"
+     "cash cost（A$/t，FOB SC6）"
     ]
    ],
    "status_26q2": {
@@ -159,6 +159,7 @@ const YONGAN_DATA = {
      ]
     }
    },
+   "forecast_unit": "万吨 SC6（6% Li₂O 折算；IGO FY27 指引 155-175 万吨对应）",
    "forecast_2027": {
     "title": "2027 年产量预测（日历年度 · 100% 资产口径）",
     "basis": "官方指引：IGO FY27 精矿产量指引 155-175 万吨（FY27 = 2026年7月-2027年6月，即日历 26Q3-27Q2）。产能基础：存量产线铭牌 162 万吨/年（CGP1 60 + CGP2 60 + 技术级 14 + 尾矿再处理 28），CGP3 铭牌 52 万吨/年，CGP4 铭牌 52 万吨/年（规划 2027 建成投产，投资决策未定）。FY26 全年实际产量 141 万吨，其中 CGP3 贡献约 10.4 万吨（33+71kt），即存量产线 FY26 实际约 130 万吨/年（利用率约 80%）。",
@@ -545,11 +546,11 @@ const YONGAN_DATA = {
    "history_labels": [
     [
      "production",
-     "精矿产量（万吨）"
+     "精矿产量（万吨，dmt 实际品位 ~5.2% SC）"
     ],
     [
      "sales",
-     "销量（万吨）"
+     "销量（万吨，dmt 实际品位 ~5.2% SC）"
     ],
     [
      "prod_sales_ratio",
@@ -561,11 +562,11 @@ const YONGAN_DATA = {
     ],
     [
      "cash_cost",
-     "单位成本 FOB（A$/t）"
+     "单位成本 FOB（A$/t，dmt）"
     ],
     [
      "cif_cost",
-     "单位成本 CIF（A$/t）"
+     "单位成本 CIF（A$/t，dmt）"
     ]
    ],
    "status_26q2": {
@@ -616,6 +617,7 @@ const YONGAN_DATA = {
      ]
     }
    },
+   "forecast_unit": "万吨 dmt（实际品位 ~5.2% SC；FY27 指引 1,030-1,100kt 对应）",
    "forecast_2027": {
     "basis": "PLS FY27 官方指引已发布（2026-07-30 June QAR）：产量 1,030-1,100kt（财年口径 = 2026年7月-2027年6月，中值 ~1,065kt）；日历 2027 = FY27 后两季（含 Ngungaju 满产）+ FY28 前两季（满产稳态），预计落在指引区间上沿附近；产能基础：Pilgan ~1.0Mtpa（P1000 后）+ Ngungaju 重启后目标产能 → 双厂合计 ~1.25Mtpa；P2000 可研 2026-12 出结果、FID 若通过则 2028H2 起贡献（2027 年内不纳入）。",
     "assumptions": [
@@ -627,17 +629,17 @@ const YONGAN_DATA = {
     "scenarios": {
      "bear": {
       "label": "悲观（Ngungaju 爬坡慢于计划 + 锂价回落压缩产量）",
-      "production_kt": 9500,
+      "production_kt": 950,
       "note": "Ngungaju 2027 年中才达产、Pilgan 利用率回落；全年 ~95 万吨"
      },
      "base": {
       "label": "基准（双厂满产，FY27 指引兑现）",
-      "production_kt": 10800,
+      "production_kt": 1080,
       "note": "Pilgan ~210kt/季×4 + Ngungaju 达产后 ~55-60kt/季×4 → ~108 万吨（对应 FY27 指引上沿）"
      },
      "bull": {
       "label": "乐观（锂价大涨 + P2000 提前 FID 动工）",
-      "production_kt": 11800,
+      "production_kt": 1180,
       "note": "双厂超产 ~110 万吨 + P2000 建设期效率提升 → ~118 万吨"
      }
     },
@@ -854,11 +856,11 @@ const YONGAN_DATA = {
    "history_labels": [
     [
      "production",
-     "精矿产量（万吨，100% 推算）"
+     "精矿产量（万吨，100% 推算 · 混合品位 dmt）"
     ],
     [
      "sales",
-     "销量（万吨，100% 推算）"
+     "销量（万吨，100% 推算 · 混合品位 dmt）"
     ],
     [
      "prod_sales_ratio",
@@ -914,21 +916,22 @@ const YONGAN_DATA = {
      ]
     }
    },
+   "fc_unit": "万吨/年（100% 推算 · 混合品位 dmt）",
    "fc_2027": [
     {
      "label": "悲观",
-     "val": 155,
-     "note": "三线爬坡不及预期 + Stage 3 品位继续走低"
+     "val": 70,
+     "note": "三线利用率不足 + Stage 3 品位走低（年化低于当前 ~72 万吨）"
     },
     {
      "label": "基准",
-     "val": 170,
-     "note": "三线满产 + Stage 4 按时供矿（FY26 销量 317k SC6 年化 ~40 万吨混合品位）"
+     "val": 80,
+     "note": "三线满产 + Stage 4 按时供矿（750ktpa SC5.5% 产能 → 混合品位 ~80 万吨/年）"
     },
     {
      "label": "乐观",
-     "val": 185,
-     "note": "三线超产 + 价格上行释放库存"
+     "val": 90,
+     "note": "三线超产 + 品位回升 + 价格上行释放库存"
     }
    ],
    "capacity_verification": {
@@ -1118,11 +1121,11 @@ const YONGAN_DATA = {
    "history_labels": [
     [
      "production",
-     "精矿产量（万吨，100% 推算）"
+     "精矿产量（万吨，100% 推算 · 混合品位 dmt）"
     ],
     [
      "sales",
-     "销量（万吨，100% 推算）"
+     "销量（万吨，100% 推算 · 混合品位 dmt）"
     ],
     [
      "prod_sales_ratio",
@@ -1178,21 +1181,22 @@ const YONGAN_DATA = {
      ]
     }
    },
+   "fc_unit": "万吨/年（100% 推算 · 混合品位 dmt）",
    "fc_2027": [
     {
      "label": "悲观",
-     "val": 130,
-     "note": "浮选厂延期 + N9→N11 过渡品位波动"
+     "val": 58,
+     "note": "浮选厂延期 + N9→N11 过渡品位波动 + 回收率维持 59%（年化低于当前 ~66 万吨）"
     },
     {
      "label": "基准",
-     "val": 145,
-     "note": "DMS 满产 + 浮选厂 2027 年中投产（FY26 销量 242k SC6 年化 ~30 万吨混合品位）"
+     "val": 66,
+     "note": "DMS 满产 + 浮选厂 2027 年中投产（FY26 销量 242k SC6 100% 口径 → 年化 ~66 万吨混合品位）"
     },
     {
      "label": "乐观",
-     "val": 160,
-     "note": "浮选厂提前投产 + 地下矿开始贡献"
+     "val": 76,
+     "note": "浮选厂提前投产 + 地下开发贡献 + 回收率升至 63%+"
     }
    ],
    "capacity_verification": {
@@ -1382,11 +1386,11 @@ const YONGAN_DATA = {
    "history_labels": [
     [
      "production",
-     "精矿产量（万吨，实际品位 ~5.0%）"
+     "精矿产量（万吨，dmt 实际品位 ~5.0% SC）"
     ],
     [
      "sales",
-     "销量（万吨，实际品位）"
+     "销量（万吨，dmt 实际品位 ~5.0% SC）"
     ],
     [
      "prod_sales_ratio",
@@ -1442,6 +1446,7 @@ const YONGAN_DATA = {
      ]
     }
    },
+   "fc_unit": "万吨 SC6（FY27 指引 390-440k SC6 对应）",
    "fc_2027": [
     {
      "label": "悲观",
@@ -2089,7 +2094,7 @@ const YONGAN_DATA = {
  "history_labels": [
   [
    "production",
-   "精矿产量（万吨）"
+   "精矿产量（万吨，SC6 折算 6% Li₂O）"
   ],
   [
    "lce",
@@ -2097,15 +2102,15 @@ const YONGAN_DATA = {
   ],
   [
    "tech_grade",
-   "技术级精矿产量（万吨）"
+   "技术级精矿产量（万吨，实际品位）"
   ],
   [
    "chem_grade",
-   "化学级精矿产量（万吨）"
+   "化学级精矿产量（万吨，实际品位）"
   ],
   [
    "sales",
-   "销量（万吨）"
+   "销量（万吨，SC6 折算 6% Li₂O）"
   ],
   [
    "inv_change",
@@ -2121,19 +2126,19 @@ const YONGAN_DATA = {
   ],
   [
    "avg_price",
-   "平均售价（US$/t）"
+   "平均售价（US$/t，SC6）"
   ],
   [
    "cost_with_royalty",
-   "单位成本—含权益金（A$/t）"
+   "单位成本—含权益金（A$/t，FOB SC6）"
   ],
   [
    "cost_no_royalty",
-   "单位成本—不含权益金（A$/t）"
+   "单位成本—不含权益金（A$/t，FOB SC6）"
   ],
   [
    "cash_cost",
-   "cash cost（A$/t）"
+   "cash cost（A$/t，FOB SC6）"
   ]
  ],
  "pilgangoora": {

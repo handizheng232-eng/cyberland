@@ -65,6 +65,7 @@
   <div id="mine_cards"></div>
 
   <h3 style="font-size:16px;margin:26px 0 10px;color:var(--acc)">关键指标对比表（本季度 26Q2 vs 上一季度 26Q1）</h3>
+  <div class="note" style="margin-bottom:10px;color:var(--muted);font-size:12px">⚠️ 跨矿山对比注意口径差异：产量/销量单位各异（Greenbushes=SC6 折算、Pilgangoora/Kathleen Valley=dmt 实际品位、Wodgina/Mt Marion=100% 推算混合品位 dmt）；均价与成本基准各异（CIF/FOB、SC6/SC6e/实际品位）——详见各矿山详情页④历史数据行标签。</div>
   <div class="table-wrap">
     <table>
       <thead><tr>
@@ -144,10 +145,10 @@ D.mines.forEach(m => {
       <span class="mc-q">本季度 ${m.current_q}</span>
     </div>
     <div class="mc-stats">
-      <div class="mc-stat"><div class="k">本季产量</div><div class="v">${prod[CI] != null ? prod[CI].toFixed(2) : 'N.D.'} <small style="font-size:11px;color:var(--muted)">万吨</small></div><div>环比 ${pct(prod[CI], prod[PI])}</div></div>
+      <div class="mc-stat"><div class="k">本季产量（${(() => { const lb = (m.history_labels || D.history_labels); const p = lb.find(([k]) => k === 'production'); return p ? p[1].replace('精矿产量（', '').replace('）', '') : '万吨'; })()}）</div><div class="v">${prod[CI] != null ? prod[CI].toFixed(2) : 'N.D.'} <small style="font-size:11px;color:var(--muted)">万吨</small></div><div>环比 ${pct(prod[CI], prod[PI])}</div></div>
       <div class="mc-stat"><div class="k">本季销量</div><div class="v">${sales[CI] != null ? sales[CI].toFixed(2) : 'N.D.'} <small style="font-size:11px;color:var(--muted)">万吨</small></div><div>环比 ${pct(sales[CI], sales[PI])}</div></div>
-      <div class="mc-stat"><div class="k">均价</div><div class="v">${price[CI] != null ? price[CI].toLocaleString('zh-CN') : 'N.D.'} <small style="font-size:11px;color:var(--muted)">US$/t</small></div></div>
-      <div class="mc-stat"><div class="k">现金成本</div><div class="v">${cost[CI] != null ? cost[CI].toLocaleString('zh-CN') : 'N.D.'} <small style="font-size:11px;color:var(--muted)">A$/t</small></div></div>
+      <div class="mc-stat"><div class="k">均价（${(() => { const lb = (m.history_labels || D.history_labels); const p = lb.find(([k]) => k === 'avg_price'); return p ? p[1].replace('平均售价（', '').replace('）', '') : 'US$/t'; })()}）</div><div class="v">${price[CI] != null ? price[CI].toLocaleString('zh-CN') : 'N.D.'} <small style="font-size:11px;color:var(--muted)">US$/t</small></div></div>
+      <div class="mc-stat"><div class="k">现金成本（${(() => { const lb = (m.history_labels || D.history_labels); const p = lb.find(([k]) => k === 'cash_cost'); if (!p) return 'A$/t'; const mm = p[1].match(/（(.+?)）/); const base = p[1].replace(mm ? mm[0] : '', '').replace('单位成本', '').replace('cash cost', '').trim(); return (base ? base + ' ' : '') + (mm ? mm[1] : 'A$/t'); })()}）</div><div class="v">${cost[CI] != null ? cost[CI].toLocaleString('zh-CN') : 'N.D.'} <small style="font-size:11px;color:var(--muted)">A$/t</small></div></div>
     </div>
     <div class="mc-hl"><b>⚡ 本季要点：</b>${hl}</div>
     <span class="mc-link">查看详情 →</span>
