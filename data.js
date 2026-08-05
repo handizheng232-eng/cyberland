@@ -26,6 +26,16 @@ const YONGAN_DATA = {
     "key": "Pilgangoora",
     "label": "Pilgangoora（第二页）",
     "file": "pilgangoora.html"
+   },
+   {
+    "key": "Wodgina",
+    "label": "Wodgina（第三页）",
+    "file": "wodgina.html"
+   },
+   {
+    "key": "Mt Marion",
+    "label": "Mt Marion（第四页）",
+    "file": "marion.html"
    }
   ]
  },
@@ -821,6 +831,534 @@ const YONGAN_DATA = {
        "url": "img/pilgangoora_stockpile.jpg",
        "src": "PLS 官网",
        "cap": "Pilgangoora 精矿堆场实景（堆场在卫星影像上通常呈浅色矩形区域）"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "company": "MRL（Mineral Resources）",
+   "mine": "Wodgina",
+   "current_q": "26Q2",
+   "prev_q": "26Q1",
+   "current_q_date": "2026年4-6月",
+   "mine_cn": "Wodgina（沃吉纳矿山）",
+   "report": "MRL Quarterly Activity Report Q4 FY26（2026-07-29 发布，FY26 Q4 / 日历26Q2）；MRL 官网资产页（2025-10 快照）",
+   "source_url": "https://www.mineralresources.com.au/our-business/lithium/wodgina/",
+   "equity_note": "100% 资产口径为推算（官方披露 50% attributable；MARBL JV = MinRes 50% / Albemarle 50%，MinRes 运营）；销售 100% 为 50%×2 估算",
+   "history_labels": [
+    [
+     "production",
+     "精矿产量（万吨，100% 推算）"
+    ],
+    [
+     "sales",
+     "销量（万吨，100% 推算）"
+    ],
+    [
+     "prod_sales_ratio",
+     "产销比"
+    ],
+    [
+     "avg_price",
+     "平均售价（US$/t，CIF SC6）"
+    ],
+    [
+     "cash_cost",
+     "单位成本 FOB（A$/t SC6）"
+    ]
+   ],
+   "status_26q2": {
+    "existing_lines": [
+     {
+      "name": "已有产能1：选矿厂 Train 1（A1 产线）— 设计 ~250ktpa",
+      "q26q2": "26Q2 三线利用率提升（产 94k dmt，+21% qoq）；2026-05-19 投资者现场会披露 Q1 FY27 起三线全开；回收率 68%（Stage 2 耗尽、全面转 Stage 3 矿石）；FY26 销量 317k dmt SC6 超指引上限（270-290k）",
+      "q26q1": "26Q1 产 78k dmt（-8% qoq），高品位 Stage 2 矿石减少、更多 Stage 3 低品位矿石入厂，回收率约 69%",
+      "compare": "产量环比 +21% 超预期（94 vs 78k dmt），三线利用改善；但回收率降至 68%——Stage 2 高品位矿石枯竭、Stage 3 全面供矿是中期观察点"
+     },
+     {
+      "name": "已有产能2：选矿厂 Train 2 / Train 3（A2/A3 产线）— 设计各 ~250ktpa",
+      "q26q2": "与 Train 1 同为三线运行的一部分；Q1 FY27 起三线全开（此前部分产线间歇运行）；矿石来自 Stage 3 与库存矿石混合",
+      "q26q1": "26Q1 亦在三线运行框架内，但产量受 Stage 2/3 矿石切换影响",
+      "compare": "三线全开是 Q1 FY27 明确指引（2026-05-19 现场会），Q4 已为三线运行铺路——产能利用率提升超预期"
+     },
+     {
+      "name": "选矿厂配套：破碎 + 浮选 + 尾矿设施",
+      "q26q2": "选矿厂含球磨、脱泥旋流器、磁选、浮选与精矿/尾矿脱水；细尾矿泵送至湿式尾矿库，粗尾矿与废石混合回填",
+      "q26q1": "同口径（尾矿设施持续运行）",
+      "compare": "无实质变化"
+     }
+    ],
+    "future_lines": [
+     {
+      "name": "Stage 4 矿坑预剥离（2026-07 起）",
+      "q26q2": "Q1 FY27 启动 Stage 4 预剥离——为下一阶段矿石供应做准备；目前无 Train 4 计划（官网未提及）",
+      "q26q1": "26Q1 提及 Stage 4 预剥离计划",
+      "compare": "按计划推进；产能扩张路径为矿坑扩展而非新选矿列车"
+     }
+    ],
+    "overall": {
+     "operation_changes": "26Q2 三线利用率提升推动产量 +21% qoq（94k dmt），FY26 销量 317k SC6 超指引；回收率 68%（Stage 2→3 切换）；Stage 4 预剥离 7 月启动",
+     "prev_operation_changes": "26Q1 产量 78k dmt（-8%），高品位 Stage 2 矿石减少、更多 Stage 3 低品位矿石入厂，回收率约 69%",
+     "highlights": [
+      "FY26 销量 317k dmt SC6，超上调后指引（270-290k）上限约 10%——三线利用驱动的年度超预期",
+      "Q4 产量 94k dmt 环比 +21%，三线利用率提升；Q1 FY27 起三线全开（2026-05-19 投资者现场会）",
+      "26Q2 均价 US$2,450/dmt CIF SC6（+15% qoq）——锂价回升周期受益",
+      "FY26 FOB 成本 $738/dmt SC6，达指引下沿（$730-800）——成本控制优于指引",
+      "Stage 4 预剥离 Q1 FY27 启动——矿坑扩展保障未来 3 年矿石供应"
+     ]
+    }
+   },
+   "fc_2027": [
+    {
+     "label": "悲观",
+     "val": 155,
+     "note": "三线爬坡不及预期 + Stage 3 品位继续走低"
+    },
+    {
+     "label": "基准",
+     "val": 170,
+     "note": "三线满产 + Stage 4 按时供矿（FY26 销量 317k SC6 年化 ~40 万吨混合品位）"
+    },
+    {
+     "label": "乐观",
+     "val": 185,
+     "note": "三线超产 + 价格上行释放库存"
+    }
+   ],
+   "capacity_verification": {
+    "title": "选矿产能核实（多来源交叉印证）",
+    "method": "以 MRL 官网资产页（2025-10 快照）、MRL 年报、季度报告为来源，逐条核对选矿产能；官方未单独披露的标 ⚠️，官方确认的标 ✓。",
+    "summary": "Wodgina 三列选矿列车（Train 1/2/3）总产能约 750ktpa SC5.5%（官网原文）或 820ktpa（官网 PDF 另一处表述），采用保守值 ~750ktpa；每列车为球磨+脱泥+磁选+浮选流程。",
+    "items": [
+     {
+      "line": "选矿厂 Train 1/2/3（A1-A3）",
+      "excel_capacity": "~250ktpa × 3 = 750ktpa",
+      "verified": "✓ 官方确认（总产能口径）",
+      "sources": [
+       {
+        "src": "MRL 官网资产页（2025-10 快照）",
+        "data": "three processing trains with a total annual production capacity of approximately 820,000 tonnes of spodumene concentrate at a grade of 5.5% Li2O——三列列车总产能官方确认；每列车含球磨机+脱泥旋流器+磁选+浮选"
+       },
+       {
+        "src": "MRL 官网（2026-08 抓取）",
+        "data": "总设计产能约 750,000 t/a SC @ 5.5% Li2O（≈3×250ktpa）——官网另一处表述，取保守值"
+       },
+       {
+        "src": "Q4 FY26 季报",
+        "data": "三线利用率提升、Q1 FY27 起三线全开；Q4 产量 94k dmt 为三线运行成果——实际产能利用率验证"
+       }
+      ]
+     },
+     {
+      "line": "破碎厂（CSI Mining Services 运营）",
+      "excel_capacity": "配套选矿厂",
+      "verified": "✓ 官方确认",
+      "sources": [
+       {
+        "src": "MRL 官网资产页",
+        "data": "破碎厂由 CSI Mining Services（MinRes 子公司）运营，压碎后进入选矿厂"
+       },
+       {
+        "src": "Q4 FY26 季报",
+        "data": "TMM 10,100k wmt（100%）、矿石开采 1,118k dmt——采矿+破碎系统满负荷运行"
+       }
+      ]
+     },
+     {
+      "line": "全矿合计（100% 口径）",
+      "excel_capacity": "~750-820ktpa SC5.5%",
+      "verified": "✓ 官网双表述（750/820）",
+      "sources": [
+       {
+        "src": "MRL 官网",
+        "data": "三列列车总产能 750-820ktpa（官网两处表述差异）——页面取 750ktpa 保守值"
+       },
+       {
+        "src": "FY26 实际",
+        "data": "FY26 销量 317k dmt SC6（50%）→ 100% 约 634k——产能利用率约 85%（含爬坡期）"
+       }
+      ]
+     }
+    ],
+    "note": "核实时间：2026-08-05。关键结论：① 三列选矿列车总产能 750-820ktpa SC5.5%（官网确认）；② 无 Train 4 计划（官网未提及），产能扩张靠矿坑 Stage 4；③ 2023-10-18 起 MRL 权益从 40% 升至 50%（此前 Wodgina 按 40% 披露）。",
+    "sources_index": {
+     "公司官网": "MRL 资产页（2025-10 快照）+ 官网抓取",
+     "公司季报": "MRL 季度活动报告（Q4 FY26 等）",
+     "公司公告": "JORC 资源储量更新（2022/2023）、2026-05 FID 公告",
+     "数据站": "USGS/Wikipedia/OSM 坐标验证",
+     "券商咨询": "本轮未引用（公开数据充分）"
+    },
+    "images": [
+     {
+      "url": "img/sat_wodgina.jpg",
+      "src": "卫星影像（Yandex Maps，坐标 -21.1746,118.6764）",
+      "cap": "Wodgina 矿区卫星影像（Zoom 13）——露天矿坑与选矿厂区在卫星影像上的实际形态，卫星追踪第一参照"
+     },
+     {
+      "url": "img/wodgina_location.jpg",
+      "src": "MRL 官网资产页",
+      "cap": "Wodgina 位置图——矿区相对 Port Hedland / Marble Bar / Karratha 的位置"
+     },
+     {
+      "url": "img/wa_lithium_map.jpg",
+      "src": "MRL 官网",
+      "cap": "西澳锂矿分布图（Wodgina/Mt Marion/其他锂矿位置总览）"
+     },
+     {
+      "url": "img/wodgina_processing.jpg",
+      "src": "MRL 官网资产页",
+      "cap": "Wodgina 选矿厂（三列浮选列车）——项目展示图"
+     },
+     {
+      "url": "img/wodgina_aerial.jpg",
+      "src": "MRL 官方媒体库",
+      "cap": "Wodgina 矿区航拍全景——露天矿坑与选矿厂布局"
+     }
+    ],
+    "mining_side": {
+     "title": "原矿产能核实（矿坑 / 矿体 / 尾矿库）",
+     "method": "以 MRL 官网资产页、JORC 资源储量公告（2022/2023）、季报运营描述为来源。",
+     "items": [
+      {
+       "line": "原矿矿山：Wodgina 露天矿",
+       "status": "✅ 建成（2019 年前 DSO 时代已开采）",
+       "sources": [
+        {
+         "src": "MRL 官网资产页",
+         "data": "露天开采（钻爆-装载-运输循环）；上部 20-50m 强风化、下部坚硬岩石；矿石堆存于 ROM pad"
+        },
+        {
+         "src": "Q4 FY26 季报",
+         "data": "26Q2 总物料移动 10,100k wmt（100%）、矿石 1,118k dmt"
+        }
+       ]
+      },
+      {
+       "line": "矿体与品位（Stage 1-4）",
+       "status": "✅ 多阶段矿坑",
+       "sources": [
+        {
+         "src": "MRL 2023 资源储量更新",
+         "data": "资源 217.4 Mt @ 1.15% Li₂O（2023-06-30）；储量 164.6 Mt @ 1.15%"
+        },
+        {
+         "src": "Q4 FY26 季报",
+         "data": "Stage 2 矿石耗尽、全面转 Stage 3；Stage 4 预剥离 2026 年 7 月启动——多阶段开采规划"
+        }
+       ]
+      },
+      {
+       "line": "地下开采（未来）",
+       "status": "⚠️ 评估中",
+       "sources": [
+        {
+         "src": "MRL 官网资产页",
+         "data": "future opportunities to mine ore at depth via underground mining methods which are being assessed——地下开采评估中"
+        }
+       ]
+      },
+      {
+       "line": "尾矿库（TSF）",
+       "status": "✅ 建成",
+       "sources": [
+        {
+         "src": "MRL 官网资产页",
+         "data": "细尾矿泵送至湿式尾矿库，粗尾矿与废石混合回填——现场有尾矿储存设施"
+        }
+       ]
+      },
+      {
+       "line": "废石堆 / ROM pad",
+       "status": "✅ 建成",
+       "sources": [
+        {
+         "src": "MRL 官网资产页",
+         "data": "废石堆、ROM pad、破碎站为现场基础设施"
+        }
+       ]
+      }
+     ],
+     "note": "核实时间：2026-08-05。采矿侧要点：① Wodgina 为世界最大已知硬岩锂矿床之一，多阶段露天开采（Stage 1-4）；② 地下开采评估中（官网确认）；③ 2022 年资源 259.2 Mt @ 1.17% → 2023 年 217.4 Mt @ 1.15%（采矿消耗+边界调整），储量 164.6 Mt 支撑多年开采。",
+     "images": [
+      {
+       "url": "img/sat_wodgina.jpg",
+       "src": "卫星影像（Yandex Maps）",
+       "cap": "Wodgina 矿区卫星影像——矿坑轮廓与选矿厂相对位置"
+      },
+      {
+       "url": "img/wodgina_location.jpg",
+       "src": "MRL 官网",
+       "cap": "Wodgina 位置图（含 Port Hedland 关系）"
+      },
+      {
+       "url": "img/wodgina_mining.jpg",
+       "src": "MRL 官网资产页",
+       "cap": "Wodgina 露天采矿（钻爆-装载-运输）实景"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "company": "MRL（Mineral Resources）",
+   "mine": "Mt Marion",
+   "current_q": "26Q2",
+   "prev_q": "26Q1",
+   "current_q_date": "2026年4-6月",
+   "mine_cn": "Mt Marion（马里恩矿山）",
+   "report": "MRL Quarterly Activity Report Q4 FY26（2026-07-29 发布，FY26 Q4 / 日历26Q2）；MRL 官网资产页",
+   "source_url": "https://www.mineralresources.com.au/our-business/lithium/mt-marion/",
+   "equity_note": "100% 资产口径为推算（官方披露 50% attributable 产量、51% 包销份额销量；JV = MinRes 50% / Ganfeng 50%，MinRes 运营）；销量 100% 为 51%÷0.51 估算",
+   "history_labels": [
+    [
+     "production",
+     "精矿产量（万吨，100% 推算）"
+    ],
+    [
+     "sales",
+     "销量（万吨，100% 推算）"
+    ],
+    [
+     "prod_sales_ratio",
+     "产销比"
+    ],
+    [
+     "avg_price",
+     "平均售价（US$/t，CIF SC6）"
+    ],
+    [
+     "cash_cost",
+     "单位成本 FOB（A$/t SC6）"
+    ]
+   ],
+   "status_26q2": {
+    "existing_lines": [
+     {
+      "name": "已有产能1：DMS 重介质选矿厂（主回路）— 设计 ~500ktpa SC（5%/3.5% 双品位）",
+      "q26q2": "26Q2 产 82k dmt（+3% qoq）；回收率 59%（26Q1: 60%）；矿石分选机（ore sorting）已投产，FY27 处理低品位接触矿堆；矿石来源 N9（N4 完成开采）；DMS 回路按粒度分 3 个产品流",
+      "q26q1": "26Q1 产 80k dmt（-1% qoq），回收率 60%；矿石来自 N9/N4；预剥离在 N11 推进",
+      "compare": "产量温和 +3%，回收率 59-60% 稳定；ore sorting 投产是 FY27 低品位矿石处理的关键变量——技术升级超预期"
+     },
+     {
+      "name": "已有产能2：浮选厂（在建，FID 2026-05-26）",
+      "q26q2": "浮选厂建设推进中（FID 2026-05-26，$240M 100% 口径）；建筑团队已进场早期工程、长周期设备采购已启动；投产后处理 DMS 细粒/低品位产品提升综合回收率",
+      "q26q1": "26Q1 浮选厂处于 FID 前评估",
+      "compare": "FID 2026-05-26 正式通过（投资 $490M 含浮选+地下+基建）——扩建项目进入执行期，超预期"
+     },
+     {
+      "name": "地下开发（预生产开发）",
+      "q26q2": "地下预生产开发 FID（$220M）；2026-07-15 任命 Macmahon 为地下采矿合同伙伴；North/Central 坑内 portal 支护工程 7 月开工；此前 2024 年曾建 exploration decline、2024-12 因市场进入维护，现重启",
+      "q26q1": "26Q1 地下开发处于评估/重启准备",
+      "compare": "Macmahon 任命（2026-07-15）标志地下开发重启进入执行——重大进展"
+     }
+    ],
+    "future_lines": [
+     {
+      "name": "N11 矿坑过渡（FY27）",
+      "q26q2": "北坑从 N9 过渡到 N11 作为主要矿石来源（预剥离推进中）；ore sorting 用于处理低品位 contact ore 库存；N10 预剥离后续启动",
+      "q26q1": "26Q1 N9 开采中、N11 预剥离进行",
+      "compare": "N9→N11 过渡按计划推进"
+     }
+    ],
+    "overall": {
+     "operation_changes": "26Q2 产量 82k dmt（+3%）、销量 94k dmt（51% 口径，+32% qoq）；回收率 59%；FY26 销量 242k SC6 超指引；浮选厂 FID + 地下开发 Macmahon 任命",
+     "prev_operation_changes": "26Q1 产量 80k dmt（-1%）、销量 71k（-20% qoq 因船期）；回收率 60%",
+     "highlights": [
+      "FY26 销量 242k dmt SC6，超上调后指引（210-230k）上限约 5%",
+      "26Q2 销量 94k dmt（51%）环比 +32%——含补发 Q3 船期；均价 US$2,392/dmt CIF SC6（+15% qoq）",
+      "浮选厂+地下开发 FID 2026-05-26 通过（$490M 总投资）——双项目进入执行期，超预期",
+      "Macmahon 被任命为地下采矿承包商（2026-07-15），portal 工程 7 月开工——地下开发重启落地",
+      "ore sorting 投产，FY27 起处理低品位接触矿堆——回收率提升技术路径明确"
+     ]
+    }
+   },
+   "fc_2027": [
+    {
+     "label": "悲观",
+     "val": 130,
+     "note": "浮选厂延期 + N9→N11 过渡品位波动"
+    },
+    {
+     "label": "基准",
+     "val": 145,
+     "note": "DMS 满产 + 浮选厂 2027 年中投产（FY26 销量 242k SC6 年化 ~30 万吨混合品位）"
+    },
+    {
+     "label": "乐观",
+     "val": 160,
+     "note": "浮选厂提前投产 + 地下矿开始贡献"
+    }
+   ],
+   "capacity_verification": {
+    "title": "选矿产能核实（多来源交叉印证）",
+    "method": "以 MRL 官网资产页、季度报告、FID 公告为来源，逐条核对选矿产能；官方未单独披露的标 ⚠️，官方确认的标 ✓。",
+    "summary": "Mt Marion DMS 选矿厂设计年产能约 500,000 t SC（5%/3.5% 双品位）；浮选厂在建（$240M）投产后处理 DMS 细粒产品；地下开发与浮选厂为 FY27-28 主要扩建。",
+    "items": [
+     {
+      "line": "DMS 重介质选矿厂",
+      "excel_capacity": "~500ktpa SC（双品位）",
+      "verified": "✓ 官网确认（总产能口径）",
+      "sources": [
+       {
+        "src": "MRL 官网资产页",
+        "data": "DMS 回路按粒度分 3 个产品流；设计年产能约 500,000 t spodumene concentrate（典型 5% 与 3.5% Li₂O 两种品位）"
+       },
+       {
+        "src": "Q4 FY26 季报",
+        "data": "26Q2 产量 82k dmt、回收率 59%；ore sorting 投产——产能利用率与技术进步验证"
+       }
+      ]
+     },
+     {
+      "line": "浮选厂（在建）",
+      "excel_capacity": "处理 DMS 细粒（不新增精矿铭牌）",
+      "verified": "✓ FID 确认",
+      "sources": [
+       {
+        "src": "FID 公告 2026-05-26",
+        "data": "浮选厂 $240M（100% 口径）；投产后处理 DMS 细粒/低品位产品、提升综合回收率；建筑团队已进场、长周期采购启动"
+       },
+       {
+        "src": "MRL 官网新闻",
+        "data": "2024-03 曾宣布锂加工枢纽计划——浮选厂前身"
+       }
+      ]
+     },
+     {
+      "line": "地下开发（预生产）",
+      "excel_capacity": "地下预生产开发 $220M",
+      "verified": "✓ FID 确认",
+      "sources": [
+       {
+        "src": "FID 公告 2026-05-26",
+        "data": "地下预生产开发 $220M；Macmahon 任命（2026-07-15）；North/Central portal 支护开工"
+       },
+       {
+        "src": "2024-02 资源更新",
+        "data": "地下资源 19.3 Mt @ 1.22%（+111%）；North Pit 地下矿体 500m 走向、30-60m 厚、1.2km 深"
+       }
+      ]
+     }
+    ],
+    "note": "核实时间：2026-08-05。关键结论：① DMS 选矿厂 ~500ktpa（官网确认）；② 浮选厂 FID 2026-05-26（$240M）在建；③ 地下开发 FID 同步通过（$220M）；④ FY27-28 为浮选+地下双项目执行期。",
+    "sources_index": {
+     "公司官网": "MRL 资产页",
+     "公司季报": "MRL 季度活动报告（Q4 FY26 等）",
+     "公司公告": "JORC 资源储量更新（2018/2022/2023）、2024-02 地下资源更新、2026-05 FID 公告",
+     "数据站": "USGS/Wikipedia/OSM 坐标验证",
+     "券商咨询": "本轮未引用（公开数据充分）"
+    },
+    "images": [
+     {
+      "url": "img/sat_marion.jpg",
+      "src": "卫星影像（Yandex Maps，坐标 -31.0738,121.4611）",
+      "cap": "Mt Marion 矿区卫星影像（Zoom 13）——露天矿坑与选矿厂区在卫星影像上的实际形态，卫星追踪第一参照"
+     },
+     {
+      "url": "img/marion_location.jpg",
+      "src": "MRL 官网资产页",
+      "cap": "Mt Marion 位置图——Kalgoorlie 以北 70km，Goldfields 地区"
+     },
+     {
+      "url": "img/wa_lithium_map.jpg",
+      "src": "MRL 官网",
+      "cap": "西澳锂矿分布图（Wodgina/Mt Marion/其他锂矿位置总览）"
+     },
+     {
+      "url": "img/marion_processing.jpg",
+      "src": "MRL 官网资产页",
+      "cap": "Mt Marion DMS 选矿厂——项目展示图"
+     },
+     {
+      "url": "img/marion_drone_fid.jpg",
+      "src": "MRL 官网（FID 新闻头图）",
+      "cap": "Mt Marion 浮选厂/地下开发 FID 无人机航拍"
+     }
+    ],
+    "mining_side": {
+     "title": "原矿产能核实（矿坑 / 矿体 / 尾矿库）",
+     "method": "以 MRL 官网资产页、JORC 资源储量公告（2018/2022/2023）、地下资源更新（2024）、季报运营描述为来源。",
+     "items": [
+      {
+       "line": "原矿矿山：Mt Marion 露天矿（北坑 N9/N11 + 南坑）",
+       "status": "✅ 建成（2016 年投产）",
+       "sources": [
+        {
+         "src": "MRL 官网资产页",
+         "data": "露天锂矿，世界第二大高品位锂资源（约 71 Mt spodumene）；上部 15-40m 风化；新鲜废石密度接近锂辉石，DMS 需控制贫化"
+        },
+        {
+         "src": "Q4 FY26 季报",
+         "data": "26Q2 矿石来源 N9（N4 完成）；N11 预剥离推进；TMM 9,578k wmt（+81% qoq）"
+        }
+       ]
+      },
+      {
+       "line": "矿体与品位（N4/N9/N10/N11 + Central/C2）",
+       "status": "✅ 多矿坑多阶段",
+       "sources": [
+        {
+         "src": "MRL 2023 资源储量更新",
+         "data": "资源 64.8 Mt @ 1.42%（2023-06-30）；储量 35.7 Mt @ 1.42%（+107%）"
+        },
+        {
+         "src": "2024-02 地下资源更新",
+         "data": "地下资源 19.3 Mt @ 1.22%（+111%）；露天 46.8 Mt @ 1.42%——合计 66.1 Mt；North Pit 地下矿体 500m 走向、30-60m 厚、1.2km 深"
+        }
+       ]
+      },
+      {
+       "line": "地下开发（North/Central portal）",
+       "status": "⚠️ 预生产开发（FID 2026-05）",
+       "sources": [
+        {
+         "src": "FID 公告 + Macmahon 任命",
+         "data": "地下预生产开发 $220M；2026-07-15 Macmahon 为合同伙伴；portal 支护工程 7 月开工；此前 exploration decline 2024-12 因市场进入维护"
+        },
+        {
+         "src": "2024-02 资源更新",
+         "data": "地下资源 19.3 Mt @ 1.22%"
+        }
+       ]
+      },
+      {
+       "line": "尾矿库（TSF）",
+       "status": "✅ 建成",
+       "sources": [
+        {
+         "src": "MRL 官网资产页",
+         "data": "现场含尾矿设施（DMS 回路尾矿）"
+        }
+       ]
+      },
+      {
+       "line": "废石堆 / ROM pad",
+       "status": "✅ 建成",
+       "sources": [
+        {
+         "src": "MRL 官网资产页",
+         "data": "多个露天矿坑、废石堆、ROM pad 为现场基础设施"
+        }
+       ]
+      }
+     ],
+     "note": "核实时间：2026-08-05。采矿侧要点：① 露天多坑开采（N4/N9/N11 + Central/C2），北坑为主；② 地下资源 19.3 Mt 支撑地下开发 FID；③ 资源储量：2018 年 71.3 Mt → 2023 年 64.8 Mt 露天 + 19.3 Mt 地下（口径变化+消耗）。",
+     "images": [
+      {
+       "url": "img/sat_marion.jpg",
+       "src": "卫星影像（Yandex Maps）",
+       "cap": "Mt Marion 矿区卫星影像——矿坑轮廓与选矿厂相对位置"
+      },
+      {
+       "url": "img/marion_location.jpg",
+       "src": "MRL 官网",
+       "cap": "Mt Marion 位置图（Kalgoorlie 以北 70km）"
+      },
+      {
+       "url": "img/marion_mining.jpg",
+       "src": "MRL 官网资产页",
+       "cap": "Mt Marion 露天采矿实景（多矿坑）"
       }
      ]
     }
@@ -1809,6 +2347,983 @@ const YONGAN_DATA = {
    "2024": 72.6,
    "2025": 75.5,
    "2026": 88.0
+  }
+ },
+ "wodgina": {
+  "quarters": [
+   "2019Q1",
+   "2019Q2",
+   "2019Q3",
+   "2019Q4",
+   "2020Q1",
+   "2020Q2",
+   "2020Q3",
+   "2020Q4",
+   "2021Q1",
+   "2021Q2",
+   "2021Q3",
+   "2021Q4",
+   "2022Q1",
+   "2022Q2",
+   "2022Q3",
+   "2022Q4",
+   "2023Q1",
+   "2023Q2",
+   "2023Q3",
+   "2023Q4",
+   "2024Q1",
+   "2024Q2",
+   "2024Q3",
+   "2024Q4",
+   "2025Q1",
+   "2025Q2",
+   "2025Q3",
+   "2025Q4",
+   "2026Q1",
+   "2026Q2",
+   "2026Q3",
+   "2026Q4"
+  ],
+  "history": {
+   "production": [
+    null,
+    null,
+    null,
+    null,
+    0.0,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    6.4,
+    9.2,
+    8.8,
+    10.25,
+    22.6,
+    23.0,
+    null,
+    12.6,
+    10.2,
+    10.8,
+    12.6,
+    16.6,
+    17.6,
+    17.0,
+    15.6,
+    18.8,
+    21.0,
+    21.0
+   ],
+   "lce": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "tech_grade": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "chem_grade": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "sales": [
+    null,
+    null,
+    null,
+    null,
+    0.0,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    6.6,
+    9.5,
+    9.8,
+    9.25,
+    12.4,
+    28.4,
+    null,
+    12.4,
+    9.2,
+    12.2,
+    11.8,
+    13.6,
+    19.4,
+    16.8,
+    13.8,
+    20.0,
+    null,
+    null
+   ],
+   "inv_change": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "inventory": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "prod_sales_ratio": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    1.031,
+    1.033,
+    1.114,
+    0.902,
+    0.549,
+    1.235,
+    null,
+    0.984,
+    0.902,
+    1.13,
+    0.937,
+    0.819,
+    1.102,
+    0.988,
+    0.885,
+    1.064,
+    null,
+    null
+   ],
+   "avg_price": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    1243,
+    842,
+    834,
+    846,
+    674,
+    881,
+    1140,
+    2130,
+    2450,
+    null,
+    null
+   ],
+   "cost_with_royalty": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    949,
+    1217,
+    868,
+    775,
+    641,
+    733,
+    717,
+    805,
+    714,
+    null,
+    null
+   ],
+   "cost_no_royalty": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "cash_cost": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    949,
+    1217,
+    868,
+    775,
+    641,
+    733,
+    717,
+    805,
+    714,
+    null,
+    null
+   ],
+   "cif_cost": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "yearly": {
+   "2020": 0.0,
+   "2022": 16.2,
+   "2023": 74.1,
+   "2024": 64.4,
+   "2025": 75.5,
+   "2026": 68.7
+  }
+ },
+ "marion": {
+  "quarters": [
+   "2019Q1",
+   "2019Q2",
+   "2019Q3",
+   "2019Q4",
+   "2020Q1",
+   "2020Q2",
+   "2020Q3",
+   "2020Q4",
+   "2021Q1",
+   "2021Q2",
+   "2021Q3",
+   "2021Q4",
+   "2022Q1",
+   "2022Q2",
+   "2022Q3",
+   "2022Q4",
+   "2023Q1",
+   "2023Q2",
+   "2023Q3",
+   "2023Q4",
+   "2024Q1",
+   "2024Q2",
+   "2024Q3",
+   "2024Q4",
+   "2025Q1",
+   "2025Q2",
+   "2025Q3",
+   "2025Q4",
+   "2026Q1",
+   "2026Q2",
+   "2026Q3",
+   "2026Q4"
+  ],
+  "history": {
+   "production": [
+    null,
+    null,
+    null,
+    12.4,
+    11.6,
+    null,
+    13.3,
+    null,
+    null,
+    11.4,
+    10.1,
+    9.8,
+    null,
+    12.8,
+    10.8,
+    12.1,
+    12.0,
+    12.0,
+    12.8,
+    16.6,
+    null,
+    17.8,
+    13.6,
+    11.6,
+    14.0,
+    12.4,
+    14.6,
+    16.2,
+    16.0,
+    16.4,
+    16.5,
+    16.5
+   ],
+   "lce": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "tech_grade": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "chem_grade": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "sales": [
+    null,
+    null,
+    null,
+    9.9,
+    11.0,
+    null,
+    11.8,
+    null,
+    null,
+    15.5,
+    3.6,
+    6.9,
+    null,
+    7.2,
+    11.1,
+    11.6,
+    12.4,
+    12.2,
+    12.8,
+    17.2,
+    null,
+    19.0,
+    22.2,
+    11.2,
+    13.8,
+    13.4,
+    14.2,
+    17.8,
+    14.2,
+    18.8,
+    null,
+    null
+   ],
+   "inv_change": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "inventory": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "prod_sales_ratio": [
+    null,
+    null,
+    null,
+    0.798,
+    0.948,
+    null,
+    0.887,
+    null,
+    null,
+    1.36,
+    0.356,
+    0.704,
+    null,
+    0.562,
+    1.028,
+    0.959,
+    1.033,
+    1.017,
+    1.0,
+    1.036,
+    null,
+    1.067,
+    1.632,
+    0.966,
+    0.986,
+    1.081,
+    0.973,
+    1.099,
+    0.887,
+    1.146,
+    null,
+    null
+   ],
+   "avg_price": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    3262,
+    4151,
+    null,
+    2589,
+    null,
+    1060,
+    null,
+    1139,
+    813,
+    816,
+    845,
+    607,
+    797,
+    1042,
+    2076,
+    2392,
+    null,
+    null
+   ],
+   "cost_with_royalty": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    844,
+    null,
+    683,
+    1020,
+    1176,
+    708,
+    717,
+    796,
+    812,
+    903,
+    878,
+    null,
+    null
+   ],
+   "cost_no_royalty": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "cash_cost": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    844,
+    null,
+    683,
+    1020,
+    1176,
+    708,
+    717,
+    796,
+    812,
+    903,
+    878,
+    null,
+    null
+   ],
+   "cif_cost": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "yearly": {
+   "2020": 42.4,
+   "2021": 45.4,
+   "2022": 48.6,
+   "2023": 46.6,
+   "2024": 54.2,
+   "2025": 52.8,
+   "2026": 61.0
   }
  }
 };

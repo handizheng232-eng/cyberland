@@ -105,7 +105,11 @@ document.getElementById('header_tags').innerHTML =
 
 // 每个矿山的数据源
 function histOf(m) {
-  return m.mine === 'Greenbushes' ? D.history : D[m.mine.toLowerCase()].history;
+  const key = m.mine === 'Mt Marion' ? 'marion' : m.mine.toLowerCase();
+  return m.mine === 'Greenbushes' ? D.history : D[key].history;
+}
+function pageOf(m) {
+  return m.mine === 'Greenbushes' ? 'index.html' : `${(m.mine === 'Mt Marion' ? 'marion' : m.mine.toLowerCase())}.html`;
 }
 
 // 环比显示
@@ -126,7 +130,7 @@ D.mines.forEach(m => {
   const hl = m.status_26q2.overall.highlights[0] || '';
   const card = document.createElement('a');
   card.className = 'mine-card';
-  card.href = m.mine === 'Greenbushes' ? 'index.html' : `${m.mine.toLowerCase()}.html`;
+  card.href = pageOf(m);
   card.style.textDecoration = 'none';
   card.style.color = 'inherit';
   card.innerHTML = `
@@ -155,7 +159,7 @@ D.mines.forEach(m => {
   const tr = document.createElement('tr');
   const pCell = (v) => v != null ? `<td class="num">${v.toFixed(2)}</td>` : '<td class="num">N.D.</td>';
   tr.innerHTML = `
-    <td class="line"><a href="${m.mine === 'Greenbushes' ? 'index.html' : `${m.mine.toLowerCase()}.html`}" style="color:var(--acc);text-decoration:none">${m.mine_cn}</a></td>
+    <td class="line"><a href="${pageOf(m)}" style="color:var(--acc);text-decoration:none">${m.mine_cn}</a></td>
     <td>${m.company}</td>
     ${pCell(prod[CI])}<td class="num">${pct(prod[CI], prod[PI])}</td>
     ${pCell(sales[CI])}<td class="num">${pct(sales[CI], sales[PI])}</td>
