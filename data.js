@@ -2476,7 +2476,7 @@ const YONGAN_DATA = {
    "mine_cn": "Manna（曼纳矿山）",
    "report": "Global Lithium July 2026 Investor Presentation（2026-07-28）；Manna MDCP approved 公告（2026-08-04）；Manna DFS Results 公告（2025-12-04）；Quarterly Activities Report（2026-07-31）",
    "source_url": "https://globallithium.com.au/lithium-assets/manna-lithium-project/",
-   "equity_note": "100% 资产口径（Global Lithium Resources 全资，ASX: GL1）；**未投产/开发阶段矿山**——Kalgoorlie 锂矿区第三大资源；2021-11 完成 100% 收购；2024-06-12 资源 +43%（51.6Mt）；2025-08-25 Mining Lease M28/414 授予；2025-12-04 DFS 完成；2026-08-04 MDCP 批准；FID 目标 Q4 2026；首批 DSO Q2 2027、首产 SC5.5 精矿 2027 年中",
+   "equity_note": "100% 资产口径（Global Lithium Resources 全资，ASX: GL1）；**未投产/开发阶段矿山**——Kalgoorlie 锂矿区第三大资源；原权属 Breaker Resources（BRB，2018-11 发现），GL1 2021-12-30 收购 80%（A$33M 上限）+ 2022-11-15 收购剩余 20%（A$60M，BRB 保留贵金属权 + 1.5% NSR）；2024-06-12 资源 +43%（51.6Mt）；2025-08-25 ML M28/414 授予（21 年期）；2025-12-03 优化 DFS 完成；2026-08-04 MDCP 批准；FID 目标 Q4 2026；首批 DSO Q2 2027、首产 SC5.5 精矿 2027 年中",
    "history_labels": [
     [
      "production",
@@ -2526,12 +2526,12 @@ const YONGAN_DATA = {
      "operation_changes": "26Q2 未投产：开发推进——2026-07-15 Nova 收购公告（A$7m）、2026-08-04 MDCP 批准、FID 目标 Q4 2026；DFS（2025-12-04）经济参数：NPV8 A$472M、IRR 25.7%、Payback 3.5 年、capex A$439.1M（绿地）、AISC US$738/t SC5.5、LOM 14.3 年",
      "prev_operation_changes": "26Q1 开发推进：Lopal 战略融资（2026-04-22，配售 A$7.3m + 40% 包销 + US$75M 预付款）、Marble Bar 出售（A$14.85M，专注 Manna）",
      "highlights": [
-      "MDCP 批准（2026-08-04，DMIRS）——Manna 开发关键许可，略早于内部时间表（超预期）",
+      "MDCP 批准（2026-08-04，DMIRS）——Manna 开发关键许可，略早于内部时间表（超预期）；2024Q4-2025Q1 曾因锂价下行暂停 DFS（2025-01-29 季报官方确认）+ 249D 股东行动/诉讼干扰（2024-09 至 2025-02），2025-12-03 恢复发布优化 DFS",
       "Nova 收购（2026-07-15）：A$7m 获 1.8Mtpa 选矿厂 → 首产精矿目标 2027 年中（vs 绿地厂更晚）",
       "FID 目标 Q4 2026 + 首批 DSO Q2 2027——fast-track 时间表",
       "DFS（2025-12-04）：NPV8 A$472M、IRR 25.7%、Payback 3.5 年、Breakeven US$784/t SC6.0——价格韧性",
-      "Kalgoorlie 锂矿区第三大资源：51.6Mt @ 1.00% + Maiden 储量 19.4Mt @ 0.91%（LOM 14.3 年）",
-      "Lopal 战略合作：40% 包销 + US$75M 预付款（FID 后）+ A$7.3m 配售——资金与下游双锁定"
+      "Kalgoorlie 锂矿区第三大资源：51.6Mt @ 1.00%（≥0.6% 边界）+ Maiden 储量 19.4Mt @ 0.91%（LOM 14.3 年）；Esperance 港出口 MOU（2025-12-18，Southern Ports）",
+      "Lopal 战略合作（2026-04-22）：40% 产量包销（10 年 SC5.5，前三年地板价 US$1,000/t CIF）+ US$75M 预付款融资 + A$7.32M 配售（2026-05-28 完成，Lopal ~5%）——资金与下游双锁定；既有 Canmax（原 Suzhou TA&A）10 年最低 30% 包销（2022-03-02，2025-04-08 变更续期）"
      ]
     }
    },
@@ -2559,8 +2559,8 @@ const YONGAN_DATA = {
     "summary": "Manna 为 Kalgoorlie 锂矿区第三大资源（51.6Mt @ 1.00%）+ Maiden 储量 19.4Mt @ 0.91%（LOM 14.3 年）；DFS（2025-12-04）绿地厂 capex A$439.1M；2026-07-15 Nova 收购战略（1.8Mtpa 选矿厂）将 Manna 矿石运至 Nova 加工，首产 SC5.5 精矿目标 2027 年中；FID 目标 Q4 2026、首批 DSO Q2 2027。",
     "items": [
      {
-      "line": "选矿产能（Nova 1.8Mtpa 厂 vs Manna 绿地厂）",
-      "excel_capacity": "Nova 1.8Mtpa 原矿（收购改造）vs Manna 绿地厂（DFS）",
+      "line": "选矿产能（Manna DFS 浮选厂 vs Nova 1.8Mtpa 厂）",
+      "excel_capacity": "Manna DFS：1.8Mtpa 磨机 → 236,470 tpa SC5.5；Nova：1.8Mtpa concentrator（收购）",
       "verified": "✓ 2026-07 展示 + DFS 双来源",
       "sources": [
        {
@@ -2568,8 +2568,8 @@ const YONGAN_DATA = {
         "data": "GL1 to acquire 100% of Nova Operation (approx. 170km south of Manna) securing an established processing plant——1.8Mtpa concentrator plus power, camp and site infrastructure；substantial capex savings vs Manna greenfield plant；first spodumene concentrate targeted mid-2027"
        },
        {
-        "src": "Manna DFS（2025-12-04）",
-        "data": "Pre-production CAPEX A$439.1M（Manna 绿地厂口径）；LOM AISC US$738/t (SC5.5) excl sea freight；Breakeven US$784/t SC6.0"
+        "src": "Manna 优化 DFS（2025-12-03）",
+        "data": "精矿产能 236,470 tpa SC5.5（干吨）、LOM 总 SC5.5 精矿 2.76Mt、目标品位 ≥5.5% Li₂O、LOM 平均回收率 72.8%；磨机产能 1.8Mtpa（预选后 1.5-1.6Mtpa）；剥采比 14.9、第 7 年起地下（sublevel open stoping）；CAPEX A$439.1M（动迁 81.9 + 选厂 157.5 + 间接 49.3 + 业主 110.4 + 应急 40.0）+ 可选 10MW 光伏 A$20M；NPV8 A$472M（税后含权利金）、IRR 25.7%、Payback 3.5 年、Breakeven US$784/t SC6.0、AISC US$738/t SC5.5（不含海运费）"
        },
        {
         "src": "Nova 收购公告（2026-07-15）",
@@ -2578,37 +2578,37 @@ const YONGAN_DATA = {
       ]
      },
      {
-      "line": "加工流程",
-      "excel_capacity": "DMS 重介质（SC5.5 精矿）",
-      "verified": "✓ DFS/展示口径",
+      "line": "加工流程（⚠️ 非 DMS——浮选工艺）",
+      "excel_capacity": "三段破碎 + 矿石预选 + 单球磨 + 浮选 + 脱泥/云母浮选/磁选",
+      "verified": "✓ DFS 原文确认（DMS not suitable）",
       "sources": [
        {
-        "src": "2026-07 投资者展示",
-        "data": "SC5.5 Spodumene Concentrate production planned for mid 2027；DSO operation 先行（Q2 2027）"
+        "src": "Manna 优化 DFS（2025-12-03）",
+        "data": "Dense-Media Separation (DMS) technology is not suitable for the Manna deposit——三段破碎 + 矿石预选（ore sorting）+ 单一球磨 + 浮选 + 脱泥/云母浮选/磁选；2023-11-16 冶金试验确认浮选路线"
        },
        {
-        "src": "MDCP 公告（2026-08-04）",
-        "data": "First SC5.5 Spodumene Concentrate production planned for mid 2027"
+        "src": "2026-07 投资者展示 / MDCP 公告（2026-08-04）",
+        "data": "First SC5.5 Spodumene Concentrate production planned for mid 2027；DSO operation 先行（Q2 2027）"
        }
       ]
      },
      {
-      "line": "全矿合计（2027 目标）",
-      "excel_capacity": "Nova 厂 1.8Mtpa 原矿 → ~200ktpa SC5.5（估算）",
-      "verified": "⚠️ 精矿产能为推算（1.8Mtpa 原矿 × 品位/回收率），官方未发布精矿 ktpa",
+      "line": "全矿合计（DFS 设计 vs Nova 路线）",
+      "excel_capacity": "DFS：236,470 tpa SC5.5（LOM 14.3 年）；Nova 路线：1.8Mtpa concentrator 改造",
+      "verified": "✓ DFS 官方产能（236,470 tpa）",
       "sources": [
        {
-        "src": "推算（1.8Mtpa × 1.0% × 70% 回收 / 5.5%）",
-        "data": "~230ktpa SC5.5 上限——待 DFS/整合研究确认精矿产能"
+        "src": "Manna 优化 DFS（2025-12-03）",
+        "data": "SC5.5 年产能 236,470 t（干吨）、LOM 总 SC5.5 精矿 2.76Mt——官方精矿产能"
        },
        {
         "src": "2026-07 投资者展示",
-        "data": "Manna-Nova Integration Study underway to quantify capex reduction and capture cashflow from DSO production"
+        "data": "Nova 1.8Mtpa concentrator 收购（A$7m）→ capex 削减 + 首产提前（mid-2027）；Manna-Nova Integration Study underway to quantify capex reduction and capture cashflow from DSO production"
        }
       ]
      }
     ],
-    "note": "核实时间：2026-08-05。关键结论：① 未投产矿山——资源 51.6Mt @ 1.00%、储量 19.4Mt @ 0.91%（LOM 14.3 年）；② DFS（2025-12-04）：capex A$439.1M（绿地）、NPV8 A$472M、IRR 25.7%、AISC US$738/t SC5.5；③ Nova 收购（2026-07-15，A$7m）1.8Mtpa 选矿厂 → 首产精矿目标 2027 年中（提前于绿地厂）；④ FID 目标 Q4 2026、首批 DSO Q2 2027；⑤ 精矿 ktpa 产能官方未发布（页面按 Nova 1.8Mtpa 推算并注明）。",
+    "note": "核实时间：2026-08-05。关键结论：① 未投产矿山——资源 51.6Mt @ 1.00%、储量 19.4Mt @ 0.91%（LOM 14.3 年）；② DFS（2025-12-04）：capex A$439.1M（绿地）、NPV8 A$472M、IRR 25.7%、AISC US$738/t SC5.5；③ Nova 收购（2026-07-15，A$7m）1.8Mtpa 选矿厂 → 首产精矿目标 2027 年中（提前于绿地厂）；④ FID 目标 Q4 2026、首批 DSO Q2 2027；⑤ 精矿产能官方值 236,470 tpa SC5.5（DFS）；⑥ 注意 2023 Scoping Study（2.0Mtpa/NPV A$2.8B@US$2,500 高价假设）与 2025 优化 DFS（1.8Mtpa/NPV A$472M）勿混用——以 DFS 为准。",
     "sources_index": {
      "技术报告": "Manna DFS（2025-12-04）、MRE 更新（2024-06-12）",
      "公司公告": "MDCP 批准（2026-08-04）、Nova 收购（2026-07-15）、Lopal 融资（2026-04-22）",
@@ -2646,8 +2646,8 @@ const YONGAN_DATA = {
          "data": "multiple open pits: one main (Manna Main) and two satellites (Manna North and Manna South)；waste rock and dry stack tailings, ore stockpiles, accommodation village, bore field, topsoil stockpiles"
         },
         {
-         "src": "官网",
-         "data": "outcropping spodumene and lepidolite bearing pegmatite deposit；110km east of Kalgoorlie；Mining Lease M28/414（2025-08-25）"
+         "src": "官网/DFS/MDCP",
+         "data": "110km east of Kalgoorlie-Boulder（Kalgoorlie-Boulder 郡）on Mining Lease M28/414；坐标 ≈ -30.87, 122.53（MGA94 Zone 51 换算 + miningdataonline -30.864, 122.574 印证）——Lake Roe 项目区内、Bombora 金矿体西南 15km；LCT 伟晶岩脉群：脉厚 1-14m 平均 3.6m、倾向 -60~-70° SE"
         }
        ]
       },
@@ -2656,8 +2656,16 @@ const YONGAN_DATA = {
        "status": "✅ 资源确认（第三大）",
        "sources": [
         {
-         "src": "官网/DFS（2025-12-04）",
-         "data": "MRE 51.6Mt @ 1.00% Li₂O（2024-06-12 公告 +43%）；Maiden Ore Reserve 19.4Mt @ 0.91% Li₂O → LOM 14.3 年（82% 采矿库存由储量支撑）"
+         "src": "MRE 更新（2024-06-12，现行）",
+         "data": "MRE 51.6Mt @ 1.00% Li₂O（≥0.6% Li₂O 边界、Fe<8%，JORC 2012）：Indicated 32.9Mt @ 1.04%/52ppm + Inferred 18.7Mt @ 0.92%/50ppm（LCE 1,276kt）；敏感性：0.5%→55.7Mt@0.97%、0.8%→39.5Mt@1.09%、1.0%→22.8Mt@1.22%"
+        },
+        {
+         "src": "DFS 储量（2025-12-03）",
+         "data": "Maiden Ore Reserve 19.4Mt @ 0.907% Li₂O（全部 Probable）：露天 14.4Mt @ 0.93%（0.5% 边界）+ 地下 5.0Mt @ 0.84%（0.6% 边界）→ LOM 14.3 年（82% 采矿库存由储量支撑）"
+        },
+        {
+         "src": "历史资源链",
+         "data": "9.9Mt @ 1.14%（2022-02-16 首次，80% 权益）→ 50.7Mt（2022-12-14，Manna 32.7Mt@1.0%）→ 36.0Mt @ 1.13%（2023-07-26）→ 51.6Mt（2024-06-12 +43%）"
         },
         {
          "src": "区域位置图（官网）",
