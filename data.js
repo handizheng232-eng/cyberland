@@ -2241,8 +2241,8 @@ const YONGAN_DATA = {
     "existing_lines": [
      {
       "name": "已有产能1：DMS 选矿厂（重介质分离）— 设计 180-205ktpa SC6e",
-      "q26q2": "26Q2 重启爬坡：2026-05 重启运营（两年前 2024 年暂停后）；DMS 厂 2025 重启研究优化（回收率/产量/产能提升）；重启目标名称产能 205ktpa SC6 等效粗粒精矿（较原 180ktpa 提升）",
-      "q26q1": "26Q1 处于 C&M（2024 年中起）；2026-03-18 FID 重启获批——$19.5M 结束遗留运营合同、100% 基础设施所有权",
+      "q26q2": "26Q2 重启推进：2026-05 恢复采矿（Grants，两年前 2024 年暂停后）；DMS 首产精矿目标 2026 年 9 月季度（26Q3）；重启名称产能 205ktpa SC6 等效（FID 口径 214ktpa），2028 年中爬坡至 1.2Mtpa 原矿吞吐",
+      "q26q1": "26Q1 处于 C&M（2024 年中起）；2026-03-18 FID 重启获批：US$120M 融资（Glencore/InfraVia/Nebari）+ A$120M 股权募资，fully funded 重启包；$19.5M 结束遗留运营合同",
       "compare": "2026-05 重启是超预期点（miningweekly 2026-05-20 报道）；FID 后约 2 个月即重启——资本效率高（$250M+ 已投资产复用）"
      },
      {
@@ -2266,7 +2266,7 @@ const YONGAN_DATA = {
      "highlights": [
       "2026-05 重启（两年停滞后，miningweekly 2026-05-20 报道）——FID 后约 2 个月实现，资本效率高",
       "重启研究（2025-05-14 完成）：名称产能 205ktpa SC6e（原 180ktpa）、成本降至 $40-46/t（原 $69/t）、地下 20 年寿命",
-      "2026-03-18 FID：$19.5M 结束所有遗留合同 → 100% 基础设施所有权、C&M 成本降低",
+      "2026-03-18 FID：US$120M 融资（Glencore/InfraVia/Nebari）+ A$120M 股权募资；$19.5M 结束遗留合同 → 100% 基础设施所有权；首产精矿目标 26Q3、2028 年中达 1.2Mtpa 名称产能",
       "BP33 储量 8.7Mt @ 1.38%（2024-09-25 更新）——重启的基石；最新总储量 10.73Mt @ 1.29%（2025-04-30）",
       "最新资源 48.5Mt @ 1.26%（2025-04-30，从 2022 年 18.9Mt 大幅增长）；$250M+ 已投资产（Grants + BP33）"
      ]
@@ -2310,7 +2310,15 @@ const YONGAN_DATA = {
        },
        {
         "src": "FY24 年报",
-        "data": "FY24（2023Q3-2024Q2）产 95,020 dmt、销 97,423 dmt @ US$1,574/dmt——实际运行验证（2023 爬坡期）"
+        "data": "FY24（2023Q3-2024Q2）产 95,020 dmt（指引 90-95k）、销 97,423 dmt @ US$1,574/dmt、精矿品位 4.8% Li₂O、C1 $1,396/dmt——实际运行验证"
+       },
+       {
+        "src": "2021 Stage 1 DFS（2021-07-26）",
+        "data": "1Mtpa DMS、up to 197,000 tpa、精矿品位 5.8% Li₂O、矿山寿命 8 年、AISC US$441/t、回收率 71.7%、pre-production capex A$89m、NPV8 A$221m / IRR 53%"
+       },
+       {
+        "src": "2025 Restart Study 详细参数",
+        "data": "Annual production throughput 1,200 ktpa；Nameplate 205 ktpa SC6-eq（FID 口径 214ktpa）；矿山寿命 20 年（前 10 年储量支撑）；Pre-Production Capital A$175-200m；UG 盈亏平衡 $110/t NSR；长期 SC 价假设 US$1,330/t"
        }
       ]
      },
@@ -2345,7 +2353,7 @@ const YONGAN_DATA = {
       ]
      }
     ],
-    "note": "核实时间：2026-08-05。关键结论：① DMS 产能 180ktpa（2019 DFS）→ 205ktpa SC6e（2025 重启研究优化）；② 2023 年实际产（FY24 95,020 dmt，爬坡期）；③ 2024 年中 C&M（2024-09-08 Darwin 最后一船）；④ 2025-05-14 重启研究完成、2026-03-18 FID、2026-05 重启；⑤ 2027 满产路径 205ktpa SC6e。",
+    "note": "核实时间：2026-08-05。关键结论：① DMS 产能 180ktpa（2019 DFS）→ 205ktpa SC6e（2025 重启研究优化）；② 2023 年实际产（FY24 95,020 dmt，爬坡期）；③ 2024 年中 C&M（2024-09-08 Darwin 最后一船）；④ 2025-05-14 重启研究完成、2026-03-18 FID、2026-05 重启；⑤ FID 2026-03-18 后 2026-05 恢复采矿、首产精矿 26Q3、2028 年中达 1.2Mtpa 名称产能；⑥ 2027 满产路径 205-214ktpa SC6e。",
     "sources_index": {
      "技术报告": "Core Lithium DFS 2019 / DFS 2021 Stage 1 / 重启研究 2025",
      "公司报告": "2025 年 6 月季报、FY24 年报",
@@ -2392,8 +2400,8 @@ const YONGAN_DATA = {
        "status": "✅ 资源确认（大幅增长）",
        "sources": [
         {
-         "src": "2025-06 季度报告",
-         "data": "最新 MRE 48.5Mt @ 1.26% Li₂O（2025-04-30，含 TSF/粗尾矿 310kt @ 0.66%）；储量 10.73Mt @ 1.29%（Grants + BP33 + TSF，Proved 3.42 + Probable 7.3）"
+         "src": "2025-05-14 重启研究",
+         "data": "最新 MRE 48.5Mt @ 1.26%（2025-04-30，M6.3/1.41 + I21.9/1.29 + Inf20.3/1.18）；储量 10.73Mt @ 1.29% 矿山拆分：BP33 地下 9.29Mt @ 1.31% + Grants 地下 1.15Mt @ 1.31% + TSF/料堆 0.28Mt @ 0.68%"
         },
         {
          "src": "BP33 储量更新（2024-09-25）",
@@ -2418,8 +2426,8 @@ const YONGAN_DATA = {
          "data": "2018 MMP（Finniss Project）；Grants Project Mining Management Plan Amendment（Public ID 227052）；BP33 Public Mining Management Plan（2023）——NT 政府 MMP 体系"
         },
         {
-         "src": "FY24 年报",
-         "data": "BP33 approvals 推进（MMP 修订/批准）"
+         "src": "采矿租约/审批",
+         "data": "ML 31726（768 公顷，Grants 厂区）；2023-05 NT 政府批准 BP33 地下开采；BP33 Underground SER（Supplementary Environmental Report，2021-12）；EL29698 Finniss MMP Amendment（2021-05）；2021-03 联邦 Major Project Status"
         }
        ]
       },
@@ -2438,7 +2446,7 @@ const YONGAN_DATA = {
        ]
       }
      ],
-     "note": "核实时间：2026-08-05。采矿侧要点：① Grants 露天（2023 投产）+ BP33 地下（重启第二阶段）；② 资源 48.5Mt @ 1.26%（2025-04-30）、储量 10.73Mt @ 1.29%（BP33 占 8.7Mt @ 1.38%）；③ NT 政府 MMP 体系环评（2018 初始 + Grants/BP33 修订）；④ 2024 年中 C&M、2026-05 重启；⑤ Bynoe 伟晶岩田 500km² 土地持有——长期勘探潜力。",
+     "note": "核实时间：2026-08-05。采矿侧要点：① Grants 露天（2023 投产）+ BP33 地下（重启第二阶段）；② 资源 48.5Mt @ 1.26%（2025-04-30）、储量 10.73Mt @ 1.29%（BP33 占 8.7Mt @ 1.38%）；③ NT 政府 MMP 体系环评（2018 初始 + Grants/BP33 修订）；④ 2024 年中 C&M、2026-03-18 FID、2026-05 恢复采矿、首产精矿目标 26Q3；⑤ Bynoe 伟晶岩田 500km² 土地持有——长期勘探潜力。",
      "images": [
       {
        "url": "img/sat_finniss_z13.jpg",
@@ -5942,7 +5950,7 @@ const YONGAN_DATA = {
     0.0,
     0.0,
     0.0,
-    0.1,
+    0.0,
     null,
     null
    ],
@@ -6359,7 +6367,7 @@ const YONGAN_DATA = {
    "2023": 5.5,
    "2024": 3.1,
    "2025": 0.0,
-   "2026": 0.1
+   "2026": 0.0
   }
  }
 };
