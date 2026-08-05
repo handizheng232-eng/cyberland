@@ -46,6 +46,11 @@ const YONGAN_DATA = {
     "key": "Bald Hill",
     "label": "Bald Hill（第六页）",
     "file": "baldhill.html"
+   },
+   {
+    "key": "Mt Cattlin",
+    "label": "Mt Cattlin（第七页）",
+    "file": "mtcattlin.html"
    }
   ]
  },
@@ -1936,6 +1941,260 @@ const YONGAN_DATA = {
        "url": "img/baldhill_tsf.jpg",
        "src": "MRL 官网",
        "cap": "Bald Hill 尾矿库与矿区设施"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "company": "Rio Tinto（力拓）",
+   "mine": "Mt Cattlin",
+   "current_q": "26Q2",
+   "prev_q": "26Q1",
+   "current_q_date": "2026年4-6月",
+   "mine_cn": "Mt Cattlin（卡特林山矿山）",
+   "report": "Rio Tinto Operations Review Q2 2026（2026-07-15 发布）；Allkem Mt Cattlin NI 43-101 Technical Report（2023）；力拓官网 Mt Cattlin 资产页（C&M 状态确认）",
+   "source_url": "https://www.riotinto.com/en/operations/anz/western-australia/mt-cattlin",
+   "equity_note": "100% 资产口径（力拓全资；2024-10-09 签约、2025-03-06 完成收购 Arcadium Lithium 每股 $5.85，归入 Rio Tinto Lithium）；历史：Galaxy Resources 2009-2012 运营 → 2013 C&M → 2016-03 复产 → 2021-08 Galaxy 与 Orocobre 合并为 Allkem → 2024-01 Allkem 与 Livent 合并为 Arcadium → 2025-03 力拓完成收购",
+   "history_labels": [
+    [
+     "production",
+     "精矿产量（万吨，dmt SC 5.2-5.5%）"
+    ],
+    [
+     "sales",
+     "销量（万吨，dmt）"
+    ],
+    [
+     "prod_sales_ratio",
+     "产销比"
+    ],
+    [
+     "avg_price",
+     "平均售价（US$/t，SC6）"
+    ],
+    [
+     "cash_cost",
+     "单位成本 FOB（A$/t，SC6）"
+    ]
+   ],
+   "status_26q2": {
+    "existing_lines": [
+     {
+      "name": "已有产能1：选矿厂（破碎 + 光选 + DMS + 重力选）— 设计 1.8Mtpa 原矿",
+      "q26q2": "26Q2 处于 care & maintenance（2025 年起，因锂价低）；选矿厂（2013-2016 建，含光学矿石分选、DMS、重力选）保养待命；力拓官网状态标注 Care and maintenance；产能标注 10kpta（力拓官网口径，疑为显示截断，实际铭牌 ~160ktpa SC）",
+      "q26q1": "26Q1 同为 C&M；无复产计划公告",
+      "compare": "持续停产；力拓收购后未宣布复产计划——锂价未回到重启激励水平"
+     },
+     {
+      "name": "已有产能2：露天矿（NW pit 等）",
+      "q26q2": "采矿暂停（C&M）；矿坑：North-West pit（Stage 3 NW）等；2016 复产时 17 年矿山寿命 @800ktpa，后扩至 1.8Mtpa 连续给料",
+      "q26q1": "C&M 无采矿",
+      "compare": "无变化"
+     }
+    ],
+    "future_lines": [
+     {
+      "name": "复产评估（力拓未宣布时间表）",
+      "q26q2": "力拓未披露 Mt Cattlin 复产计划；资产页状态 Care and maintenance；全球锂业务重心在盐湖（Fénix/Rincon/Olaroz）与在建项目（Jadar/Nemaska）",
+      "q26q1": "同（无新增披露）",
+      "compare": "无新进展——C&M 持续"
+     }
+    ],
+    "overall": {
+     "operation_changes": "26Q2 持续 care & maintenance（2025 年起）：产 0、销 0；力拓 Q2 2026 Operations Review 无 Mt Cattlin 产量（C&M 项目）；力拓 2025 年完成 $6.7B 收购 Arcadium 后，锂业务整合为 Rio Tinto Lithium",
+     "prev_operation_changes": "26Q1 同（C&M）",
+     "highlights": [
+      "力拓 2025-03-06 完成 $6.7B 收购 Arcadium Lithium（2024-10-09 签约、每股 $5.85）——Mt Cattlin 归入 Rio Tinto Lithium（全球最大锂组合之一）",
+      "2025 年起进入 care & maintenance（力拓官网确认）——Arcadium 2024-09-04 公告暂停 Stage 4A 剥采、完成 Stage 3 后 2025 H1 底前 C&M；2024Q3 计提 $51.7M 减值",
+      "历史产量轨迹：2019 年峰值 191.6kt SC（Galaxy 时代）→ 2022 年 107.4kt → FY23 131.99kt（Allkem）→ 2024 年后走低",
+      "资源储量（Arcadium 10-K，2024-12-31）：M&I 6.48Mt @ 1.41% Li₂O + Inferred 4.81Mt @ 1.27%、储量 P&P 3.73Mt @ 1.02%——资源快速消耗是停产主因（较 2023-06 的 12.1Mt 下降近半）",
+      "选矿厂 1.8Mtpa 原矿设计 + DMS/光选/重力选工艺——复产时爬坡快（2016 年经验：4 个月恢复）"
+     ]
+    }
+   },
+   "fc_unit": "万吨 SC 5.2-5.5%（C&M 状态：2027 预测为 0-8 万吨复产情景）",
+   "fc_2027": [
+    {
+     "label": "悲观",
+     "val": 0,
+     "note": "持续 C&M——锂价未回升、资源枯竭无复产动力（基准情形概率最高）"
+    },
+    {
+     "label": "基准",
+     "val": 3,
+     "note": "2027 年锂价回升 + 力拓决定有限复产（低品位库存处理，~40-80kt SC/年）"
+    },
+    {
+     "label": "乐观",
+     "val": 8,
+     "note": "力拓利用自有销售渠道重启 + 尾矿/低品位回收，2027 年中恢复 ~80kt SC/年"
+    }
+   ],
+   "capacity_verification": {
+    "title": "选矿产能核实（多来源交叉印证 · C&M 状态矿山）",
+    "method": "以 Allkem NI 43-101 技术报告（2023）、力拓官网资产页、Wikipedia、历史季报为来源；C&M 状态矿山以历史产能与当前状态为核心。",
+    "summary": "Mt Cattlin 选矿厂（破碎 + 光学矿石分选 + DMS + 重力选，2013-2016 建）设计处理量 1.8Mtpa 原矿 → 精矿产能 ~160ktpa SC（历史峰值 FY18/19 产 163kt @ 5.8%）；2025 年起 C&M（力拓确认，因锂价低）；力拓官网标注产能 10kpta（疑显示截断，以 NI 43-101 设计口径为准）。",
+    "items": [
+     {
+      "line": "选矿厂（破碎+光选+DMS+重力选）",
+      "excel_capacity": "1.8Mtpa 原矿 → ~160ktpa SC",
+      "verified": "✓ NI 43-101 设计口径 + 历史产量验证",
+      "sources": [
+       {
+        "src": "Allkem NI 43-101（2023）",
+        "data": "Ore mining rates are based on providing continuous feed to the nominal 1.8 Mtpa processing plant；plant consists of crushing circuit, optical beneficiation circuit, DMS circuit, product handling, TSF"
+       },
+       {
+        "src": "NI 43-101 Table 17-1",
+        "data": "FY18/19 产 163kt @ 5.8% Li₂O（回收率 50%）、FY19/20 146kt @ 6.0%、FY20/21 187kt @ 5.8%、FY21/22 177kt @ 5.6%——实际产能验证 146-187ktpa"
+       },
+       {
+        "src": "力拓官网资产页",
+        "data": "Mt Cattlin 100% 力拓、Care and maintenance、标注 Capacity 10kpta（疑为显示截断，与 NI 43-101 的 1.8Mtpa/160ktpa 差距大，页面采用 NI 口径并注明差异）"
+       },
+       {
+        "src": "Arcadium FY2024 10-K",
+        "data": "capacity to process up to 1.8 million metric tons of ore per year, since upgrades from the original 1 Mtpa when commissioned in 2010；产品品位 SC 5.2-5.5% Li₂O；2022 新增磁选机；选厂 90 人；副产钽精矿（spiral/gravity，回收率 ~20%）"
+       },
+       {
+        "src": "NI 43-101 §5.6（许可）",
+        "data": "Prescribed Premises Licence L8469/2010/2：设计产能 2,000,000 tpa（Category 5 选矿，2022-02-11 修订、2039？到期 13/10/2029）——许可证口径 2.0Mtpa vs 标称 1.8Mtpa"
+       }
+      ]
+     },
+     {
+      "line": "加工流程",
+      "excel_capacity": "破碎 + 光学分选 + DMS + 重力选",
+      "verified": "✓ NI 43-101 确认",
+      "sources": [
+       {
+        "src": "Allkem NI 43-101（2023）",
+        "data": "multi-stage crushing, screening, optical ore sorting, dense media separation, and gravity concentration（2013-2016 建）；光学分选 1ktpd、可达总处理量 30%"
+       },
+       {
+        "src": "Wikipedia",
+        "data": "2016-03-31 复产，800ktpa 原矿起步（后扩至 1.8Mtpa）"
+       }
+      ]
+     },
+     {
+      "line": "全矿合计（C&M 状态）",
+      "excel_capacity": "停产（2025 起）",
+      "verified": "✓ 力拓官网确认",
+      "sources": [
+       {
+        "src": "力拓官网资产页",
+        "data": "Mt Cattlin was placed into care and maintenance in 2025 due to lower spodumene prices"
+       },
+       {
+        "src": "Rio Tinto Q2 2026 Operations Review",
+        "data": "锂业务产量表无 Mt Cattlin（C&M 项目不产）——2026 年持续停产"
+       }
+      ]
+     }
+    ],
+    "note": "核实时间：2026-08-05。关键结论：① 选矿厂 1.8Mtpa 原矿设计 → ~160ktpa SC（NI 43-101 双确认）；② 2025 年起 C&M（力拓确认，因锂价低 + 资源接近枯竭）；③ 力拓官网产能标注 10kpta 疑为显示截断，页面采用 NI 43-101 口径并注明差异；④ 历史峰值 2019 年 191.6kt SC；⑤ 复产时间表未披露。",
+    "sources_index": {
+     "技术报告": "Allkem Mt Cattlin NI 43-101（2023，entech 编制）",
+     "公司官网": "力拓 Mt Cattlin 资产页（C&M 状态）",
+     "公司报告": "Rio Tinto Q2 2026 Operations Review",
+     "历史披露": "Galaxy/Allkem/Arcadium 季报与年报",
+     "数据站": "Wikipedia（坐标/历史）、WA DEMIRS"
+    },
+    "images": [
+     {
+      "url": "img/sat_mtcattlin_z13.jpg",
+      "src": "卫星影像（Yandex Maps，坐标 -33.5625,120.0352）",
+      "cap": "Mt Cattlin 矿区卫星影像（Zoom 13）——Ravensthorpe 北 2.2km，卫星追踪第一参照"
+     },
+     {
+      "url": "img/rt_mtcattlin_hero.jpg",
+      "src": "力拓官网",
+      "cap": "Mt Cattlin 资产页主图（力拓官方）"
+     },
+     {
+      "url": "img/rt_lithium_ops.jpg",
+      "src": "力拓官网（锂产品页）",
+      "cap": "力拓全球锂资产布局（Mt Cattlin 为西澳硬岩项目之一）"
+     }
+    ],
+    "mining_side": {
+     "title": "原矿产能核实（矿坑 / 矿体 / 尾矿库 · C&M 状态矿山）",
+     "method": "以 Allkem NI 43-101（2023）、Wikipedia、WA 政府登记为来源。",
+     "items": [
+      {
+       "line": "原矿矿山：露天矿（NW pit 等）",
+       "status": "✅ 建成（2009-2012 首产；2016-03 复产）；⚠️ C&M 中",
+       "sources": [
+        {
+         "src": "Wikipedia",
+         "data": "2.2km north of Ravensthorpe；Galaxy 2009-2012 运营 → 2013 C&M → 2016-03-31 复产（17 年矿山寿命 @800ktpa）"
+        },
+        {
+         "src": "Allkem NI 43-101（2023）",
+         "data": "North-West pit（Stage 3 NW）只采一个伟晶岩脉；Stage 4 NW 扩展；1.8Mtpa 连续给料"
+        }
+       ]
+      },
+      {
+       "line": "矿体与资源（伟晶岩锂-钽矿）",
+       "status": "✅ 资源确认；⚠️ 资源接近枯竭",
+       "sources": [
+        {
+         "src": "Arcadium FY2024 10-K（最新，2024-12-31，S-K1300）",
+         "data": "资源 M&I 6.48Mt @ 1.41% Li₂O + Inferred 4.81Mt @ 1.27%（COG 0.3% 露天 / 0.58% 地下）；储量 P&P 3.73Mt @ 1.02%（Proven 89kt + Probable 3,644kt）——较 2023-06 的 12.1Mt 大幅下降（开采消耗 + 口径调整）"
+        },
+        {
+         "src": "Allkem NI 43-101（2023）",
+         "data": "历史资源 12.1Mt @ 1.3% Li₂O + 167ppm Ta₂O₅（2023-06-30，COG 0.3%）；储量 7.1Mt @ 1.2% Li₂O（2023，Proven 0.2 + Probable 5.2 + 堆存 1.8）"
+        },
+        {
+         "src": "NI 43-101 MRE 2017-12",
+         "data": "历史资源 10.3Mt @ 1.25% Li₂O + 151ppm Ta₂O₅（2017-12）"
+        },
+        {
+         "src": "Wikipedia",
+         "data": "2019 年储量 8.2Mt @ 1.29% Li₂O + 155ppm Ta₂O₅"
+        }
+       ]
+      },
+      {
+       "line": "环评与许可（WA 政府）",
+       "status": "✅ 已获批（DWER 体系）",
+       "sources": [
+        {
+         "src": "Allkem NI 43-101（2023）",
+         "data": "Part V Prescribed Premises Licence L 8469/2010/2（DWER，1.8Mtpa 选矿厂）；Part V Clearing Permits CPS 3045/5、CPS 8052/2、CPS 8049/1；Mining Proposal Reg IDs 22377、69112、73856"
+        },
+        {
+         "src": "Allkem NI 43-101（2023）",
+         "data": "Environmental Protection Act 1986 Part V Clearing Regulations（DWER 管辖）；Shire of Ravensthorpe 当地政府"
+        }
+       ]
+      },
+      {
+       "line": "尾矿库（TSF）",
+       "status": "✅ 建成",
+       "sources": [
+        {
+         "src": "Allkem NI 43-101（2023）",
+         "data": "TSF 按 ANCOLD/DMIRS 与 Works Approval 指南设计运营；含尾矿库 + 废石堆稳定性管理"
+        }
+       ]
+      }
+     ],
+     "note": "核实时间：2026-08-05。采矿侧要点：① 露天伟晶岩锂-钽矿（Ravensthorpe 北 2.2km）；② 资源（Arcadium 10-K 2024-12-31）M&I 6.48Mt @ 1.41% + Inferred 4.81Mt、储量 P&P 3.73Mt @ 1.02%——资源快速消耗（较 2023-06 的 12.1Mt 降近半）是 2025 C&M 主因；③ 环评经 DWER Part V 许可体系（L 8469/2010/2 + Clearing Permits）；④ 2016-03 复产（800ktpa→1.8Mtpa 扩产）；⑤ 2025 起 C&M，复产时间表未披露。",
+     "images": [
+      {
+       "url": "img/sat_mtcattlin_z13.jpg",
+       "src": "卫星影像（Yandex Maps）",
+       "cap": "Mt Cattlin 露天矿/选矿厂卫星影像——矿坑与设施相对位置"
+      },
+      {
+       "url": "img/rt_mtcattlin_hero.jpg",
+       "src": "力拓官网",
+       "cap": "Mt Cattlin 露天矿实景（力拓官方）"
       }
      ]
     }
@@ -4871,6 +5130,496 @@ const YONGAN_DATA = {
    "2024": 3.2,
    "2025": 6.3,
    "2026": 0.1
+  }
+ },
+ "mtcattlin": {
+  "quarters": [
+   "2019Q1",
+   "2019Q2",
+   "2019Q3",
+   "2019Q4",
+   "2020Q1",
+   "2020Q2",
+   "2020Q3",
+   "2020Q4",
+   "2021Q1",
+   "2021Q2",
+   "2021Q3",
+   "2021Q4",
+   "2022Q1",
+   "2022Q2",
+   "2022Q3",
+   "2022Q4",
+   "2023Q1",
+   "2023Q2",
+   "2023Q3",
+   "2023Q4",
+   "2024Q1",
+   "2024Q2",
+   "2024Q3",
+   "2024Q4",
+   "2025Q1",
+   "2025Q2",
+   "2025Q3",
+   "2025Q4",
+   "2026Q1",
+   "2026Q2",
+   "2026Q3",
+   "2026Q4"
+  ],
+  "history": {
+   "production": [
+    4.8,
+    4.8,
+    4.8,
+    4.8,
+    2.7,
+    2.7,
+    2.7,
+    2.7,
+    3.2,
+    3.2,
+    3.2,
+    3.2,
+    2.7,
+    2.7,
+    2.7,
+    2.7,
+    3.3,
+    3.3,
+    3.3,
+    3.3,
+    2.7,
+    2.7,
+    3.2,
+    5.4,
+    null,
+    null,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    null,
+    null
+   ],
+   "lce": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "tech_grade": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "chem_grade": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "sales": [
+    4.8,
+    4.8,
+    4.8,
+    4.8,
+    2.7,
+    2.7,
+    2.7,
+    2.7,
+    3.2,
+    3.2,
+    3.2,
+    3.2,
+    2.7,
+    2.7,
+    2.7,
+    2.7,
+    3.3,
+    3.3,
+    3.3,
+    3.3,
+    2.7,
+    2.7,
+    3.2,
+    5.4,
+    null,
+    null,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    null,
+    null
+   ],
+   "inv_change": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "inventory": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "prod_sales_ratio": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "avg_price": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "cost_with_royalty": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "cost_no_royalty": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "cash_cost": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "cif_cost": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "yearly": {
+   "2019": 19.2,
+   "2020": 10.9,
+   "2021": 12.8,
+   "2022": 10.7,
+   "2023": 13.2,
+   "2024": 14.0,
+   "2025": 0.0,
+   "2026": 0.0
   }
  }
 };

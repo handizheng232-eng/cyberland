@@ -139,7 +139,7 @@ const urlParams = new URLSearchParams(location.search);
 const MINE_KEY = urlParams.get('mine') || 'Kathleen Valley';  // 分页模式
 const MINE = D.mines.find(m => m.mine === MINE_KEY) || D.mines[0];
 // 历史数据源：Greenbushes 用 D.history，其余矿山用 D[<minekey小写>].history
-const HIST = MINE.mine === 'Greenbushes' ? D.history : D[(MINE.mine === 'Mt Marion' ? 'marion' : (MINE.mine === 'Kathleen Valley' ? 'kathleenvalley' : (MINE.mine === 'Bald Hill' ? 'baldhill' : MINE.mine.toLowerCase())))].history;
+const HIST = MINE.mine === 'Greenbushes' ? D.history : D[(MINE.mine === 'Mt Marion' ? 'marion' : (MINE.mine === 'Kathleen Valley' ? 'kathleenvalley' : (MINE.mine === 'Bald Hill' ? 'baldhill' : (MINE.mine === 'Mt Cattlin' ? 'mtcattlin' : MINE.mine.toLowerCase()))))].history;
 
 // ---------- 头部 ----------
 document.title = `${MINE.mine_cn} ｜ ${D.meta.title}`;
@@ -222,7 +222,7 @@ const m = MINE;
       <div class="table-wrap">
         <table class="hist-table" id="hist_${m.mine}"></table>
       </div>
-      <div class="note" style="margin-top:8px">${D.meta.color_legend}。产销比=销量/产量${m.mine === 'Greenbushes' ? '；库存为产销差滚动推算（期初 22Q4=29.6 万吨），非官方披露绝对库存' : ''}。</div>
+      <div class="note" style="margin-top:8px">${D.meta.color_legend}。产销比=销量/产量${m.mine === 'Greenbushes' ? '；库存为产销差滚动推算（期初 22Q4=29.6 万吨），非官方披露绝对库存' : ''}${m.mine === 'Mt Cattlin' ? '；⚠️ 2019-2022 季度为年度官方值均分估算（Galaxy/Allkem 年报口径），2023-2025H1 无官方逐季披露标 N.D.，2025 年起 C&M 停产' : ''}。</div>
     </div>
     <div class="cat">
       <h3>⑤ 2027 年产量预测<span class="q">（研究性判断 · 日历年度 · 100% 资产口径 · 单位：${m.fc_unit || m.forecast_unit || '万吨'}）</span></h3>
