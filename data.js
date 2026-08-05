@@ -347,19 +347,24 @@ const YONGAN_DATA = {
     "note": "核实时间：2026-08-04。关键结论：① TRP 与 CGP3 的精矿铭牌（28/52 万吨）获公司年报+官网+SLR 三方一致确认；② CGP1/CGP2/TGP 官方只披露矿石处理能力（1.8/2.4/0.35 Mtpa），Excel 的 60/60/14 万吨精矿为按产率推算的上限值，非官方直接披露；③ 官方精矿总上限（CGP3 后 ~1.8Mtpa）低于 Excel 的 214 万吨，未来产能规划应以 SLR/官网口径为基准；④ CGP4 未被 SLR LOM 计划纳入，且 FID 迟迟未做，2027 年投产假设不成立。",
     "images": [
      {
-      "url": "img/greenbushes_aerial_official.jpg",
-      "src": "IGO 官网（Our Business）",
-      "cap": "Greenbushes 矿山航拍实景——露天矿坑 + 选矿厂区（CGP1/CGP2/CGP3、TGP、TRP），可与卫星影像直接对照定位"
-     },
-     {
-      "url": "img/greenbushes_ar2023_overview.jpg",
-      "src": "IGO Annual Report 2023",
-      "cap": "矿山全景照片（FY23 年报），展示露天开采区与选矿厂布局"
+      "url": "img/sat_greenbushes.jpg",
+      "src": "卫星影像（Yandex Maps，坐标 -33.8567,116.0622）",
+      "cap": "Greenbushes 矿区卫星影像（Zoom 14）——露天矿坑与选矿厂区在卫星影像上的实际形态，卫星追踪第一参照"
      },
      {
       "url": "img/slr_plants_aerial.jpg",
       "src": "SLR 技术报告 Fig 14-1/14-2",
-      "cap": "选矿厂工艺流程总览 + 厂区航拍位置图（Fig 14-2 Aerial Image），标出各选矿厂相对位置"
+      "cap": "选矿厂工艺流程总览 + 厂区航拍位置图（Fig 14-2 Aerial Image），标出 CGP1/CGP2/CGP3/TGP/TRP 各厂相对位置"
+     },
+     {
+      "url": "img/slr_overall_layout.jpg",
+      "src": "SLR 技术报告 Fig 15-1",
+      "cap": "Greenbushes 整体场地布局图（含选矿厂/尾矿库/储水设施位置）——技术报告项目总览图"
+     },
+     {
+      "url": "img/greenbushes_aerial_official.jpg",
+      "src": "IGO 官网（Our Business）",
+      "cap": "Greenbushes 矿山官方航拍实景——露天矿坑 + 选矿厂区，可与卫星影像直接对照定位"
      }
     ],
     "mining_side": {
@@ -479,11 +484,6 @@ const YONGAN_DATA = {
      "note": "核实时间：2026-08-04。采矿侧要点：① 单一露天矿（Central Lode 主矿体）服务全部选矿厂，矿体禀赋为全球最高品位硬岩锂矿之一；② TSF4 尾矿库 2034 年达容后需新建 TSF5（场外、容量待定）——长期原矿/尾矿处理能力的审批是关键风险；③ 地下开采仅概念研究，若实施可缓解废石/尾矿压力并延长矿山寿命；④ LOM 按 22.5% 回收率、1.90% 平均品位测算，产出精矿 37.0Mt——该回收率假设与 26Q2 实际回收率走低趋势存在张力，后续需跟踪。",
      "images": [
       {
-       "url": "img/greenbushes_ar2023_mine.jpg",
-       "src": "IGO Annual Report 2023",
-       "cap": "Greenbushes 露天矿实景（FY23），主矿坑与采矿设备，可对照卫星影像识别矿坑轮廓"
-      },
-      {
        "url": "img/slr_location_plan.jpg",
        "src": "SLR 技术报告 Fig 3-1/3-2",
        "cap": "矿区位置图（含经纬度 33°51'24\"S 116°03'44\"E 与区域交通/港口关系）——卫星锁定第一参照"
@@ -491,7 +491,7 @@ const YONGAN_DATA = {
       {
        "url": "img/slr_site_layout.jpg",
        "src": "SLR 技术报告 Fig 3-3",
-       "cap": "Greenbushes Mine Operation Layout——矿坑、选矿厂、尾矿库、废石堆整体布置"
+       "cap": "Greenbushes Mine Operation Layout——矿坑、选矿厂、尾矿库、废石堆整体布置（技术报告项目总览图）"
       },
       {
        "url": "img/slr_pit_limit.jpg",
@@ -499,9 +499,19 @@ const YONGAN_DATA = {
        "cap": "矿坑境界优化壳与最终边坡设计图（含坐标网格），用于识别矿坑边界"
       },
       {
+       "url": "img/slr_geo_map.jpg",
+       "src": "SLR 技术报告 Fig 6-1/6-2",
+       "cap": "Greenbushes 区域地质图与矿体剖面——矿体分布与矿坑位置的地质背景"
+      },
+      {
        "url": "img/slr_tsf.jpg",
        "src": "SLR 技术报告 Fig 15-7/15-8",
        "cap": "尾矿库 TSF1/2/4 布置图——TRP 原矿来源与尾矿设施卫星定位"
+      },
+      {
+       "url": "img/greenbushes_ar2023_mine.jpg",
+       "src": "IGO Annual Report 2023",
+       "cap": "Greenbushes 露天矿实景（FY23），主矿坑与采矿设备，可对照卫星影像识别矿坑轮廓"
       }
      ]
     }
@@ -710,6 +720,11 @@ const YONGAN_DATA = {
     "note": "核实时间：2026-08-05（已更新至 June 2026 QAR）。关键结论：① Pilgan 产能 1.0Mtpa 获官网+年报确认（P680→P1000 路径清晰）；② Ngungaju 铭牌未单独披露，2026年7月1日重启、FY27 前 4 个月达目标产能；③ P2000 预FID $175M 已批、可研 2026-12 出结果；④ FY27 官方指引产量 1,030-1,100kt（双厂口径）为产能锚。",
     "images": [
      {
+      "url": "img/sat_pilgangoora.jpg",
+      "src": "卫星影像（Yandex Maps，坐标 -21.7939,119.6346）",
+      "cap": "Pilgangoora 矿区卫星影像（Zoom 13）——露天矿坑与 Pilgan/Ngungaju 选矿厂在卫星影像上的实际形态，卫星追踪第一参照"
+     },
+     {
       "url": "img/pilgangoora_overlook.jpg",
       "src": "PLS FY25 年报",
       "cap": "勘探队俯瞰 Pilgangoora 全景——露天矿坑与选矿厂区，可对照卫星影像识别"
@@ -717,17 +732,12 @@ const YONGAN_DATA = {
      {
       "url": "img/pilgangoora_p1000.jpg",
       "src": "PLS FY25 年报",
-      "cap": "P1000 扩建项目完成图（Pilgan 选矿厂升级后）"
+      "cap": "P1000 扩建项目完成图（Pilgan 选矿厂升级后）——项目总览展示图"
      },
      {
       "url": "img/pilgangoora_ops.jpg",
       "src": "PLS FY25 年报",
       "cap": "Pilgangoora 运营配图（选矿厂与堆场）"
-     },
-     {
-      "url": "img/pilgangoora_stockpile.jpg",
-      "src": "PLS 官网",
-      "cap": "Pilgangoora 精矿堆场实景"
      }
     ],
     "mining_side": {
@@ -801,6 +811,16 @@ const YONGAN_DATA = {
        "url": "img/pilgangoora_tenure.jpg",
        "src": "PLS FY25 年报",
        "cap": "Pilgangoora 矿权地图（consolidated tenure，~51,000 公顷）——卫星锁定矿区范围参照"
+      },
+      {
+       "url": "img/sat_pilgangoora.jpg",
+       "src": "卫星影像（Yandex Maps，坐标 -21.7939,119.6346）",
+       "cap": "Pilgangoora 矿区卫星影像（Zoom 13）——矿坑与选矿厂相对位置，与矿权图对照定位"
+      },
+      {
+       "url": "img/pilgangoora_stockpile.jpg",
+       "src": "PLS 官网",
+       "cap": "Pilgangoora 精矿堆场实景（堆场在卫星影像上通常呈浅色矩形区域）"
       }
      ]
     }
