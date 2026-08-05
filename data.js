@@ -56,6 +56,11 @@ const YONGAN_DATA = {
     "key": "Finniss",
     "label": "Finniss（第八页）",
     "file": "finniss.html"
+   },
+   {
+    "key": "Manna",
+    "label": "Manna（第九页）",
+    "file": "manna.html"
    }
   ]
  },
@@ -2457,6 +2462,250 @@ const YONGAN_DATA = {
        "url": "img/core_finniss_ops.jpg",
        "src": "Core Lithium 官网",
        "cap": "Finniss 运营现场（Core Lithium 官方）"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "company": "Global Lithium（ASX: GL1）",
+   "mine": "Manna",
+   "current_q": "26Q2",
+   "prev_q": "26Q1",
+   "current_q_date": "2026年4-6月",
+   "mine_cn": "Manna（曼纳矿山）",
+   "report": "Global Lithium July 2026 Investor Presentation（2026-07-28）；Manna MDCP approved 公告（2026-08-04）；Manna DFS Results 公告（2025-12-04）；Quarterly Activities Report（2026-07-31）",
+   "source_url": "https://globallithium.com.au/lithium-assets/manna-lithium-project/",
+   "equity_note": "100% 资产口径（Global Lithium Resources 全资，ASX: GL1）；**未投产/开发阶段矿山**——Kalgoorlie 锂矿区第三大资源；2021-11 完成 100% 收购；2024-06-12 资源 +43%（51.6Mt）；2025-08-25 Mining Lease M28/414 授予；2025-12-04 DFS 完成；2026-08-04 MDCP 批准；FID 目标 Q4 2026；首批 DSO Q2 2027、首产 SC5.5 精矿 2027 年中",
+   "history_labels": [
+    [
+     "production",
+     "精矿产量（万吨，SC5.5）"
+    ],
+    [
+     "sales",
+     "销量（万吨）"
+    ],
+    [
+     "prod_sales_ratio",
+     "产销比"
+    ],
+    [
+     "avg_price",
+     "平均售价（US$/t，SC6）"
+    ],
+    [
+     "cash_cost",
+     "单位成本 FOB（A$/t）"
+    ]
+   ],
+   "status_26q2": {
+    "existing_lines": [
+     {
+      "name": "拟建产线1：Manna 露天矿（Manna Main + North + South）",
+      "q26q2": "26Q2 未投产（开发阶段）：Manna Main 主坑 + Manna North/South 卫星坑设计完成；MDCP 2026-08-04 批准（含多个露天坑、废石堆、干堆尾矿、营地、水井场）；FID 目标 Q4 2026",
+      "q26q1": "26Q1 同（开发阶段）：ML M28/414（2025-08-25）+ Native Title 协议（2025-08-13）已就绪",
+      "compare": "MDCP 批准（2026-08-04，略早于内部时间表）是超预期点——进一步去风险、支持 Manna-Nova 战略早期工程"
+     },
+     {
+      "name": "拟建产线2：选矿厂（Manna 绿地厂 vs Nova 1.8Mtpa 厂）",
+      "q26q2": "选矿策略：收购 Nova Operation（Manna 南 170km，A$7m，2026-11/12 完成）——Nova 1.8Mtpa 选矿厂可大幅降 capex、加速首产（首产精矿目标 2027 年中 vs Manna 绿地厂）；Manna-Nova 整合研究进行中（量化 capex 削减 + DSO 现金流）",
+      "q26q1": "DFS（2025-12-04）：Manna 绿地厂 capex A$439.1M、LOM 14.3 年",
+      "compare": "Nova 收购（2026-07-15 公告）改变产能路径——从绿地建厂转向收购现成厂改造，首产时间大幅提前"
+     }
+    ],
+    "future_lines": [
+     {
+      "name": "DSO 运营 + 精矿生产（2027）",
+      "q26q2": "时间表：FID Q4 2026 → 首批 DSO（直接装运矿石）Q2 2027 → 首产 SC5.5 精矿 2027 年中（Nova 厂改造）；Lopal 40% 包销 + US$75M 预付款（FID 后）",
+      "q26q1": "DFS 完成后推进 FID 准备",
+      "compare": "DSO 先行是快速现金流策略（Manna-Nova 整合研究捕获 DSO 价值）"
+     }
+    ],
+    "overall": {
+     "operation_changes": "26Q2 未投产：开发推进——2026-07-15 Nova 收购公告（A$7m）、2026-08-04 MDCP 批准、FID 目标 Q4 2026；DFS（2025-12-04）经济参数：NPV8 A$472M、IRR 25.7%、Payback 3.5 年、capex A$439.1M（绿地）、AISC US$738/t SC5.5、LOM 14.3 年",
+     "prev_operation_changes": "26Q1 开发推进：Lopal 战略融资（2026-04-22，配售 A$7.3m + 40% 包销 + US$75M 预付款）、Marble Bar 出售（A$14.85M，专注 Manna）",
+     "highlights": [
+      "MDCP 批准（2026-08-04，DMIRS）——Manna 开发关键许可，略早于内部时间表（超预期）",
+      "Nova 收购（2026-07-15）：A$7m 获 1.8Mtpa 选矿厂 → 首产精矿目标 2027 年中（vs 绿地厂更晚）",
+      "FID 目标 Q4 2026 + 首批 DSO Q2 2027——fast-track 时间表",
+      "DFS（2025-12-04）：NPV8 A$472M、IRR 25.7%、Payback 3.5 年、Breakeven US$784/t SC6.0——价格韧性",
+      "Kalgoorlie 锂矿区第三大资源：51.6Mt @ 1.00% + Maiden 储量 19.4Mt @ 0.91%（LOM 14.3 年）",
+      "Lopal 战略合作：40% 包销 + US$75M 预付款（FID 后）+ A$7.3m 配售——资金与下游双锁定"
+     ]
+    }
+   },
+   "fc_unit": "万吨 SC5.5（2027 预测：首产精矿 mid-2027 后爬坡）",
+   "fc_2027": [
+    {
+     "label": "悲观",
+     "val": 4,
+     "note": "FID 延后 + Nova 完成延迟——2027 年仅 DSO 与精矿试产"
+    },
+    {
+     "label": "基准",
+     "val": 8,
+     "note": "FID Q4 2026 按计划 + Nova 厂 2027 年中投产——H2 精矿爬坡（~15-20kt/季）"
+    },
+    {
+     "label": "乐观",
+     "val": 12,
+     "note": "Nova 改造顺利 + 满产爬坡快——2027 下半年接近 1.8Mtpa 原矿对应产能"
+    }
+   ],
+   "capacity_verification": {
+    "title": "选矿产能核实（多来源交叉印证 · 未投产/开发阶段矿山）",
+    "method": "以 Global Lithium DFS（2025-12-04）、2026-07 投资者展示、MDCP 公告（2026-08-04）、官网为来源；未投产矿山以 DFS 设计参数与战略路线为核心。",
+    "summary": "Manna 为 Kalgoorlie 锂矿区第三大资源（51.6Mt @ 1.00%）+ Maiden 储量 19.4Mt @ 0.91%（LOM 14.3 年）；DFS（2025-12-04）绿地厂 capex A$439.1M；2026-07-15 Nova 收购战略（1.8Mtpa 选矿厂）将 Manna 矿石运至 Nova 加工，首产 SC5.5 精矿目标 2027 年中；FID 目标 Q4 2026、首批 DSO Q2 2027。",
+    "items": [
+     {
+      "line": "选矿产能（Nova 1.8Mtpa 厂 vs Manna 绿地厂）",
+      "excel_capacity": "Nova 1.8Mtpa 原矿（收购改造）vs Manna 绿地厂（DFS）",
+      "verified": "✓ 2026-07 展示 + DFS 双来源",
+      "sources": [
+       {
+        "src": "2026-07 投资者展示",
+        "data": "GL1 to acquire 100% of Nova Operation (approx. 170km south of Manna) securing an established processing plant——1.8Mtpa concentrator plus power, camp and site infrastructure；substantial capex savings vs Manna greenfield plant；first spodumene concentrate targeted mid-2027"
+       },
+       {
+        "src": "Manna DFS（2025-12-04）",
+        "data": "Pre-production CAPEX A$439.1M（Manna 绿地厂口径）；LOM AISC US$738/t (SC5.5) excl sea freight；Breakeven US$784/t SC6.0"
+       },
+       {
+        "src": "Nova 收购公告（2026-07-15）",
+        "data": "A$7m consideration（A$3m cash + A$2m GL1 shares + A$2m deferred）；completion Nov/Dec 2026"
+       }
+      ]
+     },
+     {
+      "line": "加工流程",
+      "excel_capacity": "DMS 重介质（SC5.5 精矿）",
+      "verified": "✓ DFS/展示口径",
+      "sources": [
+       {
+        "src": "2026-07 投资者展示",
+        "data": "SC5.5 Spodumene Concentrate production planned for mid 2027；DSO operation 先行（Q2 2027）"
+       },
+       {
+        "src": "MDCP 公告（2026-08-04）",
+        "data": "First SC5.5 Spodumene Concentrate production planned for mid 2027"
+       }
+      ]
+     },
+     {
+      "line": "全矿合计（2027 目标）",
+      "excel_capacity": "Nova 厂 1.8Mtpa 原矿 → ~200ktpa SC5.5（估算）",
+      "verified": "⚠️ 精矿产能为推算（1.8Mtpa 原矿 × 品位/回收率），官方未发布精矿 ktpa",
+      "sources": [
+       {
+        "src": "推算（1.8Mtpa × 1.0% × 70% 回收 / 5.5%）",
+        "data": "~230ktpa SC5.5 上限——待 DFS/整合研究确认精矿产能"
+       },
+       {
+        "src": "2026-07 投资者展示",
+        "data": "Manna-Nova Integration Study underway to quantify capex reduction and capture cashflow from DSO production"
+       }
+      ]
+     }
+    ],
+    "note": "核实时间：2026-08-05。关键结论：① 未投产矿山——资源 51.6Mt @ 1.00%、储量 19.4Mt @ 0.91%（LOM 14.3 年）；② DFS（2025-12-04）：capex A$439.1M（绿地）、NPV8 A$472M、IRR 25.7%、AISC US$738/t SC5.5；③ Nova 收购（2026-07-15，A$7m）1.8Mtpa 选矿厂 → 首产精矿目标 2027 年中（提前于绿地厂）；④ FID 目标 Q4 2026、首批 DSO Q2 2027；⑤ 精矿 ktpa 产能官方未发布（页面按 Nova 1.8Mtpa 推算并注明）。",
+    "sources_index": {
+     "技术报告": "Manna DFS（2025-12-04）、MRE 更新（2024-06-12）",
+     "公司公告": "MDCP 批准（2026-08-04）、Nova 收购（2026-07-15）、Lopal 融资（2026-04-22）",
+     "公司展示": "July 2026 Investor Presentation",
+     "官网": "globallithium.com.au Manna 项目页",
+     "数据站": "区域位置图（Kalgoorlie 锂矿区对比）"
+    },
+    "images": [
+     {
+      "url": "img/sat_manna_z13.jpg",
+      "src": "卫星影像（Yandex Maps）",
+      "cap": "Manna 项目区卫星影像——Kalgoorlie 东 110km（未开发地形）"
+     },
+     {
+      "url": "img/manna_region_map.jpg",
+      "src": "Global Lithium 官网",
+      "cap": "Kalgoorlie 锂矿区位置图——Manna vs Mt Marion/Bald Hill/Pioneer Dome/Buldania 资源对比"
+     },
+     {
+      "url": "img/manna_tenement_map.jpg",
+      "src": "Global Lithium 官网",
+      "cap": "Manna 矿权位置图（M28/414 等）"
+     }
+    ],
+    "mining_side": {
+     "title": "原矿产能核实（矿坑 / 矿体 / 尾矿库 · 未投产/开发阶段矿山）",
+     "method": "以 Global Lithium DFS/MRE 公告、MDCP 公告、官网为来源。",
+     "items": [
+      {
+       "line": "原矿矿山：Manna Main + North + South 露天",
+       "status": "🔧 设计完成（未投产）；MDCP 已批准",
+       "sources": [
+        {
+         "src": "MDCP 公告（2026-08-04）",
+         "data": "multiple open pits: one main (Manna Main) and two satellites (Manna North and Manna South)；waste rock and dry stack tailings, ore stockpiles, accommodation village, bore field, topsoil stockpiles"
+        },
+        {
+         "src": "官网",
+         "data": "outcropping spodumene and lepidolite bearing pegmatite deposit；110km east of Kalgoorlie；Mining Lease M28/414（2025-08-25）"
+        }
+       ]
+      },
+      {
+       "line": "矿体与资源（spodumene/lepidolite 伟晶岩）",
+       "status": "✅ 资源确认（第三大）",
+       "sources": [
+        {
+         "src": "官网/DFS（2025-12-04）",
+         "data": "MRE 51.6Mt @ 1.00% Li₂O（2024-06-12 公告 +43%）；Maiden Ore Reserve 19.4Mt @ 0.91% Li₂O → LOM 14.3 年（82% 采矿库存由储量支撑）"
+        },
+        {
+         "src": "区域位置图（官网）",
+         "data": "Kalgoorlie 锂矿区：Mt Marion 66.1Mt @ 1.36% > Bald Hill 58.1Mt @ 0.94% > Manna 51.6Mt @ 1.00%（第三）"
+        }
+       ]
+      },
+      {
+       "line": "环评与许可（WA 政府）",
+       "status": "✅ MDCP 已批准（2026-08-04）",
+       "sources": [
+        {
+         "src": "MDCP 公告（2026-08-04）",
+         "data": "Mining Development and Closure Proposal (MDCP) approved by DMIRS（Department of Mines, Petroleum and Exploration），on schedule，slightly ahead of internal timelines"
+        },
+        {
+         "src": "官网/2025 公告",
+         "data": "Mining Lease M28/414 granted 2025-08-25；Native Title Mining Agreement signed with Kakarra Part B Native Title Group 2025-08-13"
+        }
+       ]
+      },
+      {
+       "line": "尾矿库（干堆尾矿）",
+       "status": "🔧 设计阶段（dry stack tailings）",
+       "sources": [
+        {
+         "src": "MDCP 公告（2026-08-04）",
+         "data": "dry stack tailings 为 MDCP 设计设施之一"
+        }
+       ]
+      }
+     ],
+     "note": "核实时间：2026-08-05。采矿侧要点：① 未投产——Manna Main + North + South 露天设计完成、MDCP 2026-08-04 批准；② 资源 51.6Mt @ 1.00%（2024-06，+43%）、Maiden 储量 19.4Mt @ 0.91%（LOM 14.3 年）；③ 环评：MDCP（DMIRS）+ ML M28/414（2025-08-25）+ Native Title 协议（2025-08-13）；④ FID 目标 Q4 2026、首批 DSO Q2 2027、首产精矿 2027 年中；⑤ Kalgoorlie 锂矿区第三大资源（Mt Marion > Bald Hill > Manna）。",
+     "images": [
+      {
+       "url": "img/manna_core_sample.jpg",
+       "src": "Global Lithium 官网",
+       "cap": "Manna 岩芯样本（spodumene 伟晶岩）"
+      },
+      {
+       "url": "img/manna_drill.jpg",
+       "src": "Global Lithium 官网",
+       "cap": "Manna RC 钻探作业（2022-2024 大规模钻探）"
+      },
+      {
+       "url": "img/manna_aerial.jpg",
+       "src": "Global Lithium 官网",
+       "cap": "Manna 项目区航拍（未开发地形）"
       }
      ]
     }
@@ -6369,5 +6618,486 @@ const YONGAN_DATA = {
    "2025": 0.0,
    "2026": 0.0
   }
+ },
+ "manna": {
+  "quarters": [
+   "2019Q1",
+   "2019Q2",
+   "2019Q3",
+   "2019Q4",
+   "2020Q1",
+   "2020Q2",
+   "2020Q3",
+   "2020Q4",
+   "2021Q1",
+   "2021Q2",
+   "2021Q3",
+   "2021Q4",
+   "2022Q1",
+   "2022Q2",
+   "2022Q3",
+   "2022Q4",
+   "2023Q1",
+   "2023Q2",
+   "2023Q3",
+   "2023Q4",
+   "2024Q1",
+   "2024Q2",
+   "2024Q3",
+   "2024Q4",
+   "2025Q1",
+   "2025Q2",
+   "2025Q3",
+   "2025Q4",
+   "2026Q1",
+   "2026Q2",
+   "2026Q3",
+   "2026Q4"
+  ],
+  "history": {
+   "production": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    0.0,
+    0.0
+   ],
+   "lce": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "tech_grade": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "chem_grade": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "sales": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    0.0,
+    0.0
+   ],
+   "inv_change": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "inventory": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "prod_sales_ratio": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "avg_price": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "cost_with_royalty": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "cost_no_royalty": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "cash_cost": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "cif_cost": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "yearly": {}
  }
 };
