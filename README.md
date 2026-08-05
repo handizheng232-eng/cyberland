@@ -35,6 +35,12 @@
 
 ## 当前覆盖矿山
 
+**分页模式**（每矿山一个独立页面，格式一致）：
+1. **Greenbushes（第一页）** — `index.html`（IGO 母公司，更新至 26Q2）
+2. **Pilgangoora（第二页）** — `pilgangoora.html`（PLS/Pilbara Minerals 母公司，更新至 26Q2）
+
+新矿山加入方式：在 `build_data.py` 的 MINES 数组添加矿山块（7 大板块结构），数据文件 `docs/data.js` 同步更新，复制 `pilgangoora.html` 改名并把默认 `mine` 参数改为新矿山名。
+
 | 矿山 | 企业 | 最新报告 | 数据源 |
 |---|---|---|---|
 | Greenbushes | IGO | June 2026 Quarterly Activities Report（2026-07-28） | [IGO Investor Centre](https://www.igo.com.au/site/investor-center/investor-center1) |
