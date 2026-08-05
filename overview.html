@@ -104,12 +104,16 @@ document.getElementById('header_tags').innerHTML =
   D.meta.pages.map(p => `<span class="tag ${p.key === MINE_KEY ? 'hl' : ''}"><a href="${p.file}">${p.label}</a></span>`).join('');
 
 // 每个矿山的数据源
+function dataKeyOf(m) {
+  if (m.mine === 'Mt Marion') return 'marion';
+  if (m.mine === 'Kathleen Valley') return 'kathleenvalley';
+  return m.mine.toLowerCase();
+}
 function histOf(m) {
-  const key = m.mine === 'Mt Marion' ? 'marion' : m.mine.toLowerCase();
-  return m.mine === 'Greenbushes' ? D.history : D[key].history;
+  return m.mine === 'Greenbushes' ? D.history : D[dataKeyOf(m)].history;
 }
 function pageOf(m) {
-  return m.mine === 'Greenbushes' ? 'index.html' : `${(m.mine === 'Mt Marion' ? 'marion' : m.mine.toLowerCase())}.html`;
+  return m.mine === 'Greenbushes' ? 'index.html' : `${dataKeyOf(m)}.html`;
 }
 
 // 环比显示

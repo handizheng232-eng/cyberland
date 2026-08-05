@@ -36,6 +36,11 @@ const YONGAN_DATA = {
     "key": "Mt Marion",
     "label": "Mt Marion（第四页）",
     "file": "marion.html"
+   },
+   {
+    "key": "Kathleen Valley",
+    "label": "Kathleen Valley（第五页）",
+    "file": "kathleenvalley.html"
    }
   ]
  },
@@ -1359,6 +1364,278 @@ const YONGAN_DATA = {
        "url": "img/marion_mining.jpg",
        "src": "MRL 官网资产页",
        "cap": "Mt Marion 露天采矿实景（多矿坑）"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "company": "Liontown（Liontown Resources）",
+   "mine": "Kathleen Valley",
+   "current_q": "26Q2",
+   "prev_q": "26Q1",
+   "current_q_date": "2026年4-6月",
+   "mine_cn": "Kathleen Valley（凯瑟琳谷矿山）",
+   "report": "Liontown Quarterly Activities Report June 2026（2026-07-29 发布，FY26 Q4 / 日历26Q2）；June Quarter FY26 Results Presentation",
+   "source_url": "https://www.liontown.com/project/kathleen-valley/",
+   "equity_note": "100% 资产口径（Liontown 全资拥有并运营）；历史承购方含 LG Energy Solution / Tesla / Ford / Canmax；LGES 可转债 2026-01 转股",
+   "history_labels": [
+    [
+     "production",
+     "精矿产量（万吨，实际品位 ~5.0%）"
+    ],
+    [
+     "sales",
+     "销量（万吨，实际品位）"
+    ],
+    [
+     "prod_sales_ratio",
+     "产销比"
+    ],
+    [
+     "avg_price",
+     "平均售价（US$/t，SC6e）"
+    ],
+    [
+     "cash_cost",
+     "单位成本 FOB（A$/t sold）"
+    ]
+   ],
+   "status_26q2": {
+    "existing_lines": [
+     {
+      "name": "已有产能1：选矿厂（第四代浮选流程）— 设计 ~500ktpa SC6（2.5Mtpa 原矿）",
+      "q26q2": "26Q2 产 103,111 dmt（+7% qoq）、销 108,489 dmt（+29%）；平均品位 5.0%；回收率 ~63%（纯净地下矿时 70%）；工厂可用率 92%；55% 地下矿 + 45% 露天矿入厂",
+      "q26q1": "26Q1 产 96,367 dmt（-9% qoq，高基数）；回收率受入料混合影响；露天矿接近收尾（2025-12 完成）",
+      "compare": "产量 +7%、销量 +29% 超预期；回收率 63% 仍受露天矿污染拖累——2026 转纯地下后回收率有望升至 70%"
+     },
+     {
+      "name": "已有产能2：地下矿（澳洲首个地下锂矿）",
+      "q26q2": "地下开发创纪录 3,316m（+35% qoq）；采出地下矿 356kt；向 2.8Mtpa 原矿运行率（FY27 底）推进；长孔空场采矿+膏体充填（南半球最大膏体厂）",
+      "q26q1": "26Q1 地下开发 2,450m（+X%）；地下/露天混合供矿",
+      "compare": "开发米数创纪录 +35% 是核心超预期——为 Q2 FY27 起的产量跃升铺路"
+     },
+     {
+      "name": "选矿厂配套：矿石分选（ore sorting）+ 钽副产",
+      "q26q2": "Steinert 矿石分选 2 列运行；钽精矿产 99 dmt（Q1: 235，因入料变化）；尾矿处理含膏体充填回填地下采空区",
+      "q26q1": "26Q1 钽精矿产 235 dmt",
+      "compare": "钽产量下降与地下矿为主相关（地下矿钽品位低）——副产品贡献减弱但非核心"
+     }
+    ],
+    "future_lines": [
+     {
+      "name": "Kathleen Valley 扩建（FID 预计 Q1 FY27 底）",
+      "q26q2": "扩建研究推进中，FID 预计 2026 年 9 月底；范围：球磨机 5.5MW 采购（吞吐量/回收率关键路径）、NW Flats 地下开发（从 Kathleen's Corner 露天坑进入）、MSA Stage 1；FY26 early works $14M 已发生、FID 前最高 $77M",
+      "q26q1": "26Q1 扩建研究进行中；2026-04-29 宣布 early works + long-lead procurement 启动",
+      "compare": "FID 时间表明确（Q1 FY27 底）+ 长周期设备采购启动——扩建进入执行前夜，超预期"
+     }
+    ],
+    "overall": {
+     "operation_changes": "26Q2 产 103.1kt（+7%）、销 108.5kt（+29%）；均价 US$1,880 SC6e（+2%）；净现金流 +$137M、现金 $561M；地下开发 3,316m 创纪录；FY26 产量 392k dmt 达指引中段（365-450k）",
+     "prev_operation_changes": "26Q1 产 96.4kt（-9%）；均价 US$1,845 SC6e；现金 $424M",
+     "highlights": [
+      "FY26 产 391,992 dmt / 销 381,997 dmt，达指引（365-450k SC6）中段——首个完整财年超预期兑现",
+      "净现金流 +$137M（季）、现金升至 $561M——财务自造血能力确立",
+      "地下开发 3,316m 创纪录（+35% qoq）——2.8Mtpa 目标 FY27 底按计划推进",
+      "26Q2 均价 US$1,880 SC6e（+2% qoq）——锂价回升周期受益",
+      "扩建 FID 锁定 Q1 FY27 底（球磨机 5.5MW + NW Flats 地下开发）——产能翻倍路径清晰"
+     ]
+    }
+   },
+   "fc_2027": [
+    {
+     "label": "悲观",
+     "val": 40,
+     "note": "地下爬坡不及预期 + 回收率维持 63%"
+    },
+    {
+     "label": "基准",
+     "val": 46,
+     "note": "2.8Mtpa 原矿运行率 FY27 底达成（~40-45 万吨精矿）+ 回收率升向 70%"
+    },
+    {
+     "label": "乐观",
+     "val": 52,
+     "note": "扩建 FID 后加速 + 纯地下矿回收率 70%+ 提前兑现"
+    }
+   ],
+   "capacity_verification": {
+    "title": "选矿产能核实（多来源交叉印证）",
+    "method": "以 DFS 2021（ASX 公告 02450567）、2025-09 资源储量更新（61285782）、Liontown 官网、季度报告为来源，逐条核对选矿产能；官方未单独披露的标 ⚠️，官方确认的标 ✓。",
+    "summary": "Kathleen Valley 选矿厂（第四代流程：破碎+矿石分选+浮选）设计产能 2.5Mtpa 原矿 → ~500ktpa SC6.0（DFS 2021）；实际爬坡目标 2.8Mtpa 原矿（FY27 底，约 550-560ktpa 精矿）；扩建（球磨机 5.5MW + NW Flats）FID 预计 Q1 FY27 底。",
+    "items": [
+     {
+      "line": "选矿厂（第四代浮选流程）",
+      "excel_capacity": "~500ktpa SC6（2.5Mtpa 原矿）",
+      "verified": "✓ DFS 官方确认（设计口径）",
+      "sources": [
+       {
+        "src": "DFS 2021-11-11（ASX 02450567）",
+        "data": "基准产能 2.5Mtpa 原矿 → ~500ktpa SC6.0；第 6 年扩至 4Mtpa → ~700ktpa；建厂 Q3 2022-Q4 2023、投产 Q2 2024"
+       },
+       {
+        "src": "Liontown 官网资产页",
+        "data": "爬坡至 2.8Mtpa 原矿（FY27 底）；第四代选矿厂；南半球最大膏体充填厂"
+       },
+       {
+        "src": "2025-09 资源储量更新",
+        "data": "地下矿设计 ~2.8Mtpa（FY2031 前），NW 开发后 3.0Mtpa（FY2031-2046）"
+       }
+      ]
+     },
+     {
+      "line": "矿石分选（ore sorting）",
+      "excel_capacity": "2 列 Steinert（20ktpm 上限）",
+      "verified": "✓ 官方确认",
+      "sources": [
+       {
+        "src": "2025-09 资源储量更新",
+        "data": "Steinert ore sorting trains 2 列，处理上限 20ktpm；分选精矿计入储量"
+       },
+       {
+        "src": "Q4 FY26 季报",
+        "data": "26Q2 55% 地下矿 + 45% 露天矿入厂，矿石分选持续运行"
+       }
+      ]
+     },
+     {
+      "line": "扩建（FID Q1 FY27 底）",
+      "excel_capacity": "球磨机 5.5MW + NW Flats",
+      "verified": "✓ 官方公告（2026-04-29）",
+      "sources": [
+       {
+        "src": "June FY26 Results Presentation",
+        "data": "FID 预计 Q1 FY27 底；球磨机 5.5MW 采购为关键路径；NW Flats 地下开发从 Kathleen's Corner 露天坑进入；MSA Stage 1 建设"
+       },
+       {
+        "src": "新闻 2026-04-29",
+        "data": "early works + long-lead procurement 已启动；FY26 early works $14M、FID 前最高 $77M"
+       }
+      ]
+     }
+    ],
+    "note": "核实时间：2026-08-05。关键结论：① DFS 设计 500ktpa SC6（2.5Mtpa 原矿），实际爬坡目标 2.8Mtpa（FY27 底）；② 扩建 FID 锁定 Q1 FY27 底（球磨机+NW Flats+MSA）；③ FY26 产 392k dmt 达指引中段；④ 2026 转纯地下开采（露天 2025-12 完成）。",
+    "sources_index": {
+     "公司公告": "DFS 2021、2025-09 资源储量更新、2026-04 扩建公告、季度报告",
+     "公司官网": "Kathleen Valley 资产页（含 Google Earth 位置图）",
+     "公司展示": "June Quarter FY26 Results（2026-07-29）",
+     "数据站": "USGS/Wikipedia/OSM 坐标验证",
+     "券商咨询": "本轮未引用（公开数据充分）"
+    },
+    "images": [
+     {
+      "url": "img/kv_google_earth.jpg",
+      "src": "Liontown 官网（Google Earth 图）",
+      "cap": "Kathleen Valley 位置图（Google Earth 底图）——Leinster 以北 60km、Geraldton 港出口，卫星追踪区域参照"
+     },
+     {
+      "url": "img/sat_kathleen_z13.jpg",
+      "src": "卫星影像（Yandex Maps，坐标 -27.4678,120.7047）",
+      "cap": "Kathleen Valley 矿区卫星影像（Zoom 13）——地下矿/露天坑/选矿厂在卫星影像上的实际形态，卫星追踪第一参照"
+     },
+     {
+      "url": "img/kv_main_overview.jpg",
+      "src": "Liontown 官网（2026-05-19）",
+      "cap": "Kathleen Valley 主视图（2026-05）——选矿厂与矿区布局总览"
+     },
+     {
+      "url": "img/kv_process_plant.jpg",
+      "src": "Liontown 官网",
+      "cap": "Kathleen Valley 选矿厂（第四代浮选流程）——项目展示图"
+     },
+     {
+      "url": "img/kv_ore_circuit.jpg",
+      "src": "Liontown 官网",
+      "cap": "全矿石浮选回路——选矿工艺项目图"
+     }
+    ],
+    "mining_side": {
+     "title": "原矿产能核实（矿坑 / 矿体 / 尾矿库）",
+     "method": "以 DFS 2021、2025-09 资源储量更新、Liontown 官网、季度报告为来源。",
+     "items": [
+      {
+       "line": "原矿矿山：露天矿（Kathleen's Corner / Mt Mann）",
+       "status": "✅ 建成（2024-07 投产）；⚠️ 2025-12 完成开采",
+       "sources": [
+        {
+         "src": "2025-09 资源储量更新",
+         "data": "露天开采 2025 年 12 月完成，之后转纯地下；露天矿体 Kathleen's Corner 与 Mt Mann"
+        },
+        {
+         "src": "Q4 FY26 季报",
+         "data": "26Q2 45% 露天矿入厂（收尾阶段）"
+        }
+       ]
+      },
+      {
+       "line": "地下矿（澳洲首个地下锂矿）",
+       "status": "✅ 建成（2024 起开发）",
+       "sources": [
+        {
+         "src": "Liontown 官网",
+         "data": "澳洲首个地下锂矿、全球首批之一；长孔空场采矿+膏体充填；地下矿减少环境足迹、瞄准高品位矿"
+        },
+        {
+         "src": "Q4 FY26 季报",
+         "data": "地下开发 3,316m 创纪录（+35% qoq）；26Q2 采出地下矿 356kt；2.8Mtpa 目标 FY27 底"
+        }
+       ]
+      },
+      {
+       "line": "矿体与品位（Kathleen's Corner / Mt Mann / NW Flats）",
+       "status": "✅ 多矿体",
+       "sources": [
+        {
+         "src": "2025-09 资源储量更新",
+         "data": "资源 150Mt @ 1.33% Li₂O（2025-09）；储量 71.7Mt @ 1.32%；2024-06 资源 155Mt @ 1.34%"
+        },
+        {
+         "src": "DFS 2021",
+         "data": "Ore Reserve 68.5Mt @ 1.34%（2021）；生产库存 82.7Mt @ 1.30%；品位 1.3-1.4% Li₂O"
+        }
+       ]
+      },
+      {
+       "line": "膏体充填厂（paste plant）",
+       "status": "✅ 建成（南半球最大）",
+       "sources": [
+        {
+         "src": "Liontown 官网",
+         "data": "南半球最大膏体充填厂——尾矿回填地下采空区，减少地表尾矿库"
+        },
+        {
+         "src": "DFS 2021",
+         "data": "地下开采产生 ~7Mt 废石回填露天坑/地表堆场"
+        }
+       ]
+      },
+      {
+       "line": "尾矿设施（TSF）",
+       "status": "✅ 建成",
+       "sources": [
+        {
+         "src": "Liontown 官网",
+         "data": "尾矿管理含膏体回填与地表储存（Tailings and Waste Rock Policy 2025-10）"
+        }
+       ]
+      }
+     ],
+     "note": "核实时间：2026-08-05。采矿侧要点：① 露天+地下双模式，2026 起转纯地下（露天 2025-12 完成）；② 地下矿为全球首批之一，膏体充填减少地表尾矿；③ 资源 150Mt @ 1.33% 支撑长寿命（矿山寿命 >20 年）；④ NW Flats 为下一开发区域（扩建 FID 范围）。",
+     "images": [
+      {
+       "url": "img/sat_kathleen_z13.jpg",
+       "src": "卫星影像（Yandex Maps）",
+       "cap": "Kathleen Valley 矿区卫星影像——露天坑/地下矿口/选矿厂相对位置"
+      },
+      {
+       "url": "img/kv_google_earth.jpg",
+       "src": "Liontown 官网",
+       "cap": "Kathleen Valley 位置图（Google Earth 底图，含 Geraldton 港关系）"
+      },
+      {
+       "url": "img/kv_underground.jpg",
+       "src": "Liontown 官网",
+       "cap": "澳洲首个地下锂矿——地下开采实景"
       }
      ]
     }
@@ -3324,6 +3601,491 @@ const YONGAN_DATA = {
    "2024": 54.2,
    "2025": 52.8,
    "2026": 61.0
+  }
+ },
+ "kathleenvalley": {
+  "quarters": [
+   "2019Q1",
+   "2019Q2",
+   "2019Q3",
+   "2019Q4",
+   "2020Q1",
+   "2020Q2",
+   "2020Q3",
+   "2020Q4",
+   "2021Q1",
+   "2021Q2",
+   "2021Q3",
+   "2021Q4",
+   "2022Q1",
+   "2022Q2",
+   "2022Q3",
+   "2022Q4",
+   "2023Q1",
+   "2023Q2",
+   "2023Q3",
+   "2023Q4",
+   "2024Q1",
+   "2024Q2",
+   "2024Q3",
+   "2024Q4",
+   "2025Q1",
+   "2025Q2",
+   "2025Q3",
+   "2025Q4",
+   "2026Q1",
+   "2026Q2",
+   "2026Q3",
+   "2026Q4"
+  ],
+  "history": {
+   "production": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    3.0,
+    9.2,
+    9.6,
+    8.6,
+    8.7,
+    10.5,
+    9.6,
+    10.3,
+    10.8,
+    11.2
+   ],
+   "lce": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "tech_grade": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "chem_grade": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "sales": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    1.0,
+    8.5,
+    9.4,
+    9.7,
+    7.7,
+    11.2,
+    8.4,
+    10.8,
+    null,
+    null
+   ],
+   "inv_change": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "inventory": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "prod_sales_ratio": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    0.333,
+    0.924,
+    0.979,
+    1.128,
+    0.885,
+    1.067,
+    0.875,
+    1.049,
+    null,
+    null
+   ],
+   "avg_price": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    815,
+    740,
+    700,
+    900,
+    1845,
+    1880,
+    null,
+    null
+   ],
+   "cost_with_royalty": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    702,
+    898,
+    1093,
+    910,
+    981,
+    995,
+    null,
+    null
+   ],
+   "cost_no_royalty": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "cash_cost": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    702,
+    898,
+    1093,
+    910,
+    981,
+    995,
+    null,
+    null
+   ],
+   "cif_cost": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "yearly": {
+   "2024": 12.2,
+   "2025": 29.5,
+   "2026": 39.2
   }
  }
 };
