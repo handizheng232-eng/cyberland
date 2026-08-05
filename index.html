@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>永安期货 · 澳洲锂矿季度汇总</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+  :root {
+    --bg: #0f1420; --panel: #171e2e; --panel2: #1d2638;
+    --line: #2a3550; --text: #dbe4f3; --muted: #8b98b4;
+    --acc: #4da3ff; --acc2: #ffb454; --up: #4cd97b; --down: #ff6b6b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: "Segoe UI", "Microsoft YaHei", sans-serif; line-height: 1.6; }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 26px 20px 60px; }
+
+  header { border-bottom: 1px solid var(--line); padding-bottom: 16px; margin-bottom: 22px; }
+  header h1 { font-size: 23px; font-weight: 700; }
+  header .sub { color: var(--muted); font-size: 13px; margin-top: 6px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .tag { font-size: 12px; padding: 3px 10px; border-radius: 20px; border: 1px solid var(--line); color: var(--muted); }
+  .tag.hl { color: var(--acc); border-color: var(--acc); }
+
+  /* 矿山区块 */
+  .mine-block { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-bottom: 28px; }
+  .mine-head { background: var(--panel2); padding: 14px 18px; display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; }
+  .mine-head h2 { font-size: 18px; }
+  .mine-head .src { font-size: 12px; color: var(--muted); margin-left: auto; }
+  .mine-head .src a { color: var(--acc); text-decoration: none; }
+
+  .cat { padding: 14px 18px; border-top: 1px solid var(--line); }
+  .cat h3 { font-size: 15px; color: var(--acc); margin-bottom: 10px; font-weight: 600; }
+  .cat h3 .q { color: var(--acc2); font-size: 12.5px; font-weight: 400; margin-left: 6px; }
+  .cat p.desc { font-size: 13px; color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 13px; margin-bottom: 10px; }
+  .cmp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 900px) { .cmp-grid { grid-template-columns: 1fr; } }
+  .cell.prev { color: var(--muted); }
+  .cell.cmp { color: var(--acc2); }
+  .hl-box { background: linear-gradient(135deg, rgba(255,180,84,.10), rgba(255,107,107,.08)); border: 1px solid rgba(255,180,84,.35); border-radius: 8px; padding: 12px 15px; margin-top: 4px; }
+  .hl-box h3 { font-size: 13.5px; color: var(--acc2); margin-bottom: 8px; }
+  .hl-box ul { margin: 0; padding-left: 18px; }
+  .hl-box li { font-size: 12.8px; color: var(--text); margin-bottom: 5px; }
+
+  /* 2027 预测 */
+  .fc-scen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px; }
+  @media (max-width: 900px) { .fc-scen { grid-template-columns: 1fr; } }
+  .fc-card { border-radius: 10px; padding: 12px 14px; border: 1px solid var(--line); background: var(--panel); }
+  .fc-card.bear { border-color: rgba(255,107,107,.4); }
+  .fc-card.base { border-color: var(--acc); }
+  .fc-card.bull { border-color: rgba(76,217,123,.45); }
+  .fc-label { font-size: 12.5px; color: var(--muted); margin-bottom: 6px; }
+  .fc-val { font-size: 26px; font-weight: 700; }
+  .fc-val small { font-size: 12px; font-weight: 400; color: var(--muted); }
+  .fc-card.bear .fc-val { color: var(--down); }
+  .fc-card.base .fc-val { color: var(--acc); }
+  .fc-card.bull .fc-val { color: var(--up); }
+  .fc-note { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+  .fc-quart { border: 1px solid var(--line); border-radius: 10px; background: var(--panel); padding: 12px 14px; }
+  .fc-qh { font-size: 12.5px; color: var(--muted); margin-bottom: 10px; }
+  .fc-qs { display: flex; gap: 8px; flex-wrap: wrap; }
+  .fc-q { flex: 1; min-width: 90px; text-align: center; border: 1px solid var(--line); border-radius: 8px; padding: 8px 6px; }
+  .fc-q span { display: block; font-size: 11px; color: var(--muted); }
+  .fc-q b { display: block; font-size: 18px; color: var(--acc); margin: 2px 0; }
+  .fc-q small { font-size: 11px; color: var(--muted); }
+  .fc-q.total { border-color: var(--acc); }
+  .fc-q.total b { color: var(--acc2); }
+
+  /* 产能核实 */
+  .cv-ok { color: var(--up); font-weight: 600; }
+  .cv-warn { color: var(--acc2); font-weight: 600; }
+  .cv-src { font-size: 12px; color: var(--text); margin-bottom: 4px; line-height: 1.45; }
+  .cv-srcname { display: inline-block; background: var(--panel2); border: 1px solid var(--line); border-radius: 4px; padding: 0 6px; margin-right: 6px; font-size: 11px; color: var(--acc); white-space: nowrap; }
+
+  /* 图片画廊 */
+  .img-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 14px; margin-top: 12px; }
+  .img-card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .img-card .img-wrap { position: relative; background: #0b101c; display: flex; align-items: center; justify-content: center; min-height: 160px; max-height: 420px; overflow: hidden; }
+  .img-card .img-wrap img { max-width: 100%; max-height: 420px; object-fit: contain; display: block; }
+  .img-card .img-cap { padding: 8px 12px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); line-height: 1.5; }
+  .img-card .img-cap b { color: var(--acc); font-weight: 600; }
+  .img-zoom { position: fixed; inset: 0; background: rgba(4,8,16,.92); z-index: 1000; display: none; align-items: center; justify-content: center; cursor: zoom-out; }
+  .img-zoom img { max-width: 94vw; max-height: 94vh; object-fit: contain; }
+
+  table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+  th, td { padding: 8px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+  th { background: var(--panel2); color: var(--muted); font-weight: 600; white-space: nowrap; }
+  td.line { color: var(--acc); white-space: nowrap; font-weight: 600; min-width: 230px; }
+  td.cell { color: var(--text); }
+
+  /* 历史数据 */
+  .hist-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+  @media (max-width: 950px) { .hist-grid { grid-template-columns: 1fr; } }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+  .panel h4 { font-size: 13.5px; margin-bottom: 3px; }
+  .panel .note { font-size: 11.5px; color: var(--muted); margin-bottom: 8px; }
+  .chart { width: 100%; height: 300px; }
+
+  .table-wrap { overflow-x: auto; margin-top: 6px; }
+  .hist-table th, .hist-table td { text-align: right; white-space: nowrap; }
+  .hist-table th:first-child, .hist-table td:first-child { text-align: left; position: sticky; left: 0; background: var(--panel); z-index: 1; }
+  .hist-table th:first-child { background: var(--panel2); z-index: 2; }
+  td.act { color: var(--text); }
+  td.fc { color: var(--acc2); }
+  td.emp { color: var(--muted); font-style: italic; }
+  .hist-table tr:hover td { background: rgba(77,163,255,.06); }
+
+  .meta { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin-top: 8px; }
+  .meta h3 { font-size: 15px; margin-bottom: 8px; }
+  .meta p { font-size: 12.5px; color: var(--muted); margin-bottom: 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>永安期货 · 澳洲锂矿季度汇总</h1>
+    <div class="sub" id="header_sub"></div>
+    <div class="tags" id="header_tags"></div>
+  </header>
+
+  <div id="mines"></div>
+
+  <div class="meta">
+    <h3>口径与说明</h3>
+    <p id="meta_note"></p>
+    <p id="disclaimer"></p>
+  </div>
+
+</div>
+
+<div class="img-zoom" id="zoom_layer"></div>
+<script src="data.js"></script>
+<script>
+const D = YONGAN_DATA;
+const Q = D.quarters;
+
+// ---------- 头部 ----------
+document.getElementById('header_sub').innerHTML =
+  `数据源：矿山母公司官方季度报告（100% 资产口径）｜数据更新至 <b style="color:var(--text)">26Q2（2026年4-6月）</b>｜${D.meta.updated} 生成`;
+document.getElementById('header_tags').innerHTML =
+  `<span class="tag hl">运行状况描述：最新季度 26Q2</span>
+   <span class="tag">历史数据：核对至 26Q2 实际值</span>
+   <span class="tag">26Q3E/26Q4E = FY27 指引中值预测</span>`;
+
+// ---------- 图表公共（须在 mines 渲染前声明，避免 TDZ） ----------
+function mkChart(id) {
+  return echarts.init(document.getElementById(id), null, { renderer: 'canvas' });
+}
+const AX = { color: '#8b98b4', splitLine: { lineStyle: { color: '#232f49' } } };
+const charts = [];
+
+// ---------- 渲染每个矿山 ----------
+const minesEl = document.getElementById('mines');
+
+D.mines.forEach(m => {
+  const block = document.createElement('div');
+  block.className = 'mine-block';
+  block.innerHTML = `
+    <div class="mine-head">
+      <h2>${m.mine_cn}</h2>
+      <span class="tag">${m.company} · ${m.mine}</span>
+      <span class="src">最新报告：${m.report} ｜ <a href="${m.source_url}" target="_blank" rel="noopener">IGO Investor Centre →</a></span>
+    </div>
+    <div class="cat">
+      <h3>① 已有产线运行状况表述<span class="q">（26Q2 vs 26Q1 对比）</span></h3>
+      <table>
+        <thead><tr>
+          <th style="width:230px">产线 / 项目</th>
+          <th>26Q2 本季度</th>
+          <th>26Q1 上季度</th>
+          <th style="width:30%">对比 · 超预期</th>
+        </tr></thead>
+        <tbody id="existing_${m.mine}"></tbody>
+      </table>
+    </div>
+    <div class="cat">
+      <h3>② 在建/规划中产线运行状况表述<span class="q">（26Q2 vs 26Q1 对比）</span></h3>
+      <table>
+        <thead><tr>
+          <th style="width:230px">项目</th>
+          <th>26Q2 本季度</th>
+          <th>26Q1 上季度</th>
+          <th style="width:30%">对比 · 超预期</th>
+        </tr></thead>
+        <tbody id="planned_${m.mine}"></tbody>
+      </table>
+    </div>
+    <div class="cat">
+      <h3>③ 整体运行状况表述<span class="q">（26Q2 vs 26Q1 对比）</span></h3>
+      <div class="cmp-grid">
+        <p class="desc"><b>26Q2 开工变化因素：</b>${m.status_26q2.overall.operation_changes}</p>
+        <p class="desc"><b>26Q1 开工变化因素：</b>${m.status_26q2.overall.operation_changes_prev}</p>
+      </div>
+      <p class="desc"><b>未来产量预期：</b>${m.status_26q2.overall.future_outlook}</p>
+      <div class="hl-box" id="hl_${m.mine}"></div>
+    </div>
+    <div class="cat">
+      <h3>④ 历史数据情况<span class="q">（2019Q1-26Q2 实际 + 26Q3E/26Q4E 预测）</span></h3>
+      <div class="note" style="margin-bottom:10px">注：图表中<b>浅色柱 / 空心圆</b>为 26Q3E-26Q4E 预测值（按 FY27 指引中值 41.25 万吨/季）；实色柱 / 实心点为实际值。</div>
+      <div class="hist-grid">
+        <div class="panel">
+          <h4>精矿产量 vs 销量</h4>
+          <div class="note">万吨（100% 资产口径）</div>
+          <div class="chart" id="c_prod_${m.mine}"></div>
+        </div>
+        <div class="panel">
+          <h4>平均售价 vs 现金成本</h4>
+          <div class="note">均价 US$/t（FOB）；现金成本 A$/t（production 口径）</div>
+          <div class="chart" id="c_price_${m.mine}"></div>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="hist-table" id="hist_${m.mine}"></table>
+      </div>
+      <div class="note" style="margin-top:8px">${D.meta.color_legend}。产销比=销量/产量；库存为产销差滚动推算（期初 22Q4=29.6 万吨），非官方披露绝对库存。</div>
+    </div>
+    <div class="cat">
+      <h3>⑤ 2027 年产量预测<span class="q">（研究性判断 · 日历年度 · 100% 资产口径）</span></h3>
+      <p class="desc"><b>预测依据：</b>${m.forecast_2027.basis}</p>
+      <div class="fc-grid" id="fc_${m.mine}"></div>
+      <div class="note" style="margin-top:10px">
+        <b>假设条件：</b>${m.forecast_2027.assumptions.join('；')}。<br>
+        <b>确定性：</b>${m.forecast_2027.confidence}<br>
+        <b>免责：</b>${m.forecast_2027.disclaimer}
+      </div>
+    </div>
+    <div class="cat">
+      <h3>⑥ 选矿产能核实<span class="q">（多来源交叉印证 · ${m.capacity_verification.note}）</span></h3>
+      <p class="desc"><b>核实方法：</b>${m.capacity_verification.method}</p>
+      <p class="desc"><b>核实结论摘要：</b>${m.capacity_verification.summary}</p>
+      <table>
+        <thead><tr>
+          <th style="width:170px">产线 / 项目</th>
+          <th style="width:140px">Excel/页面采用</th>
+          <th style="width:200px">核实结果</th>
+          <th>多来源交叉印证</th>
+        </tr></thead>
+        <tbody id="cv_${m.mine}"></tbody>
+      </table>
+      <div class="note" style="margin-top:10px"><b>来源索引：</b>
+        ${Object.entries(m.capacity_verification.sources_index).map(([k,v]) => `【${k}】${v}`).join('；')}
+      </div>
+      <div class="img-grid" id="img_cv_${m.mine}"></div>
+    </div>
+    <div class="cat">
+      <h3>⑦ 原矿产能核实<span class="q">（矿坑 / 矿体 / 尾矿库 · ${m.capacity_verification.mining_side.note}）</span></h3>
+      <p class="desc"><b>核实方法：</b>${m.capacity_verification.mining_side.method}</p>
+      <p class="desc"><b>核实结论摘要：</b>${m.capacity_verification.mining_side.summary}</p>
+      <table>
+        <thead><tr>
+          <th style="width:200px">矿坑 / 设施</th>
+          <th style="width:230px">建成与规划状态</th>
+          <th>多来源交叉印证</th>
+        </tr></thead>
+        <tbody id="cvms_${m.mine}"></tbody>
+      </table>
+      <div class="img-grid" id="img_ms_${m.mine}"></div>
+    </div>`;
+
+  minesEl.appendChild(block);
+
+  // 已有产线
+  const exTb = document.getElementById(`existing_${m.mine}`);
+  m.status_26q2.existing_lines.forEach(l => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td class="line">${l.name}</td><td class="cell">${l.q26q2}</td><td class="cell prev">${l.q26q1}</td><td class="cell cmp">${l.compare}</td>`;
+    exTb.appendChild(tr);
+  });
+  // 在建/规划
+  const plTb = document.getElementById(`planned_${m.mine}`);
+  m.status_26q2.planned_lines.forEach(l => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td class="line">${l.name}</td><td class="cell">${l.q26q2}</td><td class="cell prev">${l.q26q1}</td><td class="cell cmp">${l.compare}</td>`;
+    plTb.appendChild(tr);
+  });
+  // 超预期要点
+  const hl = document.getElementById(`hl_${m.mine}`);
+  const items = m.status_26q2.overall.highlights.map(t => `<li>${t}</li>`).join('');
+  hl.innerHTML = `<h3>⚡ 本季超预期 / 意外要点</h3><ul>${items}</ul>`;
+  // 2027 预测卡片
+  const fc = document.getElementById(`fc_${m.mine}`);
+  const f = m.forecast_2027;
+  const scenOrder = ['bear', 'base', 'bull'];
+  const scenCards = scenOrder.map(k => {
+    const s = f.scenarios[k];
+    return `<div class="fc-card ${k}">
+      <div class="fc-label">${s.label}</div>
+      <div class="fc-val">${(s.production_kt / 10).toFixed(0)} <small>万吨</small></div>
+      <div class="fc-note">${s.note}</div>
+    </div>`;
+  }).join('');
+  const qb = f.quarterly_base;
+  const qRows = ['27Q1', '27Q2', '27Q3', '27Q4'].map(q => {
+    return `<div class="fc-q"><span>${q}</span><b>${qb[q]}</b><small>万吨</small></div>`;
+  }).join('');
+  fc.innerHTML = `<div class="fc-scen">${scenCards}</div>
+    <div class="fc-quart">
+      <div class="fc-qh">基准情形季度拆分（日历 2027）</div>
+      <div class="fc-qs">${qRows}<div class="fc-q total"><span>全年</span><b>${qb.total}</b><small>万吨</small></div></div>
+    </div>`;
+  // 产能核实表
+  const cvTb = document.getElementById(`cv_${m.mine}`);
+  m.capacity_verification.items.forEach(it => {
+    const tr = document.createElement('tr');
+    const cls = it.status === 'ok' ? 'cv-ok' : 'cv-warn';
+    const srcs = it.sources.map(s => `<div class="cv-src"><span class="cv-srcname">${s.src}</span>${s.data}</div>`).join('');
+    tr.innerHTML = `<td class="line">${it.line}</td><td class="cell">${it.excel_capacity}</td><td class="cell ${cls}">${it.verified}</td><td class="cell">${srcs}</td>`;
+    cvTb.appendChild(tr);
+  });
+  // 采矿侧（矿坑/尾矿库）核实表
+  const msTb = document.getElementById(`cvms_${m.mine}`);
+  m.capacity_verification.mining_side.items.forEach(it => {
+    const tr = document.createElement('tr');
+    const cls = it.status === 'ok' ? 'cv-ok' : 'cv-warn';
+    const srcs = it.sources.map(s => `<div class="cv-src"><span class="cv-srcname">${s.src}</span>${s.data}</div>`).join('');
+    tr.innerHTML = `<td class="line">${it.item}</td><td class="cell ${cls}">${it.built_plan}</td><td class="cell">${srcs}</td>`;
+    msTb.appendChild(tr);
+  });
+  // 图片画廊渲染（⑥ 选矿 + ⑦ 原矿）
+  const zoom = document.getElementById('zoom_layer');
+  function renderImgs(containerId, imgs) {
+    const box = document.getElementById(containerId);
+    if (!box) return;
+    box.innerHTML = imgs.map(img => `<div class="img-card">
+      <div class="img-wrap"><img src="${img.url}" alt="${img.cap}" loading="lazy"></div>
+      <div class="img-cap"><b>${img.src}</b>${img.cap}</div>
+    </div>`).join('');
+    box.querySelectorAll('.img-wrap img').forEach(el => {
+      el.addEventListener('click', () => {
+        zoom.innerHTML = `<img src="${el.src}">`;
+        zoom.style.display = 'flex';
+      });
+    });
+  }
+  renderImgs(`img_cv_${m.mine}`, m.capacity_verification.images || []);
+  renderImgs(`img_ms_${m.mine}`, m.capacity_verification.mining_side.images || []);
+  // 历史数据表
+  renderHist(m.mine);
+  // 图表
+  renderCharts(m.mine);
+});
+
+// ---------- 历史数据表 ----------
+function renderHist(mine) {
+  const labels = D.history_labels;
+  let html = '<thead><tr><th>指标 \\ 季度</th>';
+  Q.forEach(q => html += `<th>${q}</th>`);
+  html += '</tr></thead><tbody>';
+  labels.forEach(([key, lb]) => {
+    html += `<tr><td>${lb}</td>`;
+    D.history[key].forEach((v, j) => {
+      const isPred = Q[j] === '2026Q3' || Q[j] === '2026Q4';
+      let cls = isPred ? 'fc' : 'act';
+      let txt;
+      if (v === null || v === undefined) { txt = 'N.D.'; cls = 'emp'; }
+      else if (key === 'prod_sales_ratio') txt = Number(v).toFixed(3);
+      else txt = Number(v).toLocaleString('zh-CN', { maximumFractionDigits: 2 });
+      html += `<td class="${cls}">${txt}</td>`;
+    });
+    html += '</tr>';
+  });
+  html += '</tbody>';
+  document.getElementById(`hist_${mine}`).innerHTML = html;
+}
+
+// ---------- 图表 ----------
+function renderCharts(mine) {
+  const prod = D.history.production;
+  const sales = D.history.sales;
+  const price = D.history.avg_price;
+  const cash = D.history.cash_cost;
+  // 预测季度（26Q3E/26Q4E，最后 2 个数据点）单独着色
+  const nA = Q.length - 2; // 实际季度个数
+  const barFc = (arr, color) => arr.map((v, i) =>
+    i >= nA && v !== null ? { value: v, itemStyle: { color: color } } : v);
+  const lineFc = (arr, color) => arr.map((v, i) =>
+    i >= nA && v !== null ? { value: v, symbol: 'circle', symbolSize: 7,
+      itemStyle: { color: 'rgba(20,26,43,.25)', borderColor: color, borderWidth: 2 } } : v);
+
+  const c1 = mkChart(`c_prod_${mine}`);
+  charts.push(c1);
+  c1.setOption({
+    tooltip: { trigger: 'axis' },
+    legend: { textStyle: { color: '#dbe4f3' }, top: 0 },
+    grid: { left: 45, right: 12, top: 34, bottom: 26 },
+    xAxis: { type: 'category', data: Q, axisLabel: AX, axisLine: { lineStyle: { color: '#2a3550' } } },
+    yAxis: { type: 'value', name: '万吨', axisLabel: AX, splitLine: AX.splitLine },
+    series: [
+      { name: '精矿产量', type: 'bar', data: barFc(prod, 'rgba(77,163,255,.32)'), itemStyle: { color: '#4da3ff' } },
+      { name: '销量', type: 'bar', data: barFc(sales, 'rgba(77,217,123,.28)'), itemStyle: { color: 'rgba(77,217,123,.5)' } },
+    ]
+  });
+
+  const c2 = mkChart(`c_price_${mine}`);
+  charts.push(c2);
+  c2.setOption({
+    tooltip: { trigger: 'axis' },
+    legend: { textStyle: { color: '#dbe4f3' }, top: 0 },
+    grid: { left: 50, right: 50, top: 34, bottom: 26 },
+    xAxis: { type: 'category', data: Q, axisLabel: AX, axisLine: { lineStyle: { color: '#2a3550' } } },
+    yAxis: [
+      { type: 'value', name: 'US$/t', axisLabel: AX, splitLine: AX.splitLine },
+      { type: 'value', name: 'A$/t', axisLabel: AX, splitLine: { show: false } },
+    ],
+    series: [
+      { name: '平均售价', type: 'line', data: lineFc(price, '#4da3ff'), smooth: true, symbolSize: 5,
+        lineStyle: { width: 2.5, color: '#4da3ff' }, itemStyle: { color: '#4da3ff' },
+        areaStyle: { color: 'rgba(77,163,255,.12)' } },
+      { name: '现金成本', type: 'line', yAxisIndex: 1, data: lineFc(cash, '#ffb454'), smooth: true, symbolSize: 5,
+        lineStyle: { width: 2.5, color: '#ffb454' }, itemStyle: { color: '#ffb454' } },
+    ]
+  });
+}
+
+// ---------- 口径说明 ----------
+document.getElementById('meta_note').innerHTML =
+  `· 数据源：${D.mines[0].report} 及 IGO 历史季报（Dec 2023 - Mar 2026），全部为 100% 资产口径。${D.mines[0].equity_note}。<br>
+   · IGO 自 2023 年 7 月 1 日起采用 cash cost (production) 口径（含采矿/加工/破碎/现场管理费用，按产量计）；自 1Q25 起不再拆分技术级/化学级产量。<br>
+   · 26Q2 运行状况描述仅更新最新一个季度；历史数据已与官方季报逐季核对（产量/销量/均价/现金成本），技术级/化学级拆分 25Q1 起标 N.D.。<br>
+   · CGP3 为 2025 年新增投产产线（12月季度首次贡献产量），已按新增项目单独列入已有产线运行状况表述；CGP4 仍处于规划阶段。`;
+document.getElementById('disclaimer').textContent = D.meta.disclaimer;
+
+window.addEventListener('resize', () => charts.forEach(c => c.resize()));
+document.getElementById('zoom_layer').addEventListener('click', (e) => {
+  if (e.target.tagName === 'IMG') return;
+  document.getElementById('zoom_layer').style.display = 'none';
+});
+</script>
+</body>
+</html>
