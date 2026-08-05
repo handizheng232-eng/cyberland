@@ -1660,7 +1660,7 @@ const YONGAN_DATA = {
    "mine_cn": "Bald Hill（秃山矿山）",
    "report": "MRL Quarterly Activity Report Q4 FY26（2026-07-29 发布）；Bald Hill lithium mine restart 公告（2026-05-18）；Bald Hill Operations and Mineral Resources Update（2024-11-13）",
    "source_url": "https://www.mineralresources.com.au/our-business/lithium/bald-hill/",
-   "equity_note": "100% 资产口径（MinRes 全资拥有并运营）；原属 Tawana Resources/Alliance Mineral Assets（后合并为 Alita Resources），Alita 2020 年破产托管，MinRes 2023-11 收购；2024-11 C&M、2026-05 复产",
+   "equity_note": "100% 资产口径（MinRes 全资拥有并运营）；原属 Tawana Resources/Alliance Mineral Assets（后合并为 Alita Resources），Alita 2019-08-29 自愿托管（KordaMentha）、2024-04-04 清算终止；MinRes 2023-09-04 签约收购、2023-11-01 生效；2024-11 C&M、2026-05 复产",
    "history_labels": [
     [
      "production",
@@ -1764,6 +1764,10 @@ const YONGAN_DATA = {
        {
         "src": "Q4 FY26 季报",
         "data": "ramp-up to full capacity of 140k dmt SC6 is on track for Q2 FY27；MinRes studying plant expansion options"
+       },
+       {
+        "src": "2023-11 收购公告（MinRes 官网新闻）",
+        "data": "收购时口径 circa 150,000 tpa @ 5.5% 精矿——产能表述沿革（150kt SC5.5% → 165kt SC5.1%）"
        }
       ]
      },
@@ -1775,6 +1779,10 @@ const YONGAN_DATA = {
        {
         "src": "MRL 官网资产页",
         "data": "crushing and processing plant via Dense Media Separation (DMS) concentrator；crushing plant – a new plant was commissioned in 2024"
+       },
+       {
+        "src": "2017-07 PFS（Tawana，被收购前时代）",
+        "data": "1,200 ktpa 锂辉石 DMS 回路 + 独立钽厂 350 ktpa；capex A$42M（全澳最低）、IRR 185%、12 个月回本、~155,000 tpa SC + 260,000 lbs/yr Ta₂O₅；包销 US$880/t（6% Li₂O，FOB Esperance）"
        },
        {
         "src": "2024-11-13 更新公告",
@@ -1852,20 +1860,38 @@ const YONGAN_DATA = {
        ]
       },
       {
-       "line": "矿体与资源（Kathleen's Corner 式多伟晶岩）",
+       "line": "矿体与资源（多伟晶岩脉）",
        "status": "✅ 资源确认；⚠️ 储量未更新",
        "sources": [
         {
          "src": "2024-11-13 资源储量更新",
-         "data": "Mineral Resources 58.1Mt @ 0.94% Li₂O（2024-06-30），较 2018-06 的 21.7Mt +168%（大型钻探数据集重解释）"
+         "data": "Mineral Resources 58.1Mt @ 0.94% Li₂O（2024-06-30，>0.3% 边界，扣开采）：Indicated 17.2Mt @ 0.91% + Inferred 40.9Mt @ 0.95%（无 Measured）；较 2018-06 的 21.7Mt +168%（777 解释孔+599 估算孔）；矿权 M15/400（501 公顷）；权利金 5%"
         },
         {
          "src": "Tawana 2018-06-06 公告",
-         "data": "资源 26.5Mt @ 1.0% Li₂O；储量 11.3Mt @ 1.0% Li₂O + 160ppm Ta₂O₅；钽储量 2.0Mt @ 313ppm——矿山寿命 9 年 @ 1.2Mtpa（被收购前时代）"
+         "data": "资源 26.5Mt @ 0.96% Li₂O（149ppm Ta₂O₅）；储量 11.3Mt @ 1.01% Li₂O + 160ppm Ta₂O₅；钽储量 2.0Mt @ 313ppm——矿山寿命 9 年 @ 1.2Mtpa（被收购前时代）"
         },
         {
          "src": "MRL Resources & Reserves 页面",
          "data": "仅列 Bald Hill Resources（2024-11-13），无 Reserves 条目——MRL 未发布最新储量"
+        }
+       ]
+      },
+      {
+       "line": "环评与许可（WA 政府）",
+       "status": "✅ 已获批（DMP/DWER 体系）",
+       "sources": [
+        {
+         "src": "2017-07-24 公告（Tawana+AMAL）",
+         "data": "ENVIRONMENTAL APPROVALS FINALISED：DWER 修订运营许可（1.2Mtpa DMS 建设运营）+ DMP 更新 Environmental Mining Proposal 批准"
+        },
+        {
+         "src": "MINEDEX 环境登记 #87101",
+         "data": "Bald Hill Tantalum-Lithium Project：Mining Proposal + Mine Closure Plan，V4 Rev1 2020-08；矿权 M15/400、G15/28、L15/348、L15/384、L15/366、L15/365、M15/1305、M15/1308"
+        },
+        {
+         "src": "EPA 检索",
+         "data": "EPA（西澳环保局）正式评估：未检索到——项目通过 DMP Mining Proposal + DWER 运营许可体系监管（诚实标注：未找到）"
         }
        ]
       },
@@ -1894,7 +1920,7 @@ const YONGAN_DATA = {
        ]
       }
      ],
-     "note": "核实时间：2026-08-05。采矿侧要点：① 露天矿（钽矿转型锂矿 2019 首产）；② 资源 58.1Mt @ 0.94%（2024-06），历史储量 11.3Mt @ 1.0%（2018，Tawana 时代）——MRL 未发布最新储量；③ 2026-05 复产坑抽水完成、采矿爬坡；④ 矿山寿命：2018 年 1.2Mtpa 时 9 年，扩建研究或延长。",
+     "note": "核实时间：2026-08-05。采矿侧要点：① 露天矿（钽矿转型锂矿 2019 首产）；② 资源 58.1Mt @ 0.94%（2024-06，Indicated 17.2 + Inferred 40.9，无 Measured），历史储量 11.3Mt @ 1.01%（2018，Tawana 时代）——MRL 未发布最新储量；③ 2017-07 PFS：1.2Mtpa DMS 回路、capex A$42M、矿山寿命 9 年（@1.2Mtpa）；④ 环评经 DMP Mining Proposal + DWER 运营许可（2017-07-24 批准），MINEDEX 登记 #87101；EPA 正式评估未检索到；⑤ 2026-05 复产坑抽水完成、采矿爬坡；⑥ Alita 时代产量轨迹：2018-03 投产、CY2018 产 51k wmt SC6、2019 指引 180k SC6/年。",
      "images": [
       {
        "url": "img/sat_baldhill_z13.jpg",
