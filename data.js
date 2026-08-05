@@ -51,6 +51,11 @@ const YONGAN_DATA = {
     "key": "Mt Cattlin",
     "label": "Mt Cattlin（第七页）",
     "file": "mtcattlin.html"
+   },
+   {
+    "key": "Finniss",
+    "label": "Finniss（第八页）",
+    "file": "finniss.html"
    }
   ]
  },
@@ -2195,6 +2200,255 @@ const YONGAN_DATA = {
        "url": "img/rt_mtcattlin_hero.jpg",
        "src": "力拓官网",
        "cap": "Mt Cattlin 露天矿实景（力拓官方）"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "company": "Core Lithium（ASX: CXO）",
+   "mine": "Finniss",
+   "current_q": "26Q2",
+   "prev_q": "26Q1",
+   "current_q_date": "2026年4-6月",
+   "mine_cn": "Finniss（芬尼斯矿山）",
+   "report": "Core Lithium June Quarterly Activities Report（2025-07-30 发布）；Finniss Restart Study and Operations Update（2025-03-27）；2025-05-14 重启研究完成公告；2026-03-18 FID 公告",
+   "source_url": "https://corelithium.com.au/finniss-lithium-operation",
+   "equity_note": "100% 资产口径（Core Lithium 全资拥有运营，ASX: CXO）；北领地（NT）唯一锂矿——Darwin 西南 88km；2023-02 商业投产（Grants 露天）、2024 年中暂停进入 C&M、2025-05-14 重启研究完成（205ktpa SC6e 目标）、2026-03-18 FID、2026-05 重启",
+   "history_labels": [
+    [
+     "production",
+     "精矿产量（万吨，dmt SC6 等效）"
+    ],
+    [
+     "sales",
+     "销量（万吨，dmt）"
+    ],
+    [
+     "prod_sales_ratio",
+     "产销比"
+    ],
+    [
+     "avg_price",
+     "平均售价（US$/t，SC6）"
+    ],
+    [
+     "cash_cost",
+     "单位成本 FOB（A$/t）"
+    ]
+   ],
+   "status_26q2": {
+    "existing_lines": [
+     {
+      "name": "已有产能1：DMS 选矿厂（重介质分离）— 设计 180-205ktpa SC6e",
+      "q26q2": "26Q2 重启爬坡：2026-05 重启运营（两年前 2024 年暂停后）；DMS 厂 2025 重启研究优化（回收率/产量/产能提升）；重启目标名称产能 205ktpa SC6 等效粗粒精矿（较原 180ktpa 提升）",
+      "q26q1": "26Q1 处于 C&M（2024 年中起）；2026-03-18 FID 重启获批——$19.5M 结束遗留运营合同、100% 基础设施所有权",
+      "compare": "2026-05 重启是超预期点（miningweekly 2026-05-20 报道）；FID 后约 2 个月即重启——资本效率高（$250M+ 已投资产复用）"
+     },
+     {
+      "name": "已有产能2：Grants 露天矿 + BP33 地下矿",
+      "q26q2": "采矿恢复（Grants 露天优先 + BP33 地下规划中）；BP33 为基石矿床（2024-09-25 储量 8.7Mt @ 1.38%，亚垂直伟晶岩 350m 走向/40m 真宽，纵向空场采矿）；重启研究：地下 20 年寿命、前 10 年由储量支撑",
+      "q26q1": "C&M 无采矿",
+      "compare": "重启后采矿爬坡；BP33 地下开发是重启核心（优化后矿计划 + 独立顾问团队）"
+     }
+    ],
+    "future_lines": [
+     {
+      "name": "BP33 地下矿开发（重启第二阶段）",
+      "q26q2": "BP33 地下矿计划推进中（纵向空场采矿）；重启研究优化矿计划完成；地下 20 年寿命（重启研究口径）",
+      "q26q1": "BP33 开发暂停（C&M）",
+      "compare": "重启后 BP33 是长期价值核心（储量 8.7Mt 支撑）"
+     }
+    ],
+    "overall": {
+     "operation_changes": "26Q2 重启：2026-05 恢复运营（2024 年中暂停后约两年）；重启研究（2025-05-14 完成）+ FID（2026-03-18）→ 2026-05 实际重启；重启方案：成本 $40-46/t（原 $69/t）、产量 +7%（更高吞吐量）、名称产能 205ktpa SC6e",
+     "prev_operation_changes": "26Q1 C&M 中（DMS 保养 $0.3M/季、重启研究费用）；2026-03-18 FID 公告为重启铺路",
+     "highlights": [
+      "2026-05 重启（两年停滞后，miningweekly 2026-05-20 报道）——FID 后约 2 个月实现，资本效率高",
+      "重启研究（2025-05-14 完成）：名称产能 205ktpa SC6e（原 180ktpa）、成本降至 $40-46/t（原 $69/t）、地下 20 年寿命",
+      "2026-03-18 FID：$19.5M 结束所有遗留合同 → 100% 基础设施所有权、C&M 成本降低",
+      "BP33 储量 8.7Mt @ 1.38%（2024-09-25 更新）——重启的基石；最新总储量 10.73Mt @ 1.29%（2025-04-30）",
+      "最新资源 48.5Mt @ 1.26%（2025-04-30，从 2022 年 18.9Mt 大幅增长）；$250M+ 已投资产（Grants + BP33）"
+     ]
+    }
+   },
+   "fc_unit": "万吨 SC6 等效（2027 预测：重启满产 20.5 万吨/年对应）",
+   "fc_2027": [
+    {
+     "label": "悲观",
+     "val": 10,
+     "note": "重启爬坡慢于计划 + 锂价波动——2027 年运行率 50%"
+    },
+    {
+     "label": "基准",
+     "val": 16,
+     "note": "2027 年全年运行 + BP33 地下爬坡——~80% 名称产能（205ktpa SC6e）"
+    },
+    {
+     "label": "乐观",
+     "val": 20,
+     "note": "2027 年底达名称产能 205ktpa SC6e（重启研究目标）"
+    }
+   ],
+   "capacity_verification": {
+    "title": "选矿产能核实（多来源交叉印证 · 重启矿山）",
+    "method": "以 Core Lithium DFS（2019/2021）、重启研究（2025）、2025 年 6 月季报、FY24 年报为来源；重启矿山以最新研究产能与历史运行数据为核心。",
+    "summary": "Finniss DMS 选矿厂（重介质分离 + 粗粒精矿，Grants 露天 2023 投产）原设计 180,000 tpa 精矿（2019 DFS）；重启研究（2025-05-14 完成）优化后名称产能 205,000 tpa SC6 等效粗粒精矿、成本降至 $40-46/t；2023 年实际产量：FY24 全年产 95,020 dmt。2024 年中 C&M、2026-05 重启。",
+    "items": [
+     {
+      "line": "DMS 选矿厂（重介质分离）",
+      "excel_capacity": "180ktpa（2019 DFS）→ 205ktpa SC6e（2025 重启研究）",
+      "verified": "✓ DFS + 重启研究双来源",
+      "sources": [
+       {
+        "src": "2019 DFS（Core Lithium）",
+        "data": "DMS processing up to 180,000 tpa of high-quality lithium concentrate；露天 + 简单重力 DMS 工艺；Pre-Tax IRR 80%、NPV A$114M"
+       },
+       {
+        "src": "2025 重启研究（2025-05-14 完成）",
+        "data": "nameplate production of 205ktpa SC6 equivalent coarse-grained concentrate；成本 $40-46/t（从 $69/t）；产量 +7% 通过更高吞吐量；DMS 厂冶金优化（提高回收率/产量/产能）"
+       },
+       {
+        "src": "FY24 年报",
+        "data": "FY24（2023Q3-2024Q2）产 95,020 dmt、销 97,423 dmt @ US$1,574/dmt——实际运行验证（2023 爬坡期）"
+       }
+      ]
+     },
+     {
+      "line": "加工流程",
+      "excel_capacity": "简单重力 DMS（粗粒精矿）",
+      "verified": "✓ 官方确认",
+      "sources": [
+       {
+        "src": "2019 DFS",
+        "data": "simple gravity DMS processing producing high quality, coarse concentrate"
+       },
+       {
+        "src": "重启研究（2025）",
+        "data": "DMS Plant optimisation：冶金测试提高回收率、产量、产能；流程优化（process flowsheet）"
+       }
+      ]
+     },
+     {
+      "line": "全矿合计（重启目标）",
+      "excel_capacity": "205ktpa SC6e（2027 满产路径）",
+      "verified": "✓ 重启研究口径",
+      "sources": [
+       {
+        "src": "2025 重启研究",
+        "data": "205ktpa SC6e nameplate；地下（BP33）20 年寿命、前 10 年储量支撑"
+       },
+       {
+        "src": "2025-06 季度报告",
+        "data": "restart 计划 2026 年推进（FID 2026-03-18、2026-05 重启）"
+       }
+      ]
+     }
+    ],
+    "note": "核实时间：2026-08-05。关键结论：① DMS 产能 180ktpa（2019 DFS）→ 205ktpa SC6e（2025 重启研究优化）；② 2023 年实际产（FY24 95,020 dmt，爬坡期）；③ 2024 年中 C&M（2024-09-08 Darwin 最后一船）；④ 2025-05-14 重启研究完成、2026-03-18 FID、2026-05 重启；⑤ 2027 满产路径 205ktpa SC6e。",
+    "sources_index": {
+     "技术报告": "Core Lithium DFS 2019 / DFS 2021 Stage 1 / 重启研究 2025",
+     "公司报告": "2025 年 6 月季报、FY24 年报",
+     "公司公告": "Finniss Restart Study（2025-03-27）、BP33 储量更新（2024-09-25）",
+     "媒体": "Mining Weekly 2026-05-20（重启报道）",
+     "数据站": "Wikipedia（坐标/历史）"
+    },
+    "images": [
+     {
+      "url": "img/sat_finniss_z13.jpg",
+      "src": "卫星影像（Yandex Maps，坐标 -12.713,130.789）",
+      "cap": "Finniss 矿区卫星影像（Zoom 13）——Darwin 西南，卫星追踪第一参照"
+     },
+     {
+      "url": "img/core_finniss_ops.jpg",
+      "src": "Core Lithium 官网",
+      "cap": "Finniss 运营图（Core Lithium 官方）"
+     }
+    ],
+    "mining_side": {
+     "title": "原矿产能核实（矿坑 / 矿体 / 尾矿库 · 重启矿山）",
+     "method": "以 Core Lithium DFS/季报/储量公告、Wikipedia、NT 政府（MMP）为来源。",
+     "items": [
+      {
+       "line": "原矿矿山：Grants 露天 + BP33 地下",
+       "status": "✅ 建成（Grants 2023 投产）；🔧 BP33 重启开发中",
+       "sources": [
+        {
+         "src": "Wikipedia",
+         "data": "5 个矿体：Grants、Carlton、Sandras、Hang Gong SW、BP33；Bynoe 伟晶岩田（BPF）；LCT 伟晶岩（Burrell Creek 地层）；2022-10 全面采矿、2023-05 首运（Port Darwin）"
+        },
+        {
+         "src": "2025 重启研究",
+         "data": "BP33 是基石矿床：亚垂直伟晶岩 350m 走向、40m 真宽；纵向空场采矿；地下 20 年寿命；$250M+ 已投资本（Grants + BP33）"
+        },
+        {
+         "src": "2019 DFS",
+         "data": "LOM 40 个月（2019 口径）、剥采比 13:1、Grants + BP33"
+        }
+       ]
+      },
+      {
+       "line": "矿体与资源（LCT 伟晶岩）",
+       "status": "✅ 资源确认（大幅增长）",
+       "sources": [
+        {
+         "src": "2025-06 季度报告",
+         "data": "最新 MRE 48.5Mt @ 1.26% Li₂O（2025-04-30，含 TSF/粗尾矿 310kt @ 0.66%）；储量 10.73Mt @ 1.29%（Grants + BP33 + TSF，Proved 3.42 + Probable 7.3）"
+        },
+        {
+         "src": "BP33 储量更新（2024-09-25）",
+         "data": "BP33 储量 8.7Mt @ 1.38% Li₂O（Proved 2.43Mt @ 1.33% + Probable 6.25Mt @ 1.40%）——重启基石"
+        },
+        {
+         "src": "FY24 年报 / 2022 公告",
+         "data": "资源链：18.9Mt @ 1.32%（2022-07-12）→ 30.6Mt @ 1.31%（FY23）→ 48.2Mt @ 1.26%（2024-04-11，+58%）→ 48.5Mt（2025-04-30）"
+        },
+        {
+         "src": "Wikipedia（历史）",
+         "data": "初始 JORC 资源 3.45Mt @ 1.4%（2021 前口径，已被大幅更新取代）"
+        }
+       ]
+      },
+      {
+       "line": "环评与许可（NT 政府）",
+       "status": "✅ 已获批（NT Mining Management Plan 体系）",
+       "sources": [
+        {
+         "src": "Wayback 存档（corelithium.com.au）",
+         "data": "2018 MMP（Finniss Project）；Grants Project Mining Management Plan Amendment（Public ID 227052）；BP33 Public Mining Management Plan（2023）——NT 政府 MMP 体系"
+        },
+        {
+         "src": "FY24 年报",
+         "data": "BP33 approvals 推进（MMP 修订/批准）"
+        }
+       ]
+      },
+      {
+       "line": "尾矿库（TSF）与库存",
+       "status": "✅ 建成",
+       "sources": [
+        {
+         "src": "2025-06 季度报告",
+         "data": "TSF/粗尾矿含 310kt @ 0.66% Li₂O 矿物化物料（计入 MRE）；~5,000t 精矿 + 75,000t 库存（2025 Q2）"
+        },
+        {
+         "src": "重启研究",
+         "data": "TSF 物料回收纳入重启方案"
+        }
+       ]
+      }
+     ],
+     "note": "核实时间：2026-08-05。采矿侧要点：① Grants 露天（2023 投产）+ BP33 地下（重启第二阶段）；② 资源 48.5Mt @ 1.26%（2025-04-30）、储量 10.73Mt @ 1.29%（BP33 占 8.7Mt @ 1.38%）；③ NT 政府 MMP 体系环评（2018 初始 + Grants/BP33 修订）；④ 2024 年中 C&M、2026-05 重启；⑤ Bynoe 伟晶岩田 500km² 土地持有——长期勘探潜力。",
+     "images": [
+      {
+       "url": "img/sat_finniss_z13.jpg",
+       "src": "卫星影像（Yandex Maps）",
+       "cap": "Finniss 矿区卫星影像——Grants 露天与选矿厂相对位置"
+      },
+      {
+       "url": "img/core_finniss_ops.jpg",
+       "src": "Core Lithium 官网",
+       "cap": "Finniss 运营现场（Core Lithium 官方）"
       }
      ]
     }
@@ -5620,6 +5874,492 @@ const YONGAN_DATA = {
    "2024": 14.0,
    "2025": 0.0,
    "2026": 0.0
+  }
+ },
+ "finniss": {
+  "quarters": [
+   "2019Q1",
+   "2019Q2",
+   "2019Q3",
+   "2019Q4",
+   "2020Q1",
+   "2020Q2",
+   "2020Q3",
+   "2020Q4",
+   "2021Q1",
+   "2021Q2",
+   "2021Q3",
+   "2021Q4",
+   "2022Q1",
+   "2022Q2",
+   "2022Q3",
+   "2022Q4",
+   "2023Q1",
+   "2023Q2",
+   "2023Q3",
+   "2023Q4",
+   "2024Q1",
+   "2024Q2",
+   "2024Q3",
+   "2024Q4",
+   "2025Q1",
+   "2025Q2",
+   "2025Q3",
+   "2025Q4",
+   "2026Q1",
+   "2026Q2",
+   "2026Q3",
+   "2026Q4"
+  ],
+  "history": {
+   "production": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    0.3,
+    1.2,
+    1.8,
+    2.2,
+    1.8,
+    1.3,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.1,
+    null,
+    null
+   ],
+   "lce": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "tech_grade": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "chem_grade": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "sales": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    0.3,
+    1.0,
+    1.8,
+    2.2,
+    1.8,
+    1.3,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    null,
+    null
+   ],
+   "inv_change": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "inventory": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "prod_sales_ratio": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "avg_price": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "cost_with_royalty": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "cost_no_royalty": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "cash_cost": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "cif_cost": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "yearly": {
+   "2023": 5.5,
+   "2024": 3.1,
+   "2025": 0.0,
+   "2026": 0.1
   }
  }
 };
