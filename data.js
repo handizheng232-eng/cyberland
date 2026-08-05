@@ -2388,7 +2388,7 @@ const YONGAN_DATA = {
    "production": [
     null,
     null,
-    null,
+    2.2,
     null,
     0.0,
     null,
@@ -2524,7 +2524,7 @@ const YONGAN_DATA = {
    "sales": [
     null,
     null,
-    null,
+    0.3,
     null,
     0.0,
     null,
@@ -2626,7 +2626,7 @@ const YONGAN_DATA = {
    "prod_sales_ratio": [
     null,
     null,
-    null,
+    0.136,
     null,
     null,
     null,
