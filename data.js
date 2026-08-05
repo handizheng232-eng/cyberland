@@ -13,6 +13,11 @@ const YONGAN_DATA = {
   "disclaimer": "本页面数据来自各矿山母公司官方季度报告，仅供研究参考，不构成投资建议。",
   "pages": [
    {
+    "key": "Overview",
+    "label": "矿山总览",
+    "file": "overview.html"
+   },
+   {
     "key": "Greenbushes",
     "label": "Greenbushes（第一页）",
     "file": "index.html"

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>矿山总览 ｜ 永安期货 · 澳洲锂矿季度汇总</title>
+<style>
+  :root {
+    --bg: #0f1420; --panel: #171e2e; --panel2: #1d2638;
+    --line: #2a3550; --text: #dbe4f3; --muted: #8b98b4;
+    --acc: #4da3ff; --acc2: #ffb454; --up: #4cd97b; --down: #ff6b6b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: "Segoe UI", "Microsoft YaHei", sans-serif; line-height: 1.6; }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 26px 20px 60px; }
+
+  header { border-bottom: 1px solid var(--line); padding-bottom: 16px; margin-bottom: 22px; }
+  header h1 { font-size: 23px; font-weight: 700; }
+  header .sub { color: var(--muted); font-size: 13px; margin-top: 6px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .tag { font-size: 12px; padding: 3px 10px; border-radius: 20px; border: 1px solid var(--line); color: var(--muted); }
+  .tag.hl { color: var(--acc); border-color: var(--acc); }
+  .tag a { color: inherit; text-decoration: none; }
+
+  .mine-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .mine-card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px; transition: border-color .2s; }
+  .mine-card:hover { border-color: var(--acc); }
+  .mine-card .mc-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
+  .mine-card .mc-name { font-size: 17px; font-weight: 700; color: var(--acc); text-decoration: none; }
+  .mine-card .mc-name:hover { text-decoration: underline; }
+  .mine-card .mc-company { font-size: 12px; color: var(--muted); }
+  .mine-card .mc-q { font-size: 12px; color: var(--acc2); margin-left: auto; white-space: nowrap; }
+  .mine-card .mc-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; margin: 12px 0; }
+  .mc-stat .k { font-size: 11.5px; color: var(--muted); }
+  .mc-stat .v { font-size: 16px; font-weight: 600; }
+  .mc-stat .d { font-size: 11px; }
+  .d.up { color: var(--up); } .d.down { color: var(--down); } .d.flat { color: var(--muted); }
+  .mine-card .mc-hl { font-size: 12px; color: var(--text); background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; padding: 8px 11px; margin: 10px 0; }
+  .mine-card .mc-hl b { color: var(--acc2); font-weight: 600; }
+  .mine-card .mc-link { display: inline-block; font-size: 12.5px; color: var(--acc); text-decoration: none; border: 1px solid var(--acc); border-radius: 6px; padding: 5px 12px; margin-top: 4px; }
+  .mine-card .mc-link:hover { background: rgba(77,163,255,.12); }
+
+  table { border-collapse: collapse; width: 100%; font-size: 12.5px; margin-top: 6px; }
+  th, td { padding: 8px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+  th { background: var(--panel2); color: var(--muted); font-weight: 600; white-space: nowrap; }
+  td.line { color: var(--acc); white-space: nowrap; font-weight: 600; }
+  td.num { text-align: right; white-space: nowrap; }
+  .table-wrap { overflow-x: auto; }
+  .ov-up { color: var(--up); } .ov-down { color: var(--down); }
+
+  .meta { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin-top: 8px; }
+  .meta h3 { font-size: 15px; margin-bottom: 8px; }
+  .meta p { font-size: 12.5px; color: var(--muted); margin-bottom: 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>永安期货 · 澳洲锂矿季度汇总</h1>
+    <div class="sub">矿山总览（一级目录）｜数据更新至 26Q2（2026年4-6月）｜点击矿山卡片或表格行进入对应详情页</div>
+    <div class="tags" id="header_tags"></div>
+  </header>
+
+  <div id="mine_cards"></div>
+
+  <h3 style="font-size:16px;margin:26px 0 10px;color:var(--acc)">关键指标对比表（本季度 26Q2 vs 上一季度 26Q1）</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>矿山</th>
+        <th>公司</th>
+        <th>本季产量（万吨）</th>
+        <th>环比</th>
+        <th>本季销量（万吨）</th>
+        <th>环比</th>
+        <th>均价（US$/t）</th>
+        <th>现金成本（A$/t）</th>
+        <th>最新报告</th>
+      </tr></thead>
+      <tbody id="ov_table"></tbody>
+    </table>
+  </div>
+
+  <div class="meta">
+    <h3>口径与说明</h3>
+    <p>· 数据源：各矿山母公司官方季度报告（100% 资产口径）。本页为矿山目录总览，点击矿山卡片或表格中的矿山名进入对应详情页。</p>
+    <p>· 本季度=26Q2（2026年4-6月）；上一季度=26Q1。各矿山详情页均含：①已有产线 ②在建/规划 ③整体运行状况（含超预期要点）④历史数据 ⑤2027产量预测 ⑥选矿产能核实 ⑦原矿产能核实。</p>
+    <p>· 均价与现金成本口径因矿山而异（Greenbushes 为 IGO 披露口径；Pilgangoora 为 PLS FOB/CIF 口径），跨矿山对比时注意单位与基准差异。</p>
+    <p id="disclaimer" style="color:var(--muted);font-size:12px"></p>
+  </div>
+
+</div>
+<script src="data.js"></script>
+<script>
+const D = YONGAN_DATA;
+const Q = D.quarters;
+const MINE_KEY = 'Overview';
+const CUR_Q = '26Q2', PREV_Q = '26Q1';
+const CI = 29, PI = 28; // 26Q2 / 26Q1 在季度数组中的索引
+
+// 顶部导航 pills（矿山总览高亮，其余矿山链接）
+document.getElementById('header_tags').innerHTML =
+  D.meta.pages.map(p => `<span class="tag ${p.key === MINE_KEY ? 'hl' : ''}"><a href="${p.file}">${p.label}</a></span>`).join('');
+
+// 每个矿山的数据源
+function histOf(m) {
+  return m.mine === 'Greenbushes' ? D.history : D[m.mine.toLowerCase()].history;
+}
+
+// 环比显示
+function pct(cur, prev, unit = 1) {
+  if (cur == null || prev == null || prev === 0) return '<span class="d flat">N.D.</span>';
+  const c = (cur - prev) / prev * 100;
+  const cls = c > 0.5 ? 'up' : (c < -0.5 ? 'down' : 'flat');
+  const s = c > 0 ? '+' : '';
+  return `<span class="d ${cls}">${s}${c.toFixed(1)}%</span>`;
+}
+
+// 矿山卡片（一级目录）
+const cards = document.getElementById('mine_cards');
+cards.className = 'mine-grid';
+D.mines.forEach(m => {
+  const h = histOf(m);
+  const prod = h.production, sales = h.sales, price = h.avg_price, cost = h.cash_cost;
+  const hl = m.status_26q2.overall.highlights[0] || '';
+  const card = document.createElement('a');
+  card.className = 'mine-card';
+  card.href = m.mine === 'Greenbushes' ? 'index.html' : `${m.mine.toLowerCase()}.html`;
+  card.style.textDecoration = 'none';
+  card.style.color = 'inherit';
+  card.innerHTML = `
+    <div class="mc-head">
+      <span class="mc-name">${m.mine_cn}</span>
+      <span class="mc-company">${m.company}</span>
+      <span class="mc-q">本季度 ${m.current_q}</span>
+    </div>
+    <div class="mc-stats">
+      <div class="mc-stat"><div class="k">本季产量</div><div class="v">${prod[CI] != null ? prod[CI].toFixed(2) : 'N.D.'} <small style="font-size:11px;color:var(--muted)">万吨</small></div><div>环比 ${pct(prod[CI], prod[PI])}</div></div>
+      <div class="mc-stat"><div class="k">本季销量</div><div class="v">${sales[CI] != null ? sales[CI].toFixed(2) : 'N.D.'} <small style="font-size:11px;color:var(--muted)">万吨</small></div><div>环比 ${pct(sales[CI], sales[PI])}</div></div>
+      <div class="mc-stat"><div class="k">均价</div><div class="v">${price[CI] != null ? price[CI].toLocaleString('zh-CN') : 'N.D.'} <small style="font-size:11px;color:var(--muted)">US$/t</small></div></div>
+      <div class="mc-stat"><div class="k">现金成本</div><div class="v">${cost[CI] != null ? cost[CI].toLocaleString('zh-CN') : 'N.D.'} <small style="font-size:11px;color:var(--muted)">A$/t</small></div></div>
+    </div>
+    <div class="mc-hl"><b>⚡ 本季要点：</b>${hl}</div>
+    <span class="mc-link">查看详情 →</span>
+  `;
+  cards.appendChild(card);
+});
+
+// 关键指标对比表
+const tb = document.getElementById('ov_table');
+D.mines.forEach(m => {
+  const h = histOf(m);
+  const prod = h.production, sales = h.sales, price = h.avg_price, cost = h.cash_cost;
+  const tr = document.createElement('tr');
+  const pCell = (v) => v != null ? `<td class="num">${v.toFixed(2)}</td>` : '<td class="num">N.D.</td>';
+  tr.innerHTML = `
+    <td class="line"><a href="${m.mine === 'Greenbushes' ? 'index.html' : `${m.mine.toLowerCase()}.html`}" style="color:var(--acc);text-decoration:none">${m.mine_cn}</a></td>
+    <td>${m.company}</td>
+    ${pCell(prod[CI])}<td class="num">${pct(prod[CI], prod[PI])}</td>
+    ${pCell(sales[CI])}<td class="num">${pct(sales[CI], sales[PI])}</td>
+    <td class="num">${price[CI] != null ? price[CI].toLocaleString('zh-CN') : 'N.D.'}</td>
+    <td class="num">${cost[CI] != null ? cost[CI].toLocaleString('zh-CN') : 'N.D.'}</td>
+    <td style="font-size:11.5px;color:var(--muted)">${m.report.split('（')[0]}</td>
+  `;
+  tb.appendChild(tr);
+});
+
+document.getElementById('disclaimer').textContent = D.meta.disclaimer;
+</script>
+</body>
+</html>
