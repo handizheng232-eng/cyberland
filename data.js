@@ -9,7 +9,7 @@ const YONGAN_DATA = {
    "end_forecast": "26Q4"
   },
   "unit_note": "产量/销量/库存单位为万吨；均价 US$/t；成本 A$/t",
-  "color_legend": "橙色=预测值（26Q3E/26Q4E，按FY27指引中值）；灰色 N.D.=官方未披露",
+  "color_legend": "浅色柱/空心圆=预测季度（按官方 FY27 指引中值推算）；灰色 N.D.=官方未披露",
   "disclaimer": "本页面数据来自各矿山母公司官方季度报告，仅供研究参考，不构成投资建议。",
   "pages": [
    {
@@ -28,6 +28,9 @@ const YONGAN_DATA = {
   {
    "company": "IGO",
    "mine": "Greenbushes",
+   "current_q": "26Q2",
+   "prev_q": "26Q1",
+   "current_q_date": "2026年4-6月",
    "mine_cn": "Greenbushes（格林布什矿山）",
    "report": "IGO June 2026 Quarterly Activities Report（2026-07-28 发布，FY26 Q4 / 日历26Q2）",
    "source_url": "https://www.igo.com.au/site/investor-center/investor-center1",
@@ -452,91 +455,100 @@ const YONGAN_DATA = {
   {
    "company": "PLS（Pilbara Minerals）",
    "mine": "Pilgangoora",
+   "current_q": "26Q2",
+   "prev_q": "26Q1",
+   "current_q_date": "2026年4-6月",
    "mine_cn": "Pilgangoora（皮尔甘古拉矿山）",
-   "report": "PLS March 2026 Quarterly Activities Report（2026-04-24 发布，FY26 Q3 / 日历26Q1）；FY25 Annual Report",
-   "source_url": "https://www.pls.com/assets/pilgangoora-operation",
+   "report": "PLS June 2026 Quarterly Activities Report（2026-07-30 发布，FY26 Q4 / 日历26Q2）；FY25 Annual Report",
+   "source_url": "https://www.pls.com/invest/asx-announcements",
    "equity_note": "100% 资产口径（PLS 全资拥有并运营）；Pilgangoora 为世界最大独立拥有的硬岩锂矿",
    "status_26q2": {
     "existing_lines": [
      {
-      "name": "已有产能1：Pilgan 选矿厂（Pilgan Plant）— 铭牌 ~680ktpa（P680 后）",
-      "q26q2": "26Q1（Mar Q）创纪录产量 232.4kt，回收率稳定 ~75%；P1000 扩建（2025年1月完成）使 Pilgan 产能达 ~1.0Mtpa 基础；矿石分选机（世界最大）+ 重介质分选回路运行良好",
-      "q26q1": "25Q4（Dec Q）产量 208.0kt；P850 单厂模式下 Pilgan 满负荷运行，支撑 FY26 产量指引",
-      "compare": "产量环比 +12%（208→232.4kt）创纪录，主因工厂可靠性提升、运行时间增加、回收率稳定 75%——运行表现超预期"
+      "name": "已有产能1：Pilgan 选矿厂（Pilgan Plant）— 铭牌 ~1.0Mtpa（P1000 后）",
+      "q26q2": "26Q2（Jun Q）产量 214.3kt（环比 -8%，主因上季创纪录高基数）；回收率小幅升至 76.8%；矿石分选机（世界最大）性能改善提供运营灵活性；FY26 全年 879.5kt 超指引上限",
+      "q26q1": "26Q1（Mar Q）创纪录产量 232.4kt，回收率 ~75%；P1000 扩建（2025年1月完成）使 Pilgan 产能达 ~1.0Mtpa 基础",
+      "compare": "产量环比 -8% 属高基数回落（232.4→214.3kt），但 FY26 全年 879.5kt 超指引上限 ~10kt；回收率 76.8% 创改善——全年表现超预期"
      },
      {
-      "name": "已有产能2：Ngungaju 选矿厂（Ngungaju Plant）— 铭牌 ~250ktpa（停产中）",
-      "q26q2": "26Q1 处于临时维护（care & maintenance）状态，无产量；2026-02-19 董事会批准重启，计划 2026年7月初复产、9月季度爬坡至稳态——本季为重启准备期（招募人员回流、6月季度安排大修）",
-      "q26q1": "25Q4 同处于维护状态；P850 模式下自 2024 年 12 月起停产，保留矿石资源待价格环境改善",
-      "compare": "重大变化：从「无限期维护」转为「确定重启」——2026年7月复产、9月季度达稳态，26Q2 将计入重启成本但无产量贡献（短期成本承压、中期产能增量的预期差）"
+      "name": "已有产能2：Ngungaju 选矿厂（Ngungaju Plant）— 目标产能（2026年7月重启）",
+      "q26q2": "26Q2 处于重启准备期（临时维护状态，无产量）；季报后事件：**2026 年 7 月 1 日正式重启**，预计 FY27 前 4 个月（2026年10月底前）达到目标产能；26Q2 FOB 成本上升主因之一即 Ngungaju 重启成本",
+      "q26q1": "25Q4（Dec Q）同处于维护状态；2026-02-19 董事会批准重启，计划 2026年7月初复产",
+      "compare": "重大正面进展：7 月 1 日按计划重启、比 3 月预期更明确（原计划「7月初+9月爬坡」，现明确「FY27 前 4 个月内达目标产能」）；26Q2 已开始计重启成本"
      }
     ],
     "planned_lines": [
      {
-      "name": "P2000 扩建项目 — 2.0Mtpa（可研阶段）",
-      "q26q2": "26Q1 可研持续推进，预计 2026 年 12 月季度发布结果；拟新建选矿厂紧邻 Pilgan/Ngungaju，采用全矿浮选流程；正评估 FY27 预 FID 资本支出（详细工程+长周期设备采购）以加速工期",
-      "q26q1": "25Q4 可研按更新后时间表推进（同 26Q1 表述）；Colina 项目可研同步进行",
-      "compare": "无重大进展变化；2026-12 出结果 + 预 FID 支出评估是后续关键观察点"
+      "name": "P2000 扩建项目 — 2.0Mtpa（可研阶段，预FID支出已批）",
+      "q26q2": "26Q2 可研持续推进，预计 2026 年 12 月季度发布结果；**2026 年 6 月批准 ~$175M 预 FID 资本支出**（详细工程+长周期设备采购）；FID 取决于可研结果、融资与市场条件；新建选矿厂紧邻 Pilgan 设施，全矿浮选流程",
+      "q26q1": "26Q1 可研按更新后时间表推进；评估 FY27 预 FID 资本支出",
+      "compare": "重大进展：预 FID 支出 $175M 于 6 月正式获批（此前仅为评估）——项目推进节奏超预期，FID 决策窗口锁定 2026-12"
      },
      {
       "name": "Mid-Stream 中游示范厂项目（电煅烧炉）",
-      "q26q2": "26Q1 后里程碑达成：JV 重组完成、获政府最高 A$38.1M 拨款、签署承购协议、开始调试——世界首座工业级电煅烧炉",
-      "q26q1": "25Q4 建设重启推进中",
-      "compare": "26Q1 实现 JV 重组+拨款+承购+调试四大里程碑，进度超预期"
+      "q26q2": "26Q2 调试推进中；世界首座工业级电煅烧炉，目标降低排放强度、减少运输需求、矿场就地增值",
+      "q26q1": "26Q1 达成 JV 重组+政府拨款 A$38.1M+承购协议+开始调试四大里程碑",
+      "compare": "持续调试推进；26Q1 已实现里程碑，26Q2 无新增重大披露"
+     },
+     {
+      "name": "Colina 项目（巴西）— 可研阶段",
+      "q26q2": "26Q2 可研推进中（勘探钻探等）；预 FID 支出待董事会批准；FY27 资本开支表列示 Colina pre-FID 为 Subject to Board approval",
+      "q26q1": "26Q1 可研同步推进（与 P2000 同口径表述）",
+      "compare": "无重大进展变化；与 P2000 并行推进"
      }
     ],
     "overall": {
-     "operation_changes": "26Q1 产量 232.4kt（环比 +12%，创季度纪录）；销量 195.7kt（环比 -16%，因部分发运延迟）；均价 US$1,867/t（环比 +61%，SC5.2 CIF 基准）；FOB 单位成本 A$520/t（环比 -11%，受益高产量与资本化剥离）；经营现金利润率 A$461M（环比 +178%）；季末现金 A$1,455M（+52%，含 Canmax US$100M 预付款）。",
-     "operation_changes_prev": "25Q4 产量 208.0kt；销量 232.0kt；均价 US$1,161/t；FOB 成本 A$585/t；现金 A$954M。",
-     "future_outlook": "FY26 指引重申（产量 780-820kt、FOB 成本 A$510-560/t）；Ngungaju 2026年7月重启、9月季度爬坡至稳态；P2000 可研 2026-12 发布；中游示范厂调试中。",
+     "operation_changes": "26Q2 产量 214.3kt（环比 -8%，上季创纪录高基数）；销量 249.9kt（环比 +28%，创纪录，受益港口拥堵缓解后集中发运）；均价 US$2,107/t（环比 +13%，SC5.2 CIF，SC6 等价 US$2,415）；FOB 单位成本 A$616/t（环比 +18%，Ngungaju 重启成本+柴油涨价）；经营现金利润率 A$579M（环比 +26%）；季末现金 A$2,290M（+57%，含 US$600M 债券发行）。",
+     "operation_changes_prev": "26Q1 产量 232.4kt（创纪录）；销量 195.7kt；均价 US$1,867/t；FOB 成本 A$520/t；现金 A$1,455M。",
+     "future_outlook": "FY26 全年产量 879.5kt 超指引上限（820-870kt）约 10kt；FY27 指引已发布：产量 1,030-1,100kt（中值 106.5 万吨）、FOB 成本 A$575-625/t、资本开支 A$620-685M；Ngungaju 2026年7月1日重启、FY27 前 4 个月达目标产能；P2000 可研 2026-12 发布、FID 决策同期；中游示范厂调试中。",
      "highlights": [
-      "产量 232.4kt 创季度纪录（环比 +12%）——工厂可靠性提升与高回收率（~75%）驱动，运行超预期",
-      "均价环比 +61% 至 US$1,867/t（SC6 等价 US$2,155/t），锂价强势回升超预期",
-      "经营现金利润率 A$461M（环比 +178%），成本下降+价格回升双重受益",
-      "Ngungaju 确定 2026年7月重启——从维护转复产的重大正面变化，9月季度贡献增量",
-      "现金 A$1,455M（+52%）+ US$600M 债券发行，资产负债表显著增强"
+      "FY26 全年产量 879.5kt 超指引上限（820-870kt）约 10kt——年度指引超预期兑现",
+      "26Q2 销量 249.9kt 创纪录（环比 +28%），5 月港口拥堵缓解后集中发运",
+      "均价连续第三季大涨：US$1,161（25Q4）→1,867（26Q1）→2,107（26Q2），SC6 等价 US$2,415",
+      "Ngungaju 2026年7月1日按计划重启，FY27 前 4 个月达目标产能——双厂模式恢复",
+      "FY27 指引产量 1,030-1,100kt（+17-25% YoY），Ngungaju 重启 + P2000 预FID $175M 已批是双催化"
      ]
     }
    },
    "forecast_2027": {
-    "basis": "PLS FY27 官方指引尚未发布（FY26 指引产量 780-820kt）；产能基础：Pilgan ~1.0Mtpa（P1000 后）+ Ngungaju 重启后 ~250ktpa → 双厂合计铭牌 ~1.25Mtpa；P2000 若获批可进一步扩至 2.0Mtpa（2026-12 可研结果、FID 未定，预测年不纳入）；FY26 实际产量轨迹：25Q3=198.6kt、25Q4=180.3kt、26Q1=205.3kt、26Q2=189.3kt（年化 ~77 万吨）。",
+    "basis": "PLS FY27 官方指引已发布（2026-07-30 June QAR）：产量 1,030-1,100kt（财年口径 = 2026年7月-2027年6月，中值 ~1,065kt）；日历 2027 = FY27 后两季（含 Ngungaju 满产）+ FY28 前两季（满产稳态），预计落在指引区间上沿附近；产能基础：Pilgan ~1.0Mtpa（P1000 后）+ Ngungaju 重启后目标产能 → 双厂合计 ~1.25Mtpa；P2000 可研 2026-12 出结果、FID 若通过则 2028H2 起贡献（2027 年内不纳入）。",
     "assumptions": [
-     "Ngungaju 2026年7月重启，26Q3 爬坡、26Q4-27 年稳态贡献 ~55-60kt/季",
-     "Pilgan 维持 ~190-210kt/季（利用率 ~80-85%，受回收率 75% 与品位约束）",
-     "P2000 2027 年内不贡献产量（可研 2026-12 出结果、FID + 建设周期 >2 年）",
-     "锂价回升传导至产量（PLS 历史上随价格调整产量策略，P850 模式证明其灵活性）"
+     "Ngungaju 2026年7月重启，FY27 前 4 个月（2026年10月底前）达目标产能——2027 年全年双厂运行",
+     "Pilgan 维持 ~200-215kt/季（FY26 后两季实际 205.3/214.3kt，利用率高）",
+     "P2000 2027 年内不贡献产量（可研 2026-12 出结果、FID+建设周期 >2 年）",
+     "FY27 指引 1,030-1,100kt 为官方锚；日历 2027 因跨 FY27/FY28 两财年，按指引上沿 + Ngungaju 满产推算"
     ],
     "scenarios": {
      "bear": {
-      "label": "悲观（Ngungaju 重启延迟 + Pilgan 利用率走低）",
-      "production_kt": 8000,
-      "note": "Ngungaju 重启延后至 2027、Pilgan 利用率降至 75%；全年 ~80 万吨"
+      "label": "悲观（Ngungaju 爬坡慢于计划 + 锂价回落压缩产量）",
+      "production_kt": 9500,
+      "note": "Ngungaju 2027 年中才达产、Pilgan 利用率回落；全年 ~95 万吨"
      },
      "base": {
-      "label": "基准（双厂运行，Ngungaju 下半年满产）",
-      "production_kt": 9500,
-      "note": "Pilgan ~190kt/季 ×4 + Ngungaju 爬坡后 ~50-60kt/季×2-3 → ~95 万吨"
+      "label": "基准（双厂满产，FY27 指引兑现）",
+      "production_kt": 10800,
+      "note": "Pilgan ~210kt/季×4 + Ngungaju 达产后 ~55-60kt/季×4 → ~108 万吨（对应 FY27 指引上沿）"
      },
      "bull": {
-      "label": "乐观（锂价大涨驱动满产 + P2000 提前动工）",
-      "production_kt": 10800,
-      "note": "双厂满产 ~100 万吨 + P2000 提前建设带动效率提升 → ~108 万吨"
+      "label": "乐观（锂价大涨 + P2000 提前 FID 动工）",
+      "production_kt": 11800,
+      "note": "双厂超产 ~110 万吨 + P2000 建设期效率提升 → ~118 万吨"
      }
     },
     "quarterly_base": {
-     "27Q1": 23,
-     "27Q2": 24,
-     "27Q3": 25,
-     "27Q4": 25,
-     "total": 97
+     "27Q1": 26,
+     "27Q2": 27,
+     "27Q3": 28,
+     "27Q4": 28,
+     "total": 109
     },
-    "confidence": "中：Pilgan 产能已验证（P1000 后 1.0Mtpa），Ngungaju 重启确定性高但爬坡节奏、锂价对产量策略的传导是主要不确定性；P2000 是 2027 年后的大变量。",
-    "disclaimer": "预测为研究性判断，非公司指引；PLS FY27 指引预计 2026 年 8 月年报时发布，届时以官方为准。"
+    "confidence": "高：FY27 官方指引 1,030-1,100kt 已发布（首次含 Ngungaju 重启后双厂口径），基准情景取指引上沿附近；不确定性主要在 Ngungaju 爬坡节奏与锂价对产量的传导；P2000 是 2027 年后大变量（FID 2026-12）。",
+    "disclaimer": "预测为研究性判断，基于 PLS FY27 官方指引（2026-07-30 发布）推算，非公司直接给出的日历年度数字；日历 2027 与 FY27 财年（2026/7-2027/6）口径不同，已在预测中说明。"
    },
    "capacity_verification": {
     "title": "选矿产能核实（多来源交叉印证）",
-    "method": "以 PLS 官网（Wayback 存档）、FY25 年报、季度活动报告（2020/2022/2025/2026）为来源，逐条核对铭牌产能；官方未单独披露的标 ⚠️，官方确认的标 ✓。",
-    "summary": "产能演进脉络：Pilgan 铭牌 ~580ktpa（Pilgan+Ngungaju 合计，FY25 年报口径）→ P680 项目（2024年8月，矿石分选机+HIMS）→ P1000 项目（2025年1月，+320kt）→ 合计 ~1.0Mtpa（官网确认）；Ngungaju 铭牌 ~250ktpa（2024年12月起停产，2026年7月重启）；P2000 规划 2.0Mtpa（可研中）。",
+    "method": "以 PLS 官网（Wayback 存档）、FY25 年报、June 2026 季报（2026-07-30）及历史季报为来源，逐条核对铭牌产能；官方未单独披露的标 ⚠️，官方确认的标 ✓。",
+    "summary": "产能演进脉络：Pilgan 铭牌 ~580ktpa（Pilgan+Ngungaju 合计，FY25 年报口径）→ P680 项目（2024年8月，矿石分选机+HIMS）→ P1000 项目（2025年1月，+320kt）→ 合计 ~1.0Mtpa（官网确认）；Ngungaju 于 2026年7月1日重启（FY27 前 4 个月达目标产能）；P2000 规划 2.0Mtpa（可研 2026-12 出结果，$175M 预FID支出 2026年6月已批）；FY27 指引产量 1,030-1,100kt。",
     "items": [
      {
       "line": "Pilgan 选矿厂",
@@ -560,16 +572,16 @@ const YONGAN_DATA = {
      },
      {
       "line": "Ngungaju 选矿厂",
-      "excel_capacity": "~250ktpa（停产中）",
+      "excel_capacity": "目标产能（2026年7月重启）",
       "verified": "⚠️ 铭牌为推算（官方未单独披露精矿口径）",
       "sources": [
        {
-        "src": "FY25 年报",
-        "data": "2024年12月转入临时维护（P850 单厂模式）；FY25 产量 754.6kt 全部来自 Pilgan"
+        "src": "June 2026 QAR",
+        "data": "2026年7月1日按计划重启（季报后事件），预计 FY27 前 4 个月（2026年10月底前）达目标产能；26Q2 FOB 成本 +18% 含重启成本"
        },
        {
-        "src": "March 2026 QAR",
-        "data": "2026-02-19 批准重启，2026年7月初复产、9月季度爬坡至稳态；26Q2 计入重启成本无产量"
+        "src": "FY25 年报",
+        "data": "2024年12月转入临时维护（P850 单厂模式）；FY25 产量 754.6kt 全部来自 Pilgan"
        }
       ],
       "status": "warn"
@@ -577,11 +589,11 @@ const YONGAN_DATA = {
      {
       "line": "P2000 扩建项目",
       "excel_capacity": "2.0Mtpa（规划）",
-      "verified": "⚠️ 可研阶段（2026-12 出结果）",
+      "verified": "⚠️ 可研阶段（2026-12 出结果，预FID $175M 已批）",
       "sources": [
        {
-        "src": "March 2026 QAR",
-        "data": "可研结果 2026 年 12 月季度发布；新建选矿厂拟紧邻 Pilgan/Ngungaju，全矿浮选流程；评估 FY27 预 FID 支出"
+        "src": "June 2026 QAR",
+        "data": "可研结果 2026 年 12 月季度发布；2026年6月批准 ~$175M 预 FID 资本支出；新建选矿厂紧邻 Pilgan 设施，全矿浮选流程；FID 取决于可研/融资/市场"
        },
        {
         "src": "PLS 官网",
@@ -591,30 +603,30 @@ const YONGAN_DATA = {
       "status": "warn"
      },
      {
-      "line": "全矿合计",
-      "excel_capacity": "~1.25Mtpa（双厂）",
-      "verified": "⚠️ 官方 1.0Mtpa（P1000 后，单厂口径）",
+      "line": "全矿合计（双厂）",
+      "excel_capacity": "~1.25Mtpa",
+      "verified": "⚠️ 官方 FY27 指引 1.03-1.10Mtpa（双厂口径）",
       "sources": [
        {
-        "src": "PLS 官网",
-        "data": "P1000 后 1.0Mtpa（Pilgan 单厂）——官方口径；Ngungaju 重启后合计 ~1.25Mtpa 为推算"
+        "src": "June 2026 QAR",
+        "data": "FY27 指引产量 1,030-1,100kt——首次含 Ngungaju 重启后的双厂口径；FY26 实际 879.5kt 超指引上限"
        },
        {
-        "src": "FY25 年报",
-        "data": "P850 模式（2024-12 至 2026-06）实际运行 Pilgan 单厂；FY26 指引 780-820kt 以此为基础"
+        "src": "PLS 官网",
+        "data": "P1000 后 1.0Mtpa（Pilgan 单厂口径）"
        }
       ],
       "status": "warn"
      }
     ],
     "sources_index": {
-     "公司官网": "PLS 官网 Pilgangoora Operation 页（2026-06-30 Wayback 存档，Cloudflare 防护无法直连）",
+     "公司官网": "PLS 官网 Pilgangoora Operation 页（2026-06-30 Wayback 存档，Cloudflare 防护无法直连）；ASX 公告页 pls.com/invest/asx-announcements",
+     "公司季报": "PLS June 2026 Quarterly Activities Report（2026-07-30，最新；via investorpa.com 镜像）",
      "公司年报": "PLS FY25 Annual Report（2025-08-25，含 Appendix 4E）",
-     "公司季报": "PLS Quarterly Activities Reports：Mar2020 / Dec2022 / Sep2025 / Dec2025 / Mar2026（Wayback 存档）",
      "第三方看板": "飞书海外锂矿季度经营看板（Pilgangoora 3Q2024-2Q2026 产量/销量，标'官方'）",
      "券商/咨询": "本轮未获取付费报告；ASX 公告系统 API 受限"
     },
-    "note": "核实时间：2026-08-05。关键结论：① Pilgan 产能 1.0Mtpa 获官网+年报确认（P680→P1000 路径清晰）；② Ngungaju 铭牌 250ktpa 为推算（官方未单独披露），重启后合计 ~1.25Mtpa；③ P2000 为 2027 年后大变量（可研 2026-12）；④ P850 单厂模式运行至 2026 年 6 月，Ngungaju 7 月重启后恢复双厂。",
+    "note": "核实时间：2026-08-05（已更新至 June 2026 QAR）。关键结论：① Pilgan 产能 1.0Mtpa 获官网+年报确认（P680→P1000 路径清晰）；② Ngungaju 铭牌未单独披露，2026年7月1日重启、FY27 前 4 个月达目标产能；③ P2000 预FID $175M 已批、可研 2026-12 出结果；④ FY27 官方指引产量 1,030-1,100kt（双厂口径）为产能锚。",
     "images": [
      {
       "url": "img/pilgangoora_overlook.jpg",
@@ -640,7 +652,7 @@ const YONGAN_DATA = {
     "mining_side": {
      "title": "原矿产能核实（矿坑 / 矿体 / 尾矿库）",
      "method": "以 PLS 官网（Wayback 存档）、FY25 年报、Albermarle 类公开资料交叉核对采矿侧信息。",
-     "summary": "Pilgangoora 为单一露天矿（Pilgangoora 伟晶岩区，Central 与 South 矿段），2018 年首次生产；矿权面积庞大（~51,000 公顷 consolidated tenure）；矿山寿命 ~31-32 年；FY25 采矿 5.2Mt（平均品位 1.4% Li₂O，因 Ngungaju 停产减少 19%）。",
+     "summary": "Pilgangoora 为单一露天矿（Pilgangoora 伟晶岩区，Central 与 South 矿段），2018 年首次生产；矿权面积庞大（~51,000 公顷 consolidated tenure）；矿山寿命 ~31-32 年；26Q2 总物料移动 10.2Mt、矿石 1.7Mt（为 Ngungaju 重启铺路）；FY26 全年产量 879.5kt 超指引上限。",
      "items": [
       {
        "item": "原矿矿山：Pilgangoora 露天矿",
@@ -674,8 +686,8 @@ const YONGAN_DATA = {
        "status": "ok",
        "sources": [
         {
-         "src": "March 2026 QAR",
-         "data": "26Q1 总物料移动 9.9Mt（25Q4: 8.1Mt）、矿石 1.3Mt（25Q4: 1.5Mt）——增加剥离为 Ngungaju 重启与未来生产铺路"
+         "src": "June 2026 QAR",
+         "data": "26Q2 总物料移动 10.2Mt（26Q1: 9.9Mt）、矿石 1.7Mt（26Q1: 1.3Mt）——增加采矿与剥离为 Ngungaju 重启与未来生产铺路"
         }
        ]
       },
@@ -702,7 +714,7 @@ const YONGAN_DATA = {
        ]
       }
      ],
-     "note": "核实时间：2026-08-05。采矿侧要点：① 单一露天矿服务两座选矿厂（Pilgan + Ngungaju）；② 31-32 年矿山寿命、资源 445Mt/储量 207.2Mt 支撑长期产能；③ PLS 未披露逐坑/逐尾矿库的详细技术参数（无 S-K1300 类 QP 报告），采矿侧细节不及 Greenbushes 丰富；④ 26Q1 增加剥离（9.9Mt 总移动）为 Ngungaju 重启铺路。",
+     "note": "核实时间：2026-08-05（已更新至 June 2026 QAR）。采矿侧要点：① 单一露天矿服务两座选矿厂（Pilgan + Ngungaju）；② 31-32 年矿山寿命、资源 445Mt/储量 207.2Mt 支撑长期产能；③ PLS 未披露逐坑/逐尾矿库的详细技术参数（无 S-K1300 类 QP 报告），采矿侧细节不及 Greenbushes 丰富；④ 26Q2 总物料移动 10.2Mt、矿石 1.7Mt 创新高，为 Ngungaju 重启铺路。",
      "images": [
       {
        "url": "img/pilgangoora_tenure.jpg",
@@ -1273,10 +1285,10 @@ const YONGAN_DATA = {
     18.81,
     19.86,
     18.03,
-    20.53,
-    18.93,
-    null,
-    null
+    23.24,
+    21.43,
+    26.6,
+    26.6
    ],
    "lce": [
     null,
@@ -1409,8 +1421,8 @@ const YONGAN_DATA = {
     18.36,
     18.9,
     20.11,
-    16.96,
-    21.66,
+    19.57,
+    24.99,
     null,
     null
    ],
@@ -1511,8 +1523,8 @@ const YONGAN_DATA = {
     0.976,
     0.952,
     1.115,
-    0.826,
-    1.144,
+    0.842,
+    1.166,
     null,
     null
    ],
@@ -1546,7 +1558,7 @@ const YONGAN_DATA = {
     null,
     1161,
     1867,
-    null,
+    2107,
     null,
     null
    ],
@@ -1580,7 +1592,7 @@ const YONGAN_DATA = {
     null,
     585,
     520,
-    null,
+    616,
     null,
     null
    ],
@@ -1648,7 +1660,7 @@ const YONGAN_DATA = {
     null,
     585,
     520,
-    null,
+    616,
     null,
     null
    ]
@@ -1661,7 +1673,7 @@ const YONGAN_DATA = {
    "2023": 62.0,
    "2024": 72.6,
    "2025": 75.5,
-   "2026E": null
+   "2026": 88.0
   }
  }
 };

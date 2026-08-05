@@ -144,14 +144,15 @@ const HIST = MINE.mine === 'Greenbushes' ? D.history : D[MINE.mine.toLowerCase()
 // ---------- 头部 ----------
 document.title = `${MINE.mine_cn} ｜ ${D.meta.title}`;
 document.getElementById('header_sub').innerHTML =
-  `数据源：矿山母公司官方季度报告（100% 资产口径）｜数据更新至 <b style="color:var(--text)">26Q2（2026年4-6月）</b>｜${D.meta.updated} 生成`;
+  `数据源：矿山母公司官方季度报告（100% 资产口径）｜数据更新至 <b style="color:var(--text)">${MINE.current_q}（${MINE.current_q_date}）</b>｜${D.meta.updated} 生成`;
 document.getElementById('header_tags').innerHTML =
-  `<span class="tag hl">运行状况描述：最新季度 26Q2</span>
-   <span class="tag">历史数据：核对至 26Q2 实际值</span>
-   <span class="tag">26Q3E/26Q4E = 官方指引中值预测</span>
+  `<span class="tag hl">运行状况描述：最新季度 ${MINE.current_q}</span>
+   <span class="tag">历史数据：核对至 ${MINE.current_q} 实际值</span>
+   <span class="tag">预测季度（当前季后两季）= 官方指引中值推算</span>
    ${D.meta.pages.map(p => `<span class="tag"><a href="${p.file}${p.key === MINE_KEY ? '' : '?mine=' + p.key}" style="color:inherit;text-decoration:none">${p.label}</a></span>`).join('')}`;
 
 // ---------- 图表公共（须在 mines 渲染前声明，避免 TDZ） ----------
+const nA = Q.length - 2; // 实际季度个数（当前季后两季为预测）
 function mkChart(id) {
   return echarts.init(document.getElementById(id), null, { renderer: 'canvas' });
 }
@@ -171,41 +172,41 @@ const m = MINE;
       <span class="src">最新报告：${m.report} ｜ <a href="${m.source_url}" target="_blank" rel="noopener">${m.mine} 官方页面 →</a></span>
     </div>
     <div class="cat">
-      <h3>① 已有产线运行状况表述<span class="q">（26Q2 vs 26Q1 对比）</span></h3>
+      <h3>① 已有产线运行状况表述<span class="q">（本季度 ${m.current_q} vs 上一季度 ${m.prev_q}）</span></h3>
       <table>
         <thead><tr>
           <th style="width:230px">产线 / 项目</th>
-          <th>26Q2 本季度</th>
-          <th>26Q1 上季度</th>
+          <th>本季度（${m.current_q}）</th>
+          <th>上一季度（${m.prev_q}）</th>
           <th style="width:30%">对比 · 超预期</th>
         </tr></thead>
         <tbody id="existing_${m.mine}"></tbody>
       </table>
     </div>
     <div class="cat">
-      <h3>② 在建/规划中产线运行状况表述<span class="q">（26Q2 vs 26Q1 对比）</span></h3>
+      <h3>② 在建/规划中产线运行状况表述<span class="q">（本季度 ${m.current_q} vs 上一季度 ${m.prev_q}）</span></h3>
       <table>
         <thead><tr>
           <th style="width:230px">项目</th>
-          <th>26Q2 本季度</th>
-          <th>26Q1 上季度</th>
+          <th>本季度（${m.current_q}）</th>
+          <th>上一季度（${m.prev_q}）</th>
           <th style="width:30%">对比 · 超预期</th>
         </tr></thead>
         <tbody id="planned_${m.mine}"></tbody>
       </table>
     </div>
     <div class="cat">
-      <h3>③ 整体运行状况表述<span class="q">（26Q2 vs 26Q1 对比）</span></h3>
+      <h3>③ 整体运行状况表述<span class="q">（本季度 ${m.current_q} vs 上一季度 ${m.prev_q}）</span></h3>
       <div class="cmp-grid">
-        <p class="desc"><b>26Q2 开工变化因素：</b>${m.status_26q2.overall.operation_changes}</p>
-        <p class="desc"><b>26Q1 开工变化因素：</b>${m.status_26q2.overall.operation_changes_prev}</p>
+        <p class="desc"><b>本季度（${m.current_q}）开工变化因素：</b>${m.status_26q2.overall.operation_changes}</p>
+        <p class="desc"><b>上一季度（${m.prev_q}）开工变化因素：</b>${m.status_26q2.overall.operation_changes_prev}</p>
       </div>
       <p class="desc"><b>未来产量预期：</b>${m.status_26q2.overall.future_outlook}</p>
       <div class="hl-box" id="hl_${m.mine}"></div>
     </div>
     <div class="cat">
-      <h3>④ 历史数据情况<span class="q">（2019Q1-26Q2 实际 + 26Q3E/26Q4E 预测）</span></h3>
-      <div class="note" style="margin-bottom:10px">注：图表中<b>浅色柱 / 空心圆</b>为 26Q3E-26Q4E 预测值（按 FY27 指引中值 41.25 万吨/季）；实色柱 / 实心点为实际值。</div>
+      <h3>④ 历史数据情况<span class="q">（2019Q1-${m.current_q} 实际 + 预测季度）</span></h3>
+      <div class="note" style="margin-bottom:10px">注：图表中<b>浅色柱 / 空心圆</b>为 ${m.current_q} 之后两个季度的预测值；实色柱 / 实心点为实际值。</div>
       <div class="hist-grid">
         <div class="panel">
           <h4>精矿产量 vs 销量</h4>
@@ -358,7 +359,7 @@ function renderHist(mine) {
   labels.forEach(([key, lb]) => {
     html += `<tr><td>${lb}</td>`;
     HIST[key].forEach((v, j) => {
-      const isPred = Q[j] === '2026Q3' || Q[j] === '2026Q4';
+      const isPred = j >= nA;  // 当前季之后两季为预测列
       let cls = isPred ? 'fc' : 'act';
       let txt;
       if (v === null || v === undefined) { txt = 'N.D.'; cls = 'emp'; }
@@ -378,8 +379,7 @@ function renderCharts(mine) {
   const sales = HIST.sales;
   const price = HIST.avg_price;
   const cash = HIST.cash_cost;
-  // 预测季度（26Q3E/26Q4E，最后 2 个数据点）单独着色
-  const nA = Q.length - 2; // 实际季度个数
+  // 预测季度（当前季后两季）单独着色
   const barFc = (arr, color) => arr.map((v, i) =>
     i >= nA && v !== null ? { value: v, itemStyle: { color: color } } : v);
   const lineFc = (arr, color) => arr.map((v, i) =>
@@ -424,7 +424,7 @@ function renderCharts(mine) {
 // ---------- 口径说明 ----------
 document.getElementById('meta_note').innerHTML =
   `· 数据源：${MINE.report}，全部为 100% 资产口径。${MINE.equity_note}。<br>
-   · 运行状况描述仅更新最新一个季度（26Q2 vs 26Q1）；历史数据已与官方报告逐季核对，无官方披露的季度标 N.D.。<br>
+   · 运行状况描述仅更新最新一个季度（本季度 ${MINE.current_q} vs 上一季度 ${MINE.prev_q}）；历史数据已与官方报告逐季核对，无官方披露的季度标 N.D.。<br>
    · 产能核实为多来源交叉印证（公司年报/官网/季报/第三方看板），详见 ⑥⑦ 板块；预测值（26Q3E/26Q4E）按官方指引中值推算。<br>
    · 分页模式：每个矿山一个页面（${D.meta.pages.map(p => p.label).join(' / ')}），后续矿山按同格式新增。`;
 document.getElementById('disclaimer').textContent = D.meta.disclaimer;
