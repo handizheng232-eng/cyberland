@@ -172,13 +172,6 @@ const m = MINE;
       <span class="src">最新报告：${m.report} ｜ <a href="${m.source_url}" target="_blank" rel="noopener">${m.mine} 官方页面 →</a></span>
     </div>
     <div class="cat">
-      <h3>近五年产量汇总（季度）<span class="q">（2021Q3-26Q2 实际 + 26Q3E/26Q4E 预测 · 附季度指引目标）</span></h3>
-      <div class="table-wrap">
-        <table class="hist-table" id="q_tbl_mine" style="min-width:720px"></table>
-      </div>
-      <div class="note" style="margin-top:6px;font-size:11.5px;color:var(--muted)" id="q_mine_note"></div>
-    </div>
-    <div class="cat">
       <h3>① 已有产线运行状况表述<span class="q">（本季度 ${m.current_q} vs 上一季度 ${m.prev_q}）</span></h3>
       <table>
         <thead><tr>
@@ -442,36 +435,6 @@ function renderCharts(mine) {
 }
 
 // ---------- 口径说明 ----------
-/* 近五年季度汇总（矿山页）：行=季度 列=产量/销量/指引目标 */
-(function qMine() {
-  const GUIDES = {
-    'Greenbushes': { v: 41.25, note: 'FY27 指引中值 165 万吨 ÷4' },
-    'Pilgangoora': { v: 26.6, note: 'FY27 指引中值 106.5 万吨 ÷4（dmt）' },
-    'Kathleen Valley': { v: 10.4, note: 'FY27 指引中值 41.5 万吨 ÷4' },
-    'Bald Hill': { v: 3.5, note: '满产 140k SC6/年 ÷4（非指引）' },
-    'Mt Cattlin': { v: 0, note: 'C&M 无生产' },
-    'Mt Holland': { v: 9.5, note: '满产 380ktpa ÷4（非指引）' },
-  };
-  const g = GUIDES[MINE.mine];
-  const plabel = (MINE.history_labels || D.history_labels).find(([k]) => k === 'production');
-  const pUnit = plabel ? plabel[1].replace(/产量|精矿|（|）/g, '').replace(/^万吨[，,]\s*/, '') : '';
-  let html = '<thead><tr><th style="text-align:left">季度</th><th>产量（万吨' + (pUnit ? '，' + pUnit : '') + '）</th><th>销量（万吨）</th><th>指引目标（万吨/季）</th></tr></thead><tbody>';
-  for (let i = 10; i < 32; i++) {
-    const q = Q[i], est = i >= 30;
-    const p = HIST.production[i];
-    const s = HIST.sales ? HIST.sales[i] : null;
-    html += `<tr><td style="text-align:left">${q}${est ? ' <span style="color:var(--acc);font-size:10px">E</span>' : ''}</td>`;
-    html += `<td class="${p == null ? '' : (est ? '' : '')}">${p == null ? '<span style="color:var(--warn)">N.D.</span>' : p.toFixed(2) + (est ? ' <span style="color:var(--acc);font-size:9px">E</span>' : '')}</td>`;
-    html += `<td>${s == null ? '<span style="color:var(--warn)">N.D.</span>' : s.toFixed(2)}</td>`;
-    html += `<td>${est ? '<span style="color:var(--acc)">E 值即指引推算</span>' : (g ? g.v.toFixed(1) : '<span style="color:var(--warn)">N.D.</span>')}</td></tr>`;
-  }
-  html += '</tbody>';
-  document.getElementById('q_tbl_mine').innerHTML = html;
-  document.getElementById('q_mine_note').innerHTML =
-    `· 季度数据：2021Q3-2026Q2 实际 + 26Q3E/26Q4E 预测（E，按官方指引推算）；灰色 N.D.=官方未披露。<br>` +
-    `· 指引目标：历史季度 = FY27 指引季度均分（${g ? g.note + '；' : '无季度指引（标 N.D.）；'}澳洲矿企一般不发布季度指引，为对照参考值）；预测季度 E 值即按指引推算的预测。`;
-})();
-
 document.getElementById('meta_note').innerHTML =
   `· 数据源：${MINE.report}，全部为 100% 资产口径。${MINE.equity_note}。<br>
    · <b>数据口径规范</b>：各矿山产量/销量披露口径不同——精矿产量与销量统一标注为「dmt（实际品位，如 ~5.0% SC）」「SC6 折算（6% Li₂O）」或「混合品位 dmt」；平均售价标注基准（CIF/FOB/SC6/SC6e）；单位成本标注 FOB/CIF 与品位基准。各指标具体口径见④历史数据表行标签。<br>

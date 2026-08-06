@@ -382,12 +382,12 @@ const FY27_QGUIDE = {
   for (let i = 10; i < 32; i++) qIdx.push(i);
   // 年份分组（每季度 4 个；2021 只有 Q3/Q4 两个）
   const yearGroups = [[2021, [10, 11]], [2022, [12, 13, 14, 15]], [2023, [16, 17, 18, 19]], [2024, [20, 21, 22, 23]], [2025, [24, 25, 26, 27]], [2026, [28, 29, 30, 31]]];
-  // 表头：年份分组行 + 季度行
-  let html = '<thead><tr><th class="sticky" rowspan="2">矿山</th><th rowspan="2">披露口径</th><th rowspan="2">FY27 指引<br>季均(万吨)</th>';
+  // 表头：年份分组行 + 季度行；FY27 指引季均列在**最右**（便于与今年/上年对比）
+  let html = '<thead><tr><th class="sticky" rowspan="2">矿山</th><th rowspan="2">披露口径</th>';
   yearGroups.forEach(([yr, idxs]) => {
     html += `<th colspan="${idxs.length}" class="year-head">${yr}</th>`;
   });
-  html += '</tr><tr>';
+  html += `<th rowspan="2" class="year-head" style="background:rgba(240,193,90,0.12)!important;color:var(--warn);min-width:110px">未来一年指引<br>FY27 季均(万吨)</th></tr><tr>`;
   qIdx.forEach(i => {
     const est = i >= 30;
     html += `<th class="q-head${est ? ' acc' : ''}">${Q[i].replace('Q', 'Q')}${est ? '<small style="font-size:9px;color:var(--acc)">E</small>' : ''}</th>`;
@@ -398,13 +398,13 @@ const FY27_QGUIDE = {
     const h = histOf(m);
     const g = FY27_QGUIDE[m.mine];
     html += `<tr><td class="rowhead sticky"><a href="${pageOf(m)}" style="color:var(--acc);text-decoration:none">${m.mine}</a></td><td style="font-size:10.5px;color:var(--muted)">${UNIT_LABEL[m.mine] || '—'}</td>`;
-    html += `<td class="num ${g ? (g.v > 0 ? 'acc' : '') : 'warn'}">${g ? (g.v > 0 ? g.v.toFixed(1) : '0') : 'N.D.'}<small style="display:block;font-size:9px;color:var(--muted);font-weight:400">${g ? g.note : '无指引'}</small></td>`;
     qIdx.forEach(i => {
       const v = h.production[i];
       const est = i >= 30;
       html += `<td class="num ${v == null ? '' : (est ? 'acc' : '')}">${v == null ? '<span class="warn">N.D.</span>' : v.toFixed(1) + (est ? '<small style="font-size:9px;color:var(--acc)">E</small>' : '')}</td>`;
     });
-    html += '</tr>';
+    // FY27 指引季均（最右列，金色高亮）
+    html += `<td class="num" style="background:rgba(240,193,90,0.06)">${g ? (g.v > 0 ? `<span style="color:var(--warn);font-weight:700">${g.v.toFixed(1)}</span>` : '<span class="warn">0</span>') : '<span class="warn">N.D.</span>'}<small style="display:block;font-size:9px;color:var(--muted);font-weight:400">${g ? g.note : '无指引'}</small></td></tr>`;
   });
   // 合计行（披露口径直接相加，近似）
   let tot = qIdx.map(() => 0), totAny = qIdx.map(() => false);
@@ -412,12 +412,13 @@ const FY27_QGUIDE = {
     const h = histOf(m);
     qIdx.forEach((i, k) => { if (h.production[i] != null) { tot[k] += h.production[i]; totAny[k] = true; } });
   });
-  html += `<tr class="tot"><td class="sticky">行业合计</td><td>披露口径相加（近似）</td><td class="num">—</td>` +
-    qIdx.map((i, k) => `<td class="num">${totAny[k] ? tot[k].toFixed(0) : 'N.D.'}</td>`).join('') + '</tr></tbody>';
+  html += `<tr class="tot"><td class="sticky">行业合计</td><td>披露口径相加（近似）</td>` +
+    qIdx.map((i, k) => `<td class="num">${totAny[k] ? tot[k].toFixed(0) : 'N.D.'}</td>`).join('') +
+    '<td class="num" style="background:rgba(240,193,90,0.08)">—</td></tr></tbody>';
   document.getElementById('q_tbl').innerHTML = html;
   document.getElementById('q_note').innerHTML =
     '· **季度数据**：2021Q3-2026Q2 实际（日历季度，各矿山披露口径）+ 26Q3E/26Q4E 预测（E 标记，按官方 FY27 指引中值推算）；灰色 N.D.=官方未披露。<br>' +
-    '· **指引目标**：FY27 指引季均 = 财年指引中值 ÷ 4（或满产产能 ÷ 4，见各矿山口径注）；澳洲矿企一般不发布季度指引——此为对照参考值；无指引矿山（Wodgina/Marion/Finniss/Manna）标 N.D.<br>' +
+    '· **未来一年指引（表最右列）**：FY27 指引季均 = 财年指引中值 ÷ 4（或满产产能 ÷ 4，见各矿山口径注）——置于最右便于与 2025/2026 各季度实际对比；澳洲矿企一般不发布季度指引，此为对照参考值；无指引矿山（Wodgina/Marion/Finniss/Manna）标 N.D.<br>' +
     '· 未投产/停产矿山（Mt Cattlin C&M、Manna 未投产、Mt Holland 2023 前）对应季度 N.D. 或 0；行业合计为披露口径直接相加（跨矿山口径近似，非官方）。';
 })();
 
