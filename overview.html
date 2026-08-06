@@ -417,7 +417,7 @@ const FY27_QGUIDE = {
     '<td class="num" style="background:rgba(240,193,90,0.08)">—</td></tr></tbody>';
   document.getElementById('q_tbl').innerHTML = html;
   document.getElementById('q_note').innerHTML =
-    '· **季度数据**：2021Q3-2026Q2 实际（日历季度，各矿山披露口径）+ 26Q3E/26Q4E 预测（E 标记，按官方 FY27 指引中值推算）；灰色 N.D.=官方未披露。<br>' +
+    '· **季度数据**：2021Q3-2026Q2 实际（日历季度，各矿山披露口径）+ 26Q3E/26Q4E 预测（E 标记，**线性增长推算**：从 26Q2 实际等差爬坡至 FY27 指引季均/满产季均）；灰色 N.D.=官方未披露。<br>' +
     '· **未来一年指引（表最右列）**：FY27 指引季均 = 财年指引中值 ÷ 4（或满产产能 ÷ 4，见各矿山口径注）——置于最右便于与 2025/2026 各季度实际对比；澳洲矿企一般不发布季度指引，此为对照参考值；无指引矿山（Wodgina/Marion/Finniss/Manna）标 N.D.<br>' +
     '· 未投产/停产矿山（Mt Cattlin C&M、Manna 未投产、Mt Holland 2023 前）对应季度 N.D. 或 0；行业合计为披露口径直接相加（跨矿山口径近似，非官方）。';
 })();

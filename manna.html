@@ -148,7 +148,7 @@ document.getElementById('header_sub').innerHTML =
 document.getElementById('header_tags').innerHTML =
   `<span class="tag hl">运行状况描述：最新季度 ${MINE.current_q}</span>
    <span class="tag">历史数据：核对至 ${MINE.current_q} 实际值</span>
-   <span class="tag">预测季度（当前季后两季）= 官方指引中值推算</span>
+   <span class="tag">预测季度（当前季后两季）= 线性增长推算（26Q2 实际等差爬坡至 FY27 指引季均）</span>
    ${D.meta.pages.map(p => `<span class="tag"><a href="${p.file}${p.key === MINE_KEY ? '' : '?mine=' + p.key}" style="color:inherit;text-decoration:none">${p.label}</a></span>`).join('')}`;
 
 // ---------- 图表公共（须在 mines 渲染前声明，避免 TDZ） ----------
@@ -439,7 +439,7 @@ document.getElementById('meta_note').innerHTML =
   `· 数据源：${MINE.report}，全部为 100% 资产口径。${MINE.equity_note}。<br>
    · <b>数据口径规范</b>：各矿山产量/销量披露口径不同——精矿产量与销量统一标注为「dmt（实际品位，如 ~5.0% SC）」「SC6 折算（6% Li₂O）」或「混合品位 dmt」；平均售价标注基准（CIF/FOB/SC6/SC6e）；单位成本标注 FOB/CIF 与品位基准。各指标具体口径见④历史数据表行标签。<br>
    · 运行状况描述仅更新最新一个季度（本季度 ${MINE.current_q} vs 上一季度 ${MINE.prev_q}）；历史数据已与官方报告逐季核对，无官方披露的季度标 N.D.。<br>
-   · 产能核实为多来源交叉印证（公司年报/官网/季报/第三方看板），详见 ⑥⑦ 板块；预测值（26Q3E/26Q4E）按官方指引中值推算。<br>
+   · 产能核实为多来源交叉印证（公司年报/官网/季报/第三方看板），详见 ⑥⑦ 板块；预测值（26Q3E/26Q4E）按线性增长推算（26Q2 实际等差爬坡至 FY27 指引季均/满产季均）。<br>
    · 分页模式：每个矿山一个页面（${D.meta.pages.map(p => p.label).join(' / ')}），后续矿山按同格式新增。`;
 document.getElementById('disclaimer').textContent = D.meta.disclaimer;
 

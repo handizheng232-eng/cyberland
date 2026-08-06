@@ -2429,6 +2429,64 @@ data = {
     },
 }
 
+# ============ 线性增长预测覆写（用户规范 2026-08-06） ============
+# 26Q3E/26Q4E：从 26Q2 实际（A）等差爬坡到 FY27 指引季均/满产季均（B），n 步等差（默认 2 步）
+# 2027 年度预期：27Q1-27Q4 线性季度序列求和（27Q1/27Q2 = B（FY27 指引期），27Q3/27Q4 线性延至 cap）
+LIN = {
+    "history": {"A": 38.7, "B": 41.25, "cap": 43.5},   # GB：26Q2=38.7 → FY27 指引中值 165/4=41.25 → CGP 满产 43.5
+    "pilgangoora": {"A": 21.43, "B": 26.6, "cap": 27.5},
+    "wodgina": {"A": 18.8, "B": 20.0, "cap": 20.0},
+    "marion": {"A": 16.4, "B": 16.5, "cap": 16.5},
+    "kathleenvalley": {"A": 10.3, "B": 10.4, "cap": 10.6},
+    "baldhill": {"A": 0.1, "B": 3.5, "cap": 3.5},
+    "finniss": {"A": 0.5, "B": 4.0, "cap": 5.1, "steps": 4},   # 首产矿山：4 步等差爬坡
+    "manna": None,        # 未投产：2026 年保持 0（FID Q4 26 → 首产 2027 年中）
+    "mtholland": None,    # 26Q3E/26Q4E N.D.（SQM 美式财季 Q2 2026 报告未发布）
+}
+for key, p in LIN.items():
+    if not p or p.get("A") is None:
+        continue
+    A, B, cap = p["A"], p["B"], p["cap"]
+    n = p.get("steps", 2)
+    h = data[key]["production"] if key == "history" else data[key]["history"]["production"]
+    # 只有 26Q3E/26Q4E 两个预测位置：26Q3E = 第 1 步、26Q4E = 第 2 步（n 步等差爬坡）
+    h[30] = round(A + (B - A) * 1 / n, 2)
+    h[31] = round(A + (B - A) * 2 / n, 2)
+
+# 2027 年度预期（线性）：悲观 = 爬坡慢 1 季（Q3E + 3×B）、基准 = 线性序列、乐观 = 提前满产（cap）
+FC27 = {
+    "history":         {"bear": 164, "base": 168, "bull": 173, "q": [41.25, 41.25, 42.5, 43.5]},
+    "pilgangoora":     {"bear": 104, "base": 108, "bull": 110, "q": [26.6, 26.6, 27.5, 27.5]},
+    "wodgina":         {"bear": 76,  "base": 80,  "bull": 84,  "q": [20.0, 20.0, 20.0, 20.0]},
+    "marion":          {"bear": 63,  "base": 66,  "bull": 69,  "q": [16.5, 16.5, 16.5, 16.5]},
+    "kathleenvalley":  {"bear": 40,  "base": 41.8, "bull": 44, "q": [10.4, 10.4, 10.5, 10.6]},
+    "baldhill":        {"bear": 12,  "base": 14,  "bull": 14,  "q": [3.5, 3.5, 3.5, 3.5]},
+    "mtcattlin":       None,  # C&M 复产情景（0/3/8）保持
+    "finniss":         {"bear": 13,  "base": 15,  "bull": 16,  "q": [3.0, 4.0, 4.0, 4.0]},
+    "manna":           {"bear": 6,   "base": 8,   "bull": 10,  "q": [0.0, 0.0, 2.7, 5.3]},
+    "mtholland":       {"bear": 36,  "base": 38,  "bull": 40,  "q": [9.5, 9.5, 9.5, 9.5]},
+}
+_LABELMAP = {"悲观": "bear", "基准": "base", "乐观": "bull"}
+_FC27_KEY = {"Greenbushes": "history", "Pilgangoora": "pilgangoora", "Wodgina": "wodgina",
+             "Mt Marion": "marion", "Kathleen Valley": "kathleenvalley", "Bald Hill": "baldhill",
+             "Mt Cattlin": "mtcattlin", "Finniss": "finniss", "Manna": "manna", "Mt Holland": "mtholland"}
+for _mm in data["mines"]:  # fc 位于 mines[] 矿山对象内
+    fc = FC27.get(_FC27_KEY.get(_mm["mine"]))
+    if not fc:
+        continue
+    if "forecast_2027" in _mm and isinstance(_mm["forecast_2027"].get("scenarios"), dict):
+        s = _mm["forecast_2027"]["scenarios"]
+        s["bear"]["production_kt"] = fc["bear"] * 10
+        s["base"]["production_kt"] = fc["base"] * 10
+        s["bull"]["production_kt"] = fc["bull"] * 10
+        _mm["forecast_2027"]["quarterly_base"] = {
+            "27Q1": fc["q"][0], "27Q2": fc["q"][1], "27Q3": fc["q"][2], "27Q4": fc["q"][3],
+            "total": round(sum(fc["q"]), 1),
+        }
+    elif isinstance(_mm.get("fc_2027"), list):
+        for it in _mm["fc_2027"]:
+            it["val"] = fc[_LABELMAP[it["label"]]]
+
 os.makedirs(os.path.dirname(OUT), exist_ok=True)
 with open(OUT, "w", encoding="utf-8") as f:
     f.write("// 由 build_data.py 生成（永安期货-澳洲锂矿汇总格式）\n")
