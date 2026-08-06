@@ -128,20 +128,27 @@
   .yoy.up { color: var(--up); } .yoy.down { color: var(--down); } .yoy.d { color: var(--muted); }
 
   /* ---------- 表格 ---------- */
-  .table-wrap { overflow-x: auto; border-radius: 16px; border: 1px solid var(--line); background: var(--panel); backdrop-filter: blur(8px); }
-  table.tbl { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 900px; }
-  table.tbl th {
-    padding: 10px 10px; text-align: left; font-size: 11.5px; color: var(--muted); font-weight: 600;
-    border-bottom: 1px solid var(--line); background: rgba(77,163,255,0.05); white-space: nowrap;
+  .table-wrap { overflow-x: auto; border-radius: 16px; border: 1px solid var(--line); background: var(--panel); backdrop-filter: blur(8px); max-height: 640px; overflow-y: auto; }
+  table.tbl { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 12.5px; min-width: 900px; }
+  table.tbl thead th {
+    padding: 8px 8px; text-align: left; font-size: 11px; color: var(--muted); font-weight: 700;
+    border-bottom: 1px solid var(--line); background: #1b2440; white-space: nowrap;
+    position: sticky; top: 0; z-index: 2;
   }
-  table.tbl td { padding: 9px 10px; border-bottom: 1px solid rgba(90,120,180,0.1); white-space: nowrap; }
-  table.tbl tr:hover td { background: rgba(77,163,255,0.05); }
+  table.tbl thead th.year-head { background: rgba(77,163,255,0.16); color: var(--acc); text-align: center; font-size: 11.5px; letter-spacing: 1px; }
+  table.tbl thead th.q-head { background: #1b2440; text-align: center; font-weight: 600; }
+  table.tbl td { padding: 7px 8px; border-bottom: 1px solid rgba(90,120,180,0.08); white-space: nowrap; }
+  table.tbl tbody tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+  table.tbl tbody tr:hover td { background: rgba(77,163,255,0.06); }
   table.tbl td.num { text-align: right; font-variant-numeric: tabular-nums; }
   table.tbl td.strong { font-weight: 700; color: #fff; }
   table.tbl td.acc { color: var(--acc); }
   table.tbl td.warn { color: var(--warn); }
   table.tbl .rowhead { font-weight: 600; }
-  table.tbl tr.tot td { border-top: 2px solid rgba(240,193,90,0.5); font-weight: 800; background: rgba(240,193,90,0.05); }
+  table.tbl td.sticky, table.tbl th.sticky { position: sticky; left: 0; z-index: 1; background: #182136; }
+  table.tbl thead th.sticky { z-index: 4; background: #1b2440; }
+  table.tbl tr.tot td { border-top: 2px solid rgba(240,193,90,0.5); font-weight: 800; background: rgba(240,193,90,0.06); }
+  table.tbl tr.tot td.sticky { background: #1f2a3e; }
   .note { margin-top: 8px; font-size: 11.5px; color: var(--muted); line-height: 1.7; }
   .note.warn { color: var(--warn); }
 
@@ -175,16 +182,16 @@
   <!-- 行业 KPI -->
   <div class="kpi-row" id="kpi_row"></div>
 
-  <!-- ① 矿山卡片 -->
-  <div class="sec"><span class="ic">1</span><h2>矿山运行总览</h2><span class="hint">26Q2（2026 年 4-6 月）运行状况 · 点击卡片查看详情</span></div>
-  <div class="cards" id="mine_cards"></div>
-
-  <!-- ② 近五年年度汇总 -->
-  <div class="sec"><span class="ic">2</span><h2>近五年产量汇总</h2><span class="hint">日历年 CY2022-2026E 精矿产量（万吨）· 2026E 含下半年预测 · 附 SC6 等效折算统一口径</span></div>
+  <!-- ① 近五年季度产量汇总（最前） -->
+  <div class="sec"><span class="ic">1</span><h2>近五年产量汇总（季度）</h2><span class="hint">2021Q3-2026Q2 实际 + 26Q3E/26Q4E 预测 · 各矿山披露口径 · 附 FY27 指引季度均分对照</span></div>
   <div class="table-wrap">
-    <table class="tbl" id="yearly_tbl"></table>
+    <table class="tbl" id="q_tbl"></table>
   </div>
-  <div class="note" id="yearly_note"></div>
+  <div class="note" id="q_note"></div>
+
+  <!-- ② 矿山卡片 -->
+  <div class="sec"><span class="ic">2</span><h2>矿山运行总览</h2><span class="hint">26Q2（2026 年 4-6 月）运行状况 · 点击卡片查看详情</span></div>
+  <div class="cards" id="mine_cards"></div>
 
   <!-- ③ 资本开支 -->
   <div class="sec"><span class="ic">3</span><h2>资本开支汇总</h2><span class="hint">日历年 CY2022-2026 + 2027 预测 · 矿山/项目级 100% 口径（披露份额则标注）</span></div>
@@ -355,66 +362,63 @@ function fcAll(m) {
   return null;
 }
 
-/* ---------- 近五年产量汇总表 ---------- */
-(function yearly() {
-  // yoy: (cur - prev) / prev，百分比字符串；prev 为 0 或空 → N.D.
-  const yoy = (cur, prev) => {
-    if (cur == null || prev == null || prev === 0) return '<span class="yoy d">N.D.</span>';
-    const d = (cur - prev) / prev * 100;
-    return d >= 0 ? `<span class="yoy up">+${d.toFixed(1)}%</span>` : `<span class="yoy down">${d.toFixed(1)}%</span>`;
-  };
-  let html = `<tr><th>矿山</th><th>披露口径</th>` + YEARS.map(y => `<th>${y[0]}</th>`).join('') + `<th>2026E SC6 等效</th><th>2027E SC6 等效</th></tr>`;
+/* ---------- 近五年季度产量汇总表（2021Q3-2026Q2 + 26Q3E/26Q4E，行矿山 × 列季度） ---------- */
+/* FY27 指引季度均分（万吨/季；财年指引 ÷ 4 或产能 ÷ 4，口径标注；无指引 N.D.） */
+const FY27_QGUIDE = {
+  'Greenbushes': { v: 41.25, note: 'FY27 指引 155-175 万吨 中值÷4' },
+  'Pilgangoora': { v: 26.6, note: 'FY27 指引 103-110 万吨 中值÷4（dmt）' },
+  'Wodgina': null,
+  'Mt Marion': null,
+  'Kathleen Valley': { v: 10.4, note: 'FY27 指引 390-440k SC6 中值÷4' },
+  'Bald Hill': { v: 3.5, note: '满产 140k SC6/年 ÷4（非指引）' },
+  'Mt Cattlin': { v: 0, note: 'C&M 无生产' },
+  'Finniss': null,
+  'Manna': null,
+  'Mt Holland': { v: 9.5, note: '满产 380ktpa ÷4（非指引）' },
+};
+(function quarterly() {
+  // 季度序列：2021Q3-2026Q2 实际（索引 10-29）+ 26Q3E/26Q4E 预测（30-31）
+  const qIdx = [];
+  for (let i = 10; i < 32; i++) qIdx.push(i);
+  // 年份分组（每季度 4 个；2021 只有 Q3/Q4 两个）
+  const yearGroups = [[2021, [10, 11]], [2022, [12, 13, 14, 15]], [2023, [16, 17, 18, 19]], [2024, [20, 21, 22, 23]], [2025, [24, 25, 26, 27]], [2026, [28, 29, 30, 31]]];
+  // 表头：年份分组行 + 季度行
+  let html = '<thead><tr><th class="sticky" rowspan="2">矿山</th><th rowspan="2">披露口径</th><th rowspan="2">FY27 指引<br>季均(万吨)</th>';
+  yearGroups.forEach(([yr, idxs]) => {
+    html += `<th colspan="${idxs.length}" class="year-head">${yr}</th>`;
+  });
+  html += '</tr><tr>';
+  qIdx.forEach(i => {
+    const est = i >= 30;
+    html += `<th class="q-head${est ? ' acc' : ''}">${Q[i].replace('Q', 'Q')}${est ? '<small style="font-size:9px;color:var(--acc)">E</small>' : ''}</th>`;
+  });
+  html += '</tr></thead><tbody>';
+  // 行：矿山
   D.mines.forEach(m => {
     const h = histOf(m);
-    html += `<tr><td class="rowhead"><a href="${pageOf(m)}" style="color:var(--acc);text-decoration:none">${m.mine}</a></td><td>${UNIT_LABEL[m.mine] || '—'}</td>`;
-    let v2025 = null, sc6e = 0, anyE = false;
-    const full26 = h.production[30] != null || h.production[31] != null; // 26Q3E/26Q4E 是否有预测（2026E 是否全年口径）
-    YEARS.forEach((y, yi) => {
-      const v = yearSum(h, 'production', y[1], y[2]);
-      const isEst = yi === 4;
-      const yoyTxt = (isEst && v != null) ? (full26 ? yoy(v, v2025) : '<span class="yoy d">H1 口径</span>') : '';
-      html += `<td class="num${isEst && v != null ? ' acc' : ''}">${v == null ? '<span class="warn">N.D.</span>' : v.toFixed(1) + (isEst ? '<small style="font-size:10px;color:var(--muted)">E</small>' : '')}${yoyTxt}</td>`;
-      if (yi === 3) v2025 = v;              // 2025 实际（披露口径）
-      if (yi === 4 && v != null) { sc6e = v * (SC6_FACTOR[m.mine] || 1); anyE = true; }
+    const g = FY27_QGUIDE[m.mine];
+    html += `<tr><td class="rowhead sticky"><a href="${pageOf(m)}" style="color:var(--acc);text-decoration:none">${m.mine}</a></td><td style="font-size:10.5px;color:var(--muted)">${UNIT_LABEL[m.mine] || '—'}</td>`;
+    html += `<td class="num ${g ? (g.v > 0 ? 'acc' : '') : 'warn'}">${g ? (g.v > 0 ? g.v.toFixed(1) : '0') : 'N.D.'}<small style="display:block;font-size:9px;color:var(--muted);font-weight:400">${g ? g.note : '无指引'}</small></td>`;
+    qIdx.forEach(i => {
+      const v = h.production[i];
+      const est = i >= 30;
+      html += `<td class="num ${v == null ? '' : (est ? 'acc' : '')}">${v == null ? '<span class="warn">N.D.</span>' : v.toFixed(1) + (est ? '<small style="font-size:9px;color:var(--acc)">E</small>' : '')}</td>`;
     });
-    // 2026E SC6 列（附 vs 2025 SC6 同比——用 2025 披露值 × 系数换算对比）
-    const sc6_2025 = v2025 != null ? v2025 * (SC6_FACTOR[m.mine] || 1) : null;
-    html = html.slice(0, html.lastIndexOf('</td>'));
-    html += `<td class="num acc">${anyE ? sc6e.toFixed(1) + (full26 ? yoy(sc6e, sc6_2025) : '<span class="yoy d">H1 口径</span>') : 'N.D.'}</td>`;
-    const f = fcBaseVal(m);
-    const f_sc6 = f != null ? f * (SC6_FACTOR[m.mine] || 1) : null;
-    html += `<td class="num acc strong">${f_sc6 != null ? f_sc6.toFixed(1) + yoy(f_sc6, anyE && full26 ? sc6e : null) : 'N.D.'}</td></tr>`;
+    html += '</tr>';
   });
-  // 行业合计（SC6 等效口径）
-  let tot = [0, 0, 0, 0, 0], totAny = [false, false, false, false, false];
-  let totE = 0, totFc = 0;
+  // 合计行（披露口径直接相加，近似）
+  let tot = qIdx.map(() => 0), totAny = qIdx.map(() => false);
   D.mines.forEach(m => {
-    const h = histOf(m), f = SC6_FACTOR[m.mine] || 1;
-    YEARS.forEach((y, yi) => {
-      const v = yearSum(h, 'production', y[1], y[2]);
-      if (v != null) { tot[yi] += v * f; totAny[yi] = true; }
-    });
-    const e = yearSum(h, 'production', 28, 32);
-    if (e != null) totE += e * f;
-    const fv = fcBaseVal(m);
-    if (fv != null) totFc += fv * f;
+    const h = histOf(m);
+    qIdx.forEach((i, k) => { if (h.production[i] != null) { tot[k] += h.production[i]; totAny[k] = true; } });
   });
-  // 2025 SC6 合计（披露口径 × 系数，可折算项）
-  let tot2025 = 0, any25 = false;
-  D.mines.forEach(m => {
-    const v = yearSum(histOf(m), 'production', 24, 28);
-    if (v != null) { tot2025 += v * (SC6_FACTOR[m.mine] || 1); any25 = true; }
-  });
-  html += `<tr class="tot"><td>行业合计</td><td>SC6 等效折算</td>` +
-    YEARS.map((y, yi) => `<td class="num">${totAny[yi] ? tot[yi].toFixed(0) : 'N.D.'}</td>`).join('') +
-    `<td class="num">${totE.toFixed(0) + yoy(totE, any25 ? tot2025 : null)}</td>` +
-    `<td class="num">${totFc.toFixed(0) + yoy(totFc, totE)}</td></tr>`;
-  document.getElementById('yearly_tbl').innerHTML = html;
-  document.getElementById('yearly_note').innerHTML =
-    '· 近五年=日历年 CY2022-CY2026E（**2026E = 2026H1 实际 + 26Q3E/26Q4E 预测**，带 E 标记列；预测按官方 FY27 指引中值推算）；各矿山按披露口径（<b>SC6 等效折算</b> = 披露值 × 实际品位/6%，系数见上表）。' +
-    '· **同比分析**：2026E 单元格内小字 = 2026E vs 2025 全年（披露口径）；2026E/2027E SC6 等效列小字 = 同比（2027E vs 2026E，SC6 口径统一对比）；绿=增长、红=下降、N.D.=基数缺失。<br>' +
-    '· 未投产/停产矿山（Mt Cattlin C&M、Manna 未投产、Mt Holland 2023 前）对应年份 N.D. 或 0（2025 为 0 时同比 N.D.）。<br>' +
-    '· 2027E = 各矿山预测基准情景 × SC6 系数（见下方预测卡）；行业合计为可折算矿山之和（近似参考，非官方口径）。';
+  html += `<tr class="tot"><td class="sticky">行业合计</td><td>披露口径相加（近似）</td><td class="num">—</td>` +
+    qIdx.map((i, k) => `<td class="num">${totAny[k] ? tot[k].toFixed(0) : 'N.D.'}</td>`).join('') + '</tr></tbody>';
+  document.getElementById('q_tbl').innerHTML = html;
+  document.getElementById('q_note').innerHTML =
+    '· **季度数据**：2021Q3-2026Q2 实际（日历季度，各矿山披露口径）+ 26Q3E/26Q4E 预测（E 标记，按官方 FY27 指引中值推算）；灰色 N.D.=官方未披露。<br>' +
+    '· **指引目标**：FY27 指引季均 = 财年指引中值 ÷ 4（或满产产能 ÷ 4，见各矿山口径注）；澳洲矿企一般不发布季度指引——此为对照参考值；无指引矿山（Wodgina/Marion/Finniss/Manna）标 N.D.<br>' +
+    '· 未投产/停产矿山（Mt Cattlin C&M、Manna 未投产、Mt Holland 2023 前）对应季度 N.D. 或 0；行业合计为披露口径直接相加（跨矿山口径近似，非官方）。';
 })();
 
 /* ---------- 资本开支表（数据待子任务核实后填充） ---------- */
