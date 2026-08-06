@@ -144,7 +144,6 @@
   table.tbl td.strong { font-weight: 700; color: #fff; }
   table.tbl td.acc { color: var(--acc); }
   table.tbl td.warn { color: var(--warn); }
-  table.tbl td.nd { color: var(--muted); font-style: italic; }
   table.tbl .rowhead { font-weight: 600; }
   table.tbl td.sticky, table.tbl th.sticky { position: sticky; left: 0; z-index: 1; background: #182136; }
   table.tbl thead th.sticky { z-index: 4; background: #1b2440; }
@@ -343,8 +342,8 @@ const STATUS = {
       <div class="mc-stats">
         <div class="mc-stat"><div class="k">本季产量${pLabel ? '（' + pLabel + '）' : ''}</div><div class="v">${fmt(prod[CI])} <small>万吨</small></div><div class="c">环比 ${pct(prod[CI], prod[PI])}</div></div>
         <div class="mc-stat"><div class="k">本季销量</div><div class="v">${fmt(sales[CI])} <small>万吨</small></div><div class="c">环比 ${pct(sales[CI], sales[PI])}</div></div>
-        <div class="mc-stat"><div class="k">均价（US$/t）</div><div class="v" style="font-size:15px">${price[CI] != null ? price[CI].toLocaleString('zh-CN') : '尚未披露'}</div></div>
-        <div class="mc-stat"><div class="k">现金成本（A$/t）</div><div class="v" style="font-size:15px">${cost[CI] != null ? cost[CI].toLocaleString('zh-CN') : '尚未披露'}</div></div>
+        <div class="mc-stat"><div class="k">均价（US$/t）</div><div class="v" style="font-size:15px">${price[CI] != null ? price[CI].toLocaleString('zh-CN') : 'N.D.'}</div></div>
+        <div class="mc-stat"><div class="k">现金成本（A$/t）</div><div class="v" style="font-size:15px">${cost[CI] != null ? cost[CI].toLocaleString('zh-CN') : 'N.D.'}</div></div>
       </div>
       ${m.mine === 'Mt Holland' && prod[CI] == null ? `<div class="mc-note">⚠️ 26Q2 未披露：SQM 美式财季 Q2 2026 财报 8 月下旬发布；且 SQM 季度层面仅披露 50% 份额销量</div>` : ''}
       ${hlTxt ? `<div class="mc-hl"><b>⚡</b> ${hlTxt}</div>` : ''}
