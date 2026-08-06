@@ -124,6 +124,8 @@
   .mc-hl b { color: var(--acc2); }
   .mc-go { display: inline-block; margin-top: 10px; font-size: 12px; color: var(--acc); text-decoration: none; font-weight: 600; }
   .mc-go:hover { text-decoration: underline; }
+  .yoy { font-size: 10.5px; font-weight: 600; margin-top: 1px; }
+  .yoy.up { color: var(--up); } .yoy.down { color: var(--down); } .yoy.d { color: var(--muted); }
 
   /* ---------- 表格 ---------- */
   .table-wrap { overflow-x: auto; border-radius: 16px; border: 1px solid var(--line); background: var(--panel); backdrop-filter: blur(8px); }
@@ -355,25 +357,35 @@ function fcAll(m) {
 
 /* ---------- 近五年产量汇总表 ---------- */
 (function yearly() {
+  // yoy: (cur - prev) / prev，百分比字符串；prev 为 0 或空 → N.D.
+  const yoy = (cur, prev) => {
+    if (cur == null || prev == null || prev === 0) return '<span class="yoy d">N.D.</span>';
+    const d = (cur - prev) / prev * 100;
+    return d >= 0 ? `<span class="yoy up">+${d.toFixed(1)}%</span>` : `<span class="yoy down">${d.toFixed(1)}%</span>`;
+  };
   let html = `<tr><th>矿山</th><th>披露口径</th>` + YEARS.map(y => `<th>${y[0]}</th>`).join('') + `<th>2026E SC6 等效</th><th>2027E SC6 等效</th></tr>`;
-  const sc6Rows = [];
   D.mines.forEach(m => {
     const h = histOf(m);
     html += `<tr><td class="rowhead"><a href="${pageOf(m)}" style="color:var(--acc);text-decoration:none">${m.mine}</a></td><td>${UNIT_LABEL[m.mine] || '—'}</td>`;
-    let sc6e = 0, anyE = false;
+    let v2025 = null, sc6e = 0, anyE = false;
+    const full26 = h.production[30] != null || h.production[31] != null; // 26Q3E/26Q4E 是否有预测（2026E 是否全年口径）
     YEARS.forEach((y, yi) => {
       const v = yearSum(h, 'production', y[1], y[2]);
       const isEst = yi === 4;
-      html += `<td class="num${isEst && v != null ? ' acc' : ''}">${v == null ? '<span class="warn">N.D.</span>' : v.toFixed(1) + (isEst ? '<small style="font-size:10px;color:var(--muted)">E</small>' : '')}</td>`;
+      const yoyTxt = (isEst && v != null) ? (full26 ? yoy(v, v2025) : '<span class="yoy d">H1 口径</span>') : '';
+      html += `<td class="num${isEst && v != null ? ' acc' : ''}">${v == null ? '<span class="warn">N.D.</span>' : v.toFixed(1) + (isEst ? '<small style="font-size:10px;color:var(--muted)">E</small>' : '')}${yoyTxt}</td>`;
+      if (yi === 3) v2025 = v;              // 2025 实际（披露口径）
       if (yi === 4 && v != null) { sc6e = v * (SC6_FACTOR[m.mine] || 1); anyE = true; }
     });
-    // 简化：2026E SC6 列
+    // 2026E SC6 列（附 vs 2025 SC6 同比——用 2025 披露值 × 系数换算对比）
+    const sc6_2025 = v2025 != null ? v2025 * (SC6_FACTOR[m.mine] || 1) : null;
     html = html.slice(0, html.lastIndexOf('</td>'));
-    html += `<td class="num acc">${anyE ? sc6e.toFixed(1) : 'N.D.'}</td>`;
+    html += `<td class="num acc">${anyE ? sc6e.toFixed(1) + (full26 ? yoy(sc6e, sc6_2025) : '<span class="yoy d">H1 口径</span>') : 'N.D.'}</td>`;
     const f = fcBaseVal(m);
-    html += `<td class="num acc strong">${f != null ? (f * (SC6_FACTOR[m.mine] || 1)).toFixed(1) : 'N.D.'}</td></tr>`;
+    const f_sc6 = f != null ? f * (SC6_FACTOR[m.mine] || 1) : null;
+    html += `<td class="num acc strong">${f_sc6 != null ? f_sc6.toFixed(1) + yoy(f_sc6, anyE && full26 ? sc6e : null) : 'N.D.'}</td></tr>`;
   });
-  // 行业合计（SC6 等效口径仅对可折算项）
+  // 行业合计（SC6 等效口径）
   let tot = [0, 0, 0, 0, 0], totAny = [false, false, false, false, false];
   let totE = 0, totFc = 0;
   D.mines.forEach(m => {
@@ -387,13 +399,21 @@ function fcAll(m) {
     const fv = fcBaseVal(m);
     if (fv != null) totFc += fv * f;
   });
+  // 2025 SC6 合计（披露口径 × 系数，可折算项）
+  let tot2025 = 0, any25 = false;
+  D.mines.forEach(m => {
+    const v = yearSum(histOf(m), 'production', 24, 28);
+    if (v != null) { tot2025 += v * (SC6_FACTOR[m.mine] || 1); any25 = true; }
+  });
   html += `<tr class="tot"><td>行业合计</td><td>SC6 等效折算</td>` +
     YEARS.map((y, yi) => `<td class="num">${totAny[yi] ? tot[yi].toFixed(0) : 'N.D.'}</td>`).join('') +
-    `<td class="num">${totE.toFixed(0)}</td><td class="num">${totFc.toFixed(0)}</td></tr>`;
+    `<td class="num">${totE.toFixed(0) + yoy(totE, any25 ? tot2025 : null)}</td>` +
+    `<td class="num">${totFc.toFixed(0) + yoy(totFc, totE)}</td></tr>`;
   document.getElementById('yearly_tbl').innerHTML = html;
   document.getElementById('yearly_note').innerHTML =
     '· 近五年=日历年 CY2022-CY2026E（**2026E = 2026H1 实际 + 26Q3E/26Q4E 预测**，带 E 标记列；预测按官方 FY27 指引中值推算）；各矿山按披露口径（<b>SC6 等效折算</b> = 披露值 × 实际品位/6%，系数见上表）。' +
-    '· 未投产/停产矿山（Mt Cattlin C&M、Manna 未投产、Mt Holland 2023 前）对应年份 N.D. 或 0。<br>' +
+    '· **同比分析**：2026E 单元格内小字 = 2026E vs 2025 全年（披露口径）；2026E/2027E SC6 等效列小字 = 同比（2027E vs 2026E，SC6 口径统一对比）；绿=增长、红=下降、N.D.=基数缺失。<br>' +
+    '· 未投产/停产矿山（Mt Cattlin C&M、Manna 未投产、Mt Holland 2023 前）对应年份 N.D. 或 0（2025 为 0 时同比 N.D.）。<br>' +
     '· 2027E = 各矿山预测基准情景 × SC6 系数（见下方预测卡）；行业合计为可折算矿山之和（近似参考，非官方口径）。';
 })();
 
@@ -431,18 +451,29 @@ const CAPEX = D.capex || {
     if (f.base != null) base += f.base * k;
     if (f.bull != null) bull += f.bull * k;
   });
+  // 2026E SC6 合计（同比基数）
+  let totE = 0;
+  D.mines.forEach(m => {
+    const e = yearSum(histOf(m), 'production', 28, 32);
+    if (e != null) totE += e * (SC6_FACTOR[m.mine] || 1);
+  });
+  const yoy = (cur, prev) => {
+    if (cur == null || prev == null || prev === 0) return '';
+    const d = (cur - prev) / prev * 100;
+    return d >= 0 ? `<span class="yoy up" style="margin-left:6px">vs 2026E +${d.toFixed(1)}%</span>` : `<span class="yoy down" style="margin-left:6px">vs 2026E ${d.toFixed(1)}%</span>`;
+  };
   const per = D.mines.map(m => {
     const f = fcAll(m);
     if (!f || f.base == null) return null;
     return { mine: m.mine, base: f.base, unit: UNIT_LABEL[m.mine] || '' };
   }).filter(Boolean);
   document.getElementById('fc_summary').innerHTML = `
-    <div class="fc-card bear"><div class="k">行业悲观 <span class="lbl">悲观</span></div><div class="v">${bear.toFixed(0)} <small style="font-size:12px">万吨 SC6e</small></div><div class="d">FID 延后 / 爬坡受阻 / 锂价回落</div></div>
-    <div class="fc-card base"><div class="k">行业基准 <span class="lbl">基准</span></div><div class="v">${base.toFixed(0)} <small style="font-size:12px">万吨 SC6e</small></div><div class="d">各矿基准情景合计（SC6 等效折算）</div></div>
-    <div class="fc-card bull"><div class="k">行业乐观 <span class="lbl">乐观</span></div><div class="v">${bull.toFixed(0)} <small style="font-size:12px">万吨 SC6e</small></div><div class="d">满产加速 / 复产提前 / 新矿投产顺利</div></div>`;
+    <div class="fc-card bear"><div class="k">行业悲观 <span class="lbl">悲观</span></div><div class="v">${bear.toFixed(0)} <small style="font-size:12px">万吨 SC6e</small>${yoy(bear, totE)}</div><div class="d">FID 延后 / 爬坡受阻 / 锂价回落</div></div>
+    <div class="fc-card base"><div class="k">行业基准 <span class="lbl">基准</span></div><div class="v">${base.toFixed(0)} <small style="font-size:12px">万吨 SC6e</small>${yoy(base, totE)}</div><div class="d">各矿基准情景合计（SC6 等效折算）</div></div>
+    <div class="fc-card bull"><div class="k">行业乐观 <span class="lbl">乐观</span></div><div class="v">${bull.toFixed(0)} <small style="font-size:12px">万吨 SC6e</small>${yoy(bull, totE)}</div><div class="d">满产加速 / 复产提前 / 新矿投产顺利</div></div>`;
   document.getElementById('fc_note').innerHTML =
     `· 2027E 为研究性判断（日历年度 · 100% 资产口径），各矿山基准值：${per.map(p => `${p.mine} ${p.base} 万吨${p.unit ? '（' + p.unit + '）' : ''}`).join('、')}。<br>` +
-    `· 行业合计按 SC6 等效（×品位/6%）折算后相加——近似参考，非官方口径；Mt Cattlin 基准 0-3 万吨（C&M 复产情景）、Manna 基准 8 万吨（FID 后首产爬坡）。`;
+    `· 行业合计按 SC6 等效（×品位/6%）折算后相加——近似参考，非官方口径；同比基数为 2026E 合计（${totE.toFixed(0)} 万吨 SC6e）；Mt Cattlin 基准 0-3 万吨（C&M 复产情景）、Manna 基准 8 万吨（FID 后首产爬坡）。`;
 })();
 
 /* ---------- 本季对比表 ---------- */
