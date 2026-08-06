@@ -2556,4 +2556,3 @@ print("quarters:", QUARTERS[-4:], "... 共", len(QUARTERS))
 print("production 21Q3-26Q4:", series(9)[18:])
 print("sales 21Q3-26Q2:", [v for v in series(13)[18:26]])
 print("mines:", [m["mine"] for m in MINES])
-// deploy retry 01:06
