@@ -136,7 +136,7 @@ const D = YONGAN_DATA;
 const Q = D.quarters;
 // ---------- 分页模式：按 URL 参数选择矿山 ----------
 const urlParams = new URLSearchParams(location.search);
-const MINE_KEY = urlParams.get('mine') || 'Greenbushes';  // 默认第一页 Greenbushes
+const MINE_KEY = urlParams.get('mine') || 'Mt Holland';  // 分页模式
 const MINE = D.mines.find(m => m.mine === MINE_KEY) || D.mines[0];
 // 历史数据源：Greenbushes 用 D.history，其余矿山用 D[<minekey小写>].history
 const HIST = MINE.mine === 'Greenbushes' ? D.history : D[(MINE.mine === 'Mt Marion' ? 'marion' : (MINE.mine === 'Kathleen Valley' ? 'kathleenvalley' : (MINE.mine === 'Bald Hill' ? 'baldhill' : (MINE.mine === 'Mt Cattlin' ? 'mtcattlin' : (MINE.mine === 'Mt Holland' ? 'mtholland' : MINE.mine.toLowerCase())))))].history;

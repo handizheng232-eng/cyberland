@@ -61,6 +61,11 @@ const YONGAN_DATA = {
     "key": "Manna",
     "label": "Manna（第九页）",
     "file": "manna.html"
+   },
+   {
+    "key": "Mt Holland",
+    "label": "Mt Holland（第十页）",
+    "file": "mtholland.html"
    }
   ]
  },
@@ -2714,6 +2719,240 @@ const YONGAN_DATA = {
        "url": "img/manna_aerial.jpg",
        "src": "Global Lithium 官网",
        "cap": "Manna 项目区航拍（未开发地形）"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "company": "Covalent Lithium（SQM 50% + Wesfarmers 50%）",
+   "mine": "Mt Holland",
+   "current_q": "26Q2",
+   "prev_q": "26Q1",
+   "current_q_date": "2026年4-6月",
+   "mine_cn": "Mt Holland（荷兰山矿山）",
+   "report": "SQM 1Q2026 Earnings Release（2026-05-27，美式季度）；SQM 4Q2025 Earnings Release（2026-03-02）；SQM & Wesfarmers Mt Holland Expansion FID 公告（2026-07-21）；SQM-I 官网 Mt Holland 页",
+   "source_url": "https://sqm-i.com/what-we-do/operations-and-projects/mt-holland/",
+   "equity_note": "100% 资产基准（页面按 SQM 50% 份额 ×2 换算并标注）；Covalent Lithium = SQM（智利，NYSE: SQM，SQM-I 国际锂业务运营）+ Wesfarmers（ASX: WES）50:50 JV；**矿 + Kwinana 精炼厂一体化**（精矿 SC5.5 运至珀斯 Kwinana 转电池级氢氧化锂）；历史：Kidman Resources（ASX: KDR）2016-2018 发现/DFS → 2019 Wesfarmers 收购 Kidman + SQM JV；**美式财季（Q1-Q4）与 MM/DD/YYYY 日期格式**——最新披露 = SQM 2026Q1（2026-05-27），Q2 2026 报告 2026 年 8 月下旬发布",
+   "history_labels": [
+    [
+     "production",
+     "产量（万吨，100% 基准 SC5.5 销量口径）"
+    ],
+    [
+     "sales",
+     "销量（万吨）"
+    ],
+    [
+     "prod_sales_ratio",
+     "产销比"
+    ],
+    [
+     "avg_price",
+     "平均售价（US$/t，SC6）"
+    ],
+    [
+     "cash_cost",
+     "单位成本 FOB（A$/t）"
+    ]
+   ],
+   "status_26q2": {
+    "existing_lines": [
+     {
+      "name": "已有产能1：Mt Holland 矿 + 选矿厂（Earl Grey 伟晶岩）— 380ktpa SC5.5（100%）",
+      "q26q2": "26Q2 满产运营（SQM 2026Q1 确认 'operating at full capacity'）；1Q2026 精矿销量 38.1kt（SQM 50% = 76.2kt 100%，销量受船期影响）；选矿工艺 = DMS + 浮选混合（SC5.5）；**扩产 FID（2026-07-21）：380→760ktpa 翻倍、第二选矿厂 2027 H2 建设、扩产首产 H1 2030**",
+      "q26q1": "26Q1 满产爬坡（1Q2026 38.1kt 50%）；2025 全年 156.4kt（50% = 312.8kt 100%）超爬坡预期",
+      "compare": "2026-07-21 扩产 FID 是超预期点（SQM 份额 capex US$450-500M）——一体化项目进入倍增阶段；满产运营确认"
+     },
+     {
+      "name": "已有产能2：Kwinana 氢氧化锂精炼厂 — 50ktpa 电池级 LOH",
+      "q26q2": "Kwinana 爬坡中：2025-07 首产（SQM 2025Q2 确认）、预计 2027 达名称产能；1Q2026 氢氧化锂 0.9kt LCE（50% = 1.8kt 100%）；2025 全年 1.6kt LCE（50%）",
+      "q26q1": "爬坡初期（2025 年首产后）",
+      "compare": "精炼厂爬坡约 18 个月（2025-07 首产 → 2027 名称产能）；扩产 FID 保留 Kwinana 下游扩产选项（或直接卖精矿）"
+     }
+    ],
+    "future_lines": [
+     {
+      "name": "扩产项目（380→760ktpa，FID 2026-07-21）",
+      "q26q2": "扩产 FID 获批（2026-07-21）：矿 + 选矿厂 + 新集成矿石分选设施；第二选矿厂 2027 H2 开工、扩产首产精矿 H1 2030；SQM 份额 capex US$450-500M；扩产提供 Kwinana 下游扩产或直接卖精矿的选择权",
+      "q26q1": "扩产 DFS 研究中（2026 年前）",
+      "compare": "FID 后 12 个月开工——2027 H2 建设启动是下一催化剂"
+     }
+    ],
+    "overall": {
+     "operation_changes": "26Q2 满产运营（SQM 2026Q1 报告）：矿/选矿厂满产、Kwinana 精炼厂爬坡中（2027 达名称产能）；精矿均价 US$1,461/t（1Q2026，+72% yoy）；**2026-07-21 扩产 FID（380→760ktpa）**——从爬坡进入倍增阶段",
+     "prev_operation_changes": "26Q1 满产爬坡（1Q2026 38.1kt 50%）；2025 全年精矿 156.4kt（50%）+ 氢氧化锂 1.6kt LCE（50%）",
+     "highlights": [
+      "2026-07-21 扩产 FID：精矿 380→760ktpa @ 5.5% Li₂O（100%，翻倍）——SQM 份额 capex US$450-500M、2027 H2 建设、H1 2030 首产",
+      "2026Q1 满产运营确认（SQM 官方）——爬坡仅用 ~15 个月（2024 末投产 → 2026Q1 满产）",
+      "Kwinana 精炼厂 2025-07 首产（一体化最后一块拼图）——2025 全年氢氧化锂 1.6kt LCE（50%），2027 达名称产能 50ktpa",
+      "2025 全年精矿 156.4kt（SQM 50% = 312.8kt 100%）——首个完整生产年超预期",
+      "储量 85.6Mt @ 1.45%（Earl Grey 伟晶岩）——西澳前五伟晶岩矿床、矿山寿命 50+ 年",
+      "扩产保留 Kwinana 下游扩产选择权——矿+精炼一体化可随市场升级"
+     ]
+    }
+   },
+   "fc_unit": "万吨 SC5.5（100% 基准；2027 预测含满产 38 万吨/年）",
+   "fc_2027": [
+    {
+     "label": "悲观",
+     "val": 30,
+     "note": "满产 380ktpa 但销量受船期/市场影响——2027 年运行率 ~80%"
+    },
+    {
+     "label": "基准",
+     "val": 36,
+     "note": "满产 380ktpa 稳定运营 + 扩产前期准备（第二选矿厂 2027 H2 开工）"
+    },
+    {
+     "label": "乐观",
+     "val": 40,
+     "note": "满产 + 精矿直接销售增加（Kwinana 外多余精矿）——超 380ktpa 名义产能"
+    }
+   ],
+   "capacity_verification": {
+    "title": "选矿产能核实（多来源交叉印证 · 矿+精炼一体化项目）",
+    "method": "以 SQM-I 官网、SQM 美式季报（SEC 6-K）、扩产 FID 公告（2026-07-21）为来源；产能为 100% 基准（SQM 披露 50% 份额）。",
+    "summary": "Mt Holland（Earl Grey 伟晶岩，Forrestania 地区）选矿厂 DMS + 浮选混合工艺，产能 380,000 tpa SC5.5（100%）；Kwinana 精炼厂 50,000 tpa 电池级氢氧化锂（2025-07 首产、2027 达名称产能）；2026-07-21 扩产 FID：380→760ktpa 翻倍。2025 全年实际销量 312.8kt SC（100%）。",
+    "items": [
+     {
+      "line": "Mt Holland 选矿厂（DMS + 浮选混合）",
+      "excel_capacity": "380ktpa SC5.5（100% 基准）",
+      "verified": "✓ 官网 + SQM 报告双确认",
+      "sources": [
+       {
+        "src": "SQM-I 官网",
+        "data": "hybrid Dense Media Separation (DMS) and flotation process；expected annual output of approximately 380,000 dry tonnes at 5.5% Li₂O"
+       },
+       {
+        "src": "扩产 FID（2026-07-21）",
+        "data": "existing nameplate approximately 380,000 tpa → expansion to 760,000 tpa at 5.5% Li₂O (100% basis)；second concentrator construction H2 2027、first expansion production H1 2030；SQM share capex US$450-500M"
+       },
+       {
+        "src": "SQM 2025 全年报告",
+        "data": "2025 实际销量 156.4kt SC6（SQM 50% = 312.8kt 100%）——首个完整生产年验证"
+       }
+      ]
+     },
+     {
+      "line": "Kwinana 氢氧化锂精炼厂",
+      "excel_capacity": "50ktpa 电池级 LOH（约 1M EVs/年）",
+      "verified": "✓ 官网 + SQM 报告确认",
+      "sources": [
+       {
+        "src": "SQM-I 官网",
+        "data": "refinery expected to produce approximately 50,000 tonnes of battery-grade lithium hydroxide；located in Kwinana Industrial Area ~35km south of Perth；completion and successful commissioning in 2025 marked the start of lithium hydroxide production in Australia"
+       },
+       {
+        "src": "SQM 2025Q2/Q4 报告",
+        "data": "Kwinana first product July 2025；ramp-up expected ~18 months；2025 全年氢氧化锂 1.6kt LCE（50% = 3.2kt 100%）；2026Q1 0.9kt LCE（50%）"
+       }
+      ]
+     },
+     {
+      "line": "全矿合计（一体化）",
+      "excel_capacity": "380kt SC5.5 + 50kt LOH → 扩产 760kt SC5.5",
+      "verified": "✓ 官方确认（FID）",
+      "sources": [
+       {
+        "src": "扩产 FID（2026-07-21）",
+        "data": "expansion provides optionality to supply any future expansion of downstream processing at Kwinana refinery or sell expanded production as spodumene concentrate"
+       },
+       {
+        "src": "SQM 2026Q1 报告",
+        "data": "Mt Holland mine and concentrator currently operating at full capacity；Kwinana expected to reach nameplate in 2027"
+       }
+      ]
+     }
+    ],
+    "note": "核实时间：2026-08-05。关键结论：① 选矿厂 380ktpa SC5.5（100%）+ 扩产 FID 760ktpa（2026-07-21，2027 H2 建设、H1 2030 首产）；② Kwinana 精炼厂 50ktpa LOH（2025-07 首产、2027 达名称产能）；③ 2025 全年实际销量 312.8kt SC（100%）——满产爬坡验证；④ 2026Q1 满产运营（SQM 官方）；⑤ SQM 披露为 50% 份额（页面 ×2 = 100% 基准并标注）；⑥ 美式财季——最新披露 2026Q1（2026-05-27），Q2 2026 报告 8 月下旬。",
+    "sources_index": {
+     "公司官网": "SQM-I（sqm-i.com）Mt Holland 页",
+     "公司报告": "SQM 美式季报（SEC 6-K：2025Q1-Q4、2026Q1）",
+     "公司公告": "SQM & Wesfarmers 扩产 FID（2026-07-21）",
+     "前股东": "Kidman Resources（KDR）2016-2018 DFS/JORC",
+     "母公司": "Wesfarmers（ASX: WES）公告"
+    },
+    "images": [
+     {
+      "url": "img/sat_mtholland_z13.jpg",
+      "src": "卫星影像（Yandex Maps）",
+      "cap": "Mt Holland 矿区卫星影像（Forrestania 地区）——Earl Grey 露天矿与选矿厂"
+     },
+     {
+      "url": "img/sqmi_mtholland_hero.jpg",
+      "src": "SQM-I 官网",
+      "cap": "Mt Holland 项目图（SQM-I 官方）"
+     }
+    ],
+    "mining_side": {
+     "title": "原矿产能核实（矿坑 / 矿体 / 尾矿库 · 一体化项目）",
+     "method": "以 SQM-I 官网、SQM 报告、Kidman 时代资料为来源。",
+     "items": [
+      {
+       "line": "原矿矿山：Earl Grey 露天矿",
+       "status": "✅ 生产运营中（2024 末投产）",
+       "sources": [
+        {
+         "src": "SQM-I 官网",
+         "data": "open-cut mining operation with run-of-mine ore processed on-site；Earl Grey pegmatite：tabular ore body extending over 2km in dip, ~1km strike, up to 100m thickness"
+        },
+        {
+         "src": "SQM 2026Q1 报告",
+         "data": "mine and concentrator currently operating at full capacity"
+        }
+       ]
+      },
+      {
+       "line": "矿体与资源（Earl Grey 伟晶岩）",
+       "status": "✅ 储量确认（西澳前五）",
+       "sources": [
+        {
+         "src": "SQM-I 官网",
+         "data": "declared reserve of 85.6 million tonnes at 1.45% Li₂O——top five spodumene deposits in Western Australia；expected mine life over 50 years"
+        },
+        {
+         "src": "Kidman Resources 时代（历史）",
+         "data": "Kidman 2018 年 JORC：Earl Grey 初始储量约 19.3Mt @ 1.5%（2018-06，100% 基准）——当前 85.6Mt @ 1.45% 为多年钻探后扩展"
+        }
+       ]
+      },
+      {
+       "line": "环评与许可（WA 政府）",
+       "status": "✅ 已获批（矿 + 精炼厂）",
+       "sources": [
+        {
+         "src": "SQM-I 官网/扩产 FID",
+         "data": "necessary government and regulatory approvals have either been secured or are underway（扩产）；Kwinana 精炼厂许可（DWER Prescribed Premises）"
+        },
+        {
+         "src": "Kidman 时代",
+         "data": "Mt Holland Mining Proposal 2017-2018 获批（DMP/DMIRS）——投产前许可齐全"
+        }
+       ]
+      },
+      {
+       "line": "尾矿库（TSF）与物流",
+       "status": "✅ 建成",
+       "sources": [
+        {
+         "src": "SQM-I 官网",
+         "data": "精矿由陆路运至 Kwinana（Perth 南）精炼——一体化物流；尾矿库为选矿厂标准设施"
+        }
+       ]
+      }
+     ],
+     "note": "核实时间：2026-08-05。采矿侧要点：① Earl Grey 露天矿（Forrestania 地区，Perth 东 500km、Southern Cross 东南 120km）；② 储量 85.6Mt @ 1.45%（西澳前五、矿山寿命 50+ 年）；③ 矿+精炼一体化（Kwinana 50ktpa LOH）；④ 2024 末投产、2026Q1 满产（爬坡 ~15 个月）；⑤ 2026-07-21 扩产 FID（380→760ktpa）；⑥ 坐标 ≈ -32.1, 119.8（Forrestania，待精确验证）。",
+     "images": [
+      {
+       "url": "img/sat_mtholland_z13.jpg",
+       "src": "卫星影像（Yandex Maps）",
+       "cap": "Mt Holland Earl Grey 露天矿卫星影像"
+      },
+      {
+       "url": "img/sqmi_mtholland_hero.jpg",
+       "src": "SQM-I 官网",
+       "cap": "Mt Holland 项目实景（SQM-I 官方）"
       }
      ]
     }
@@ -7107,5 +7346,489 @@ const YONGAN_DATA = {
    ]
   },
   "yearly": {}
+ },
+ "mtholland": {
+  "quarters": [
+   "2019Q1",
+   "2019Q2",
+   "2019Q3",
+   "2019Q4",
+   "2020Q1",
+   "2020Q2",
+   "2020Q3",
+   "2020Q4",
+   "2021Q1",
+   "2021Q2",
+   "2021Q3",
+   "2021Q4",
+   "2022Q1",
+   "2022Q2",
+   "2022Q3",
+   "2022Q4",
+   "2023Q1",
+   "2023Q2",
+   "2023Q3",
+   "2023Q4",
+   "2024Q1",
+   "2024Q2",
+   "2024Q3",
+   "2024Q4",
+   "2025Q1",
+   "2025Q2",
+   "2025Q3",
+   "2025Q4",
+   "2026Q1",
+   "2026Q2",
+   "2026Q3",
+   "2026Q4"
+  ],
+  "history": {
+   "production": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    3.66,
+    null,
+    null,
+    13.46,
+    7.62,
+    null,
+    null,
+    null
+   ],
+   "lce": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "tech_grade": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "chem_grade": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "sales": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    3.66,
+    null,
+    null,
+    13.46,
+    7.62,
+    null,
+    null,
+    null
+   ],
+   "inv_change": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "inventory": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "prod_sales_ratio": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "avg_price": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "cost_with_royalty": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "cost_no_royalty": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "cash_cost": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "cif_cost": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "yearly": {
+   "2025": 31.3,
+   "2026": 7.6
+  }
  }
 };
