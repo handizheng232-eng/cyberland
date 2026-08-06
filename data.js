@@ -219,7 +219,14 @@ const YONGAN_DATA = {
      "total": 168.5
     },
     "confidence": "中高：基于公司官方指引与 CGP3 实测爬坡速率外推；主要不确定性为火灾复产节奏、CGP4 FID 时点、锂价对销量而非产量的传导。",
-    "disclaimer": "预测为研究性判断，非公司指引；公司 FY27 指引为 155-175 万吨（财年口径，含 26Q3-27Q2），与本预测的日历年度口径不同。"
+    "disclaimer": "预测为研究性判断，非公司指引；公司 FY27 指引为 155-175 万吨（财年口径，含 26Q3-27Q2），与本预测的日历年度口径不同。",
+    "basis_detail": "FY27 官方指引 155-175 万吨（中值 165）→ 季均 41.25；26Q2 实际 38.7 万吨（CGP3 火灾后复产爬坡中）→ 按线性增长 26Q3E=40.0、26Q4E=41.25（等差 d=1.28）；27Q1/27Q2=41.25（FY27 指引期）、27Q3/27Q4 线性延至 CGP 满产 43.5；2027 基准=168.5 万吨。",
+    "assumptions_detail": [
+     "CGP3 复产爬坡按线性：26Q4 达指引季均、2027 上半年爬满 52 万吨/年",
+     "存量产线维持 FY26 实际 ~130 万吨/年水平",
+     "CGP4 2027 年内不贡献（投资决策未定）",
+     "悲观=爬坡延迟（164）、乐观=满产提前+回收率改善（173）"
+    ]
    },
    "capacity_verification": {
     "title": "产能核实（多来源交叉印证）",
@@ -676,7 +683,14 @@ const YONGAN_DATA = {
      "total": 108.2
     },
     "confidence": "高：FY27 官方指引 1,030-1,100kt 已发布（首次含 Ngungaju 重启后双厂口径），基准情景取指引上沿附近；不确定性主要在 Ngungaju 爬坡节奏与锂价对产量的传导；P2000 是 2027 年后大变量（FID 2026-12）。",
-    "disclaimer": "预测为研究性判断，基于 PLS FY27 官方指引（2026-07-30 发布）推算，非公司直接给出的日历年度数字；日历 2027 与 FY27 财年（2026/7-2027/6）口径不同，已在预测中说明。"
+    "disclaimer": "预测为研究性判断，基于 PLS FY27 官方指引（2026-07-30 发布）推算，非公司直接给出的日历年度数字；日历 2027 与 FY27 财年（2026/7-2027/6）口径不同，已在预测中说明。",
+    "basis_detail": "FY27 官方指引 103-110 万吨（中值 106.5）→ 季均 26.6；26Q2 实际 21.43（Ngungaju 2026-07 重启后双厂爬坡中）→ 线性 26Q3E=24.0、26Q4E=26.6；27Q1/27Q2=26.6、27Q3/27Q4 线性至满产 27.5（双厂 ~1.25Mtpa）；2027 基准=108.2 万吨。",
+    "assumptions_detail": [
+     "Ngungaju 2026-10 前达目标产能（官方指引基础）",
+     "Pilgan 维持 ~200-215kt/季高利用率",
+     "P2000 2027 年内不贡献（可研 2026-12、FID+建设 >2 年）",
+     "悲观=Ngungaju 爬坡慢（104）、乐观=双厂超产（110）"
+    ]
    },
    "capacity_verification": {
     "title": "选矿产能核实（多来源交叉印证）",
@@ -1131,7 +1145,21 @@ const YONGAN_DATA = {
       }
      ]
     }
-   }
+   },
+   "quarterly_base": {
+    "27Q1": 20.0,
+    "27Q2": 20.0,
+    "27Q3": 20.0,
+    "27Q4": 20.0,
+    "total": 80.0
+   },
+   "basis_detail": "无年度指引（MRL 不发布季度/年度产量指引）；2026 年三线满产后年化 ~80 万吨（FY26 销量 317k dmt SC6 超指引上限）→ 季均 20；26Q2 实际 18.8 → 线性 26Q3E=19.4、26Q4E=20；2027 基准=80 万吨（三线满产 + Stage 4 供矿）。",
+   "assumptions_detail": [
+    "三线 750ktpa SC5.5% 产能满负荷（Q1 FY27 起三线全开）",
+    "Stage 4 预剥离 Q1 FY27 启动保障 3 年矿石供应",
+    "POSCO 2025-11 收购 30% 后运营口径不变（MRL 运营）",
+    "悲观=利用率不足（76）、乐观=超产+品位回升（84）"
+   ]
   },
   {
    "company": "MRL（Mineral Resources）",
@@ -1396,7 +1424,21 @@ const YONGAN_DATA = {
       }
      ]
     }
-   }
+   },
+   "quarterly_base": {
+    "27Q1": 16.5,
+    "27Q2": 16.5,
+    "27Q3": 16.5,
+    "27Q4": 16.5,
+    "total": 66.0
+   },
+   "basis_detail": "无年度指引；2026 稳态 ~66 万吨/年（FY26 销量 242k SC6 100% 口径）→ 季均 16.5；26Q2 实际 16.4 → 线性 26Q3E=16.4、26Q4E=16.5；2027 基准=66 万吨（DMS 满产 + 浮选厂 2027 年中投产）。",
+   "assumptions_detail": [
+    "浮选厂（FID 2026-05-26 $490M）2027 年中投产提升回收率",
+    "N9→N11 矿坑过渡品位波动可控",
+    "Ganfeng 合资运营稳定",
+    "悲观=浮选延期品位波动（63）、乐观=提前投产+地下开发（69）"
+   ]
   },
   {
    "company": "Liontown（Liontown Resources）",
@@ -1669,7 +1711,20 @@ const YONGAN_DATA = {
       }
      ]
     }
-   }
+   },
+   "quarterly_base": {
+    "27Q1": 10.4,
+    "27Q2": 10.4,
+    "27Q3": 10.5,
+    "27Q4": 10.6,
+    "total": 41.9
+   },
+   "basis_detail": "FY27 官方指引 390-440k SC6（中值 415k）→ 季均 10.4；26Q2 实际 10.3 → 线性 26Q3E=10.3、26Q4E=10.4；27Q1/27Q2=10.4、27Q3/27Q4 线性至 10.6（2.8Mtpa 原矿运行率）；2027 基准=41.8 万吨。",
+   "assumptions_detail": [
+    "2.8Mtpa 原矿运行率 FY27 底达成（地下爬坡）",
+    "回收率维持 ~63% 逐步改善",
+    "悲观=地下爬坡不及预期（40）、乐观=回收率 70%+（44）"
+   ]
   },
   {
    "company": "MRL（Mineral Resources）",
@@ -1959,7 +2014,20 @@ const YONGAN_DATA = {
       }
      ]
     }
-   }
+   },
+   "quarterly_base": {
+    "27Q1": 3.5,
+    "27Q2": 3.5,
+    "27Q3": 3.5,
+    "27Q4": 3.5,
+    "total": 14.0
+   },
+   "basis_detail": "2026-05 复产重启（capex $20M）、目标 26Q4 满产 140k SC6/年 → 季均 3.5；26Q2 实际 0.1（首月）→ 线性 26Q3E=1.8、26Q4E=3.5；2027 基准=14 万吨（全年满产运行）。",
+   "assumptions_detail": [
+    "Q2 FY27 达满产 140k dmt SC6/年（MRL 公告目标）",
+    "存量尾矿+选矿厂重启改造完成",
+    "悲观=爬坡延迟锂价回落（12）、乐观=扩建研究通过（14 满产 cap）"
+   ]
   },
   {
    "company": "Rio Tinto（力拓）",
@@ -2213,7 +2281,13 @@ const YONGAN_DATA = {
       }
      ]
     }
-   }
+   },
+   "basis_detail": "力拓 2025-03 收购后进入 C&M（无生产、无资本开支）；2027 年情景判断 0-8 万吨（非线性爬坡——取决于锂价回升与力拓复产决策）。",
+   "assumptions_detail": [
+    "悲观/基准=持续 C&M（0-3 万吨，概率最高）",
+    "乐观=力拓利用自有渠道有限复产（8 万吨）",
+    "S-K1300 资源 6.48Mt@1.41% 支撑复产可能性"
+   ]
   },
   {
    "company": "Core Lithium（ASX: CXO）",
@@ -2470,7 +2544,21 @@ const YONGAN_DATA = {
       }
      ]
     }
-   }
+   },
+   "quarterly_base": {
+    "27Q1": 3.0,
+    "27Q2": 4.0,
+    "27Q3": 4.0,
+    "27Q4": 4.0,
+    "total": 15.0
+   },
+   "basis_detail": "2026-05 恢复采矿（Grants）、26Q3 首产精矿目标；名称产能 205ktpa SC6e → 满产季均 5.1；首产 4 步线性爬坡：26Q3E=1.4、26Q4E=2.3 → 27Q1=3.0、27Q2=4.0 后持平；2027 基准=15 万吨（~75% 名称产能）。",
+   "assumptions_detail": [
+    "FID 融资 US$120M（Glencore/InfraVia/Nebari）+ A$120M 股权已到位",
+    "2028 年中爬坡至 1.2Mtpa 原矿吞吐",
+    "BP33 地下储量 9.29Mt@1.31% 支撑 20 年寿命",
+    "悲观=爬坡慢 50% 运行率（13）、乐观=年底达名称产能（16）"
+   ]
   },
   {
    "company": "Global Lithium（ASX: GL1）",
@@ -2722,7 +2810,21 @@ const YONGAN_DATA = {
       }
      ]
     }
-   }
+   },
+   "quarterly_base": {
+    "27Q1": 0.0,
+    "27Q2": 0.0,
+    "27Q3": 2.7,
+    "27Q4": 5.3,
+    "total": 8.0
+   },
+   "basis_detail": "未投产（MDCP 2026-08-04 批准、FID Q4 2026、首产精矿 2027 年中、Nova 1.8Mtpa 选矿厂路线）；2026 年产量为零；2027 年内首产爬坡：27Q3=2.7、27Q4=5.3（等差）；2027 基准=8 万吨。",
+   "assumptions_detail": [
+    "Nova Operation（A$7m 收购）改造后 2027 年中加工 Manna 矿石",
+    "Lopal 40% 包销 + US$75M 预付款（FID 后）+ Canmax 30% 包销",
+    "DFS 参数：NPV A$472M、capex A$439.1M、首产 SC5.5 精矿",
+    "悲观=FID 延后仅 DSO（6）、乐观=Nova 改造顺利（10）"
+   ]
   },
   {
    "company": "Covalent Lithium（SQM 50% + Wesfarmers 50%）",
@@ -2964,7 +3066,20 @@ const YONGAN_DATA = {
       }
      ]
     }
-   }
+   },
+   "quarterly_base": {
+    "27Q1": 9.5,
+    "27Q2": 9.5,
+    "27Q3": 9.5,
+    "27Q4": 9.5,
+    "total": 38.0
+   },
+   "basis_detail": "2026Q1 满产运营（SQM 确认 'operating at full capacity'，380ktpa → 季均 9.5）；26Q2 美式财季报告未发布（N.D.）；2027 基准=38 万吨（全年满产 + 扩产前期准备，第二选矿厂 2027 H2 开工）。",
+   "assumptions_detail": [
+    "Kwinana 精炼厂 2027 达名称产能（50ktpa LOH）",
+    "扩产 FID（2026-07-21）2027 H2 建设启动不影响存量产线",
+    "悲观=销量受船期/市场影响 80% 运行率（36）、乐观=精矿直售增加（40）"
+   ]
   }
  ],
  "capex": {
@@ -4043,8 +4158,8 @@ const YONGAN_DATA = {
   ],
   "history": {
    "production": [
-    null,
-    null,
+    0.0,
+    0.0,
     2.2,
     null,
     0.0,
@@ -5020,25 +5135,25 @@ const YONGAN_DATA = {
   ],
   "history": {
    "production": [
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
     null,
     null,
     null,
@@ -5513,20 +5628,20 @@ const YONGAN_DATA = {
     null,
     null,
     null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
     1.6,
     1.6,
     1.6,
@@ -6480,17 +6595,17 @@ const YONGAN_DATA = {
   ],
   "history": {
    "production": [
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
     null,
     null,
     null,
@@ -6966,36 +7081,36 @@ const YONGAN_DATA = {
   ],
   "history": {
    "production": [
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
     0.0,
     0.0
    ],
@@ -7447,25 +7562,25 @@ const YONGAN_DATA = {
   ],
   "history": {
    "production": [
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
     null,
     null,
     null,

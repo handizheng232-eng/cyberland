@@ -2486,6 +2486,90 @@ for _mm in data["mines"]:  # fc 位于 mines[] 矿山对象内
     elif isinstance(_mm.get("fc_2027"), list):
         for it in _mm["fc_2027"]:
             it["val"] = fc[_LABELMAP[it["label"]]]
+        _mm["quarterly_base"] = {
+            "27Q1": fc["q"][0], "27Q2": fc["q"][1], "27Q3": fc["q"][2], "27Q4": fc["q"][3],
+            "total": round(sum(fc["q"]), 1),
+        }
+
+# ============ N.D. 规范化 + 预测依据增强（用户规范 2026-08-06） ============
+# ① 未投产期的 None → 0（产量为零）：显式投产窗口（start 索引前 = 未投产 → 0；start 后 None 保持"尚未披露"）
+# start = 该矿山首次可能生产的季度索引（2019Q1=0）；None = 全期未投产
+PROD_START = {
+    "history": 0,            # GB：2019Q1 起生产期
+    "pilgangoora": 0,        # PL：2018 年已投产（2019 年有生产，季度未披露 → 尚未披露）
+    "wodgina": 2,            # Wodgina：2019Q3 首产（索引 2）
+    "marion": 0,             # Marion：2017 已投产
+    "kathleenvalley": 19,    # KV：2024Q3 首产（索引 19）
+    "baldhill": 0,           # BH：2018 投产（2019-2021 生产期未披露 → 尚未披露；2022 起停产期另行处理）
+    "mtcattlin": 0,          # MC：2016 已投产
+    "finniss": 11,           # Finniss：2022Q4 首产（索引 11）
+    "manna": 32,             # Manna：未投产（全期 0）
+    "mtholland": 19,         # MH：2023Q4 首产精矿（索引 19；2023Q4-2024 生产未披露 → 尚未披露）
+}
+for _mk in PROD_START:
+    _h = data[_mk]["production"] if _mk == "history" else data[_mk]["history"]["production"]
+    _start = PROD_START[_mk]
+    for _i in range(min(_start, len(_h))):
+        if _h[_i] is None:
+            _h[_i] = 0.0  # 未投产期 → 产量为零
+# Bald Hill 停产期（2022Q1-2024Q3，索引 8-22）→ 0（2022 出售 MRL、2023-06 宣布关闭、2024Q4 重启准备）
+for _i in range(8, 23):
+    if data["baldhill"]["history"]["production"][_i] is None:
+        data["baldhill"]["history"]["production"][_i] = 0.0
+
+# ② 各矿山 2027 预测详细依据（basis/assumptions，矿山页⑤与总览页共用，线性增长口径）
+FC_BASIS = {
+    "Greenbushes": {
+        "basis": "FY27 官方指引 155-175 万吨（中值 165）→ 季均 41.25；26Q2 实际 38.7 万吨（CGP3 火灾后复产爬坡中）→ 按线性增长 26Q3E=40.0、26Q4E=41.25（等差 d=1.28）；27Q1/27Q2=41.25（FY27 指引期）、27Q3/27Q4 线性延至 CGP 满产 43.5；2027 基准=168.5 万吨。",
+        "assumptions": ["CGP3 复产爬坡按线性：26Q4 达指引季均、2027 上半年爬满 52 万吨/年", "存量产线维持 FY26 实际 ~130 万吨/年水平", "CGP4 2027 年内不贡献（投资决策未定）", "悲观=爬坡延迟（164）、乐观=满产提前+回收率改善（173）"],
+    },
+    "Pilgangoora": {
+        "basis": "FY27 官方指引 103-110 万吨（中值 106.5）→ 季均 26.6；26Q2 实际 21.43（Ngungaju 2026-07 重启后双厂爬坡中）→ 线性 26Q3E=24.0、26Q4E=26.6；27Q1/27Q2=26.6、27Q3/27Q4 线性至满产 27.5（双厂 ~1.25Mtpa）；2027 基准=108.2 万吨。",
+        "assumptions": ["Ngungaju 2026-10 前达目标产能（官方指引基础）", "Pilgan 维持 ~200-215kt/季高利用率", "P2000 2027 年内不贡献（可研 2026-12、FID+建设 >2 年）", "悲观=Ngungaju 爬坡慢（104）、乐观=双厂超产（110）"],
+    },
+    "Wodgina": {
+        "basis": "无年度指引（MRL 不发布季度/年度产量指引）；2026 年三线满产后年化 ~80 万吨（FY26 销量 317k dmt SC6 超指引上限）→ 季均 20；26Q2 实际 18.8 → 线性 26Q3E=19.4、26Q4E=20；2027 基准=80 万吨（三线满产 + Stage 4 供矿）。",
+        "assumptions": ["三线 750ktpa SC5.5% 产能满负荷（Q1 FY27 起三线全开）", "Stage 4 预剥离 Q1 FY27 启动保障 3 年矿石供应", "POSCO 2025-11 收购 30% 后运营口径不变（MRL 运营）", "悲观=利用率不足（76）、乐观=超产+品位回升（84）"],
+    },
+    "Mt Marion": {
+        "basis": "无年度指引；2026 稳态 ~66 万吨/年（FY26 销量 242k SC6 100% 口径）→ 季均 16.5；26Q2 实际 16.4 → 线性 26Q3E=16.4、26Q4E=16.5；2027 基准=66 万吨（DMS 满产 + 浮选厂 2027 年中投产）。",
+        "assumptions": ["浮选厂（FID 2026-05-26 $490M）2027 年中投产提升回收率", "N9→N11 矿坑过渡品位波动可控", "Ganfeng 合资运营稳定", "悲观=浮选延期品位波动（63）、乐观=提前投产+地下开发（69）"],
+    },
+    "Kathleen Valley": {
+        "basis": "FY27 官方指引 390-440k SC6（中值 415k）→ 季均 10.4；26Q2 实际 10.3 → 线性 26Q3E=10.3、26Q4E=10.4；27Q1/27Q2=10.4、27Q3/27Q4 线性至 10.6（2.8Mtpa 原矿运行率）；2027 基准=41.8 万吨。",
+        "assumptions": ["2.8Mtpa 原矿运行率 FY27 底达成（地下爬坡）", "回收率维持 ~63% 逐步改善", "悲观=地下爬坡不及预期（40）、乐观=回收率 70%+（44）"],
+    },
+    "Bald Hill": {
+        "basis": "2026-05 复产重启（capex $20M）、目标 26Q4 满产 140k SC6/年 → 季均 3.5；26Q2 实际 0.1（首月）→ 线性 26Q3E=1.8、26Q4E=3.5；2027 基准=14 万吨（全年满产运行）。",
+        "assumptions": ["Q2 FY27 达满产 140k dmt SC6/年（MRL 公告目标）", "存量尾矿+选矿厂重启改造完成", "悲观=爬坡延迟锂价回落（12）、乐观=扩建研究通过（14 满产 cap）"],
+    },
+    "Mt Cattlin": {
+        "basis": "力拓 2025-03 收购后进入 C&M（无生产、无资本开支）；2027 年情景判断 0-8 万吨（非线性爬坡——取决于锂价回升与力拓复产决策）。",
+        "assumptions": ["悲观/基准=持续 C&M（0-3 万吨，概率最高）", "乐观=力拓利用自有渠道有限复产（8 万吨）", "S-K1300 资源 6.48Mt@1.41% 支撑复产可能性"],
+    },
+    "Finniss": {
+        "basis": "2026-05 恢复采矿（Grants）、26Q3 首产精矿目标；名称产能 205ktpa SC6e → 满产季均 5.1；首产 4 步线性爬坡：26Q3E=1.4、26Q4E=2.3 → 27Q1=3.0、27Q2=4.0 后持平；2027 基准=15 万吨（~75% 名称产能）。",
+        "assumptions": ["FID 融资 US$120M（Glencore/InfraVia/Nebari）+ A$120M 股权已到位", "2028 年中爬坡至 1.2Mtpa 原矿吞吐", "BP33 地下储量 9.29Mt@1.31% 支撑 20 年寿命", "悲观=爬坡慢 50% 运行率（13）、乐观=年底达名称产能（16）"],
+    },
+    "Manna": {
+        "basis": "未投产（MDCP 2026-08-04 批准、FID Q4 2026、首产精矿 2027 年中、Nova 1.8Mtpa 选矿厂路线）；2026 年产量为零；2027 年内首产爬坡：27Q3=2.7、27Q4=5.3（等差）；2027 基准=8 万吨。",
+        "assumptions": ["Nova Operation（A$7m 收购）改造后 2027 年中加工 Manna 矿石", "Lopal 40% 包销 + US$75M 预付款（FID 后）+ Canmax 30% 包销", "DFS 参数：NPV A$472M、capex A$439.1M、首产 SC5.5 精矿", "悲观=FID 延后仅 DSO（6）、乐观=Nova 改造顺利（10）"],
+    },
+    "Mt Holland": {
+        "basis": "2026Q1 满产运营（SQM 确认 'operating at full capacity'，380ktpa → 季均 9.5）；26Q2 美式财季报告未发布（N.D.）；2027 基准=38 万吨（全年满产 + 扩产前期准备，第二选矿厂 2027 H2 开工）。",
+        "assumptions": ["Kwinana 精炼厂 2027 达名称产能（50ktpa LOH）", "扩产 FID（2026-07-21）2027 H2 建设启动不影响存量产线", "悲观=销量受船期/市场影响 80% 运行率（36）、乐观=精矿直售增加（40）"],
+    },
+}
+for _mm in data["mines"]:
+    _fb = FC_BASIS.get(_mm["mine"])
+    if not _fb:
+        continue
+    if "forecast_2027" in _mm and isinstance(_mm["forecast_2027"], dict):
+        _mm["forecast_2027"]["basis_detail"] = _fb["basis"]
+        _mm["forecast_2027"]["assumptions_detail"] = _fb["assumptions"]
+    elif isinstance(_mm.get("fc_2027"), list):
+        _mm["basis_detail"] = _fb["basis"]
+        _mm["assumptions_detail"] = _fb["assumptions"]
 
 os.makedirs(os.path.dirname(OUT), exist_ok=True)
 with open(OUT, "w", encoding="utf-8") as f:

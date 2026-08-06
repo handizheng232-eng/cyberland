@@ -222,16 +222,15 @@ const m = MINE;
       <div class="table-wrap">
         <table class="hist-table" id="hist_${m.mine}"></table>
       </div>
-      <div class="note" style="margin-top:8px">${D.meta.color_legend}。产销比=销量/产量${m.mine === 'Greenbushes' ? '；库存为产销差滚动推算（期初 22Q4=29.6 万吨），非官方披露绝对库存' : ''}${m.mine === 'Mt Cattlin' ? '；⚠️ 2019-2022 季度为年度官方值均分估算（Galaxy/Allkem 年报口径），2023-2025H1 无官方逐季披露标 N.D.，2025 年起 C&M 停产' : ''}${m.mine === 'Finniss' ? '；⚠️ 2023-2024 季度为财年数据均分估算（FY24 产 95,020 dmt 口径），2024 年中起 C&M（2024-09-08 最后一船），2026-05 重启' : ''}${m.mine === 'Mt Holland' ? '；⚠️ 26Q2（2026 年 4-6 月）无数据原因：SQM 为 NYSE 美式财季（Q2 2026 财报惯例 8 月下旬发布，参考 2025Q2 = 2025-08-25），截至 2026-08-06 未发布；且 SQM 季度层面仅披露 50% 份额销量（LCE 折算），不披露季度精矿产量——年度产量（2023=15kt/2024=232.4kt/2025=329.6kt，100% 口径）见 SQM 20-F' : ''}。</div>
+      <div class="note" style="margin-top:8px">${D.meta.color_legend}。产销比=销量/产量${m.mine === 'Greenbushes' ? '；库存为产销差滚动推算（期初 22Q4=29.6 万吨），非官方披露绝对库存' : ''}${m.mine === 'Mt Cattlin' ? '；⚠️ 2019-2022 季度为年度官方值均分估算（Galaxy/Allkem 年报口径），2023-2025H1 无官方逐季披露（尚未披露），2025 年起 C&M 停产（产量为零）' : ''}${m.mine === 'Finniss' ? '；⚠️ 2023-2024 季度为财年数据均分估算（FY24 产 95,020 dmt 口径），2024 年中起 C&M（2024-09-08 最后一船），2026-05 重启' : ''}${m.mine === 'Mt Holland' ? '；⚠️ 26Q2（2026 年 4-6 月）无数据原因：SQM 为 NYSE 美式财季（Q2 2026 财报惯例 8 月下旬发布，参考 2025Q2 = 2025-08-25），截至 2026-08-06 未发布；且 SQM 季度层面仅披露 50% 份额销量（LCE 折算），不披露季度精矿产量——年度产量（2023=15kt/2024=232.4kt/2025=329.6kt，100% 口径）见 SQM 20-F' : ''}。</div>
     </div>
     <div class="cat">
-      <h3>⑤ 2027 年产量预测<span class="q">（研究性判断 · 日历年度 · 100% 资产口径 · 单位：${m.fc_unit || m.forecast_unit || '万吨'}）</span></h3>
-      <p class="desc"><b>预测依据：</b>${(m.forecast_2027 && m.forecast_2027.basis) || '基于最新季度运营表现与官方指引外推（研究性判断）'}</p>
+      <h3>⑤ 2027 年产量预测<span class="q">（研究性判断 · 日历年度 · 100% 资产口径 · 线性增长推算 · 单位：${m.fc_unit || m.forecast_unit || '万吨'}）</span></h3>
+      <p class="desc"><b>预测依据：</b>${(m.forecast_2027 && m.forecast_2027.basis_detail) || m.basis_detail || '基于最新季度运营表现与官方指引线性外推（研究性判断）'}</p>
       <div class="fc-grid" id="fc_${m.mine}"></div>
+      ${(() => { const qb = (m.forecast_2027 && m.forecast_2027.quarterly_base) || m.quarterly_base; return qb ? `<p class="desc"><b>季度拆分（线性增长）：</b>27Q1 = ${qb['27Q1']}、27Q2 = ${qb['27Q2']}、27Q3 = ${qb['27Q3']}、27Q4 = ${qb['27Q4']} 万吨，合计 ${qb.total} 万吨——27Q1/27Q2 对应 FY27 指引期（季均指引值），27Q3/27Q4 线性延至满产上限。</p>` : ''; })()}
       <div class="note" style="margin-top:10px">
-        ${m.forecast_2027 ? `<b>假设条件：</b>${m.forecast_2027.assumptions.join('；')}。<br>
-        <b>确定性：</b>${m.forecast_2027.confidence}<br>
-        <b>免责：</b>${m.forecast_2027.disclaimer}` : `<b>免责：</b>研究性判断，不构成投资建议。`}
+        ${(() => { const a = (m.forecast_2027 && m.forecast_2027.assumptions_detail) || m.assumptions_detail; const conf = m.forecast_2027 && m.forecast_2027.confidence; const disc = (m.forecast_2027 && m.forecast_2027.disclaimer) || '研究性判断，不构成投资建议。'; return `${a ? `<b>假设条件：</b>${a.join('；')}。<br>` : ''}${conf ? `<b>确定性：</b>${conf}<br>` : ''}<b>免责：</b>${disc}`; })()}
       </div>
     </div>
     <div class="cat">
@@ -375,7 +374,7 @@ function renderHist(mine) {
       const isPred = j >= nA;  // 当前季之后两季为预测列
       let cls = isPred ? 'fc' : 'act';
       let txt;
-      if (v === null || v === undefined) { txt = 'N.D.'; cls = 'emp'; }
+      if (v === null || v === undefined) { txt = '尚未披露'; cls = 'emp'; }
       else if (key === 'prod_sales_ratio') txt = Number(v).toFixed(3);
       else txt = Number(v).toLocaleString('zh-CN', { maximumFractionDigits: 2 });
       html += `<td class="${cls}">${txt}</td>`;
