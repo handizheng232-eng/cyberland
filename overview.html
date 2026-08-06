@@ -474,13 +474,13 @@ const FY27_QGUIDE = {
     } else {
       html += `<td class="num"><span class="warn">N.D.</span></td>`;
     }
-    // 2026E 预估依据
-    html += `<td style="font-size:10.5px;color:var(--muted);line-height:1.5;min-width:220px">${e26note}</td>`;
+    // 2026E 预估依据（小字 + 舒适行高）
+    html += `<td style="font-size:9.5px;color:var(--muted);line-height:1.8;min-width:210px">${e26note}</td>`;
     // 2027E 全年（明年）
     html += `<td class="num" style="color:var(--warn);font-weight:700">${f27 != null ? f27.toFixed(1) : '<span class="warn">N.D.</span>'}` +
       (f27 != null ? (full26 ? yoy2(f27, e26) : (h1 != null ? '<span class="yoy d">基数 H1 口径</span>' : '<span class="yoy d">同比 N.D.</span>')) : '') + `</td>`;
-    // 2027E 预估依据
-    html += `<td style="font-size:10.5px;color:var(--muted);line-height:1.5;min-width:220px">${basis27}</td></tr>`;
+    // 2027E 预估依据（小字 + 舒适行高）
+    html += `<td style="font-size:9.5px;color:var(--muted);line-height:1.8;min-width:210px">${basis27}</td></tr>`;
   });
   // 合计行（披露口径直接相加，近似）
   let tot = qIdx.map(() => 0), totAny = qIdx.map(() => false);
