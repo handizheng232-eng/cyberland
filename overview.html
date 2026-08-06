@@ -270,7 +270,7 @@ const UNIT_LABEL = {
 };
 
 /* 年度聚合：CY2022-CY2026E 产量（万吨，披露口径）+ SC6 等效；2026E = 2026H1 实际 + 26Q3E/26Q4E 预测 */
-const YEARS = [['2022', 12, 16], ['2023', 16, 20], ['2024', 20, 24], ['2025', 24, 28], ['2026E', 28, 32]];
+/* 年度聚合辅助（fcSummary 等使用）——季度表已改用 q_tbl 渲染，YEARS 年度聚合已废弃 */
 function yearSum(h, arrName, s, e) {
   let sum = 0, any = false;
   const arr = h[arrName];
