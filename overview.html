@@ -178,7 +178,7 @@
   <div class="cards" id="mine_cards"></div>
 
   <!-- ② 近五年年度汇总 -->
-  <div class="sec"><span class="ic">2</span><h2>近五年产量汇总</h2><span class="hint">日历年 CY2022-2026H1 精矿产量（万吨）· 各矿山披露口径 · 附 SC6 等效折算统一口径</span></div>
+  <div class="sec"><span class="ic">2</span><h2>近五年产量汇总</h2><span class="hint">日历年 CY2022-2026E 精矿产量（万吨）· 2026E 含下半年预测 · 附 SC6 等效折算统一口径</span></div>
   <div class="table-wrap">
     <table class="tbl" id="yearly_tbl"></table>
   </div>
@@ -260,8 +260,8 @@ const UNIT_LABEL = {
   'Mt Cattlin': 'dmt ~5.35%', 'Finniss': 'SC6 等效', 'Manna': 'SC5.5', 'Mt Holland': 'SC5.5（100%）'
 };
 
-/* 年度聚合：CY2022-CY2026H1 产量（万吨，披露口径）+ SC6 等效 */
-const YEARS = [['2022', 12, 16], ['2023', 16, 20], ['2024', 20, 24], ['2025', 24, 28], ['2026H1', 28, 30]];
+/* 年度聚合：CY2022-CY2026E 产量（万吨，披露口径）+ SC6 等效；2026E = 2026H1 实际 + 26Q3E/26Q4E 预测 */
+const YEARS = [['2022', 12, 16], ['2023', 16, 20], ['2024', 20, 24], ['2025', 24, 28], ['2026E', 28, 32]];
 function yearSum(h, arrName, s, e) {
   let sum = 0, any = false;
   const arr = h[arrName];
@@ -355,43 +355,44 @@ function fcAll(m) {
 
 /* ---------- 近五年产量汇总表 ---------- */
 (function yearly() {
-  let html = `<tr><th>矿山</th><th>披露口径</th>` + YEARS.map(y => `<th>${y[0]}</th>`).join('') + `<th>2026H1 SC6 等效</th><th>2027E SC6 等效</th></tr>`;
+  let html = `<tr><th>矿山</th><th>披露口径</th>` + YEARS.map(y => `<th>${y[0]}</th>`).join('') + `<th>2026E SC6 等效</th><th>2027E SC6 等效</th></tr>`;
   const sc6Rows = [];
   D.mines.forEach(m => {
     const h = histOf(m);
     html += `<tr><td class="rowhead"><a href="${pageOf(m)}" style="color:var(--acc);text-decoration:none">${m.mine}</a></td><td>${UNIT_LABEL[m.mine] || '—'}</td>`;
-    let sc6h1 = 0, anyH1 = false;
+    let sc6e = 0, anyE = false;
     YEARS.forEach((y, yi) => {
       const v = yearSum(h, 'production', y[1], y[2]);
-      html += `<td class="num">${v == null ? '<span class="warn">N.D.</span>' : v.toFixed(1)}</td>`;
-      if (yi === 4 && v != null) { sc6h1 = v * (SC6_FACTOR[m.mine] || 1); anyH1 = true; }
+      const isEst = yi === 4;
+      html += `<td class="num${isEst && v != null ? ' acc' : ''}">${v == null ? '<span class="warn">N.D.</span>' : v.toFixed(1) + (isEst ? '<small style="font-size:10px;color:var(--muted)">E</small>' : '')}</td>`;
+      if (yi === 4 && v != null) { sc6e = v * (SC6_FACTOR[m.mine] || 1); anyE = true; }
     });
-    // 简化：2026H1 SC6 列
+    // 简化：2026E SC6 列
     html = html.slice(0, html.lastIndexOf('</td>'));
-    html += `<td class="num acc">${anyH1 ? sc6h1.toFixed(1) : 'N.D.'}</td>`;
+    html += `<td class="num acc">${anyE ? sc6e.toFixed(1) : 'N.D.'}</td>`;
     const f = fcBaseVal(m);
     html += `<td class="num acc strong">${f != null ? (f * (SC6_FACTOR[m.mine] || 1)).toFixed(1) : 'N.D.'}</td></tr>`;
   });
   // 行业合计（SC6 等效口径仅对可折算项）
   let tot = [0, 0, 0, 0, 0], totAny = [false, false, false, false, false];
-  let totH1 = 0, totFc = 0;
+  let totE = 0, totFc = 0;
   D.mines.forEach(m => {
     const h = histOf(m), f = SC6_FACTOR[m.mine] || 1;
-    YEARS.forEach(([, s, e], yi) => {
-      const v = yearSum(h, 'production', s, e);
+    YEARS.forEach((y, yi) => {
+      const v = yearSum(h, 'production', y[1], y[2]);
       if (v != null) { tot[yi] += v * f; totAny[yi] = true; }
     });
-    const h1 = yearSum(h, 'production', 28, 30);
-    if (h1 != null) totH1 += h1 * f;
+    const e = yearSum(h, 'production', 28, 32);
+    if (e != null) totE += e * f;
     const fv = fcBaseVal(m);
     if (fv != null) totFc += fv * f;
   });
   html += `<tr class="tot"><td>行业合计</td><td>SC6 等效折算</td>` +
     YEARS.map((y, yi) => `<td class="num">${totAny[yi] ? tot[yi].toFixed(0) : 'N.D.'}</td>`).join('') +
-    `<td class="num">${totH1.toFixed(0)}</td><td class="num">${totFc.toFixed(0)}</td></tr>`;
+    `<td class="num">${totE.toFixed(0)}</td><td class="num">${totFc.toFixed(0)}</td></tr>`;
   document.getElementById('yearly_tbl').innerHTML = html;
   document.getElementById('yearly_note').innerHTML =
-    '· 近五年=日历年 CY2022-CY2026H1（2026H1 = 26Q1+26Q2）；各矿山按披露口径（<b>SC6 等效折算</b> = 披露值 × 实际品位/6%，系数见上表）。' +
+    '· 近五年=日历年 CY2022-CY2026E（**2026E = 2026H1 实际 + 26Q3E/26Q4E 预测**，带 E 标记列；预测按官方 FY27 指引中值推算）；各矿山按披露口径（<b>SC6 等效折算</b> = 披露值 × 实际品位/6%，系数见上表）。' +
     '· 未投产/停产矿山（Mt Cattlin C&M、Manna 未投产、Mt Holland 2023 前）对应年份 N.D. 或 0。<br>' +
     '· 2027E = 各矿山预测基准情景 × SC6 系数（见下方预测卡）；行业合计为可折算矿山之和（近似参考，非官方口径）。';
 })();
@@ -466,7 +467,7 @@ const CAPEX = D.capex || {
 
 /* ---------- 口径与说明 ---------- */
 document.getElementById('meta_note').innerHTML =
-  '· 本页为总览（主页）：矿山卡片 = 26Q2 运行状况；近五年汇总 = CY2022-CY2026H1 年度精矿产量（各矿披露口径 + SC6 等效折算）；资本开支表 = 矿山级 capex（核实中）；2027 预测 = 各矿预测基准汇总。<br>' +
+  '· 本页为总览（主页）：矿山卡片 = 26Q2 运行状况；近五年汇总 = CY2022-CY2026E 年度精矿产量（2026E = 上半年实际 + 下半年预测；各矿披露口径 + SC6 等效折算）；资本开支表 = 矿山级 capex（核实中）；2027 预测 = 各矿预测基准汇总。<br>' +
   '· 数据源：各矿山母公司官方季度报告（IGO / PLS / MRL / Liontown / 力拓 / Core Lithium / Global Lithium / SQM-Wesfarmers），全部为 100% 资产口径（Mt Holland 按 SQM 50% 份额 ×2）。<br>' +
   '· 口径差异提示：产量单位（SC6 折算 / dmt 实际品位 / 混合品位 dmt / SC5.5 100%）与价格成本基准（CIF/FOB、SC6/SC6e）各异——跨矿相加请以"SC6 等效折算"列为参考。<br>' +
   '· 数据更新至 26Q2（2026 年 4-6 月）；SQM（NYSE）美式财季 Q2 2026 报告 8 月下旬发布，Mt Holland 26Q2 暂 N.D.。' +
