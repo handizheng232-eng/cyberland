@@ -14,57 +14,57 @@ const YONGAN_DATA = {
   "pages": [
    {
     "key": "Overview",
-    "label": "矿山总览",
+    "label": "总览",
     "file": "overview.html"
    },
    {
     "key": "Greenbushes",
-    "label": "Greenbushes（第一页）",
+    "label": "1 Greenbushes",
     "file": "index.html"
    },
    {
     "key": "Pilgangoora",
-    "label": "Pilgangoora（第二页）",
+    "label": "2 Pilgangoora",
     "file": "pilgangoora.html"
    },
    {
     "key": "Wodgina",
-    "label": "Wodgina（第三页）",
+    "label": "3 Wodgina",
     "file": "wodgina.html"
    },
    {
     "key": "Mt Marion",
-    "label": "Mt Marion（第四页）",
+    "label": "4 Mt Marion",
     "file": "marion.html"
    },
    {
     "key": "Kathleen Valley",
-    "label": "Kathleen Valley（第五页）",
+    "label": "5 Kathleen Valley",
     "file": "kathleenvalley.html"
    },
    {
     "key": "Bald Hill",
-    "label": "Bald Hill（第六页）",
+    "label": "6 Bald Hill",
     "file": "baldhill.html"
    },
    {
     "key": "Mt Cattlin",
-    "label": "Mt Cattlin（第七页）",
+    "label": "7 Mt Cattlin",
     "file": "mtcattlin.html"
    },
    {
     "key": "Finniss",
-    "label": "Finniss（第八页）",
+    "label": "8 Finniss",
     "file": "finniss.html"
    },
    {
     "key": "Manna",
-    "label": "Manna（第九页）",
+    "label": "9 Manna",
     "file": "manna.html"
    },
    {
     "key": "Mt Holland",
-    "label": "Mt Holland（第十页）",
+    "label": "10 Mt Holland",
     "file": "mtholland.html"
    }
   ]

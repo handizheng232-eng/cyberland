@@ -3,108 +3,229 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>矿山总览 ｜ 永安期货 · 澳洲锂矿季度汇总</title>
+<title>永安期货 · 澳洲锂矿季度汇总</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
 <style>
   :root {
-    --bg: #0f1420; --panel: #171e2e; --panel2: #1d2638;
-    --line: #2a3550; --text: #dbe4f3; --muted: #8b98b4; --warn: #e8b64c;
-    --acc: #4da3ff; --acc2: #ffb454; --up: #4cd97b; --down: #ff6b6b;
+    --bg0: #0a0e1a; --bg1: #101830; --bg2: #1a2440;
+    --panel: rgba(23, 30, 46, 0.72); --panel2: rgba(29, 38, 56, 0.85);
+    --line: rgba(90, 120, 180, 0.22); --text: #e6edf9; --muted: #93a3c2;
+    --acc: #4da3ff; --acc2: #ffb454; --up: #4cd97b; --down: #ff6b6b; --warn: #e8b64c;
+    --gold: #f0c15a; --violet: #9d7bff;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: "Segoe UI", "Microsoft YaHei", sans-serif; line-height: 1.6; }
-  .wrap { max-width: 1320px; margin: 0 auto; padding: 26px 20px 60px; }
+  body {
+    font-family: -apple-system, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+    background:
+      radial-gradient(1100px 500px at 85% -10%, rgba(77, 163, 255, 0.16), transparent 60%),
+      radial-gradient(900px 480px at -10% 20%, rgba(157, 123, 255, 0.12), transparent 55%),
+      radial-gradient(700px 420px at 50% 110%, rgba(240, 193, 90, 0.07), transparent 60%),
+      var(--bg0);
+    color: var(--text); min-height: 100vh; line-height: 1.55;
+  }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 22px 20px 60px; }
 
-  header { border-bottom: 1px solid var(--line); padding-bottom: 16px; margin-bottom: 22px; }
-  header h1 { font-size: 23px; font-weight: 700; }
-  header .sub { color: var(--muted); font-size: 13px; margin-top: 6px; }
-  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-  .tag { font-size: 12px; padding: 3px 10px; border-radius: 20px; border: 1px solid var(--line); color: var(--muted); }
-  .tag.hl { color: var(--acc); border-color: var(--acc); }
+  /* ---------- 头部 ---------- */
+  header.hero {
+    padding: 26px 28px 20px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(32, 46, 84, 0.85), rgba(16, 24, 48, 0.9));
+    border: 1px solid var(--line);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255,255,255,0.06);
+    position: relative; overflow: hidden;
+  }
+  header.hero::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(120deg, transparent 40%, rgba(77,163,255,0.06) 50%, transparent 60%);
+    pointer-events: none;
+  }
+  header.hero h1 {
+    font-size: 25px; letter-spacing: 1px; font-weight: 800;
+    background: linear-gradient(90deg, #fff, #9cc4ff 60%, #7fa8e8);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  header.hero .sub { color: var(--muted); font-size: 13px; margin-top: 6px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; align-items: center; }
+  .tag {
+    font-size: 12px; padding: 4px 11px 4px 8px; border-radius: 18px;
+    border: 1px solid var(--line); color: var(--muted);
+    background: rgba(255,255,255,0.03); display: inline-flex; align-items: center; gap: 6px;
+    transition: all .18s ease;
+  }
+  .tag .num {
+    width: 17px; height: 17px; border-radius: 50%; font-size: 10px; font-weight: 700;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: #0a0e1a; background: linear-gradient(135deg, var(--acc), var(--violet));
+  }
+  .tag.hl { color: var(--acc); border-color: rgba(77,163,255,0.6); background: rgba(77,163,255,0.1); box-shadow: 0 0 14px rgba(77,163,255,0.25); }
+  .tag.hl .num { background: linear-gradient(135deg, #ffb454, #ff7b54); }
   .tag a { color: inherit; text-decoration: none; }
+  .tag:hover { transform: translateY(-1px); border-color: rgba(77,163,255,0.45); color: var(--text); }
 
-  .mine-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 16px; margin-bottom: 24px; }
-  .mine-card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px; transition: border-color .2s; }
-  .mine-card:hover { border-color: var(--acc); }
-  .mine-card .mc-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
-  .mine-card .mc-name { font-size: 17px; font-weight: 700; color: var(--acc); text-decoration: none; }
-  .mine-card .mc-name:hover { text-decoration: underline; }
-  .mine-card .mc-company { font-size: 12px; color: var(--muted); }
-  .mine-card .mc-q { font-size: 12px; color: var(--acc2); margin-left: auto; white-space: nowrap; }
-  .mine-card .mc-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; margin: 12px 0; }
-  .mc-stat .k { font-size: 11.5px; color: var(--muted); }
-  .mc-stat .v { font-size: 16px; font-weight: 600; }
-  .mc-stat .d { font-size: 11px; }
-  .d.up { color: var(--up); } .d.down { color: var(--down); } .d.flat { color: var(--muted); }
-  .mine-card .mc-hl { font-size: 12px; color: var(--text); background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; padding: 8px 11px; margin: 10px 0; }
-  .mine-card .mc-hl b { color: var(--acc2); font-weight: 600; }
-  .mine-card .mc-link { display: inline-block; font-size: 12.5px; color: var(--acc); text-decoration: none; border: 1px solid var(--acc); border-radius: 6px; padding: 5px 12px; margin-top: 4px; }
-  .mine-card .mc-link:hover { background: rgba(77,163,255,.12); }
+  /* ---------- 行业 KPI ---------- */
+  .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 16px; }
+  .kpi {
+    border-radius: 16px; padding: 14px 16px;
+    background: var(--panel); border: 1px solid var(--line);
+    backdrop-filter: blur(10px);
+  }
+  .kpi .k { font-size: 12px; color: var(--muted); }
+  .kpi .v { font-size: 22px; font-weight: 800; margin-top: 4px; background: linear-gradient(90deg, #fff, #9cc4ff); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .kpi .d { font-size: 12px; margin-top: 2px; }
+  .kpi .d.up { color: var(--up); } .kpi .d.down { color: var(--down); }
 
-  table { border-collapse: collapse; width: 100%; font-size: 12.5px; margin-top: 6px; }
-  th, td { padding: 8px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
-  th { background: var(--panel2); color: var(--muted); font-weight: 600; white-space: nowrap; }
-  td.line { color: var(--acc); white-space: nowrap; font-weight: 600; }
-  td.num { text-align: right; white-space: nowrap; }
-  .table-wrap { overflow-x: auto; }
-  .ov-up { color: var(--up); } .ov-down { color: var(--down); }
+  /* ---------- 板块标题 ---------- */
+  .sec { display: flex; align-items: center; gap: 10px; margin: 26px 0 12px; }
+  .sec .ic {
+    width: 26px; height: 26px; border-radius: 8px; font-size: 14px; font-weight: 800;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--acc), var(--violet)); color: #0a0e1a;
+  }
+  .sec h2 { font-size: 17px; font-weight: 700; }
+  .sec .hint { font-size: 12px; color: var(--muted); }
 
-  .meta { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin-top: 8px; }
-  .meta h3 { font-size: 15px; margin-bottom: 8px; }
-  .meta p { font-size: 12.5px; color: var(--muted); margin-bottom: 6px; }
+  /* ---------- 矿山卡片 ---------- */
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+  .mine-card {
+    border-radius: 18px; padding: 16px 18px; position: relative; overflow: hidden;
+    background: linear-gradient(160deg, rgba(30, 42, 72, 0.9), rgba(18, 26, 48, 0.95));
+    border: 1px solid var(--line);
+    transition: all .2s ease;
+    box-shadow: 0 8px 26px rgba(0,0,0,0.35);
+  }
+  .mine-card:hover { transform: translateY(-3px); border-color: rgba(77,163,255,0.5); box-shadow: 0 14px 36px rgba(0,0,0,0.5); }
+  .mine-card::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--mc1, #4da3ff), var(--mc2, #9d7bff));
+  }
+  .mine-card .mc-top { display: flex; align-items: center; gap: 10px; }
+  .mine-card .mc-badge {
+    width: 34px; height: 34px; border-radius: 11px; font-size: 15px; font-weight: 800;
+    display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--mc1, #4da3ff), var(--mc2, #9d7bff)); color: #0a0e1a;
+  }
+  .mine-card .mc-name { font-size: 15.5px; font-weight: 700; }
+  .mine-card .mc-company { font-size: 11.5px; color: var(--muted); margin-top: 1px; }
+  .mine-card .mc-status {
+    margin-left: auto; font-size: 10.5px; padding: 3px 9px; border-radius: 12px; font-weight: 600;
+    background: rgba(76, 217, 123, 0.14); color: var(--up); border: 1px solid rgba(76,217,123,0.3);
+  }
+  .mine-card .mc-status.warn { background: rgba(232,182,76,0.13); color: var(--warn); border-color: rgba(232,182,76,0.3); }
+  .mine-card .mc-status.down { background: rgba(255,107,107,0.12); color: var(--down); border-color: rgba(255,107,107,0.3); }
+  .mine-card .mc-status.blue { background: rgba(77,163,255,0.13); color: var(--acc); border-color: rgba(77,163,255,0.3); }
+  .mc-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; margin-top: 13px; }
+  .mc-stat .k { font-size: 11px; color: var(--muted); }
+  .mc-stat .v { font-size: 18px; font-weight: 800; }
+  .mc-stat .v small { font-size: 10.5px; color: var(--muted); font-weight: 400; }
+  .mc-stat .c { font-size: 11px; margin-top: 1px; }
+  .mc-stat .c.up { color: var(--up); } .mc-stat .c.down { color: var(--down); } .mc-stat .c.d { color: var(--muted); }
+  .mc-note { font-size: 11px; color: var(--warn); margin-top: 8px; line-height: 1.5; }
+  .mc-hl { font-size: 11.5px; color: var(--muted); margin-top: 10px; padding-top: 9px; border-top: 1px dashed var(--line); line-height: 1.5; }
+  .mc-hl b { color: var(--acc2); }
+  .mc-go { display: inline-block; margin-top: 10px; font-size: 12px; color: var(--acc); text-decoration: none; font-weight: 600; }
+  .mc-go:hover { text-decoration: underline; }
+
+  /* ---------- 表格 ---------- */
+  .table-wrap { overflow-x: auto; border-radius: 16px; border: 1px solid var(--line); background: var(--panel); backdrop-filter: blur(8px); }
+  table.tbl { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 900px; }
+  table.tbl th {
+    padding: 10px 10px; text-align: left; font-size: 11.5px; color: var(--muted); font-weight: 600;
+    border-bottom: 1px solid var(--line); background: rgba(77,163,255,0.05); white-space: nowrap;
+  }
+  table.tbl td { padding: 9px 10px; border-bottom: 1px solid rgba(90,120,180,0.1); white-space: nowrap; }
+  table.tbl tr:hover td { background: rgba(77,163,255,0.05); }
+  table.tbl td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.tbl td.strong { font-weight: 700; color: #fff; }
+  table.tbl td.acc { color: var(--acc); }
+  table.tbl td.warn { color: var(--warn); }
+  table.tbl .rowhead { font-weight: 600; }
+  table.tbl tr.tot td { border-top: 2px solid rgba(240,193,90,0.5); font-weight: 800; background: rgba(240,193,90,0.05); }
+  .note { margin-top: 8px; font-size: 11.5px; color: var(--muted); line-height: 1.7; }
+  .note.warn { color: var(--warn); }
+
+  /* ---------- 2027 预测卡 ---------- */
+  .fc-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+  .fc-card { border-radius: 16px; padding: 14px 16px; background: var(--panel); border: 1px solid var(--line); backdrop-filter: blur(8px); }
+  .fc-card .k { font-size: 12px; color: var(--muted); }
+  .fc-card .v { font-size: 20px; font-weight: 800; margin-top: 3px; }
+  .fc-card.bear .v { color: var(--down); } .fc-card.base .v { color: var(--acc); } .fc-card.bull .v { color: var(--up); }
+  .fc-card .d { font-size: 11.5px; color: var(--muted); margin-top: 3px; }
+  .fc-card .lbl { font-size: 10.5px; padding: 2px 8px; border-radius: 10px; margin-left: 6px; vertical-align: 2px; }
+  .fc-card.bear .lbl { background: rgba(255,107,107,0.15); color: var(--down); }
+  .fc-card.base .lbl { background: rgba(77,163,255,0.15); color: var(--acc); }
+  .fc-card.bull .lbl { background: rgba(76,217,123,0.15); color: var(--up); }
+
+  @media (max-width: 720px) {
+    .cards { grid-template-columns: 1fr; }
+    header.hero h1 { font-size: 20px; }
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <header>
+  <header class="hero">
     <h1>永安期货 · 澳洲锂矿季度汇总</h1>
-    <div class="sub">矿山总览（一级目录）｜数据更新至 26Q2（2026年4-6月）｜点击矿山卡片或表格行进入对应详情页</div>
+    <div class="sub">数据更新至 26Q2（2026 年 4-6 月）｜日历季度 · 各矿山母公司官方披露｜点击卡片或序号进入详情页</div>
     <div class="tags" id="header_tags"></div>
   </header>
 
-  <div id="mine_cards"></div>
+  <!-- 行业 KPI -->
+  <div class="kpi-row" id="kpi_row"></div>
 
-  <h3 style="font-size:16px;margin:26px 0 10px;color:var(--acc)">关键指标对比表（本季度 26Q2 vs 上一季度 26Q1）</h3>
-  <div class="note" style="margin-bottom:10px;color:var(--muted);font-size:12px">⚠️ 跨矿山对比注意口径差异：产量/销量单位各异（Greenbushes=SC6 折算、Pilgangoora/Kathleen Valley=dmt 实际品位、Wodgina/Mt Marion=100% 推算混合品位 dmt）；均价与成本基准各异（CIF/FOB、SC6/SC6e/实际品位）——详见各矿山详情页④历史数据行标签。</div>
+  <!-- ① 矿山卡片 -->
+  <div class="sec"><span class="ic">1</span><h2>矿山运行总览</h2><span class="hint">26Q2（2026 年 4-6 月）运行状况 · 点击卡片查看详情</span></div>
+  <div class="cards" id="mine_cards"></div>
+
+  <!-- ② 近五年年度汇总 -->
+  <div class="sec"><span class="ic">2</span><h2>近五年产量汇总</h2><span class="hint">日历年 CY2022-2026H1 精矿产量（万吨）· 各矿山披露口径 · 附 SC6 等效折算统一口径</span></div>
   <div class="table-wrap">
-    <table>
-      <thead><tr>
-        <th>矿山</th>
-        <th>公司</th>
-        <th>本季产量（万吨）</th>
-        <th>环比</th>
-        <th>本季销量（万吨）</th>
-        <th>环比</th>
-        <th>均价（US$/t）</th>
-        <th>现金成本（A$/t）</th>
-        <th>最新报告</th>
-      </tr></thead>
-      <tbody id="ov_table"></tbody>
-    </table>
+    <table class="tbl" id="yearly_tbl"></table>
   </div>
+  <div class="note" id="yearly_note"></div>
 
-  <div class="meta">
-    <h3>口径与说明</h3>
-    <p>· 数据源：各矿山母公司官方季度报告（100% 资产口径）。本页为矿山目录总览，点击矿山卡片或表格中的矿山名进入对应详情页。</p>
-    <p>· 本季度=26Q2（2026年4-6月）；上一季度=26Q1。各矿山详情页均含：①已有产线 ②在建/规划 ③整体运行状况（含超预期要点）④历史数据 ⑤2027产量预测 ⑥选矿产能核实 ⑦原矿产能核实。</p>
-    <p>· 均价与现金成本口径因矿山而异（Greenbushes 为 IGO 披露口径；Pilgangoora 为 PLS FOB/CIF 口径），跨矿山对比时注意单位与基准差异。</p>
-    <p id="disclaimer" style="color:var(--muted);font-size:12px"></p>
+  <!-- ③ 资本开支 -->
+  <div class="sec"><span class="ic">3</span><h2>资本开支汇总</h2><span class="hint">日历年 CY2022-2026 + 2027 预测 · 矿山/项目级 100% 口径（披露份额则标注）</span></div>
+  <div class="table-wrap">
+    <table class="tbl" id="capex_tbl"></table>
   </div>
+  <div class="note" id="capex_note"></div>
+
+  <!-- ④ 2027 预测 -->
+  <div class="sec"><span class="ic">4</span><h2>2027 年产量预测汇总</h2><span class="hint">研究性判断 · 日历年度 · 各矿山基准情景 + 行业合计（SC6 等效）</span></div>
+  <div class="fc-row" id="fc_summary"></div>
+  <div class="note warn" id="fc_note"></div>
+
+  <!-- ⑤ 本季对比表 -->
+  <div class="sec"><span class="ic">5</span><h2>本季关键指标对比</h2><span class="hint">26Q2 vs 26Q1 · 各矿山披露口径（注意单位差异）</span></div>
+  <div class="table-wrap">
+    <table class="tbl" id="cmp_tbl"></table>
+  </div>
+  <div class="note warn">⚠️ 跨矿山对比注意口径差异：产量单位各异（Greenbushes=SC6 折算、Pilgangoora/Kathleen Valley=dmt 实际品位、Wodgina/Mt Marion=100% 推算混合品位 dmt、Bald Hill/Mt Cattlin=dmt、Finniss/Manna/Mt Holland=SC5.5/SC6 等效）；均价与成本基准各异（CIF/FOB、SC6/SC6e/实际品位）——统一口径见上方"SC6 等效折算"列，跨矿山相加仅为近似参考。</div>
+
+  <!-- 口径与说明 -->
+  <div class="sec"><span class="ic">i</span><h2>口径与说明</h2></div>
+  <div class="note" id="meta_note"></div>
+  <div class="note" style="margin-top:6px;color:#5d6c8c">· 本页面数据来自各矿山母公司官方季度报告（ASX / SEC 20-F / 6-K），仅供研究参考，不构成投资建议。</div>
 
 </div>
+
 <script src="data.js"></script>
 <script>
 const D = YONGAN_DATA;
+const urlParams = new URLSearchParams(location.search);
+const MINE_KEY = urlParams.get('mine') || 'Overview';
 const Q = D.quarters;
-const MINE_KEY = 'Overview';
-const CUR_Q = '26Q2', PREV_Q = '26Q1';
-const CI = 29, PI = 28; // 26Q2 / 26Q1 在季度数组中的索引
+const CI = Q.indexOf('2026Q2');   // 当前季
+const PI = Q.indexOf('2026Q1');   // 上一季
 
-// 顶部导航 pills（矿山总览高亮，其余矿山链接）
+/* ---------- 导航（序号标签） ---------- */
 document.getElementById('header_tags').innerHTML =
-  D.meta.pages.map(p => `<span class="tag ${p.key === MINE_KEY ? 'hl' : ''}"><a href="${p.file}">${p.label}</a></span>`).join('');
+  D.meta.pages.map((p, i) =>
+    `<span class="tag ${p.key === MINE_KEY ? 'hl' : ''}"><span class="num">${i}</span><a href="${p.file}${p.key === MINE_KEY ? '' : '?mine=' + p.key}">${p.key === 'Overview' ? '总览' : p.label.replace(/^\d+\s*/, '')}</a></span>`
+  ).join('');
 
-// 每个矿山的数据源
+/* ---------- 数据辅助 ---------- */
 function dataKeyOf(m) {
   if (m.mine === 'Mt Marion') return 'marion';
   if (m.mine === 'Kathleen Valley') return 'kathleenvalley';
@@ -113,72 +234,243 @@ function dataKeyOf(m) {
   if (m.mine === 'Mt Holland') return 'mtholland';
   return m.mine.toLowerCase();
 }
-function histOf(m) {
-  return m.mine === 'Greenbushes' ? D.history : D[dataKeyOf(m)].history;
-}
-function pageOf(m) {
-  return m.mine === 'Greenbushes' ? 'index.html' : `${dataKeyOf(m)}.html`;
+function histOf(m) { return m.mine === 'Greenbushes' ? D.history : D[dataKeyOf(m)].history; }
+function pageOf(m) { return m.mine === 'Greenbushes' ? 'index.html' : `${dataKeyOf(m)}.html`; }
+const pct = (c, p) => (c == null || p == null || p === 0) ? '<span class="d">N.D.</span>'
+  : c >= p ? `<span class="up">+${((c - p) / p * 100).toFixed(1)}%</span>` : `<span class="down">-${((p - c) / p * 100).toFixed(1)}%</span>`;
+const fmt = (v) => v == null ? 'N.D.' : v.toFixed(2);
+const qOf = (q) => Q.indexOf(q);
+
+/* SC6 等效折算系数（× 披露品位 / 6%） */
+const SC6_FACTOR = {
+  'Greenbushes': 1.0,      // 已 SC6
+  'Pilgangoora': 0.867,    // dmt ~5.2% → SC6
+  'Wodgina': 0.917,        // 混合 ~5.5% → SC6
+  'Mt Marion': 0.917,      // 混合 ~5.5% → SC6
+  'Kathleen Valley': 0.833,// dmt ~5.0% → SC6
+  'Bald Hill': 1.0,        // 已 SC6（满产 140k SC6）
+  'Mt Cattlin': 0.892,     // dmt ~5.35% → SC6
+  'Finniss': 1.0,          // 已 SC6 等效
+  'Manna': 0.917,          // SC5.5 → SC6
+  'Mt Holland': 0.917,     // SC5.5 → SC6
+};
+const UNIT_LABEL = {
+  'Greenbushes': 'SC6 折算', 'Pilgangoora': 'dmt ~5.2%', 'Wodgina': '混合 dmt ~5.5%',
+  'Mt Marion': '混合 dmt ~5.5%', 'Kathleen Valley': 'dmt ~5.0%', 'Bald Hill': 'SC6',
+  'Mt Cattlin': 'dmt ~5.35%', 'Finniss': 'SC6 等效', 'Manna': 'SC5.5', 'Mt Holland': 'SC5.5（100%）'
+};
+
+/* 年度聚合：CY2022-CY2026H1 产量（万吨，披露口径）+ SC6 等效 */
+const YEARS = [['2022', 12, 16], ['2023', 16, 20], ['2024', 20, 24], ['2025', 24, 28], ['2026H1', 28, 30]];
+function yearSum(h, arrName, s, e) {
+  let sum = 0, any = false;
+  const arr = h[arrName];
+  for (let i = s; i < e; i++) if (arr[i] != null) { sum += arr[i]; any = true; }
+  return any ? sum : null;
 }
 
-// 环比显示
-function pct(cur, prev, unit = 1) {
-  if (cur == null || prev == null || prev === 0) return '<span class="d flat">N.D.</span>';
-  const c = (cur - prev) / prev * 100;
-  const cls = c > 0.5 ? 'up' : (c < -0.5 ? 'down' : 'flat');
-  const s = c > 0 ? '+' : '';
-  return `<span class="d ${cls}">${s}${c.toFixed(1)}%</span>`;
-}
-
-// 矿山卡片（一级目录）
-const cards = document.getElementById('mine_cards');
-cards.className = 'mine-grid';
-D.mines.forEach(m => {
-  const h = histOf(m);
-  const prod = h.production, sales = h.sales, price = h.avg_price, cost = h.cash_cost;
-  const hl = m.status_26q2.overall.highlights[0] || '';
-  const card = document.createElement('a');
-  card.className = 'mine-card';
-  card.href = pageOf(m);
-  card.style.textDecoration = 'none';
-  card.style.color = 'inherit';
-  card.innerHTML = `
-    <div class="mc-head">
-      <span class="mc-name">${m.mine_cn}</span>
-      <span class="mc-company">${m.company}</span>
-      <span class="mc-q">本季度 ${m.current_q}</span>
-    </div>
-    <div class="mc-stats">
-      <div class="mc-stat"><div class="k">本季产量（${(() => { const lb = (m.history_labels || D.history_labels); const p = lb.find(([k]) => k === 'production'); return p ? p[1].replace('精矿产量（', '').replace('）', '') : '万吨'; })()}）</div><div class="v">${prod[CI] != null ? prod[CI].toFixed(2) : 'N.D.'} <small style="font-size:11px;color:var(--muted)">万吨</small></div><div>环比 ${pct(prod[CI], prod[PI])}</div></div>${m.mine === 'Mt Holland' && prod[CI] == null ? `<div class="mc-note" style="font-size:11px;color:var(--warn);margin-top:2px">⚠️ 26Q2 未披露：SQM 美式财季 Q2 2026 财报 8 月下旬发布（截至 2026-08-06 未出）；且 SQM 季度层面仅披露 50% 份额销量（LCE），不披露季度精矿产量（年度产量见 20-F）</div>` : ''}
-      <div class="mc-stat"><div class="k">本季销量</div><div class="v">${sales[CI] != null ? sales[CI].toFixed(2) : 'N.D.'} <small style="font-size:11px;color:var(--muted)">万吨</small></div><div>环比 ${pct(sales[CI], sales[PI])}</div></div>
-      <div class="mc-stat"><div class="k">均价（${(() => { const lb = (m.history_labels || D.history_labels); const p = lb.find(([k]) => k === 'avg_price'); return p ? p[1].replace('平均售价（', '').replace('）', '') : 'US$/t'; })()}）</div><div class="v">${price[CI] != null ? price[CI].toLocaleString('zh-CN') : 'N.D.'} <small style="font-size:11px;color:var(--muted)">US$/t</small></div></div>
-      <div class="mc-stat"><div class="k">现金成本（${(() => { const lb = (m.history_labels || D.history_labels); const p = lb.find(([k]) => k === 'cash_cost'); if (!p) return 'A$/t'; const mm = p[1].match(/（(.+?)）/); const base = p[1].replace(mm ? mm[0] : '', '').replace('单位成本', '').replace('cash cost', '').trim(); return (base ? base + ' ' : '') + (mm ? mm[1] : 'A$/t'); })()}）</div><div class="v">${cost[CI] != null ? cost[CI].toLocaleString('zh-CN') : 'N.D.'} <small style="font-size:11px;color:var(--muted)">A$/t</small></div></div>
-    </div>
-    <div class="mc-hl"><b>⚡ 本季要点：</b>${hl}</div>
-    <span class="mc-link">查看详情 →</span>
+/* ---------- 行业 KPI ---------- */
+(function kpi() {
+  let totP = 0, totS = 0, cnt = 0;
+  D.mines.forEach(m => {
+    const h = histOf(m);
+    if (h.production[CI] != null) { totP += h.production[CI]; cnt++; }
+    if (h.sales && h.sales[CI] != null) totS += h.sales[CI];
+  });
+  // 2027 基准合计（SC6 等效）
+  let fcSum = 0;
+  D.mines.forEach(m => {
+    const f = fcBaseVal(m);
+    if (f != null) fcSum += f * (SC6_FACTOR[m.mine] || 1);
+  });
+  document.getElementById('kpi_row').innerHTML = `
+    <div class="kpi"><div class="k">26Q2 全行业精矿产量（披露口径）</div><div class="v">${totP.toFixed(1)} <small style="font-size:12px">万吨</small></div><div class="d">${cnt}/${D.mines.length} 矿山有披露</div></div>
+    <div class="kpi"><div class="k">26Q2 全行业销量</div><div class="v">${totS.toFixed(1)} <small style="font-size:12px">万吨</small></div><div class="d">披露矿山口径合计</div></div>
+    <div class="kpi"><div class="k">2027 预测合计（SC6 等效）</div><div class="v">${fcSum.toFixed(0)} <small style="font-size:12px">万吨</small></div><div class="d up">基准情景 · 全部 10 矿</div></div>
+    <div class="kpi"><div class="k">行业状态</div><div class="v" style="font-size:16px">${totP.toFixed(1)} 万吨/季</div><div class="d up">GB+PL+Wodgina+Marion+KV 主导</div></div>
   `;
-  cards.appendChild(card);
-});
+})();
 
-// 关键指标对比表
-const tb = document.getElementById('ov_table');
-D.mines.forEach(m => {
-  const h = histOf(m);
-  const prod = h.production, sales = h.sales, price = h.avg_price, cost = h.cash_cost;
-  const tr = document.createElement('tr');
-  const pCell = (v) => v != null ? `<td class="num">${v.toFixed(2)}</td>` : '<td class="num">N.D.</td>';
-  tr.innerHTML = `
-    <td class="line"><a href="${pageOf(m)}" style="color:var(--acc);text-decoration:none">${m.mine_cn}</a></td>
-    <td>${m.company}</td>
-    ${pCell(prod[CI])}<td class="num">${pct(prod[CI], prod[PI])}</td>
-    ${pCell(sales[CI])}<td class="num">${pct(sales[CI], sales[PI])}</td>
-    <td class="num">${price[CI] != null ? price[CI].toLocaleString('zh-CN') : 'N.D.'}</td>
-    <td class="num">${cost[CI] != null ? cost[CI].toLocaleString('zh-CN') : 'N.D.'}</td>
-    <td style="font-size:11.5px;color:var(--muted)">${m.report.split('（')[0]}</td>
-  `;
-  tb.appendChild(tr);
-});
+/* ---------- 矿山卡片 ---------- */
+const STATUS = {
+  'Greenbushes': ['运行', 'up'], 'Pilgangoora': ['运行', 'up'], 'Wodgina': ['运行', 'up'],
+  'Mt Marion': ['运行', 'up'], 'Kathleen Valley': ['运行', 'up'], 'Bald Hill': ['复产中', 'warn'],
+  'Mt Cattlin': ['C&M', 'down'], 'Finniss': ['重启中', 'warn'], 'Manna': ['开发中', 'blue'], 'Mt Holland': ['满产', 'up'],
+};
+(function cards() {
+  document.getElementById('mine_cards').innerHTML = D.mines.map((m, i) => {
+    const h = histOf(m);
+    const prod = h.production, sales = h.sales || [], price = h.avg_price || [], cost = h.cash_cost || [];
+    const labels = Object.fromEntries(m.history_labels || D.history_labels);
+    const st = STATUS[m.mine] || ['运行', 'up'];
+    const pLabel = (labels.production || '万吨').replace(/^产量|^精矿产量|^销量|（|）/g, '').replace(/万吨/g, '').trim();
+    const hl = (m.status_26q2 && m.status_26q2.overall && m.status_26q2.overall.highlights) || [];
+    const hlTxt = hl.slice(0, 1).join(' ').slice(0, 88) + (hl.slice(0, 1).join(' ').length > 88 ? '…' : '');
+    return `
+    <div class="mine-card" style="--mc1:${['#4da3ff','#9d7bff','#f0c15a','#4cd97b','#ff7b54','#5ad0d0','#7fa8e8','#c98be8','#e8b64c','#6ee7b7'][i % 10]};--mc2:${['#9d7bff','#4da3ff','#ff7b54','#7fa8e8','#e8b64c','#9d7bff','#4cd97b','#5ad0d0','#ff9d5c','#4da3ff'][i % 10]}">
+      <div class="mc-top">
+        <div class="mc-badge">${i + 1}</div>
+        <div><div class="mc-name">${m.mine_cn || m.mine} <span style="font-weight:400;color:var(--muted);font-size:12px">${m.mine}</span></div>
+        <div class="mc-company">${m.company}</div></div>
+        <span class="mc-status ${st[1]}">${st[0]}</span>
+      </div>
+      <div class="mc-stats">
+        <div class="mc-stat"><div class="k">本季产量${pLabel ? '（' + pLabel + '）' : ''}</div><div class="v">${fmt(prod[CI])} <small>万吨</small></div><div class="c">环比 ${pct(prod[CI], prod[PI])}</div></div>
+        <div class="mc-stat"><div class="k">本季销量</div><div class="v">${fmt(sales[CI])} <small>万吨</small></div><div class="c">环比 ${pct(sales[CI], sales[PI])}</div></div>
+        <div class="mc-stat"><div class="k">均价（US$/t）</div><div class="v" style="font-size:15px">${price[CI] != null ? price[CI].toLocaleString('zh-CN') : 'N.D.'}</div></div>
+        <div class="mc-stat"><div class="k">现金成本（A$/t）</div><div class="v" style="font-size:15px">${cost[CI] != null ? cost[CI].toLocaleString('zh-CN') : 'N.D.'}</div></div>
+      </div>
+      ${m.mine === 'Mt Holland' && prod[CI] == null ? `<div class="mc-note">⚠️ 26Q2 未披露：SQM 美式财季 Q2 2026 财报 8 月下旬发布；且 SQM 季度层面仅披露 50% 份额销量</div>` : ''}
+      ${hlTxt ? `<div class="mc-hl"><b>⚡</b> ${hlTxt}</div>` : ''}
+      <a class="mc-go" href="${pageOf(m)}">查看详情 →</a>
+    </div>`;
+  }).join('');
+})();
 
-document.getElementById('disclaimer').textContent = D.meta.disclaimer;
+/* ---------- 2027 预测取值（兼容两种结构） ---------- */
+function fcBaseVal(m) {
+  const fc = m.fc_2027 || m.forecast_2027;
+  if (!fc) return null;
+  if (Array.isArray(fc)) {
+    const b = fc.find(x => x.label && (x.label.includes('基准') || x.label.includes('base')));
+    return b ? b.val : null;
+  }
+  if (fc.scenarios && fc.scenarios.base) return fc.scenarios.base.production_kt / 10; // kt → 万吨
+  return null;
+}
+function fcAll(m) {
+  const fc = m.fc_2027 || m.forecast_2027;
+  if (!fc) return null;
+  if (Array.isArray(fc)) {
+    const g = (l) => { const x = fc.find(y => y.label && y.label.includes(l)); return x ? x.val : null; };
+    return { bear: g('悲观'), base: g('基准'), bull: g('乐观') };
+  }
+  if (fc.scenarios) return {
+    bear: (fc.scenarios.bear && fc.scenarios.bear.production_kt) / 10 || null,
+    base: (fc.scenarios.base && fc.scenarios.base.production_kt) / 10 || null,
+    bull: (fc.scenarios.bull && fc.scenarios.bull.production_kt) / 10 || null,
+  };
+  return null;
+}
+
+/* ---------- 近五年产量汇总表 ---------- */
+(function yearly() {
+  let html = `<tr><th>矿山</th><th>披露口径</th>` + YEARS.map(y => `<th>${y[0]}</th>`).join('') + `<th>2026H1 SC6 等效</th><th>2027E SC6 等效</th></tr>`;
+  const sc6Rows = [];
+  D.mines.forEach(m => {
+    const h = histOf(m);
+    html += `<tr><td class="rowhead"><a href="${pageOf(m)}" style="color:var(--acc);text-decoration:none">${m.mine}</a></td><td>${UNIT_LABEL[m.mine] || '—'}</td>`;
+    let sc6h1 = 0, anyH1 = false;
+    YEARS.forEach((y, yi) => {
+      const v = yearSum(h, 'production', y[1], y[2]);
+      html += `<td class="num">${v == null ? '<span class="warn">N.D.</span>' : v.toFixed(1)}</td>`;
+      if (yi === 4 && v != null) { sc6h1 = v * (SC6_FACTOR[m.mine] || 1); anyH1 = true; }
+    });
+    // 简化：2026H1 SC6 列
+    html = html.slice(0, html.lastIndexOf('</td>'));
+    html += `<td class="num acc">${anyH1 ? sc6h1.toFixed(1) : 'N.D.'}</td>`;
+    const f = fcBaseVal(m);
+    html += `<td class="num acc strong">${f != null ? (f * (SC6_FACTOR[m.mine] || 1)).toFixed(1) : 'N.D.'}</td></tr>`;
+  });
+  // 行业合计（SC6 等效口径仅对可折算项）
+  let tot = [0, 0, 0, 0, 0], totAny = [false, false, false, false, false];
+  let totH1 = 0, totFc = 0;
+  D.mines.forEach(m => {
+    const h = histOf(m), f = SC6_FACTOR[m.mine] || 1;
+    YEARS.forEach(([, s, e], yi) => {
+      const v = yearSum(h, 'production', s, e);
+      if (v != null) { tot[yi] += v * f; totAny[yi] = true; }
+    });
+    const h1 = yearSum(h, 'production', 28, 30);
+    if (h1 != null) totH1 += h1 * f;
+    const fv = fcBaseVal(m);
+    if (fv != null) totFc += fv * f;
+  });
+  html += `<tr class="tot"><td>行业合计</td><td>SC6 等效折算</td>` +
+    YEARS.map((y, yi) => `<td class="num">${totAny[yi] ? tot[yi].toFixed(0) : 'N.D.'}</td>`).join('') +
+    `<td class="num">${totH1.toFixed(0)}</td><td class="num">${totFc.toFixed(0)}</td></tr>`;
+  document.getElementById('yearly_tbl').innerHTML = html;
+  document.getElementById('yearly_note').innerHTML =
+    '· 近五年=日历年 CY2022-CY2026H1（2026H1 = 26Q1+26Q2）；各矿山按披露口径（<b>SC6 等效折算</b> = 披露值 × 实际品位/6%，系数见上表）。' +
+    '· 未投产/停产矿山（Mt Cattlin C&M、Manna 未投产、Mt Holland 2023 前）对应年份 N.D. 或 0。<br>' +
+    '· 2027E = 各矿山预测基准情景 × SC6 系数（见下方预测卡）；行业合计为可折算矿山之和（近似参考，非官方口径）。';
+})();
+
+/* ---------- 资本开支表（数据待子任务核实后填充） ---------- */
+const CAPEX = D.capex || {
+  // {mine: {2022: v, 2023: v, 2024: v, 2025: v, '2026E': v, '2027E': v, unit: '说明'}}
+};
+(function capex() {
+  const yrs = ['2022', '2023', '2024', '2025', '2026E', '2027E'];
+  let html = `<tr><th>矿山</th><th>口径</th>` + yrs.map(y => `<th>${y}（亿澳元）</th>`).join('') + `</tr>`;
+  D.mines.forEach(m => {
+    const c = CAPEX[m.mine];
+    html += `<tr><td class="rowhead">${m.mine}</td><td>${c ? (c.unit || '矿山级') : '待核实'}</td>` +
+      yrs.map(y => `<td class="num">${c && c[y] != null ? c[y].toFixed(1) : '<span class="warn">N.D.</span>'}</td>`).join('') + `</tr>`;
+  });
+  // 合计（可加项）
+  let tot = yrs.map(() => 0), any = yrs.map(() => false);
+  D.mines.forEach(m => { const c = CAPEX[m.mine]; if (c) yrs.forEach((y, i) => { if (c[y] != null) { tot[i] += c[y]; any[i] = true; } }); });
+  html += `<tr class="tot"><td>合计</td><td>已核实项</td>` + yrs.map((y, i) => `<td class="num">${any[i] ? tot[i].toFixed(1) : 'N.D.'}</td>`).join('') + `</tr>`;
+  document.getElementById('capex_tbl').innerHTML = html;
+  document.getElementById('capex_note').innerHTML =
+    '· 口径：矿山/项目级资本开支（100% 基准优先；披露份额则标注，如 GB=IGO 25% 份额、Mt Holland=SQM 50% 份额）。' +
+    '· 2026E/2027E 为公司指引或 FID 计划（如 Manna FID 后建设、Mt Holland 扩产 2027 H2 开工）。' +
+    '· ⚠️ 子任务核实中——数据填充后本表自动更新（当前 N.D. 为待核实占位）。';
+})();
+
+/* ---------- 2027 预测汇总卡 ---------- */
+(function fcSummary() {
+  let bear = 0, base = 0, bull = 0;
+  D.mines.forEach(m => {
+    const f = fcAll(m);
+    if (!f) return;
+    const k = SC6_FACTOR[m.mine] || 1;
+    if (f.bear != null) bear += f.bear * k;
+    if (f.base != null) base += f.base * k;
+    if (f.bull != null) bull += f.bull * k;
+  });
+  const per = D.mines.map(m => {
+    const f = fcAll(m);
+    if (!f || f.base == null) return null;
+    return { mine: m.mine, base: f.base, unit: UNIT_LABEL[m.mine] || '' };
+  }).filter(Boolean);
+  document.getElementById('fc_summary').innerHTML = `
+    <div class="fc-card bear"><div class="k">行业悲观 <span class="lbl">悲观</span></div><div class="v">${bear.toFixed(0)} <small style="font-size:12px">万吨 SC6e</small></div><div class="d">FID 延后 / 爬坡受阻 / 锂价回落</div></div>
+    <div class="fc-card base"><div class="k">行业基准 <span class="lbl">基准</span></div><div class="v">${base.toFixed(0)} <small style="font-size:12px">万吨 SC6e</small></div><div class="d">各矿基准情景合计（SC6 等效折算）</div></div>
+    <div class="fc-card bull"><div class="k">行业乐观 <span class="lbl">乐观</span></div><div class="v">${bull.toFixed(0)} <small style="font-size:12px">万吨 SC6e</small></div><div class="d">满产加速 / 复产提前 / 新矿投产顺利</div></div>`;
+  document.getElementById('fc_note').innerHTML =
+    `· 2027E 为研究性判断（日历年度 · 100% 资产口径），各矿山基准值：${per.map(p => `${p.mine} ${p.base} 万吨${p.unit ? '（' + p.unit + '）' : ''}`).join('、')}。<br>` +
+    `· 行业合计按 SC6 等效（×品位/6%）折算后相加——近似参考，非官方口径；Mt Cattlin 基准 0-3 万吨（C&M 复产情景）、Manna 基准 8 万吨（FID 后首产爬坡）。`;
+})();
+
+/* ---------- 本季对比表 ---------- */
+(function cmp() {
+  let html = `<tr><th>矿山</th><th>公司</th><th>本季产量（万吨）</th><th>环比</th><th>本季销量（万吨）</th><th>环比</th><th>均价（US$/t）</th><th>现金成本（A$/t）</th><th>最新报告</th></tr>`;
+  D.mines.forEach(m => {
+    const h = histOf(m);
+    const p = h.production[CI], pp = h.production[PI];
+    const s = h.sales ? h.sales[CI] : null, sp = h.sales ? h.sales[PI] : null;
+    const pr = h.avg_price ? h.avg_price[CI] : null, c = h.cash_cost ? h.cash_cost[CI] : null;
+    html += `<tr>
+      <td class="rowhead"><a href="${pageOf(m)}" style="color:var(--acc);text-decoration:none">${m.mine}</a></td>
+      <td>${m.company.replace(/（.*?）|（.*/g, '').slice(0, 26)}</td>
+      <td class="num ${p != null ? 'strong' : ''}">${fmt(p)}</td><td>${pct(p, pp)}</td>
+      <td class="num">${fmt(s)}</td><td>${pct(s, sp)}</td>
+      <td class="num">${pr != null ? pr.toLocaleString('zh-CN') : 'N.D.'}</td>
+      <td class="num">${c != null ? c.toLocaleString('zh-CN') : 'N.D.'}</td>
+      <td style="color:var(--muted);font-size:11px">${(m.report || '').slice(0, 42)}</td></tr>`;
+  });
+  document.getElementById('cmp_tbl').innerHTML = html;
+})();
+
+/* ---------- 口径与说明 ---------- */
+document.getElementById('meta_note').innerHTML =
+  '· 本页为总览（主页）：矿山卡片 = 26Q2 运行状况；近五年汇总 = CY2022-CY2026H1 年度精矿产量（各矿披露口径 + SC6 等效折算）；资本开支表 = 矿山级 capex（核实中）；2027 预测 = 各矿预测基准汇总。<br>' +
+  '· 数据源：各矿山母公司官方季度报告（IGO / PLS / MRL / Liontown / 力拓 / Core Lithium / Global Lithium / SQM-Wesfarmers），全部为 100% 资产口径（Mt Holland 按 SQM 50% 份额 ×2）。<br>' +
+  '· 口径差异提示：产量单位（SC6 折算 / dmt 实际品位 / 混合品位 dmt / SC5.5 100%）与价格成本基准（CIF/FOB、SC6/SC6e）各异——跨矿相加请以"SC6 等效折算"列为参考。<br>' +
+  '· 数据更新至 26Q2（2026 年 4-6 月）；SQM（NYSE）美式财季 Q2 2026 报告 8 月下旬发布，Mt Holland 26Q2 暂 N.D.。' +
+  D.meta.pages.map(p => p.label).join(' / ');
 </script>
 </body>
 </html>
