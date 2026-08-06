@@ -1,73 +1,45 @@
-# 永安期货 · 澳洲锂矿季度汇总（GitHub Pages）
+# 永安期货 · 澳洲锂矿季度汇总看板
 
-按「永安期货-澳洲锂矿汇总.xlsx」格式制作的澳洲锂矿季度数据看板，数据来自各矿山母公司官方季度报告。
+澳洲硬岩锂矿季度经营数据看板（GitHub Pages 部署），覆盖澳大利亚全部主要锂矿山的季度产量/销量/均价/成本、资本开支与 2027 年产量预测。
 
-## 页面结构（每矿山两大块）
+**在线访问**：https://handizheng232-eng.github.io/cyberland/
 
-**运行状况描述**（仅更新最新一个季度 26Q2）：
-1. 已有产线运行状况表述 —— 各已有产线本季度运行状态
-2. 在建/规划中产线运行状况表述 —— 在建与规划项目进展（新增项目会单独加行）
-3. 整体运行状况表述 —— 开工变化因素 + 未来产量预期
+## 页面结构
 
-**历史数据情况**（2019Q1 起）：
-- 精矿产量、精矿产量（6%,LCE）、技术级/化学级产量、销量、库存变动量、库存、产销比、平均售价、单位成本（含/不含权益金）、cash cost
-
-**2027 年产量预测**（研究性判断，非公司指引）：
-- 三情景：悲观 160 万吨 / 基准 174 万吨 / 乐观 185 万吨（日历年度，100% 资产口径）
-- 基准季度拆分：27Q1=40、27Q2=43、27Q3=45、27Q4=46 万吨
-- 依据：IGO FY27 官方指引 155-175 万吨（财年口径）+ CGP3 实测爬坡速率（26Q2 单季 71kt，年化约 54% 利用率）外推
-
-**产能核实**（多来源交叉印证）：
-- 4 类独立来源：① 公司年报（IGO AR 2022/2023/2025）② 公司官网资产页（IGO Our Business）③ 美股监管披露（Albemarle 10-K + SLR S-K1300 技术报告，SEC EDGAR 公开文件）④ 券商/咨询（公开可获取部分）
-- ✓ 官方精矿口径确认：TRP=280ktpa、CGP3=520ktpa（公司年报+官网+SLR 三方一致）
-- ⚠️ 官方只披露矿石处理能力：CGP1=1.8、CGP2=2.4、TRP=2.0、TGP=0.35、CGP3=2.4 Mtpa（SLR Table 1-1）；Excel 的 60/60/14 万吨精矿为推算上限值
-- ⚠️ 官方精矿总上限（CGP3 后 ~1.8Mtpa）低于 Excel 的 214 万吨；CGP4 未被 SLR LOM 计划纳入且 FID 推迟
-
-**原矿供应侧核实**（矿坑/矿体/尾矿库，选矿厂对应原矿来源）：
-- ✅ 建成：Greenbushes 露天矿（Central Lode 主矿体 + Kapanga 东矿体，1983 年起连续生产）；传统露天开采（卡车+铲运）；TSF1-4 尾矿库；S1 Floyds 废石堆（77Mbcm）；矿石堆存
-- ⚠️ 规划/研究中：矿坑 LOM 24 年（采矿至 2048）；TSF5 尾矿库（2034 年后，场外、容量待定）；后续废石堆；地下开采研究（概念级，可膏体充填）；卫星矿供矿评估
-- 关键数据（SLR Table 1-2）：总剥离 656.5Mt、采出矿石 160.9Mt、剥采比 3.4:1、回收率 22.5%、产出精矿 37.0Mt
-
-**⑥⑦ 图片画廊**（辅助卫星锁定）：
-- ⑥ 选矿：IGO 官网矿山航拍实景、2023 年报全景照、SLR Fig 14-2 选矿厂航拍位置图
-- ⑦ 原矿：2023 年报露天矿实景、SLR Fig 3-1 位置图（含经纬度 33°51'24"S 116°03'44"E）、Fig 3-3 总布置图、Fig 12-3 矿坑境界图、Fig 15-8 尾矿库布置图
-- 所有图片可点击放大，用于与卫星影像对照定位
-
-## 当前覆盖矿山
-
-**分页模式**（每矿山一个独立页面，格式一致）：
-1. **Greenbushes（第一页）** — `index.html`（IGO 母公司，更新至 26Q2）
-2. **Pilgangoora（第二页）** — `pilgangoora.html`（PLS/Pilbara Minerals 母公司，更新至 26Q2）
-
-新矿山加入方式：在 `build_data.py` 的 MINES 数组添加矿山块（7 大板块结构），数据文件 `docs/data.js` 同步更新，复制 `pilgangoora.html` 改名并把默认 `mine` 参数改为新矿山名。
-
-| 矿山 | 企业 | 最新报告 | 数据源 |
+| 序号 | 页面 | 矿山/内容 | 母公司 |
 |---|---|---|---|
-| Greenbushes | IGO | June 2026 Quarterly Activities Report（2026-07-28） | [IGO Investor Centre](https://www.igo.com.au/site/investor-center/investor-center1) |
+| 总览 | overview.html | 主页：矿山运行总览 + 近五年产量汇总（SC6 等效折算）+ 资本开支 + 2027 预测汇总 | — |
+| 1 | index.html | Greenbushes（格林布什） | IGO（25% 份额，Tianqi/Albemarle 合资） |
+| 2 | pilgangoora.html | Pilgangoora（皮尔甘古拉） | Pilbara Minerals（ASX: PLS） |
+| 3 | wodgina.html | Wodgina（沃吉纳） | Mineral Resources（ASX: MIN，POSCO 2025-11 收购 30%） |
+| 4 | marion.html | Mt Marion（马里恩） | MRL + Ganfeng |
+| 5 | kathleenvalley.html | Kathleen Valley（凯瑟琳谷） | Liontown（ASX: LTR） |
+| 6 | baldhill.html | Bald Hill（秃山，2026-05 复产） | MRL 100% |
+| 7 | mtcattlin.html | Mt Cattlin（卡特林山，C&M） | Rio Tinto（2025-03 收购 Arcadium） |
+| 8 | finniss.html | Finniss（芬尼斯，NT 唯一锂矿） | Core Lithium（ASX: CXO） |
+| 9 | manna.html | Manna（曼纳，未投产） | Global Lithium（ASX: GL1） |
+| 10 | mtholland.html | Mt Holland（荷兰山，矿+精炼一体化） | Covalent（SQM 50% + Wesfarmers 50%） |
 
-## 本地预览
+每矿山详情页七大板块：① 已有产线运行状况 ② 在建/规划产线 ③ 整体运行 ④ 历史数据（2019Q1 起） ⑤ 2027 年预测 ⑥ 选矿产能核实 ⑦ 原矿产能核实。
 
-```bash
-cd docs
-python -m http.server 8891
-# 打开 http://127.0.0.1:8891/index.html
-```
+## 数据口径
 
-## 数据更新流程
+- **季度数据**：日历季度（2019Q1 起），100% 资产口径（份额矿山标注：GB=IGO 25%、Mt Holland=SQM 50%×2）
+- **产量单位**：各矿山披露口径（SC6 折算 / dmt 实际品位 / 混合品位 dmt / SC5.5），主页提供 **SC6 等效折算**（×实际品位/6%）统一对比
+- **均价/成本**：CIF/FOB + SC6/SC6e 基准各异，跨矿对比注意标注
+- **资本开支**：矿山/项目级，财年（6/30）为主，2026E/2027E 为指引或 FID 计划
+- **2027 预测**：研究性判断（悲观/基准/乐观），按官方 FY27 指引与公司计划推算
+- 未披露季度标 N.D.；美式财季（SQM/NYSE）注意 8 月下旬发布节奏
 
-1. 下载最新季报（Quarterly Activities Report）
-2. 更新 `../季度数据_Greenbushes更新至2026Q2.xlsx` 的「季度生产数据」sheet
-3. 编辑 `build_data.py` 中 `MINES` 的运行状况描述（最新季度）+ 重新生成数据：
-   ```bash
-   python build_data.py   # 读取 Excel → 输出 docs/data.js
-   ```
-4. 提交推送，GitHub Pages 自动发布
+## 更新方法
 
-## 口径说明
+1. 修改 `build_data.py`（数据源：各矿山母公司官方季度报告 ASX/SEC）
+2. `python build_data.py` 生成 `docs/data.js`
+3. `docs/index.html` 为模板，按矿山复制为各详情页（改 MINE_KEY）
+4. 推送 `docs/` 至本仓库 main 分支（GitHub Pages 自动部署，约 1 分钟生效）
 
-- 100% 资产口径；IGO→TLEA 49%，TLEA/Windfield→Greenbushes 51%，Albemarle 49%
-- cash cost (production) 口径：2023-07-01 起（含采矿/加工/破碎/现场管理费用，按产量计）
-- 技术级/化学级拆分自 25Q1（IGO 1Q25）起官方不再披露 → N.D.
-- 库存为产销差滚动推算（期初 22Q4=29.6 万吨），非官方披露绝对库存
-- 26Q3E/26Q4E = FY27 指引中值（165万吨/年 ÷ 4 = 41.25万吨/季）预测，橙色标识
-- 灰色 N.D. = 官方未披露
+## 数据来源
+
+IGO / Pilbara Minerals / Mineral Resources / Liontown / Rio Tinto / Core Lithium / Global Lithium / SQM（SEC 20-F/6-K）/ Wesfarmers 官方报告；WA EPA / NT 政府环评；公司官网。
+
+> 免责声明：本看板数据仅供研究参考，不构成投资建议。
