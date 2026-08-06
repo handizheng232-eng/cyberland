@@ -136,7 +136,7 @@ const D = YONGAN_DATA;
 const Q = D.quarters;
 // ---------- 分页模式：按 URL 参数选择矿山 ----------
 const urlParams = new URLSearchParams(location.search);
-const MINE_KEY = urlParams.get('mine') || 'Mt Holland';  // 分页模式
+const MINE_KEY = urlParams.get('mine') || 'Mt Holland';  // 分页模式第十页
 const MINE = D.mines.find(m => m.mine === MINE_KEY) || D.mines[0];
 // 历史数据源：Greenbushes 用 D.history，其余矿山用 D[<minekey小写>].history
 const HIST = MINE.mine === 'Greenbushes' ? D.history : D[(MINE.mine === 'Mt Marion' ? 'marion' : (MINE.mine === 'Kathleen Valley' ? 'kathleenvalley' : (MINE.mine === 'Bald Hill' ? 'baldhill' : (MINE.mine === 'Mt Cattlin' ? 'mtcattlin' : (MINE.mine === 'Mt Holland' ? 'mtholland' : MINE.mine.toLowerCase())))))].history;
@@ -222,7 +222,7 @@ const m = MINE;
       <div class="table-wrap">
         <table class="hist-table" id="hist_${m.mine}"></table>
       </div>
-      <div class="note" style="margin-top:8px">${D.meta.color_legend}。产销比=销量/产量${m.mine === 'Greenbushes' ? '；库存为产销差滚动推算（期初 22Q4=29.6 万吨），非官方披露绝对库存' : ''}${m.mine === 'Mt Cattlin' ? '；⚠️ 2019-2022 季度为年度官方值均分估算（Galaxy/Allkem 年报口径），2023-2025H1 无官方逐季披露标 N.D.，2025 年起 C&M 停产' : ''}${m.mine === 'Finniss' ? '；⚠️ 2023-2024 季度为财年数据均分估算（FY24 产 95,020 dmt 口径），2024 年中起 C&M（2024-09-08 最后一船），2026-05 重启' : ''}。</div>
+      <div class="note" style="margin-top:8px">${D.meta.color_legend}。产销比=销量/产量${m.mine === 'Greenbushes' ? '；库存为产销差滚动推算（期初 22Q4=29.6 万吨），非官方披露绝对库存' : ''}${m.mine === 'Mt Cattlin' ? '；⚠️ 2019-2022 季度为年度官方值均分估算（Galaxy/Allkem 年报口径），2023-2025H1 无官方逐季披露标 N.D.，2025 年起 C&M 停产' : ''}${m.mine === 'Finniss' ? '；⚠️ 2023-2024 季度为财年数据均分估算（FY24 产 95,020 dmt 口径），2024 年中起 C&M（2024-09-08 最后一船），2026-05 重启' : ''}${m.mine === 'Mt Holland' ? '；⚠️ 26Q2（2026 年 4-6 月）无数据原因：SQM 为 NYSE 美式财季（Q2 2026 财报惯例 8 月下旬发布，参考 2025Q2 = 2025-08-25），截至 2026-08-06 未发布；且 SQM 季度层面仅披露 50% 份额销量（LCE 折算），不披露季度精矿产量——年度产量（2023=15kt/2024=232.4kt/2025=329.6kt，100% 口径）见 SQM 20-F' : ''}。</div>
     </div>
     <div class="cat">
       <h3>⑤ 2027 年产量预测<span class="q">（研究性判断 · 日历年度 · 100% 资产口径 · 单位：${m.fc_unit || m.forecast_unit || '万吨'}）</span></h3>

@@ -7,7 +7,7 @@
 <style>
   :root {
     --bg: #0f1420; --panel: #171e2e; --panel2: #1d2638;
-    --line: #2a3550; --text: #dbe4f3; --muted: #8b98b4;
+    --line: #2a3550; --text: #dbe4f3; --muted: #8b98b4; --warn: #e8b64c;
     --acc: #4da3ff; --acc2: #ffb454; --up: #4cd97b; --down: #ff6b6b;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -148,7 +148,7 @@ D.mines.forEach(m => {
       <span class="mc-q">本季度 ${m.current_q}</span>
     </div>
     <div class="mc-stats">
-      <div class="mc-stat"><div class="k">本季产量（${(() => { const lb = (m.history_labels || D.history_labels); const p = lb.find(([k]) => k === 'production'); return p ? p[1].replace('精矿产量（', '').replace('）', '') : '万吨'; })()}）</div><div class="v">${prod[CI] != null ? prod[CI].toFixed(2) : 'N.D.'} <small style="font-size:11px;color:var(--muted)">万吨</small></div><div>环比 ${pct(prod[CI], prod[PI])}</div></div>
+      <div class="mc-stat"><div class="k">本季产量（${(() => { const lb = (m.history_labels || D.history_labels); const p = lb.find(([k]) => k === 'production'); return p ? p[1].replace('精矿产量（', '').replace('）', '') : '万吨'; })()}）</div><div class="v">${prod[CI] != null ? prod[CI].toFixed(2) : 'N.D.'} <small style="font-size:11px;color:var(--muted)">万吨</small></div><div>环比 ${pct(prod[CI], prod[PI])}</div></div>${m.mine === 'Mt Holland' && prod[CI] == null ? `<div class="mc-note" style="font-size:11px;color:var(--warn);margin-top:2px">⚠️ 26Q2 未披露：SQM 美式财季 Q2 2026 财报 8 月下旬发布（截至 2026-08-06 未出）；且 SQM 季度层面仅披露 50% 份额销量（LCE），不披露季度精矿产量（年度产量见 20-F）</div>` : ''}
       <div class="mc-stat"><div class="k">本季销量</div><div class="v">${sales[CI] != null ? sales[CI].toFixed(2) : 'N.D.'} <small style="font-size:11px;color:var(--muted)">万吨</small></div><div>环比 ${pct(sales[CI], sales[PI])}</div></div>
       <div class="mc-stat"><div class="k">均价（${(() => { const lb = (m.history_labels || D.history_labels); const p = lb.find(([k]) => k === 'avg_price'); return p ? p[1].replace('平均售价（', '').replace('）', '') : 'US$/t'; })()}）</div><div class="v">${price[CI] != null ? price[CI].toLocaleString('zh-CN') : 'N.D.'} <small style="font-size:11px;color:var(--muted)">US$/t</small></div></div>
       <div class="mc-stat"><div class="k">现金成本（${(() => { const lb = (m.history_labels || D.history_labels); const p = lb.find(([k]) => k === 'cash_cost'); if (!p) return 'A$/t'; const mm = p[1].match(/（(.+?)）/); const base = p[1].replace(mm ? mm[0] : '', '').replace('单位成本', '').replace('cash cost', '').trim(); return (base ? base + ' ' : '') + (mm ? mm[1] : 'A$/t'); })()}）</div><div class="v">${cost[CI] != null ? cost[CI].toLocaleString('zh-CN') : 'N.D.'} <small style="font-size:11px;color:var(--muted)">A$/t</small></div></div>
