@@ -418,10 +418,10 @@ const FY27_QGUIDE = {
     qIdx.forEach(i => {
       const v = h.production[i];
       const est = i >= 30;
-      html += `<td class="num ${v == null ? '' : (est ? 'acc' : '')}">${v == null ? '<span class="nd">尚未披露</span>' : v.toFixed(1) + (est ? '<small style="font-size:9px;color:var(--acc)">E</small>' : '')}</td>`;
+      html += `<td class="num ${v == null ? '' : (est ? 'acc' : '')}">${v == null ? '<span class="warn">N.D.</span>' : v.toFixed(1) + (est ? '<small style="font-size:9px;color:var(--acc)">E</small>' : '')}</td>`;
     });
     // FY27 指引季均（最右列，金色高亮）
-    html += `<td class="num" style="background:rgba(240,193,90,0.06)">${g ? (g.v > 0 ? `<span style="color:var(--warn);font-weight:700">${g.v.toFixed(1)}</span>` : '<span class="warn">0</span>') : '<span class="nd">无指引</span>'}<small style="display:block;font-size:9px;color:var(--muted);font-weight:400">${g ? g.note : '未发布年度指引'}</small></td></tr>`;
+    html += `<td class="num" style="background:rgba(240,193,90,0.06)">${g ? (g.v > 0 ? `<span style="color:var(--warn);font-weight:700">${g.v.toFixed(1)}</span>` : '<span class="warn">0</span>') : '<span class="warn">N.D.</span>'}<small style="display:block;font-size:9px;color:var(--muted);font-weight:400">${g ? g.note : '无指引'}</small></td></tr>`;
   });
   // 合计行（披露口径直接相加，近似）
   let tot = qIdx.map(() => 0), totAny = qIdx.map(() => false);
@@ -434,9 +434,9 @@ const FY27_QGUIDE = {
     '<td class="num" style="background:rgba(240,193,90,0.08)">—</td></tr></tbody>';
   document.getElementById('q_tbl').innerHTML = html;
   document.getElementById('q_note').innerHTML =
-    '· **季度数据**：2021Q3-2026Q2 实际（日历季度，各矿山披露口径）+ 26Q3E/26Q4E 预测（E 标记，**线性增长推算**：从 26Q2 实际等差爬坡至 FY27 指引季均/满产季均）；灰色=尚未披露（官方报告未提供该季度数据）。<br>' +
-    '· **未来一年指引（表最右列）**：FY27 指引季均 = 财年指引中值 ÷ 4（或满产产能 ÷ 4，见各矿山口径注）——置于最右便于与 2025/2026 各季度实际对比；澳洲矿企一般不发布季度指引，此为对照参考值；无指引矿山（Wodgina/Marion/Finniss/Manna）标 尚未披露。<br>' +
-    '· 未投产/停产矿山（Mt Cattlin C&M、Manna 未投产、Mt Holland 2023 前）对应季度为 0（未投产/停产）；行业合计为披露口径直接相加（跨矿山口径近似，非官方）。';
+    '· **季度数据**：2021Q3-2026Q2 实际（日历季度，各矿山披露口径）+ 26Q3E/26Q4E 预测（E 标记，**线性增长推算**：从 26Q2 实际等差爬坡至 FY27 指引季均/满产季均）；灰色 N.D.=官方未披露。<br>' +
+    '· **未来一年指引（表最右列）**：FY27 指引季均 = 财年指引中值 ÷ 4（或满产产能 ÷ 4，见各矿山口径注）——置于最右便于与 2025/2026 各季度实际对比；澳洲矿企一般不发布季度指引，此为对照参考值；无指引矿山（Wodgina/Marion/Finniss/Manna）标 N.D.<br>' +
+    '· 未投产/停产矿山（Mt Cattlin C&M、Manna 未投产、Mt Holland 2023 前）对应季度 N.D. 或 0；行业合计为披露口径直接相加（跨矿山口径近似，非官方）。';
 })();
 
 /* ---------- 资本开支表（数据待子任务核实后填充） ---------- */
@@ -449,17 +449,17 @@ const CAPEX = D.capex || {
   D.mines.forEach(m => {
     const c = CAPEX[m.mine];
     html += `<tr><td class="rowhead">${m.mine}</td><td>${c ? (c.unit || '矿山级') : '待核实'}</td>` +
-      yrs.map(y => `<td class="num">${c && c[y] != null ? c[y].toFixed(1) : '<span class="nd">未搜寻到</span>'}</td>`).join('') + `</tr>`;
+      yrs.map(y => `<td class="num">${c && c[y] != null ? c[y].toFixed(1) : '<span class="warn">N.D.</span>'}</td>`).join('') + `</tr>`;
   });
   // 合计（可加项）
   let tot = yrs.map(() => 0), any = yrs.map(() => false);
   D.mines.forEach(m => { const c = CAPEX[m.mine]; if (c) yrs.forEach((y, i) => { if (c[y] != null) { tot[i] += c[y]; any[i] = true; } }); });
-  html += `<tr class="tot"><td>合计</td><td>已核实项</td>` + yrs.map((y, i) => `<td class="num">${any[i] ? tot[i].toFixed(1) : '<span class="nd">未搜寻到</span>'}</td>`).join('') + `</tr>`;
+  html += `<tr class="tot"><td>合计</td><td>已核实项</td>` + yrs.map((y, i) => `<td class="num">${any[i] ? tot[i].toFixed(1) : '<span class="warn">N.D.</span>'}</td>`).join('') + `</tr>`;
   document.getElementById('capex_tbl').innerHTML = html;
   document.getElementById('capex_note').innerHTML =
     '· 口径：矿山/项目级资本开支（100% 基准优先；披露份额则标注，如 GB=IGO 25% 份额、Mt Holland=SQM 50% 份额）。' +
     '· 2026E/2027E 为公司指引或 FID 计划（如 Manna FID 后建设、Mt Holland 扩产 2027 H2 开工）。' +
-    '· N.D. 规范：未搜寻到 = 公开渠道未找到该矿山该年份资本开支披露（如 GB 单矿、Wodgina FY22-24）；已核实项见合计行。';
+    '· ⚠️ 子任务核实中——数据填充后本表自动更新（当前 N.D. 为待核实占位）。';
 })();
 
 /* ---------- 2027 预测汇总卡 ---------- */

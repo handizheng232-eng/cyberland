@@ -2491,32 +2491,7 @@ for _mm in data["mines"]:  # fc 位于 mines[] 矿山对象内
             "total": round(sum(fc["q"]), 1),
         }
 
-# ============ N.D. 规范化 + 预测依据增强（用户规范 2026-08-06） ============
-# ① 未投产期的 None → 0（产量为零）：显式投产窗口（start 索引前 = 未投产 → 0；start 后 None 保持"尚未披露"）
-# start = 该矿山首次可能生产的季度索引（2019Q1=0）；None = 全期未投产
-PROD_START = {
-    "history": 0,            # GB：2019Q1 起生产期
-    "pilgangoora": 0,        # PL：2018 年已投产（2019 年有生产，季度未披露 → 尚未披露）
-    "wodgina": 2,            # Wodgina：2019Q3 首产（索引 2）
-    "marion": 0,             # Marion：2017 已投产
-    "kathleenvalley": 19,    # KV：2024Q3 首产（索引 19）
-    "baldhill": 0,           # BH：2018 投产（2019-2021 生产期未披露 → 尚未披露；2022 起停产期另行处理）
-    "mtcattlin": 0,          # MC：2016 已投产
-    "finniss": 11,           # Finniss：2022Q4 首产（索引 11）
-    "manna": 32,             # Manna：未投产（全期 0）
-    "mtholland": 19,         # MH：2023Q4 首产精矿（索引 19；2023Q4-2024 生产未披露 → 尚未披露）
-}
-for _mk in PROD_START:
-    _h = data[_mk]["production"] if _mk == "history" else data[_mk]["history"]["production"]
-    _start = PROD_START[_mk]
-    for _i in range(min(_start, len(_h))):
-        if _h[_i] is None:
-            _h[_i] = 0.0  # 未投产期 → 产量为零
-# Bald Hill 停产期（2022Q1-2024Q3，索引 8-22）→ 0（2022 出售 MRL、2023-06 宣布关闭、2024Q4 重启准备）
-for _i in range(8, 23):
-    if data["baldhill"]["history"]["production"][_i] is None:
-        data["baldhill"]["history"]["production"][_i] = 0.0
-
+# ============ 预测依据增强（用户规范 2026-08-06） ============
 # ② 各矿山 2027 预测详细依据（basis/assumptions，矿山页⑤与总览页共用，线性增长口径）
 FC_BASIS = {
     "Greenbushes": {
