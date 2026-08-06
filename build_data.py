@@ -2461,7 +2461,7 @@ FC27 = {
     "marion":          {"bear": 63,  "base": 66,  "bull": 69,  "q": [16.5, 16.5, 16.5, 16.5]},
     "kathleenvalley":  {"bear": 40,  "base": 41.8, "bull": 44, "q": [10.4, 10.4, 10.5, 10.6]},
     "baldhill":        {"bear": 12,  "base": 14,  "bull": 14,  "q": [3.5, 3.5, 3.5, 3.5]},
-    "mtcattlin":       None,  # C&M 复产情景（0/3/8）保持
+    "mtcattlin":       {"bear": 0,   "base": 3,   "bull": 8,   "q": [0.0, 0.5, 1.0, 1.5]},  # C&M 复产情景（0/3/8，情景拆分非线性的）
     "finniss":         {"bear": 13,  "base": 15,  "bull": 16,  "q": [3.0, 4.0, 4.0, 4.0]},
     "manna":           {"bear": 6,   "base": 8,   "bull": 10,  "q": [0.0, 0.0, 2.7, 5.3]},
     "mtholland":       {"bear": 36,  "base": 38,  "bull": 40,  "q": [9.5, 9.5, 9.5, 9.5]},
