@@ -2733,7 +2733,7 @@ const YONGAN_DATA = {
    "mine_cn": "Mt Holland（荷兰山矿山）",
    "report": "SQM 1Q2026 Earnings Release（2026-05-27，美式季度）；SQM 4Q2025 Earnings Release（2026-03-02）；SQM & Wesfarmers Mt Holland Expansion FID 公告（2026-07-21）；SQM-I 官网 Mt Holland 页",
    "source_url": "https://sqm-i.com/what-we-do/operations-and-projects/mt-holland/",
-   "equity_note": "100% 资产基准（页面按 SQM 50% 份额 ×2 换算并标注）；Covalent Lithium = SQM（智利，NYSE: SQM，SQM-I 国际锂业务运营）+ Wesfarmers（ASX: WES）50:50 JV；**矿 + Kwinana 精炼厂一体化**（精矿 SC5.5 运至珀斯 Kwinana 转电池级氢氧化锂）；历史：Kidman Resources（ASX: KDR）2016-2018 发现/DFS → 2019 Wesfarmers 收购 Kidman + SQM JV；**美式财季（Q1-Q4）与 MM/DD/YYYY 日期格式**——最新披露 = SQM 2026Q1（2026-05-27），Q2 2026 报告 2026 年 8 月下旬发布",
+   "equity_note": "100% 资产基准（页面按 SQM 50% 份额 ×2 换算并标注）；Covalent Lithium = SQM（智利，NYSE: SQM，SQM-I 国际锂业务运营）+ Wesfarmers（ASX: WES）50:50 JV；**矿 + Kwinana 精炼厂一体化**（精矿 SC5.5 运至珀斯 Kwinana 转电池级氢氧化锂）；历史：Kidman Resources（ASX: KDR）2016 发现 Earl Grey → 2017-09-12 SQM US$110M JV 协议（50:50）→ 2018-12 IPFS + 首份储量 94.2Mt@1.5% → 2019-09-23 Wesfarmers $1.90/股收购 Kidman（~A$776M，溢价 47.3%）→ Covalent 50:50 JV；**SQM-I 为 SQM 国际锂业务分部（2024 设立，非独立上市）——SQM 本身 NYSE 上市（CIK 0000909037，Form 20-F）**；**美式财季（Q1-Q4）与 MM/DD/YYYY 日期格式**——最新披露 = SQM 2026Q1（2026-05-27），Q2 2026 报告 2026 年 8 月下旬发布；投产：首采 2022、选厂 2023Q3 调试、2023Q4 双回路首产精矿、2024 H1 首出口、2025 达名义产能 383ktpa",
    "history_labels": [
     [
      "production",
@@ -2787,8 +2787,8 @@ const YONGAN_DATA = {
       "2026Q1 满产运营确认（SQM 官方）——爬坡仅用 ~15 个月（2024 末投产 → 2026Q1 满产）",
       "Kwinana 精炼厂 2025-07 首产（一体化最后一块拼图）——2025 全年氢氧化锂 1.6kt LCE（50%），2027 达名称产能 50ktpa",
       "2025 全年精矿 156.4kt（SQM 50% = 312.8kt 100%）——首个完整生产年超预期",
-      "储量 85.6Mt @ 1.45%（Earl Grey 伟晶岩）——西澳前五伟晶岩矿床、矿山寿命 50+ 年",
-      "扩产保留 Kwinana 下游扩产选择权——矿+精炼一体化可随市场升级"
+      "储量 84.7Mt @ 1.45%（20-F 2025-12-31；官网 85.6 为 FY2024 末口径）——Earl Grey 伟晶岩西澳前五、矿山寿命 50+ 年",
+      "扩产含 ore sorting 设施：回收堆存料 +约 3Mt 精矿（LOM）——扩产保留 Kwinana 下游扩产选择权"
      ]
     }
    },
@@ -2821,12 +2821,16 @@ const YONGAN_DATA = {
       "verified": "✓ 官网 + SQM 报告双确认",
       "sources": [
        {
+        "src": "SQM 20-F FY2025",
+        "data": "concentrator nameplate 383,000 dmtpa SC 5.5% Li₂O；2023=15.0kt / 2024=232.4kt / 2025=329.6kt（100%，dmt SC5.5）；首采 2022、选厂 2023Q3 调试、2023Q4 双回路首产、2024 H1 首出口、2025 达名义产能；流程：DMS 粗粒 + 球磨/磁选/脱泥 + 浮选细粒"
+       },
+       {
         "src": "SQM-I 官网",
         "data": "hybrid Dense Media Separation (DMS) and flotation process；expected annual output of approximately 380,000 dry tonnes at 5.5% Li₂O"
        },
        {
         "src": "扩产 FID（2026-07-21）",
-        "data": "existing nameplate approximately 380,000 tpa → expansion to 760,000 tpa at 5.5% Li₂O (100% basis)；second concentrator construction H2 2027、first expansion production H1 2030；SQM share capex US$450-500M"
+        "data": "existing nameplate approximately 380,000 tpa → expansion to 760,000 tpa at 5.5% Li₂O (100% basis)；second concentrator construction H2 2027、first expansion production H1 2030；ore sorting facility 回收堆存料 +约 3Mt 精矿（LOM）；SQM share capex US$450-500M（Wesfarmers 份额 A$645-715M）"
        },
        {
         "src": "SQM 2025 全年报告",
@@ -2865,7 +2869,7 @@ const YONGAN_DATA = {
       ]
      }
     ],
-    "note": "核实时间：2026-08-05。关键结论：① 选矿厂 380ktpa SC5.5（100%）+ 扩产 FID 760ktpa（2026-07-21，2027 H2 建设、H1 2030 首产）；② Kwinana 精炼厂 50ktpa LOH（2025-07 首产、2027 达名称产能）；③ 2025 全年实际销量 312.8kt SC（100%）——满产爬坡验证；④ 2026Q1 满产运营（SQM 官方）；⑤ SQM 披露为 50% 份额（页面 ×2 = 100% 基准并标注）；⑥ 美式财季——最新披露 2026Q1（2026-05-27），Q2 2026 报告 8 月下旬。",
+    "note": "核实时间：2026-08-05。关键结论：① 选矿厂 380ktpa SC5.5（100%）+ 扩产 FID 760ktpa（2026-07-21，2027 H2 建设、H1 2030 首产）；② Kwinana 精炼厂 50ktpa LOH（2025-07 首产、2027 达名称产能）；③ 20-F 产量：2023=15kt / 2024=232.4kt / 2025=329.6kt（100%）——2025 达名义产能 86%；④ 2026Q1 满产运营（SQM 官方）；⑤ SQM 披露为 50% 份额（页面 ×2 = 100% 基准并标注）；⑥ 美式财季——最新披露 2026Q1（2026-05-27），Q2 2026 报告 8 月下旬。",
     "sources_index": {
      "公司官网": "SQM-I（sqm-i.com）Mt Holland 页",
      "公司报告": "SQM 美式季报（SEC 6-K：2025Q1-Q4、2026Q1）",
@@ -2891,7 +2895,7 @@ const YONGAN_DATA = {
      "items": [
       {
        "line": "原矿矿山：Earl Grey 露天矿",
-       "status": "✅ 生产运营中（2024 末投产）",
+       "status": "✅ 生产运营中（2023Q4 首产精矿）",
        "sources": [
         {
          "src": "SQM-I 官网",
@@ -2908,12 +2912,12 @@ const YONGAN_DATA = {
        "status": "✅ 储量确认（西澳前五）",
        "sources": [
         {
-         "src": "SQM-I 官网",
-         "data": "declared reserve of 85.6 million tonnes at 1.45% Li₂O——top five spodumene deposits in Western Australia；expected mine life over 50 years"
+         "src": "SQM 20-F FY2025（S-K1300，2025-12-31）",
+         "data": "Mineral Reserves 84.7Mt @ 1.45% Li₂O（Proven 38.5Mt@1.56% + Probable 43.7Mt@1.38% + 堆存 2.5Mt@0.89%；0.5% cut-off；冶金回收率 75%；SQM 50% = 42.4Mt；FY2024 末为 85.6Mt -1% 开采消耗）；Mineral Resource（excl. reserves）121.1Mt（0.5%/0.78% petalite cut-off）——西澳前五、矿山寿命 50+ 年"
         },
         {
-         "src": "Kidman Resources 时代（历史）",
-         "data": "Kidman 2018 年 JORC：Earl Grey 初始储量约 19.3Mt @ 1.5%（2018-06，100% 基准）——当前 85.6Mt @ 1.45% 为多年钻探后扩展"
+         "src": "Kidman 时代（历史链）",
+         "data": "2016-12-05 首份 MRE 128Mt @ 1.44%（当时 ASX 最大硬岩锂资源）→ 2018-03-19 MRE 189Mt @ 1.50%（+54%，91% M+I）→ 2018-12-18 首份 Ore Reserve 94.2Mt @ 1.5%（IPFS 伴生）"
         }
        ]
       },
@@ -2922,8 +2926,12 @@ const YONGAN_DATA = {
        "status": "✅ 已获批（矿 + 精炼厂）",
        "sources": [
         {
-         "src": "SQM-I 官网/扩产 FID",
-         "data": "necessary government and regulatory approvals have either been secured or are underway（扩产）；Kwinana 精炼厂许可（DWER Prescribed Premises）"
+         "src": "WA EPA（矿山）",
+         "data": "EPA Assessment 2123 → Ministerial Statement 1118（2019-11-21）；修订 2315 → MS 1199（2022-11-23）；LOM 扩建 2387 → EPA Report 1809（2026，EPA 建议批准、部长决定待定）；Mining Proposal Stage 2 REG 121883（2023-11）；联邦 EPBC 2017-7950"
+        },
+        {
+         "src": "WA EPA（Kwinana 精炼厂）",
+         "data": "EPA Assessment 2282 → EPA Report 1700 → Ministerial Statement 1170（2021-07-15）；DWER Works Approval W6499/2021/1（2025-04-08 修订，勿混 Tianqi 的 W5977）"
         },
         {
          "src": "Kidman 时代",
@@ -2942,7 +2950,7 @@ const YONGAN_DATA = {
        ]
       }
      ],
-     "note": "核实时间：2026-08-05。采矿侧要点：① Earl Grey 露天矿（Forrestania 地区，Perth 东 500km、Southern Cross 东南 120km）；② 储量 85.6Mt @ 1.45%（西澳前五、矿山寿命 50+ 年）；③ 矿+精炼一体化（Kwinana 50ktpa LOH）；④ 2024 末投产、2026Q1 满产（爬坡 ~15 个月）；⑤ 2026-07-21 扩产 FID（380→760ktpa）；⑥ 坐标 ≈ -32.1, 119.8（Forrestania，待精确验证）。",
+     "note": "核实时间：2026-08-05。采矿侧要点：① Earl Grey 露天矿（Forrestania 地区，Perth 东 500km、Southern Cross 东南 120km）；② 储量 84.7Mt @ 1.45%（20-F 2025-12-31；官网 85.6 为 FY2024 末）；③ 矿+精炼一体化（Kwinana 50ktpa LOH）；④ 首采 2022、2023Q4 首产精矿、2025 达名义产能 383ktpa、2026Q1 满产；⑤ 2026-07-21 扩产 FID（380→760ktpa）；⑥ 坐标 ≈ -32.083, 119.748（Kidman 钻探孔位 GDA94 Z50→WGS84 换算：KEGR001 -32.08222,119.74634；KEGM039 -32.08693,119.75211）；矿业权 M77/1065、M77/1066、M77/1080（合计 4,626 ha）。",
      "images": [
       {
        "url": "img/sat_mtholland_z13.jpg",
