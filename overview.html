@@ -128,14 +128,14 @@
   .yoy.up { color: var(--up); } .yoy.down { color: var(--down); } .yoy.d { color: var(--muted); }
 
   /* ---------- 表格 ---------- */
-  .table-wrap { overflow-x: auto; border-radius: 16px; border: 1px solid var(--line); background: var(--panel); backdrop-filter: blur(8px); max-height: 640px; overflow-y: auto; }
+  .table-wrap { overflow-x: auto; border-radius: 16px; border: 1px solid var(--line); background: var(--panel); backdrop-filter: blur(8px); max-height: 820px; overflow-y: auto; }
   table.tbl { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 12.5px; min-width: 900px; }
   table.tbl thead th {
     padding: 8px 8px; text-align: left; font-size: 11px; color: var(--muted); font-weight: 700;
     border-bottom: 1px solid var(--line); background: #1b2440; white-space: nowrap;
     position: sticky; top: 0; z-index: 2;
   }
-  table.tbl thead th.year-head { background: rgba(77,163,255,0.16); color: var(--acc); text-align: center; font-size: 11.5px; letter-spacing: 1px; }
+  table.tbl thead th.year-head { background: #24325a; color: var(--acc); text-align: center; font-size: 11.5px; letter-spacing: 1px; }
   table.tbl thead th.q-head { background: #1b2440; text-align: center; font-weight: 600; }
   table.tbl td { padding: 7px 8px; border-bottom: 1px solid rgba(90,120,180,0.08); white-space: nowrap; }
   table.tbl tbody tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
@@ -146,9 +146,10 @@
   table.tbl td.warn { color: var(--warn); }
   table.tbl .rowhead { font-weight: 600; }
   table.tbl td.sticky, table.tbl th.sticky { position: sticky; left: 0; z-index: 5; background: #182136; }
+  table.tbl tbody tr:nth-child(even) td.sticky, table.tbl tbody tr:hover td.sticky { background: #182136; }
   table.tbl thead th.sticky { z-index: 7; background: #1b2440; }
   table.tbl tr.tot td { border-top: 2px solid rgba(240,193,90,0.5); font-weight: 800; background: rgba(240,193,90,0.06); }
-  table.tbl tr.tot td.sticky { background: #1f2a3e; }
+  table.tbl tr.tot td.sticky, table.tbl tr.tot:hover td.sticky { background: #1f2a3e; }
   /* 同一年份季度数据同色（年份配色） */
   table.tbl td.y2021 { background: rgba(77,163,255,0.05); }
   table.tbl td.y2022 { background: rgba(94,192,221,0.05); }
@@ -440,9 +441,9 @@ const FY27_QGUIDE = {
     html += `<th colspan="${idxs.length}" class="year-head">${yr}</th>`;
   });
   html += `<th rowspan="2" class="q-head" style="background:rgba(77,163,255,0.16)!important;color:var(--acc);min-width:100px">2026E<br>全年预估<small style="display:block;font-size:8.5px;color:var(--muted)">今年</small></th>` +
-    `<th rowspan="2" class="q-head" style="background:rgba(77,163,255,0.16)!important;color:var(--acc);min-width:120px">2026E 预估依据<small style="display:block;font-size:8.5px;color:var(--muted)">公布/指引/推测</small></th>` +
+    `<th rowspan="2" class="q-head" style="background:rgba(77,163,255,0.16)!important;color:var(--acc);min-width:150px">2026E 预估依据<small style="display:block;font-size:8.5px;color:var(--muted)">公布/指引/推测</small></th>` +
     `<th rowspan="2" class="q-head" style="background:rgba(240,193,90,0.12)!important;color:var(--warn);min-width:100px">2027E<br>全年预估<small style="display:block;font-size:8.5px;color:var(--muted)">明年</small></th>` +
-    `<th rowspan="2" class="q-head" style="background:rgba(240,193,90,0.12)!important;color:var(--warn);min-width:150px">2027E 预估依据<small style="display:block;font-size:8.5px;color:var(--muted)">指引/公开进度</small></th></tr><tr>`;
+    `<th rowspan="2" class="q-head" style="background:rgba(240,193,90,0.12)!important;color:var(--warn);min-width:190px">2027E 预估依据<small style="display:block;font-size:8.5px;color:var(--muted)">指引/公开进度</small></th></tr><tr>`;
   qIdx.forEach(i => {
     const est = i >= 30;
     html += `<th class="q-head${est ? ' acc' : ''}">${Q[i].replace('Q', 'Q')}${est ? '<small style="font-size:9px;color:var(--acc)">E</small>' : ''}</th>`;
@@ -477,12 +478,12 @@ const FY27_QGUIDE = {
       html += `<td class="num"><span class="warn">N.D.</span></td>`;
     }
     // 2026E 预估依据（td 内 div 容器：块级 max-width 强制换行 + 高行高）
-    html += `<td style="padding:10px 8px"><div style="font-size:9.5px;color:var(--muted);line-height:2.2;max-width:180px;word-break:break-all;white-space:normal">${e26note}</div></td>`;
+    html += `<td style="padding:10px 8px"><div style="font-size:9.5px;color:var(--muted);line-height:2.2;max-width:210px;word-break:break-all;white-space:normal">${e26note}</div></td>`;
     // 2027E 全年（明年）
     html += `<td class="num" style="color:var(--warn);font-weight:700">${f27 != null ? f27.toFixed(1) : '<span class="warn">N.D.</span>'}` +
       (f27 != null ? (full26 ? yoy2(f27, e26) : (h1 != null ? '<span class="yoy d">基数 H1 口径</span>' : '<span class="yoy d">同比 N.D.</span>')) : '') + `</td>`;
     // 2027E 预估依据（td 内 div 容器：块级 max-width 强制换行 + 高行高）
-    html += `<td style="padding:10px 8px"><div style="font-size:9.5px;color:var(--muted);line-height:2.2;max-width:180px;word-break:break-all;white-space:normal">${basis27}</div></td></tr>`;
+    html += `<td style="padding:10px 8px"><div style="font-size:9.5px;color:var(--muted);line-height:2.2;max-width:210px;word-break:break-all;white-space:normal">${basis27}</div></td></tr>`;
   });
   // 合计行（披露口径直接相加，近似）
   let tot = qIdx.map(() => 0), totAny = qIdx.map(() => false);
@@ -499,9 +500,9 @@ const FY27_QGUIDE = {
   html += `<tr class="tot"><td class="sticky">行业合计</td><td>披露口径相加（近似）</td>` +
     qIdx.map((i, k) => `<td class="num">${totAny[k] ? tot[k].toFixed(0) : 'N.D.'}</td>`).join('') +
     `<td class="num">${totE26Any ? totE26.toFixed(0) + yoy2(totE26, totV25Any ? totV25 : null) : 'N.D.'}</td>` +
-    '<td style="padding:10px 8px"><div style="font-size:9.5px;color:var(--muted);line-height:2.2;max-width:180px;word-break:break-all;white-space:normal">2026E 合计 = 各矿山全年预估之和（含 Mt Holland 满产预估 38、Mt Cattlin C&M 零预估；全部矿山均计入）</div></td>' +
+    '<td style="padding:10px 8px"><div style="font-size:9.5px;color:var(--muted);line-height:2.2;max-width:210px;word-break:break-all;white-space:normal">2026E 合计 = 各矿山全年预估之和（含 Mt Holland 满产预估 38、Mt Cattlin C&M 零预估；全部矿山均计入）</div></td>' +
     `<td class="num">${totF27Any ? totF27.toFixed(0) + (totE26Any ? yoy2(totF27, totE26) : '<span class="yoy d">同比 N.D.</span>') : 'N.D.'}</td>` +
-    '<td style="padding:10px 8px"><div style="font-size:9.5px;color:var(--muted);line-height:2.2;max-width:180px;word-break:break-all;white-space:normal">2027E 合计 = 各矿山基准情景之和（依据见上方各矿山行）</div></td></tr></tbody>';
+    '<td style="padding:10px 8px"><div style="font-size:9.5px;color:var(--muted);line-height:2.2;max-width:210px;word-break:break-all;white-space:normal">2027E 合计 = 各矿山基准情景之和（依据见上方各矿山行）</div></td></tr></tbody>';
   document.getElementById('q_tbl').innerHTML = html;
   document.getElementById('q_note').innerHTML =
     '· <b>季度数据</b>：2021Q3-2026Q2 实际（日历季度，各矿山披露口径）+ 26Q3E/26Q4E 预测（E 标记）——<b>今年各季度取值</b>：已公布用公布值；未公布且有官方指引（FY27 指引季均）用指引值；无指引用推测值（线性爬坡/现状年化）——具体依据见各行 2026E 预估依据列；灰色 N.D.=官方未披露。<br>' +
