@@ -502,9 +502,9 @@ const FY27_QGUIDE = {
     '<td style="font-size:10.5px;color:var(--muted)">2027E 合计 = 各矿山基准情景之和（依据见上方各矿山行）</td></tr></tbody>';
   document.getElementById('q_tbl').innerHTML = html;
   document.getElementById('q_note').innerHTML =
-    '· **季度数据**：2021Q3-2026Q2 实际（日历季度，各矿山披露口径）+ 26Q3E/26Q4E 预测（E 标记）——**今年各季度取值**：已公布用公布值；未公布且有官方指引（FY27 指引季均）用指引值；无指引用推测值（线性爬坡/现状年化）——具体依据见各行 2026E 预估依据列；灰色 N.D.=官方未披露。<br>' +
-    '· **全年预估（最右四列）**：2026E = 今年各季度之和（有官方全年指引则优先采用）；2027E = 未来产量预测汇总中的基准情景（同一线性口径）；两列各附**预估依据**（公布值/指引/推测、公开言论与进度）。<br>' +
-    '· **同比（单元格小字）**：2026E vs 2025 实际、2027E vs 2026E——绝对值（±万吨）+ 相对数（±%）；**严谨处理**：26Q3E/26Q4E 未披露的矿山（如 Mt Holland 美式财季 H2 未出）全年预估标 N.D. 并注记 H1 实际，同比不计算；基数为 0 或缺失时同比 N.D.<br>' +
+    '· <b>季度数据</b>：2021Q3-2026Q2 实际（日历季度，各矿山披露口径）+ 26Q3E/26Q4E 预测（E 标记）——<b>今年各季度取值</b>：已公布用公布值；未公布且有官方指引（FY27 指引季均）用指引值；无指引用推测值（线性爬坡/现状年化）——具体依据见各行 2026E 预估依据列；灰色 N.D.=官方未披露。<br>' +
+    '· <b>全年预估（最右四列）</b>：2026E = 今年各季度之和（有官方全年指引则优先采用）；2027E = 未来产量预测汇总中的基准情景（同一线性口径）；两列各附<b>预估依据</b>（公布值/指引/推测、公开言论与进度）。<br>' +
+    '· <b>同比（单元格小字）</b>：2026E vs 2025 实际、2027E vs 2026E——绝对值（±万吨）+ 相对数（±%）；<b>严谨处理</b>：26Q3E/26Q4E 未披露的矿山（如 Mt Holland 美式财季 H2 未出）全年预估标 N.D. 并注记 H1 实际，同比不计算；基数为 0 或缺失时同比 N.D.<br>' +
     '· 未投产/停产矿山（Mt Cattlin C&M、Manna 未投产、Mt Holland 2023 前）对应季度 N.D. 或 0；行业合计为披露口径直接相加（跨矿山口径近似，非官方）。';
 })();
 
@@ -565,7 +565,7 @@ const CAPEX = D.capex || {
     <div class="fc-card base"><div class="k">行业基准 <span class="lbl">基准</span></div><div class="v">${base.toFixed(0)} <small style="font-size:12px">万吨 SC6e</small>${yoy(base, totE)}</div><div class="d">各矿基准情景合计（SC6 等效折算，线性增长）</div></div>
     <div class="fc-card bull"><div class="k">行业乐观 <span class="lbl">乐观</span></div><div class="v">${bull.toFixed(0)} <small style="font-size:12px">万吨 SC6e</small>${yoy(bull, totE)}</div><div class="d">满产加速 / 复产提前 / 新矿投产顺利</div></div>`;
   document.getElementById('fc_note').innerHTML =
-    `· 2027E 为研究性判断（日历年度 · 100% 资产口径 · **线性增长推算**），各矿山基准值：${per.map(p => `${p.mine} ${p.base} 万吨${p.unit ? '（' + p.unit + '）' : ''}`).join('、')}。<br>` +
+    `· 2027E 为研究性判断（日历年度 · 100% 资产口径 · <b>线性增长推算</b>），各矿山基准值：${per.map(p => `${p.mine} ${p.base} 万吨${p.unit ? '（' + p.unit + '）' : ''}`).join('、')}。<br>` +
     `· 行业合计按 SC6 等效（×品位/6%）折算后相加——近似参考，非官方口径；同比基数为 2026E 合计（${totE.toFixed(0)} 万吨 SC6e）；Mt Cattlin 基准 0-3 万吨（C&M 复产情景）、Manna 基准 8 万吨（FID 后首产爬坡）。`;
 
   // 分矿山柱状图（悲观/基准/乐观，SC6 等效）

@@ -1392,7 +1392,7 @@ MINES = [
         "fc_unit": "万吨 SC6 等效（2027 预测：重启满产 20.5 万吨/年对应）",
         "fc_2027": [
             {"label": "悲观", "val": 10, "note": "重启爬坡慢于计划 + 锂价波动——2027 年运行率 50%"},
-            {"label": "基准", "val": 16, "note": "2027 年全年运行 + BP33 地下爬坡——~80% 名称产能（205ktpa SC6e）"},
+            {"label": "基准", "val": 16, "note": "2027 年全年运行 + BP33 地下爬坡——~73% 名称产能（15/20.5，205ktpa SC6e）"},
             {"label": "乐观", "val": 20, "note": "2027 年底达名称产能 205ktpa SC6e（重启研究目标）"}
         ],
         "capacity_verification": {
@@ -1640,23 +1640,21 @@ MINES = [
         "source_url": "https://sqm-i.com/what-we-do/operations-and-projects/mt-holland/",
         "equity_note": "100% 资产基准（页面按 SQM 50% 份额 ×2 换算并标注）；Covalent Lithium = SQM（智利，NYSE: SQM，SQM-I 国际锂业务运营）+ Wesfarmers（ASX: WES）50:50 JV；**矿 + Kwinana 精炼厂一体化**（精矿 SC5.5 运至珀斯 Kwinana 转电池级氢氧化锂）；历史：Kidman Resources（ASX: KDR）2016 发现 Earl Grey → 2017-09-12 SQM US$110M JV 协议（50:50）→ 2018-12 IPFS + 首份储量 94.2Mt@1.5% → 2019-09-23 Wesfarmers $1.90/股收购 Kidman（~A$776M，溢价 47.3%）→ Covalent 50:50 JV；**SQM-I 为 SQM 国际锂业务分部（2024 设立，非独立上市）——SQM 本身 NYSE 上市（CIK 0000909037，Form 20-F）**；**美式财季（Q1-Q4）与 MM/DD/YYYY 日期格式**——最新披露 = SQM 2026Q1（2026-05-27），Q2 2026 报告 2026 年 8 月下旬发布；投产：首采 2022、选厂 2023Q3 调试、2023Q4 双回路首产精矿、2024 H1 首出口、2025 达名义产能 383ktpa",
         "history_labels": [
-            ("production", "产量（万吨，100% 基准 SC5.5 销量口径）"),
-            ("sales", "销量（万吨）"),
-            ("prod_sales_ratio", "产销比"),
-            ("avg_price", "平均售价（US$/t，SC6）"),
-            ("cash_cost", "单位成本 FOB（A$/t）"),
+            ("production", "产量（万吨，100% dmt SC5.5——SQM 不披露季度产量，标 N.D.；年度产量见表格下方注记）"),
+            ("sales", "销量（万吨，SQM 50% 份额 SC6 ×2 = 100% 估算）"),
+            ("avg_price", "平均售价（US$/t，SC6；FOB/CIF 未披露）"),
         ],
         "status_26q2": {
             "existing_lines": [
                 {
                     "name": "已有产能1：Mt Holland 矿 + 选矿厂（Earl Grey 伟晶岩）— 380ktpa SC5.5（100%）",
-                    "q26q2": "26Q2 满产运营（SQM 2026Q1 确认 'operating at full capacity'）；1Q2026 精矿销量 38.1kt（SQM 50% = 76.2kt 100%，销量受船期影响）；选矿工艺 = DMS + 浮选混合（SC5.5）；**扩产 FID（2026-07-21）：380→760ktpa 翻倍、第二选矿厂 2027 H2 建设、扩产首产 H1 2030**",
-                    "q26q1": "26Q1 满产爬坡（1Q2026 38.1kt 50%）；2025 全年 156.4kt（50% = 312.8kt 100%）超爬坡预期",
-                    "compare": "2026-07-21 扩产 FID 是超预期点（SQM 份额 capex US$450-500M）——一体化项目进入倍增阶段；满产运营确认"
+                    "q26q2": "26Q2 数据未发布（SQM 美式财季 Q2 2026 报告 2026 年 8 月下旬发布）；**期后事项（2026-07-21）**：扩产 FID 380→760ktpa（第二选矿厂 2027 H2 建设、扩产首产 H1 2030），FID 确认矿山满产运营（SQM 2026Q1 口径）；1Q2026 精矿销量 38.1kt（SQM 50% 份额 SC6）；选矿工艺 = DMS + 浮选混合",
+                    "q26q1": "26Q1 满产运营（SQM 1Q2026 确认 'operating at full capacity'）；1Q2026 精矿销量 38.1kt（SQM 50%）；2025 全年 156.4kt（SQM 50%）为首个完整生产年",
+                    "compare": "26Q2 实际待 Q2 财报（8 月下旬）确认——当前信息以 26Q1 口径 + 期后 FID 为准；扩产 FID（2026-07-21，SQM 份额 capex US$450-500M）确认满产运营并进入倍增阶段"
                 },
                 {
                     "name": "已有产能2：Kwinana 氢氧化锂精炼厂 — 50ktpa 电池级 LOH",
-                    "q26q2": "Kwinana 爬坡中：2025-07 首产（SQM 2025Q2 确认）、预计 2027 达名称产能；1Q2026 氢氧化锂 0.9kt LCE（50% = 1.8kt 100%）；2025 全年 1.6kt LCE（50%）",
+                    "q26q2": "Kwinana 爬坡中：2025-07 首产（SQM 2025Q2 确认）、SQM 指引预计 2027 达名称产能（爬坡约 18 个月）；1Q2026 氢氧化锂 0.9kt LCE（SQM 50% 份额）；2025 全年 1.6kt LCE（SQM 50%）",
                     "q26q1": "爬坡初期（2025 年首产后）",
                     "compare": "精炼厂爬坡约 18 个月（2025-07 首产 → 2027 名称产能）；扩产 FID 保留 Kwinana 下游扩产选项（或直接卖精矿）"
                 }
@@ -1664,34 +1662,34 @@ MINES = [
             "future_lines": [
                 {
                     "name": "扩产项目（380→760ktpa，FID 2026-07-21）",
-                    "q26q2": "扩产 FID 获批（2026-07-21）：矿 + 选矿厂 + 新集成矿石分选设施；第二选矿厂 2027 H2 开工、扩产首产精矿 H1 2030；SQM 份额 capex US$450-500M；扩产提供 Kwinana 下游扩产或直接卖精矿的选择权",
+                    "q26q2": "扩产 FID 通过（2026-07-21，期后事项）：矿 + 选矿厂 + 新集成矿石分选设施；第二选矿厂 2027 H2 开工、扩产首产精矿 H1 2030；SQM 份额 capex US$450-500M（Wesfarmers 份额 A$645-715M）；FID 公告称相关审批 'secured or underway'——LOM 扩建 EPA 部长决定仍待定（2026-08）；扩产提供 Kwinana 下游扩产或直接卖精矿的选择权",
                     "q26q1": "扩产 DFS 研究中（2026 年前）",
                     "compare": "FID 后 12 个月开工——2027 H2 建设启动是下一催化剂"
                 }
             ],
             "overall": {
-                "operation_changes": "26Q2 满产运营（SQM 2026Q1 报告）：矿/选矿厂满产、Kwinana 精炼厂爬坡中（2027 达名称产能）；精矿均价 US$1,461/t（1Q2026，+72% yoy）；**2026-07-21 扩产 FID（380→760ktpa）**——从爬坡进入倍增阶段",
-                "prev_operation_changes": "26Q1 满产爬坡（1Q2026 38.1kt 50%）；2025 全年精矿 156.4kt（50%）+ 氢氧化锂 1.6kt LCE（50%）",
+                "operation_changes": "26Q2 数据未发布（SQM 美式 Q2 报告 8 月下旬）——当前状态以 26Q1 口径为准：矿/选矿厂满产运营（SQM 官方）、Kwinana 精炼厂爬坡中（2027 达名称产能）；精矿实现均价 US$1,461/t（1Q2026，+72% yoy，FOB/CIF 未披露）；**期后（2026-07-21）**：扩产 FID 380→760ktpa——进入倍增阶段",
+                "prev_operation_changes": "26Q1 满产运营（1Q2026 38.1kt 50% 份额 SC6 销量）；2025 全年精矿销量 156.4kt（50%）+ 氢氧化锂 1.6kt LCE（50%）",
                 "highlights": [
                     "2026-07-21 扩产 FID：精矿 380→760ktpa @ 5.5% Li₂O（100%，翻倍）——SQM 份额 capex US$450-500M、2027 H2 建设、H1 2030 首产",
-                    "2026Q1 满产运营确认（SQM 官方）——爬坡仅用 ~15 个月（2024 末投产 → 2026Q1 满产）",
+                    "2026Q1 满产运营确认（SQM 官方）——2023Q4 双回路首产精矿 → 2025 达名义产能 383ktpa → 2026Q1 满产（爬坡约 5 个季度）",
                     "Kwinana 精炼厂 2025-07 首产（一体化最后一块拼图）——2025 全年氢氧化锂 1.6kt LCE（50%），2027 达名称产能 50ktpa",
-                    "2025 全年精矿 156.4kt（SQM 50% = 312.8kt 100%）——首个完整生产年超预期",
+                    "2025 全年精矿销量 156.4kt（SQM 50% 份额 SC6）——首个完整生产年；官方年度产量（20-F 100% dmt SC5.5）：2023=15.0kt、2024=232.4kt、2025=329.6kt",
                     "储量 84.7Mt @ 1.45%（20-F 2025-12-31；官网 85.6 为 FY2024 末口径）——Earl Grey 伟晶岩西澳前五、矿山寿命 50+ 年",
                     "扩产含 ore sorting 设施：回收堆存料 +约 3Mt 精矿（LOM）——扩产保留 Kwinana 下游扩产选择权"
                 ]
             }
         },
-        "fc_unit": "万吨 SC5.5（100% 基准；2027 预测含满产 38 万吨/年）",
+        "fc_unit": "万吨 SC5.5（100% 基准；名义产能 383ktpa——MH 无官方 FY27 指引，按产能利用率情景，非线性）",
         "fc_2027": [
-            {"label": "悲观", "val": 30, "note": "满产 380ktpa 但销量受船期/市场影响——2027 年运行率 ~80%"},
-            {"label": "基准", "val": 36, "note": "满产 380ktpa 稳定运营 + 扩产前期准备（第二选矿厂 2027 H2 开工）"},
-            {"label": "乐观", "val": 40, "note": "满产 + 精矿直接销售增加（Kwinana 外多余精矿）——超 380ktpa 名义产能"}
+            {"label": "悲观", "val": 36, "note": "名义产能 383ktpa 的 94.0% 利用率（36.0/38.3）——需求/发运节奏影响下的保守运行；2027 扩产不贡献产量（2027 H2 才开工、首产 H1 2030）"},
+            {"label": "基准", "val": 38, "note": "约 380kt ≈ 名义产能 99.2%（38.0/38.3）——Wesfarmers FY27 项目口径约 380kt 为依据的满产稳定运行"},
+            {"label": "乐观", "val": 40, "note": "名义产能的 104.4%（40.0/38.3）——超名义产能的乐观假设（扩产前期/直接销售增加）"}
         ],
         "capacity_verification": {
             "title": "选矿产能核实（多来源交叉印证 · 矿+精炼一体化项目）",
             "method": "以 SQM-I 官网、SQM 美式季报（SEC 6-K）、扩产 FID 公告（2026-07-21）为来源；产能为 100% 基准（SQM 披露 50% 份额）。",
-            "summary": "Mt Holland（Earl Grey 伟晶岩，Forrestania 地区）选矿厂 DMS + 浮选混合工艺，产能 380,000 tpa SC5.5（100%）；Kwinana 精炼厂 50,000 tpa 电池级氢氧化锂（2025-07 首产、2027 达名称产能）；2026-07-21 扩产 FID：380→760ktpa 翻倍。2025 全年实际销量 312.8kt SC（100%）。",
+            "summary": "Mt Holland（Earl Grey 伟晶岩，Forrestania 地区）选矿厂 DMS + 浮选混合工艺，产能 383,000 dmtpa SC5.5（100%）；Kwinana 精炼厂 50,000 tpa 电池级氢氧化锂（2025-07 首产、2027 达名称产能）；2026-07-21 扩产 FID（期后事项）：380→760ktpa 翻倍。官方年度产量（20-F，100% dmt SC5.5）：2023=15.0kt、2024=232.4kt、2025=329.6kt；SQM 50% 份额 SC6 销量：2025 全年 156.4kt。",
             "items": [
                 {
                     "line": "Mt Holland 选矿厂（DMS + 浮选混合）",
@@ -1700,7 +1698,7 @@ MINES = [
                     "sources": [
                         {"src": "SQM 20-F FY2025", "data": "concentrator nameplate 383,000 dmtpa SC 5.5% Li₂O；2023=15.0kt / 2024=232.4kt / 2025=329.6kt（100%，dmt SC5.5）；首采 2022、选厂 2023Q3 调试、2023Q4 双回路首产、2024 H1 首出口、2025 达名义产能；流程：DMS 粗粒 + 球磨/磁选/脱泥 + 浮选细粒"}, {"src": "SQM-I 官网", "data": "hybrid Dense Media Separation (DMS) and flotation process；expected annual output of approximately 380,000 dry tonnes at 5.5% Li₂O"},
                         {"src": "扩产 FID（2026-07-21）", "data": "existing nameplate approximately 380,000 tpa → expansion to 760,000 tpa at 5.5% Li₂O (100% basis)；second concentrator construction H2 2027、first expansion production H1 2030；ore sorting facility 回收堆存料 +约 3Mt 精矿（LOM）；SQM share capex US$450-500M（Wesfarmers 份额 A$645-715M）"},
-                        {"src": "SQM 2025 全年报告", "data": "2025 实际销量 156.4kt SC6（SQM 50% = 312.8kt 100%）——首个完整生产年验证"}
+                        {"src": "SQM 2025 全年报告", "data": "2025 实际销量 156.4kt SC6（SQM 50% 份额）——首个完整生产年；年度产量与销量为不同口径（产量=100% dmt SC5.5、销量=50% 份额 SC6），不可直接比较"}
                     ]
                 },
                 {
@@ -1750,7 +1748,7 @@ MINES = [
                     },
                     {
                         "line": "环评与许可（WA 政府）",
-                        "status": "✅ 已获批（矿 + 精炼厂）",
+                        "status": "✅ 已有项目已获批（矿 + 精炼厂）；⚠️ 扩产许可：EPA Report 1809 建议批准、部长决定待定（2026-08）",
                         "sources": [
                             {"src": "WA EPA（矿山）", "data": "EPA Assessment 2123 → Ministerial Statement 1118（2019-11-21）；修订 2315 → MS 1199（2022-11-23）；LOM 扩建 2387 → EPA Report 1809（2026，EPA 建议批准、部长决定待定）；Mining Proposal Stage 2 REG 121883（2023-11）；联邦 EPBC 2017-7950"}, {"src": "WA EPA（Kwinana 精炼厂）", "data": "EPA Assessment 2282 → EPA Report 1700 → Ministerial Statement 1170（2021-07-15）；DWER Works Approval W6499/2021/1（2025-04-08 修订，勿混 Tianqi 的 W5977）"},
                             {"src": "Kidman 时代", "data": "Mt Holland Mining Proposal 2017-2018 获批（DMP/DMIRS）——投产前许可齐全"}
@@ -1760,7 +1758,7 @@ MINES = [
                         "line": "尾矿库（TSF）与物流",
                         "status": "✅ 建成",
                         "sources": [
-                            {"src": "SQM-I 官网", "data": "精矿由陆路运至 Kwinana（Perth 南）精炼——一体化物流；尾矿库为选矿厂标准设施"}
+                            {"src": "SQM-I 官网", "data": "精矿由陆路运至 Kwinana（Perth 南）精炼——一体化物流；⚠️ 尾矿库为推断表述（20-F 未逐项披露 TSF 细节，待核实）"}
                         ]
                     }
                 ],
@@ -2162,28 +2160,26 @@ for q, p, s in [
     mn_set(mn_sales, q, s)
 
 # ============ Mt Holland（Covalent Lithium：SQM 50% + Wesfarmers 50%）============
-# 口径：100% 资产基准（SQM 披露为 50% 份额，页面 ×2 换算并标注）；产量=精矿销量（SQM 美式季报）
-mh_prod = [None] * 32   # 精矿销量（万吨，100% 基准）
-mh_sales = [None] * 32  # 销量（万吨）
-mh_price = [None] * 32  # 均价（US$/t SC6）
-mh_cost = [None] * 32   # 单位成本 FOB（A$/t）
+# 口径（2026-08-07 审计修正）：产量行=官方季度产量（SQM 不披露 → 全 N.D.）；销量行=SQM 50% 份额 SC6 销量 ×2 = 100% 估算（已标注）
+mh_prod = [None] * 32   # 产量（万吨，100% dmt SC5.5）——SQM 不披露季度产量，保持 None（N.D.）
+mh_sales = [None] * 32  # 销量（万吨，SQM 50% 份额 SC6 ×2 = 100% 估算）
+mh_price = [None] * 32  # 均价（US$/t SC6；FOB/CIF 未披露 → N.D.）
+mh_cost = [None] * 32   # 单位成本 FOB（A$/t）——SQM 未披露 → 全 N.D.，页面已删除该行
 mh_ratio = [None] * 32
 
 def mh_set(arr, q, v):
     arr[pls_qidx(q)] = v
 
-# 历史数据（2024 末投产起；SQM 美式季报披露 50% 份额销量，×2 = 100% 基准）
-# 2024 年：2024 年末首产爬坡（SQM FY2024 约 4,000t LCE 计入销售）——无精矿单季披露
-# 年度产量（SQM 20-F FY2025，100% 口径，dmt SC5.5）：2023=15.0kt、2024=232.4kt、2025=329.6kt（2025 达名义产能 383ktpa 的 86%）
-# 季度销量（SQM 美式季报披露 50% 份额 SC6 销量 ×2 = 100%）：
-for q, p, s in [
-    ("2025Q1", 3.66, 3.66),    # SQM 1Q2025 18.3kt（50%）×2（爬坡期）
+# 年度产量（SQM 20-F FY2025，官方 100% 项目口径，dmt SC5.5）：2023=15.0kt、2024=232.4kt、2025=329.6kt（2025 达名义产能 383ktpa 的 86%）——见 ④ 历史表年度注记
+# 季度销量（SQM 美式季报披露 50% 份额 SC6 销量 ×2 = 100% 估算；⚠️ 不得填入产量行）：
+for q, s in [
+    ("2025Q1", 3.66),    # SQM 1Q2025 18.3kt（50%）×2
     # 2025Q2/Q3：SQM 未单独披露 SC 销量（标 N.D.）
-    ("2025Q4", 13.46, 13.46),  # SQM 4Q2025 67.3kt（50%）×2（满产爬坡强劲）
-    ("2026Q1", 7.62, 7.62),    # SQM 1Q2026 38.1kt（50%）×2（满产运营；销量受船期影响）
+    ("2025Q4", 13.46),  # SQM 4Q2025 67.3kt（50%）×2
+    ("2026Q1", 7.62),    # SQM 1Q2026 38.1kt（50%）×2
 ]:
-    mh_set(mh_prod, q, p)
     mh_set(mh_sales, q, s)
+mh_set(mh_price, "2026Q1", 1461)  # SQM 1Q2026 实现均价 US$1,461/t SC6（+72% yoy；FOB/CIF 未披露 → 标 N.D.）
 
 # ============ 资本开支（主页 capex 表；口径：矿山/项目级，财年 6/30 为主，100% 优先；2026E/2027E 为指引或 FID 计划）============
 # 单位：亿澳元（A$100M = 1.0）；披露为份额/公司级时在 unit 标注
@@ -2425,7 +2421,7 @@ data = {
             "cash_cost": mh_cost,
             "cif_cost": [None] * 32,
         },
-        "yearly": {"2025": 31.3, "2026": 7.6},
+        "yearly": {"2023": 1.50, "2024": 23.24, "2025": 32.96},  # 20-F 官方 100% 项目产量（dmt SC5.5）
     },
 }
 
@@ -2531,8 +2527,8 @@ FC_BASIS = {
         "assumptions": ["Nova Operation（A$7m 收购）改造后 2027 年中加工 Manna 矿石", "Lopal 40% 包销 + US$75M 预付款（FID 后）+ Canmax 30% 包销", "DFS 参数：NPV A$472M、capex A$439.1M、首产 SC5.5 精矿", "悲观=FID 延后仅 DSO（6）、乐观=Nova 改造顺利（10）"],
     },
     "Mt Holland": {
-        "basis": "2026Q1 满产运营（SQM 确认 'operating at full capacity'，380ktpa → 季均 9.5）；26Q2 美式财季报告未发布（N.D.）；2027 基准=38 万吨（全年满产 + 扩产前期准备，第二选矿厂 2027 H2 开工）。",
-        "assumptions": ["Kwinana 精炼厂 2027 达名称产能（50ktpa LOH）", "扩产 FID（2026-07-21）2027 H2 建设启动不影响存量产线", "悲观=销量受船期/市场影响 80% 运行率（36）、乐观=精矿直售增加（40）"],
+        "basis": "MH 无官方 FY27 产量指引——按名义产能 383ktpa 利用率情景（非线性，非指引外推）：26Q1 满产运营（SQM 确认 'operating at full capacity'）；26Q2 美式财季报告未发布（N.D.，8 月下旬）；2027 基准=38 万吨 ≈ 名义产能 99.2%（38.0/38.3），有 Wesfarmers FY27 项目口径约 380kt 依据；2027 扩产不贡献产量（第二选矿厂 2027 H2 才开工、扩产首产 H1 2030）。",
+        "assumptions": ["悲观 36 万吨 = 名义产能 94.0%（36.0/38.3）——需求/发运节奏影响的保守运行", "基准 38 万吨 = 99.2%——满产稳定运行（Wesfarmers FY27 ~380kt 口径）", "乐观 40 万吨 = 104.4%——超名义产能的乐观假设（扩产前期/直接销售增加）", "Kwinana 精炼厂 2027 达名称产能（50ktpa LOH）；扩产 FID（2026-07-21）2027 H2 建设启动不影响存量产线"],
     },
 }
 for _mm in data["mines"]:

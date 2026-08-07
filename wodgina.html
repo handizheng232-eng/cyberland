@@ -136,6 +136,8 @@ const D = YONGAN_DATA;
 const Q = D.quarters;
 // ---------- 分页模式：按 URL 参数选择矿山 ----------
 const urlParams = new URLSearchParams(location.search);
+// ** 加粗转换 helper（模板文本含 Markdown 加粗符号时渲染为 <b>）
+const md = t => (t || '').replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
 const MINE_KEY = urlParams.get('mine') || 'Wodgina';  // 分页模式
 const MINE = D.mines.find(m => m.mine === MINE_KEY) || D.mines[0];
 // 历史数据源：Greenbushes 用 D.history，其余矿山用 D[<minekey小写>].history
@@ -198,8 +200,8 @@ const m = MINE;
     <div class="cat">
       <h3>③ 整体运行状况表述<span class="q">（本季度 ${m.current_q} vs 上一季度 ${m.prev_q}）</span></h3>
       <div class="cmp-grid">
-        <p class="desc"><b>本季度（${m.current_q}）开工变化因素：</b>${m.status_26q2.overall.operation_changes}</p>
-        <p class="desc"><b>上一季度（${m.prev_q}）开工变化因素：</b>${m.status_26q2.overall.operation_changes_prev || m.status_26q2.overall.prev_operation_changes || ''}</p>
+        <p class="desc"><b>本季度（${m.current_q}）开工变化因素：</b>${md(m.status_26q2.overall.operation_changes)}</p>
+        <p class="desc"><b>上一季度（${m.prev_q}）开工变化因素：</b>${md(m.status_26q2.overall.operation_changes_prev || m.status_26q2.overall.prev_operation_changes || '')}</p>
       </div>
       <p class="desc"><b>未来产量预期：</b>${m.status_26q2.overall.future_outlook || ''}</p>
       <div class="hl-box" id="hl_${m.mine}"></div>
@@ -222,13 +224,18 @@ const m = MINE;
       <div class="table-wrap">
         <table class="hist-table" id="hist_${m.mine}"></table>
       </div>
-      <div class="note" style="margin-top:8px">${D.meta.color_legend}。产销比=销量/产量${m.mine === 'Greenbushes' ? '；库存为产销差滚动推算（期初 22Q4=29.6 万吨），非官方披露绝对库存' : ''}${m.mine === 'Mt Cattlin' ? '；⚠️ 2019-2022 季度为年度官方值均分估算（Galaxy/Allkem 年报口径），2023-2025H1 无官方逐季披露标 N.D.，2025 年起 C&M 停产' : ''}${m.mine === 'Finniss' ? '；⚠️ 2023-2024 季度为财年数据均分估算（FY24 产 95,020 dmt 口径），2024 年中起 C&M（2024-09-08 最后一船），2026-05 重启' : ''}${m.mine === 'Mt Holland' ? '；⚠️ 26Q2（2026 年 4-6 月）无数据原因：SQM 为 NYSE 美式财季（Q2 2026 财报惯例 8 月下旬发布，参考 2025Q2 = 2025-08-25），截至 2026-08-06 未发布；且 SQM 季度层面仅披露 50% 份额销量（LCE 折算），不披露季度精矿产量——年度产量（2023=15kt/2024=232.4kt/2025=329.6kt，100% 口径）见 SQM 20-F' : ''}。</div>
+      <div class="note" style="margin-top:8px">${D.meta.color_legend}。产销比=销量/产量${m.mine === 'Greenbushes' ? '；库存为产销差滚动推算（期初 22Q4=29.6 万吨），非官方披露绝对库存' : ''}${m.mine === 'Mt Cattlin' ? '；⚠️ 2019-2022 季度为年度官方值均分估算（Galaxy/Allkem 年报口径），2023-2025H1 无官方逐季披露标 N.D.，2025 年起 C&M 停产' : ''}${m.mine === 'Finniss' ? '；⚠️ 2023-2024 季度为财年数据均分估算（FY24 产 95,020 dmt 口径），2024 年中起 C&M（2024-09-08 最后一船），2026-05 重启' : ''}${m.mine === 'Mt Holland' ? '；⚠️ 26Q2（2026 年 4-6 月）无数据原因：SQM 为 NYSE 美式财季（Q2 2026 财报惯例 8 月下旬发布，参考 2025Q2 = 2025-08-25），截至 2026-08-06 未发布；且 SQM 季度层面仅披露 50% 份额销量（SC6，LCE 折算），不披露季度精矿产量——年度产量（官方 100% 项目口径，dmt SC5.5）见下方小表' : ''}。</div>
+      ${m.mine === 'Mt Holland' ? `<table class="tbl" style="margin-top:8px;max-width:560px"><thead><tr><th>年度产量（SQM 20-F，官方 100% 项目口径，dmt SC5.5）</th><th>万吨</th><th>vs 名义产能 383ktpa</th></tr></thead><tbody>
+        <tr><td>2023（首产年：2023Q4 双回路首产精矿）</td><td>1.50</td><td>3.9%</td></tr>
+        <tr><td>2024（首个完整生产年）</td><td>23.24</td><td>60.7%</td></tr>
+        <tr><td>2025（达名义产能）</td><td>32.96</td><td>86.1%</td></tr>
+      </tbody></table>` : ''}
     </div>
     <div class="cat">
-      <h3>⑤ 2027 年产量预测<span class="q">（研究性判断 · 日历年度 · 100% 资产口径 · 线性增长推算 · 单位：${m.fc_unit || m.forecast_unit || '万吨'}）</span></h3>
+      <h3>⑤ 2027 年产量预测<span class="q">（研究性判断 · 日历年度 · 100% 资产口径 · ${m.mine === 'Mt Holland' ? '名义产能利用率情景（MH 无官方 FY27 指引，非线性）' : '线性增长推算'} · 单位：${m.fc_unit || m.forecast_unit || '万吨'}）</span></h3>
       <p class="desc"><b>预测依据：</b>${(m.forecast_2027 && m.forecast_2027.basis_detail) || m.basis_detail || '基于最新季度运营表现与官方指引线性外推（研究性判断）'}</p>
       <div class="fc-grid" id="fc_${m.mine}"></div>
-      ${(() => { const qb = (m.forecast_2027 && m.forecast_2027.quarterly_base) || m.quarterly_base; return qb ? `<p class="desc"><b>季度拆分（线性增长）：</b>27Q1 = ${qb['27Q1']}、27Q2 = ${qb['27Q2']}、27Q3 = ${qb['27Q3']}、27Q4 = ${qb['27Q4']} 万吨，合计 ${qb.total} 万吨——27Q1/27Q2 对应 FY27 指引期（季均指引值），27Q3/27Q4 线性延至满产上限。</p>` : ''; })()}
+      ${(() => { const qb = (m.forecast_2027 && m.forecast_2027.quarterly_base) || m.quarterly_base; return qb ? `<p class="desc"><b>季度拆分（${m.mine === 'Mt Holland' ? '名义产能情景' : '线性增长'}）：</b>27Q1 = ${qb['27Q1']}、27Q2 = ${qb['27Q2']}、27Q3 = ${qb['27Q3']}、27Q4 = ${qb['27Q4']} 万吨，合计 ${qb.total} 万吨——${m.mine === 'Mt Holland' ? '满产季均 9.5 × 4（名义产能 380ktpa；2027 扩产不贡献产量）' : '27Q1/27Q2 对应 FY27 指引期（季均指引值），27Q3/27Q4 线性延至满产上限'}。</p>` : ''; })()}
       <div class="note" style="margin-top:10px">
         ${(() => { const a = (m.forecast_2027 && m.forecast_2027.assumptions_detail) || m.assumptions_detail; const conf = m.forecast_2027 && m.forecast_2027.confidence; const disc = (m.forecast_2027 && m.forecast_2027.disclaimer) || '研究性判断，不构成投资建议。'; return `${a ? `<b>假设条件：</b>${a.join('；')}。<br>` : ''}${conf ? `<b>确定性：</b>${conf}<br>` : ''}<b>免责：</b>${disc}`; })()}
       </div>
@@ -254,7 +261,7 @@ const m = MINE;
     <div class="cat">
       <h3>⑦ 原矿产能核实<span class="q">（矿坑 / 矿体 / 尾矿库 · ${m.capacity_verification.mining_side.note}）</span></h3>
       <p class="desc"><b>核实方法：</b>${m.capacity_verification.mining_side.method}</p>
-      <p class="desc"><b>核实结论摘要：</b>${m.capacity_verification.mining_side.summary}</p>
+      <p class="desc"><b>核实结论摘要：</b>${m.capacity_verification.mining_side.summary || m.capacity_verification.mining_side.title || '—'}</p>
       <table>
         <thead><tr>
           <th style="width:200px">矿坑 / 设施</th>
@@ -272,7 +279,7 @@ const m = MINE;
   const exTb = document.getElementById(`existing_${m.mine}`);
   m.status_26q2.existing_lines.forEach(l => {
     const tr = document.createElement('tr');
-    tr.innerHTML = `<td class="line">${l.name}</td><td class="cell">${l.q26q2}</td><td class="cell prev">${l.q26q1}</td><td class="cell cmp">${l.compare}</td>`;
+    tr.innerHTML = `<td class="line">${md(l.name)}</td><td class="cell">${md(l.q26q2)}</td><td class="cell prev">${md(l.q26q1)}</td><td class="cell cmp">${md(l.compare)}</td>`;
     exTb.appendChild(tr);
   });
   // 在建/规划
@@ -280,12 +287,12 @@ const m = MINE;
   const planLines = m.status_26q2.planned_lines || m.status_26q2.future_lines || [];
   planLines.forEach(l => {
     const tr = document.createElement('tr');
-    tr.innerHTML = `<td class="line">${l.name}</td><td class="cell">${l.q26q2}</td><td class="cell prev">${l.q26q1}</td><td class="cell cmp">${l.compare}</td>`;
+    tr.innerHTML = `<td class="line">${md(l.name)}</td><td class="cell">${md(l.q26q2)}</td><td class="cell prev">${md(l.q26q1)}</td><td class="cell cmp">${md(l.compare)}</td>`;
     plTb.appendChild(tr);
   });
   // 超预期要点
   const hl = document.getElementById(`hl_${m.mine}`);
-  const items = m.status_26q2.overall.highlights.map(t => `<li>${t}</li>`).join('');
+  const items = m.status_26q2.overall.highlights.map(t => `<li>${md(t)}</li>`).join('');
   hl.innerHTML = `<h3>⚡ 本季超预期 / 意外要点</h3><ul>${items}</ul>`;
   // 2027 预测卡片
   const fc = document.getElementById(`fc_${m.mine}`);
@@ -296,7 +303,7 @@ const m = MINE;
     scenCards = f.map(s => `<div class="fc-card">
       <div class="fc-label">${s.label}</div>
       <div class="fc-val">${s.val} <small>万吨</small></div>
-      <div class="fc-note">${s.note}</div>
+      <div class="fc-note">${md(s.note)}</div>
     </div>`).join('');
   } else {
     const scenOrder = ['bear', 'base', 'bull'];
@@ -305,7 +312,7 @@ const m = MINE;
       return `<div class="fc-card ${k}">
         <div class="fc-label">${s.label}</div>
         <div class="fc-val">${(s.production_kt / 10).toFixed(0)} <small>万吨</small></div>
-        <div class="fc-note">${s.note}</div>
+        <div class="fc-note">${md(s.note)}</div>
       </div>`;
     }).join('');
     qb = f.quarterly_base;
@@ -322,8 +329,8 @@ const m = MINE;
   m.capacity_verification.items.forEach(it => {
     const tr = document.createElement('tr');
     const cls = (it.status === 'ok' || (it.verified || '').startsWith('✓')) ? 'cv-ok' : 'cv-warn';
-    const srcs = it.sources.map(s => `<div class="cv-src"><span class="cv-srcname">${s.src}</span>${s.data}</div>`).join('');
-    tr.innerHTML = `<td class="line">${it.line}</td><td class="cell">${it.excel_capacity}</td><td class="cell ${cls}">${it.verified}</td><td class="cell">${srcs}</td>`;
+    const srcs = it.sources.map(s => `<div class="cv-src"><span class="cv-srcname">${md(s.src)}</span>${md(s.data)}</div>`).join('');
+    tr.innerHTML = `<td class="line">${md(it.line)}</td><td class="cell">${md(it.excel_capacity)}</td><td class="cell ${cls}">${md(it.verified)}</td><td class="cell">${srcs}</td>`;
     cvTb.appendChild(tr);
   });
   // 采矿侧（矿坑/尾矿库）核实表
@@ -331,10 +338,10 @@ const m = MINE;
   m.capacity_verification.mining_side.items.forEach(it => {
     const tr = document.createElement('tr');
     const cls = (it.status === 'ok' || it.status === '✅') ? 'cv-ok' : 'cv-warn';
-    const srcs = it.sources.map(s => `<div class="cv-src"><span class="cv-srcname">${s.src}</span>${s.data}</div>`).join('');
+    const srcs = it.sources.map(s => `<div class="cv-src"><span class="cv-srcname">${md(s.src)}</span>${md(s.data)}</div>`).join('');
     const itemName = it.item || it.line;
     const builtPlan = it.built_plan || it.status;
-    tr.innerHTML = `<td class="line">${itemName}</td><td class="cell ${cls}">${builtPlan}</td><td class="cell">${srcs}</td>`;
+    tr.innerHTML = `<td class="line">${md(itemName)}</td><td class="cell ${cls}">${md(builtPlan)}</td><td class="cell">${srcs}</td>`;
     msTb.appendChild(tr);
   });
   // 图片画廊渲染（⑥ 选矿 + ⑦ 原矿）
@@ -435,7 +442,7 @@ function renderCharts(mine) {
 
 // ---------- 口径说明 ----------
 document.getElementById('meta_note').innerHTML =
-  `· 数据源：${MINE.report}，全部为 100% 资产口径。${MINE.equity_note}。<br>
+  `· 数据源：${MINE.report}，全部为 100% 资产口径。${md(MINE.equity_note)}。<br>
    · <b>数据口径规范</b>：各矿山产量/销量披露口径不同——精矿产量与销量统一标注为「dmt（实际品位，如 ~5.0% SC）」「SC6 折算（6% Li₂O）」或「混合品位 dmt」；平均售价标注基准（CIF/FOB/SC6/SC6e）；单位成本标注 FOB/CIF 与品位基准。各指标具体口径见④历史数据表行标签。<br>
    · 运行状况描述仅更新最新一个季度（本季度 ${MINE.current_q} vs 上一季度 ${MINE.prev_q}）；历史数据已与官方报告逐季核对，无官方披露的季度标 N.D.。<br>
    · 产能核实为多来源交叉印证（公司年报/官网/季报/第三方看板），详见 ⑥⑦ 板块；预测值（26Q3E/26Q4E）按线性增长推算（26Q2 实际等差爬坡至 FY27 指引季均/满产季均）。<br>
