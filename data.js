@@ -6135,8 +6135,8 @@ const YONGAN_DATA = {
     0.0,
     0.0,
     0.0,
-    null,
-    null
+    0.0,
+    0.0
    ],
    "lce": [
     null,
@@ -6271,8 +6271,8 @@ const YONGAN_DATA = {
     0.0,
     0.0,
     0.0,
-    null,
-    null
+    0.0,
+    0.0
    ],
    "inv_change": [
     null,
@@ -7592,8 +7592,8 @@ const YONGAN_DATA = {
     null,
     null,
     null,
-    null,
-    null
+    9.5,
+    9.5
    ],
    "lce": [
     null,

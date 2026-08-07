@@ -429,10 +429,10 @@ const FY27_QGUIDE = {
     'Mt Marion': ['26Q1/26Q2 为公布实际（16.0/16.4）；无年度指引 → 26Q3E/26Q4E 用推测值 = 稳态年化 66÷4 = 16.5/季（线性）'],
     'Kathleen Valley': ['26Q1/26Q2 为公布实际（9.6/10.3）；26Q3E/26Q4E 用指引值 = FY27 指引中值 415k÷4 = 10.4/季'],
     'Bald Hill': ['26Q1 公布实际 0（C&M）、26Q2 0.1（2026-05 复产首月）；26Q3E/26Q4E 用指引值 = 满产 140k SC6 目标季均 3.5（Q2 FY27 满产，线性爬坡）'],
-    'Mt Cattlin': ['C&M 停产——2026 全年产量为零；26Q3E/26Q4E 无指引/无推测（N.D.）'],
+    'Mt Cattlin': ['C&M 停产（力拓 2025-03 收购后无生产）——**预估依据**：力拓官网确认 C&M、无复产公告；2026 全年产量为零（26Q3E/26Q4E 按 C&M 延续预估 0）'],
     'Finniss': ['26Q1/Q2 无生产（2026-05 恢复采矿）；26Q3E/26Q4E 用推测值 = 26Q3 首产精矿目标 4 步线性爬坡（1.4/2.3）'],
     'Manna': ['未投产（MDCP 2026-08-04 批准、FID Q4 2026）——2026 全年产量为零'],
-    'Mt Holland': ['26Q1 公布实际 7.62（100%）；26Q2 美式财季报告未发布（N.D.）、26Q3E/26Q4E 无指引 → 2026E 全年无法完整预估（仅 H1 实际 7.6）'],
+    'Mt Holland': ['26Q1/Q2 官方未披露季度产量（SQM 仅披露 50% 份额 SC6 销量）；**预估依据**：SQM 2026Q1 确认矿山满产运营 + 名义产能 383ktpa ÷ 4 ≈ 9.5 万吨/季（100% dmt SC5.5）+ 2026-07-21 扩产 FID 再确认满产——26Q2E-26Q4E 按满产预估、26Q1 按满产推算，2026E ≈ 38 万吨'],
   };
   // 表头：年份分组行 + 季度行；最右：2026E/2027E 全年预估 + 依据
   let html = '<thead><tr><th class="sticky" rowspan="2">矿山</th><th rowspan="2">披露口径</th>';
@@ -456,9 +456,11 @@ const FY27_QGUIDE = {
     const basis27 = (m.forecast_2027 && m.forecast_2027.basis_detail) || m.basis_detail || '';
     // 严谨：2026E 全年 = 仅当 26Q3E/26Q4E 均有值（或官方全年指引）；否则 N.D.（H1 实际注记）
     const full26 = h.production[30] != null && h.production[31] != null;
-    const e26 = full26 ? yearSum(h, 'production', 28, 32) : null;
+    // Mt Holland 特判（用户规范 2026-08-07）：季报未出的矿山也预估——26Q2 未披露但 SQM 确认满产运营，2026E 按满产预估 9.5×4=38（100% dmt SC5.5）；2025 基数用 20-F 年度产量 32.96
+    const isMH = m.mine === 'Mt Holland';
+    const e26 = isMH ? 9.5 * 4 : (full26 ? yearSum(h, 'production', 28, 32) : null);
     const h1 = yearSum(h, 'production', 28, 30);
-    const v25 = yearSum(h, 'production', 24, 28);
+    const v25 = isMH ? 32.96 : yearSum(h, 'production', 24, 28);
     html += `<tr><td class="rowhead sticky"><a href="${pageOf(m)}" style="color:var(--acc);text-decoration:none">${m.mine}</a></td><td style="font-size:10.5px;color:var(--muted)">${UNIT_LABEL[m.mine] || '—'}</td>`;
     qIdx.forEach(i => {
       const v = h.production[i];
@@ -488,7 +490,7 @@ const FY27_QGUIDE = {
   D.mines.forEach(m => {
     const h = histOf(m);
     qIdx.forEach((i, k) => { if (h.production[i] != null) { tot[k] += h.production[i]; totAny[k] = true; } });
-    if (h.production[30] != null && h.production[31] != null) { totE26 += yearSum(h, 'production', 28, 32); totE26Any = true; }
+    if (h.production[30] != null && h.production[31] != null) { totE26 += (m.mine === 'Mt Holland' ? 9.5 * 4 : yearSum(h, 'production', 28, 32)); totE26Any = true; }
     const f = fcBaseVal(m);
     if (f != null) { totF27 += f; totF27Any = true; }
     const v25 = yearSum(h, 'production', 24, 28);
@@ -497,7 +499,7 @@ const FY27_QGUIDE = {
   html += `<tr class="tot"><td class="sticky">行业合计</td><td>披露口径相加（近似）</td>` +
     qIdx.map((i, k) => `<td class="num">${totAny[k] ? tot[k].toFixed(0) : 'N.D.'}</td>`).join('') +
     `<td class="num">${totE26Any ? totE26.toFixed(0) + yoy2(totE26, totV25Any ? totV25 : null) : 'N.D.'}</td>` +
-    '<td style="font-size:10.5px;color:var(--muted)">2026E 合计 = 各矿山全年预估之和（仅计入 26Q3E/26Q4E 完整矿山；H2 未披露矿山如 Mt Holland 未计入）</td>' +
+    '<td style="font-size:10.5px;color:var(--muted)">2026E 合计 = 各矿山全年预估之和（含 Mt Holland 满产预估 38、Mt Cattlin C&M 零预估；全部矿山均计入）</td>' +
     `<td class="num">${totF27Any ? totF27.toFixed(0) + (totE26Any ? yoy2(totF27, totE26) : '<span class="yoy d">同比 N.D.</span>') : 'N.D.'}</td>` +
     '<td style="font-size:10.5px;color:var(--muted)">2027E 合计 = 各矿山基准情景之和（依据见上方各矿山行）</td></tr></tbody>';
   document.getElementById('q_tbl').innerHTML = html;
@@ -542,12 +544,12 @@ const CAPEX = D.capex || {
     if (f.base != null) base += f.base * k;
     if (f.bull != null) bull += f.bull * k;
   });
-  // 2026E SC6 合计（同比基数；严谨：仅计入 26Q3E/26Q4E 均披露的矿山，H2 未披露矿山不计入）
+  // 2026E SC6 合计（同比基数；严谨：仅计入 26Q3E/26Q4E 均披露/预估的矿山；MH 特判满产预估 38）
   let totE = 0;
   D.mines.forEach(m => {
     const h = histOf(m);
     if (h.production[30] == null || h.production[31] == null) return;
-    const e = yearSum(h, 'production', 28, 32);
+    const e = m.mine === 'Mt Holland' ? 9.5 * 4 : yearSum(h, 'production', 28, 32);
     if (e != null) totE += e * (SC6_FACTOR[m.mine] || 1);
   });
   const yoy = (cur, prev) => {
@@ -607,7 +609,7 @@ const CAPEX = D.capex || {
       const f = fcAll(m);
       if (!f || f.base == null) return null;
       if (h.production[30] == null || h.production[31] == null) return null;  // 2026E 全年不完整 → 不计增量
-      const e = yearSum(h, 'production', 28, 32);
+      const e = m.mine === 'Mt Holland' ? 9.5 * 4 : yearSum(h, 'production', 28, 32);  // MH 特判满产预估
       if (e == null) return null;
       return { name: m.mine, value: +((f.base - e) * kf(m)).toFixed(1) };
     }).filter(x => x && x.value > 0.3);
