@@ -378,12 +378,13 @@ function renderHist(mine) {
   labels.forEach(([key, lb]) => {
     html += `<tr><td>${lb}</td>`;
     HIST[key].forEach((v, j) => {
-      const isPred = j >= nA;  // 当前季之后两季为预测列
+      const mineObj = (D.mines || []).find(x => x.mine === mine) || {};
+      const isPred = j >= nA || (key === 'production' && (mineObj.est_qs || []).includes(j) && v !== null && v !== undefined);  // 预测列 + 推测季度（est_qs 仅限产量行：未披露按产能/投产进度推测）
       let cls = isPred ? 'fc' : 'act';
       let txt;
       if (v === null || v === undefined) { txt = 'N.D.'; cls = 'emp'; }
       else if (key === 'prod_sales_ratio') txt = Number(v).toFixed(3);
-      else txt = Number(v).toLocaleString('zh-CN', { maximumFractionDigits: 2 });
+      else { txt = Number(v).toLocaleString('zh-CN', { maximumFractionDigits: 2 }) + (isPred ? 'E' : ''); }
       html += `<td class="${cls}">${txt}</td>`;
     });
     html += '</tr>';

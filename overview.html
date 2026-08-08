@@ -354,12 +354,12 @@ const STATUS = {
         <span class="mc-status ${st[1]}">${st[0]}</span>
       </div>
       <div class="mc-stats">
-        <div class="mc-stat"><div class="k">本季产量${pLabel ? '（' + pLabel + '）' : ''}</div><div class="v">${fmt(prod[CI])} <small>万吨</small></div><div class="c">环比 ${pct(prod[CI], prod[PI])}</div></div>
+        <div class="mc-stat"><div class="k">本季产量${pLabel ? '（' + pLabel + '）' : ''}</div><div class="v">${fmt(prod[CI])}${(m.est_qs || []).includes(CI) && prod[CI] != null ? '<small style="color:var(--acc);font-size:10px">E</small>' : ''} <small>万吨</small></div><div class="c">环比 ${pct(prod[CI], prod[PI])}</div></div>
         <div class="mc-stat"><div class="k">本季销量</div><div class="v">${fmt(sales[CI])} <small>万吨</small></div><div class="c">环比 ${pct(sales[CI], sales[PI])}</div></div>
         <div class="mc-stat"><div class="k">均价（US$/t）</div><div class="v" style="font-size:15px">${price[CI] != null ? price[CI].toLocaleString('zh-CN') : 'N.D.'}</div></div>
         <div class="mc-stat"><div class="k">现金成本（A$/t）</div><div class="v" style="font-size:15px">${cost[CI] != null ? cost[CI].toLocaleString('zh-CN') : 'N.D.'}</div></div>
       </div>
-      ${m.mine === 'Mt Holland' && prod[CI] == null ? `<div class="mc-note">⚠️ 26Q2 未披露：SQM 美式财季 Q2 2026 财报 8 月下旬发布；且 SQM 季度层面仅披露 50% 份额销量</div>` : ''}
+      ${m.mine === 'Mt Holland' && (prod[CI] == null || (m.est_qs || []).includes(CI)) ? `<div class="mc-note">⚠️ 26Q2 产量为满产推测（SQM 不披露季度产量，按名义产能 383ktpa÷4 推算）；SQM 美式财季 Q2 2026 财报 8 月下旬发布</div>` : ''}
       ${hlTxt ? `<div class="mc-hl"><b>⚡</b> ${hlTxt}</div>` : ''}
       <a class="mc-go" href="${pageOf(m)}">查看详情 →</a>
     </div>`;
@@ -432,7 +432,7 @@ const FY27_QGUIDE = {
     'Bald Hill': ['26Q1 公布实际 0（C&M）、26Q2 0.1（2026-05 复产首月）；26Q3E/26Q4E 用指引值 = 满产 140k SC6 目标季均 3.5（Q2 FY27 满产，线性爬坡）'],
     'Mt Cattlin': ['C&M 停产（力拓 2025-03 收购后无生产）——**预估依据**：力拓官网确认 C&M、无复产公告；2026 全年产量为零（26Q3E/26Q4E 按 C&M 延续预估 0）'],
     'Finniss': ['26Q1/Q2 无生产（2026-05 恢复采矿）；26Q3E/26Q4E 用推测值 = 26Q3 首产精矿目标 4 步线性爬坡（1.4/2.3）'],
-    'Manna': ['未投产（MDCP 2026-08-04 批准、FID Q4 2026）——2026 全年产量为零'],
+    'Manna': ['**推测依据**：未投产（MDCP 2026-08-04 批准、FID Q4 2026、首产精矿 2027 年中）——按投产进度推测 2026 全年产量为零（26Q1-26Q4E 均无精矿产出）'],
     'Mt Holland': ['26Q1/Q2 官方未披露季度产量（SQM 仅披露 50% 份额 SC6 销量）；**预估依据**：SQM 2026Q1 确认矿山满产运营 + 名义产能 383ktpa ÷ 4 ≈ 9.5 万吨/季（100% dmt SC5.5）+ 2026-07-21 扩产 FID 再确认满产——26Q2E-26Q4E 按满产预估、26Q1 按满产推算，2026E ≈ 38 万吨'],
   };
   // 表头：年份分组行 + 季度行；最右：2026E/2027E 全年预估 + 依据
@@ -445,7 +445,7 @@ const FY27_QGUIDE = {
     `<th rowspan="2" class="q-head" style="background:rgba(240,193,90,0.12)!important;color:var(--warn);min-width:100px">2027E<br>全年预估<small style="display:block;font-size:8.5px;color:var(--muted)">明年</small></th>` +
     `<th rowspan="2" class="q-head" style="background:rgba(240,193,90,0.12)!important;color:var(--warn);min-width:190px">2027E 预估依据<small style="display:block;font-size:8.5px;color:var(--muted)">指引/公开进度</small></th></tr><tr>`;
   qIdx.forEach(i => {
-    const est = i >= 30;
+    const est = i >= 30;  // 表头仅标预测列（26Q3E/26Q4E）；推测季度（est_qs）在数据单元格按矿山标注
     html += `<th class="q-head${est ? ' acc' : ''}">${Q[i].replace('Q', 'Q')}${est ? '<small style="font-size:9px;color:var(--acc)">E</small>' : ''}</th>`;
   });
   html += '</tr></thead><tbody>';
@@ -465,7 +465,7 @@ const FY27_QGUIDE = {
     html += `<tr><td class="rowhead sticky"><a href="${pageOf(m)}" style="color:var(--acc);text-decoration:none">${m.mine}</a></td><td style="font-size:10.5px;color:var(--muted)">${UNIT_LABEL[m.mine] || '—'}</td>`;
     qIdx.forEach(i => {
       const v = h.production[i];
-      const est = i >= 30;
+      const est = i >= 30 || ((m.est_qs || []).includes(i) && h.production[i] != null);  // 预测列 + 推测季度（est_qs：未披露按产能/投产进度推测）
       const yr = yearOf(i);
       html += `<td class="num y${yr} ${v == null ? '' : (est ? 'acc' : '')}">${v == null ? '<span class="warn">N.D.</span>' : v.toFixed(1) + (est ? '<small style="font-size:9px;color:var(--acc)">E</small>' : '')}</td>`;
     });

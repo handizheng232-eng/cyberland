@@ -1487,6 +1487,7 @@ MINES = [
     {
         "company": "Global Lithium（ASX: GL1）",
         "mine": "Manna",
+        "est_qs": [28, 29],  # 26Q1/26Q2 未披露 → 按投产进度推测 0（未投产）
         "current_q": "26Q2",
         "prev_q": "26Q1",
         "current_q_date": "2026年4-6月",
@@ -1632,6 +1633,7 @@ MINES = [
     {
         "company": "Covalent Lithium（SQM 50% + Wesfarmers 50%）",
         "mine": "Mt Holland",
+        "est_qs": [28, 29],  # 26Q1/26Q2 未披露（SQM 不披露季度产量）→ 按满产推测 9.5
         "current_q": "26Q2",
         "prev_q": "26Q1",
         "current_q_date": "2026年4-6月",
@@ -1640,7 +1642,7 @@ MINES = [
         "source_url": "https://sqm-i.com/what-we-do/operations-and-projects/mt-holland/",
         "equity_note": "100% 资产基准（页面按 SQM 50% 份额 ×2 换算并标注）；Covalent Lithium = SQM（智利，NYSE: SQM，SQM-I 国际锂业务运营）+ Wesfarmers（ASX: WES）50:50 JV；**矿 + Kwinana 精炼厂一体化**（精矿 SC5.5 运至珀斯 Kwinana 转电池级氢氧化锂）；历史：Kidman Resources（ASX: KDR）2016 发现 Earl Grey → 2017-09-12 SQM US$110M JV 协议（50:50）→ 2018-12 IPFS + 首份储量 94.2Mt@1.5% → 2019-09-23 Wesfarmers $1.90/股收购 Kidman（~A$776M，溢价 47.3%）→ Covalent 50:50 JV；**SQM-I 为 SQM 国际锂业务分部（2024 设立，非独立上市）——SQM 本身 NYSE 上市（CIK 0000909037，Form 20-F）**；**美式财季（Q1-Q4）与 MM/DD/YYYY 日期格式**——最新披露 = SQM 2026Q1（2026-05-27），Q2 2026 报告 2026 年 8 月下旬发布；投产：首采 2022、选厂 2023Q3 调试、2023Q4 双回路首产精矿、2024 H1 首出口、2025 达名义产能 383ktpa",
         "history_labels": [
-            ("production", "产量（万吨，100% dmt SC5.5——SQM 不披露季度产量，标 N.D.；年度产量见表格下方注记）"),
+            ("production", "产量（万吨，100% dmt SC5.5——SQM 不披露季度产量：2026Q1-Q4 为按满产推测值（E 标记，依据 SQM 满产运营确认 + 383ktpa÷4）；年度产量见表格下方注记）"),
             ("sales", "销量（万吨，SQM 50% 份额 SC6 ×2 = 100% 估算）"),
             ("avg_price", "平均售价（US$/t，SC6；FOB/CIF 未披露）"),
         ],
@@ -2154,7 +2156,10 @@ def mn_set(arr, q, v):
 
 # 历史：未投产（2021-11 收购、2022-2024 勘探/DFS、2025 DFS/ML、2026 MDCP/FID 准备）——2026Q2 前全 N.D./0
 # 预测：26Q3/26Q4 建设期（FID Q4 2026）→ 0；27Q1 建设 → 0；27Q2 DSO 首批（无精矿）；27Q3 起精矿爬坡
+# 26Q1/26Q2 推测 = 0（用户规范 2026-08-07：未披露季度也按投产进度推测——Manna 未投产（MDCP 2026-08-04 批、FID Q4 2026、首产 mid-2027）→ 无精矿产出）
 for q, p, s in [
+    ("2026Q1", 0.0, 0.0),   # 推测 0：未投产（FID 未通过、无开采/选矿）
+    ("2026Q2", 0.0, 0.0),   # 推测 0：未投产（MDCP 2026-08-04 才获批）
     ("2026Q3", 0.0, 0.0),   # FID 目标 Q4 2026——建设前
     ("2026Q4", 0.0, 0.0),   # FID + 建设启动
 ]:
@@ -2182,9 +2187,10 @@ for q, s in [
 ]:
     mh_set(mh_sales, q, s)
 mh_set(mh_price, "2026Q1", 1461)  # SQM 1Q2026 实现均价 US$1,461/t SC6（+72% yoy；FOB/CIF 未披露 → 标 N.D.）
-# 26Q3E/26Q4E 满产预估（用户规范 2026-08-07：季报未披露的矿山也需预估今年/明年产量并备注依据，同步总览汇总）
+# 26Q1-26Q4E 满产预估（用户规范 2026-08-07：季报未披露的矿山也需预估今年/明年产量并备注依据，同步总览汇总）
 # 依据：SQM 2026Q1 确认矿山满产运营（'operating at full capacity'）+ 名义产能 383ktpa ÷ 4 ≈ 9.58 万吨/季（100% dmt SC5.5）+ 2026-07-21 扩产 FID 再确认满产状态
-for _q in ["2026Q3", "2026Q4"]:
+# 26Q1/26Q2 为推测（SQM 不披露季度产量，按满产推算）；26Q3E/26Q4E 为预测
+for _q in ["2026Q1", "2026Q2", "2026Q3", "2026Q4"]:
     mh_set(mh_prod, _q, 9.5)
 
 # ============ 资本开支（主页 capex 表；口径：矿山/项目级，财年 6/30 为主，100% 优先；2026E/2027E 为指引或 FID 计划）============

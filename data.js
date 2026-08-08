@@ -2570,6 +2570,10 @@ const YONGAN_DATA = {
   {
    "company": "Global Lithium（ASX: GL1）",
    "mine": "Manna",
+   "est_qs": [
+    28,
+    29
+   ],
    "current_q": "26Q2",
    "prev_q": "26Q1",
    "current_q_date": "2026年4-6月",
@@ -2836,6 +2840,10 @@ const YONGAN_DATA = {
   {
    "company": "Covalent Lithium（SQM 50% + Wesfarmers 50%）",
    "mine": "Mt Holland",
+   "est_qs": [
+    28,
+    29
+   ],
    "current_q": "26Q2",
    "prev_q": "26Q1",
    "current_q_date": "2026年4-6月",
@@ -2846,7 +2854,7 @@ const YONGAN_DATA = {
    "history_labels": [
     [
      "production",
-     "产量（万吨，100% dmt SC5.5——SQM 不披露季度产量，标 N.D.；年度产量见表格下方注记）"
+     "产量（万吨，100% dmt SC5.5——SQM 不披露季度产量：2026Q1-Q4 为按满产推测值（E 标记，依据 SQM 满产运营确认 + 383ktpa÷4）；年度产量见表格下方注记）"
     ],
     [
      "sales",
@@ -7109,8 +7117,8 @@ const YONGAN_DATA = {
     null,
     null,
     null,
-    null,
-    null,
+    0.0,
+    0.0,
     0.0,
     0.0
    ],
@@ -7245,8 +7253,8 @@ const YONGAN_DATA = {
     null,
     null,
     null,
-    null,
-    null,
+    0.0,
+    0.0,
     0.0,
     0.0
    ],
@@ -7590,8 +7598,8 @@ const YONGAN_DATA = {
     null,
     null,
     null,
-    null,
-    null,
+    9.5,
+    9.5,
     9.5,
     9.5
    ],
