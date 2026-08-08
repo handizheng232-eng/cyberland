@@ -74,6 +74,15 @@
 
   /* 图片画廊 */
   .img-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 14px; margin-top: 12px; }
+  /* 卫星影像与地图定位板块 */
+  .sat-map-block { margin-top: 4px; }
+  .sat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 14px; margin-top: 12px; }
+  .sat-grid .img-card .img-wrap img { max-width: 100%; max-height: 320px; object-fit: contain; display: block; cursor: zoom-in; }
+  .sat-gm .img-wrap { min-height: 320px; }
+  .sat-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+  .sat-btn { display: inline-block; padding: 8px 16px; border-radius: 8px; font-size: 12.5px; font-weight: 700; text-decoration: none; color: #fff; background: linear-gradient(135deg, #2e6de0, #1b4fa0); border: 1px solid rgba(255,255,255,0.12); }
+  .sat-btn:hover { filter: brightness(1.15); }
+  .sat-btn + .sat-btn { background: linear-gradient(135deg, #0f9d58, #0b7a44); }
   .img-card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
   .img-card .img-wrap { position: relative; background: #0b101c; display: flex; align-items: center; justify-content: center; min-height: 160px; max-height: 420px; overflow: hidden; }
   .img-card .img-wrap img { max-width: 100%; max-height: 420px; object-fit: contain; display: block; }
@@ -271,6 +280,7 @@ const m = MINE;
         <tbody id="cvms_${m.mine}"></tbody>
       </table>
       <div class="img-grid" id="img_ms_${m.mine}"></div>
+      <div class="sat-map-block" id="sat_map_${m.mine}"></div>
     </div>`;
 
   minesEl.appendChild(block);
@@ -362,10 +372,44 @@ const m = MINE;
   }
   renderImgs(`img_cv_${m.mine}`, m.capacity_verification.images || []);
   renderImgs(`img_ms_${m.mine}`, m.capacity_verification.mining_side.images || []);
+  renderSatMap(m);
   // 历史数据表
   renderHist(m.mine);
   // 图表
   renderCharts(m.mine);
+}
+
+// ---------- 卫星影像与地图定位（Yandex 静态图 + Google 实时卫星图 + 双链接） ----------
+function renderSatMap(m) {
+  const box = document.getElementById(`sat_map_${m.mine}`);
+  if (!box) return;
+  if (m.lat == null || m.lng == null) return;  // 无坐标矿山（正常应全有）
+  const lat = m.lat, lng = m.lng;
+  // 复用已有的 Yandex 静态截图（若有）
+  const allImgs = (m.capacity_verification.images || []).concat(m.capacity_verification.mining_side.images || []);
+  const yandexImg = allImgs.find(i => (i.src || '').includes('Yandex')) || null;
+  // Google Maps embed（卫星视图，无需 API key）
+  const gmUrl = `https://www.google.com/maps?q=${lat},${lng}&z=14&output=embed`;
+  const ymLink = `https://yandex.com/maps/?ll=${lng},${lat}&z=14`;
+  const gmLink = `https://www.google.com/maps?q=${lat},${lng}&z=14`;
+  let html = `<h3 style="margin-top:26px">🛰️ 卫星影像与地图定位<span style="font-weight:400;font-size:11px;color:var(--muted)">（Yandex Maps + Google Maps · 坐标 ${lat.toFixed(4)}, ${lng.toFixed(4)}）</span></h3>
+  <div class="sat-grid">
+    ${yandexImg ? `<div class="img-card"><div class="img-wrap"><img src="${yandexImg.url}" alt="Yandex 卫星影像" loading="lazy"></div><div class="img-cap"><b>Yandex Maps 卫星影像</b>（截图 · ${yandexImg.cap || ''}）</div></div>` : ''}
+    <div class="img-card sat-gm"><div class="img-wrap" style="height:320px"><iframe src="${gmUrl}" style="width:100%;height:100%;border:0;border-radius:10px" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="Google Maps 卫星视图"></iframe></div><div class="img-cap"><b>Google Maps 卫星视图</b>（实时 · 可缩放拖拽）</div></div>
+  </div>
+  <div class="sat-links">
+    <a class="sat-btn" target="_blank" rel="noopener" href="${ymLink}">📍 在 Yandex Maps 打开定位</a>
+    <a class="sat-btn" target="_blank" rel="noopener" href="${gmLink}">📍 在 Google Maps 打开定位</a>
+  </div>`;
+  box.innerHTML = html;
+  // 点击放大 Yandex 静态图
+  if (yandexImg) {
+    box.querySelector('.img-wrap img')?.addEventListener('click', () => {
+      const zoom = document.getElementById('zoom_layer');
+      zoom.innerHTML = `<img src="${yandexImg.url}">`;
+      zoom.style.display = 'flex';
+    });
+  }
 }
 
 // ---------- 历史数据表 ----------

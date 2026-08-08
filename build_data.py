@@ -21,6 +21,8 @@ MINES = [
     {
         "company": "IGO",
         "mine": "Greenbushes",
+        "lat": -33.8567,  # 卫星影像定位（Yandex/Google Maps）
+        "lng": 116.0622,
         "current_q": "26Q2",
         "prev_q": "26Q1",
         "current_q_date": "2026年4-6月",
@@ -350,6 +352,8 @@ MINES = [
     {
         "company": "PLS（Pilbara Minerals）",
         "mine": "Pilgangoora",
+        "lat": -21.7939,  # 卫星影像定位（Yandex/Google Maps）
+        "lng": 119.6346,
         "current_q": "26Q2",
         "prev_q": "26Q1",
         "current_q_date": "2026年4-6月",
@@ -551,6 +555,8 @@ MINES = [
     {
         "company": "MRL（Mineral Resources）",
         "mine": "Wodgina",
+        "lat": -21.1746,  # 卫星影像定位（Yandex/Google Maps）
+        "lng": 118.6764,
         "current_q": "26Q2",
         "prev_q": "26Q1",
         "current_q_date": "2026年4-6月",
@@ -709,6 +715,8 @@ MINES = [
     {
         "company": "MRL（Mineral Resources）",
         "mine": "Mt Marion",
+        "lat": -31.0738,  # 卫星影像定位（Yandex/Google Maps）
+        "lng": 121.4611,
         "current_q": "26Q2",
         "prev_q": "26Q1",
         "current_q_date": "2026年4-6月",
@@ -868,6 +876,8 @@ MINES = [
     {
         "company": "Liontown（Liontown Resources）",
         "mine": "Kathleen Valley",
+        "lat": -27.4678,  # 卫星影像定位（Yandex/Google Maps）
+        "lng": 120.7047,
         "current_q": "26Q2",
         "prev_q": "26Q1",
         "current_q_date": "2026年4-6月",
@@ -1029,6 +1039,8 @@ MINES = [
     {
         "company": "MRL（Mineral Resources）",
         "mine": "Bald Hill",
+        "lat": -31.52,  # 卫星影像定位（Yandex/Google Maps）
+        "lng": 121.97,
         "current_q": "26Q2",
         "prev_q": "26Q1",
         "current_q_date": "2026年4-6月",
@@ -1195,6 +1207,8 @@ MINES = [
     {
         "company": "Rio Tinto（力拓）",
         "mine": "Mt Cattlin",
+        "lat": -33.5625,  # 卫星影像定位（Yandex/Google Maps）
+        "lng": 120.0352,
         "current_q": "26Q2",
         "prev_q": "26Q1",
         "current_q_date": "2026年4-6月",
@@ -1340,6 +1354,8 @@ MINES = [
     {
         "company": "Core Lithium（ASX: CXO）",
         "mine": "Finniss",
+        "lat": -12.713,  # 卫星影像定位（Yandex/Google Maps）
+        "lng": 130.789,
         "current_q": "26Q2",
         "prev_q": "26Q1",
         "current_q_date": "2026年4-6月",
@@ -1487,6 +1503,8 @@ MINES = [
     {
         "company": "Global Lithium（ASX: GL1）",
         "mine": "Manna",
+        "lat": -30.864,  # 卫星影像定位（Yandex/Google Maps）
+        "lng": 122.574,
         "est_qs": [28, 29],  # 26Q1/26Q2 未披露 → 按投产进度推测 0（未投产）
         "current_q": "26Q2",
         "prev_q": "26Q1",
@@ -1633,6 +1651,8 @@ MINES = [
     {
         "company": "Covalent Lithium（SQM 50% + Wesfarmers 50%）",
         "mine": "Mt Holland",
+        "lat": -32.083,  # 卫星影像定位（Yandex/Google Maps）
+        "lng": 119.748,
         "est_qs": [28, 29],  # 26Q1/26Q2 未披露（SQM 不披露季度产量）→ 按满产推测 9.5
         "current_q": "26Q2",
         "prev_q": "26Q1",

@@ -73,6 +73,8 @@ const YONGAN_DATA = {
   {
    "company": "IGO",
    "mine": "Greenbushes",
+   "lat": -33.8567,
+   "lng": 116.0622,
    "current_q": "26Q2",
    "prev_q": "26Q1",
    "current_q_date": "2026年4-6月",
@@ -568,6 +570,8 @@ const YONGAN_DATA = {
   {
    "company": "PLS（Pilbara Minerals）",
    "mine": "Pilgangoora",
+   "lat": -21.7939,
+   "lng": 119.6346,
    "current_q": "26Q2",
    "prev_q": "26Q1",
    "current_q_date": "2026年4-6月",
@@ -885,6 +889,8 @@ const YONGAN_DATA = {
   {
    "company": "MRL（Mineral Resources）",
    "mine": "Wodgina",
+   "lat": -21.1746,
+   "lng": 118.6764,
    "current_q": "26Q2",
    "prev_q": "26Q1",
    "current_q_date": "2026年4-6月",
@@ -1164,6 +1170,8 @@ const YONGAN_DATA = {
   {
    "company": "MRL（Mineral Resources）",
    "mine": "Mt Marion",
+   "lat": -31.0738,
+   "lng": 121.4611,
    "current_q": "26Q2",
    "prev_q": "26Q1",
    "current_q_date": "2026年4-6月",
@@ -1443,6 +1451,8 @@ const YONGAN_DATA = {
   {
    "company": "Liontown（Liontown Resources）",
    "mine": "Kathleen Valley",
+   "lat": -27.4678,
+   "lng": 120.7047,
    "current_q": "26Q2",
    "prev_q": "26Q1",
    "current_q_date": "2026年4-6月",
@@ -1729,6 +1739,8 @@ const YONGAN_DATA = {
   {
    "company": "MRL（Mineral Resources）",
    "mine": "Bald Hill",
+   "lat": -31.52,
+   "lng": 121.97,
    "current_q": "26Q2",
    "prev_q": "26Q1",
    "current_q_date": "2026年4-6月",
@@ -2032,6 +2044,8 @@ const YONGAN_DATA = {
   {
    "company": "Rio Tinto（力拓）",
    "mine": "Mt Cattlin",
+   "lat": -33.5625,
+   "lng": 120.0352,
    "current_q": "26Q2",
    "prev_q": "26Q1",
    "current_q_date": "2026年4-6月",
@@ -2299,6 +2313,8 @@ const YONGAN_DATA = {
   {
    "company": "Core Lithium（ASX: CXO）",
    "mine": "Finniss",
+   "lat": -12.713,
+   "lng": 130.789,
    "current_q": "26Q2",
    "prev_q": "26Q1",
    "current_q_date": "2026年4-6月",
@@ -2570,6 +2586,8 @@ const YONGAN_DATA = {
   {
    "company": "Global Lithium（ASX: GL1）",
    "mine": "Manna",
+   "lat": -30.864,
+   "lng": 122.574,
    "est_qs": [
     28,
     29
@@ -2840,6 +2858,8 @@ const YONGAN_DATA = {
   {
    "company": "Covalent Lithium（SQM 50% + Wesfarmers 50%）",
    "mine": "Mt Holland",
+   "lat": -32.083,
+   "lng": 119.748,
    "est_qs": [
     28,
     29
