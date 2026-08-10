@@ -1793,13 +1793,19 @@ const YONGAN_DATA = {
     }
    },
    "milestone_timeline": {
-    "title": "Kathleen Valley：从发现到投产及地下生产",
-    "document": "Liontown Kathleen Valley Project Page — Milestones",
-    "date": "官网现行页面（2026-08-10核对）",
-    "page": "Milestones板块",
-    "source_url": "https://www.liontown.com/project/kathleen-valley/#milestones",
-    "summary": "Liontown官网称项目从资源确认到投产不足6年；官方时间线覆盖2017首次钻探、2018资源确认、2021 DFS与Native Title协议、2022 FID/承购/开工、2023采矿启动、2024按期首产、2025地下生产启动。",
-    "note": "本页为Liontown官网原生时间线的响应式结构化重排，不是公司PDF截图；年份与事件文字保持官网口径，每个事件均链接到Liontown原始公告。",
+    "title": "Kathleen Valley 建设里程碑与项目历程",
+    "document": "Liontown Investor Presentation – Offtake, Funding & Project Update",
+    "date": "2022-06-30",
+    "page": 11,
+    "source_url": "https://www.liontown.com/wp-content/uploads/2023/06/61097709.pdf",
+    "verification_sources": [
+     {
+      "label": "Liontown官网现行项目历程（用于核对实际完成节点）",
+      "url": "https://www.liontown.com/project/kathleen-valley/#milestones"
+     }
+    ],
+    "summary": "2022年官方建设计划图列示：Q4 2021完成DFS/NTA和A$463m融资，H1 2022签署三份基础承购，Q2 2022完成债务融资与FID，Q4 2022早期工程/设计，原计划Q4 2023完工、Q1/Q2 2024调试、Q2 2024投产。官网现行历程另覆盖2017首次钻探至2025地下生产启动。",
+    "note": "官方PDF原图是2022年建设期计划，不是当前指引；图中Q2 2024投产目标后来调整，实际首批精矿于2024年7月产出。下方事件卡来自Liontown官网现行历程，并逐项链接公司原始公告。",
     "events": [
      {
       "year": 2017,
@@ -1873,7 +1879,13 @@ const YONGAN_DATA = {
       ]
      }
     ],
-    "images": []
+    "images": [
+     {
+      "url": "img/kathleen_project_milestones_official.png",
+      "src": "Liontown《Investor Presentation – Offtake, Funding & Project Update》2022-06-30，第11页",
+      "cap": "2024 Production Target / Project Milestones on Schedule（2022年建设期历史计划，点击放大）"
+     }
+    ]
    },
    "quarterly_base": {
     "27Q1": 10.4,
@@ -2492,6 +2504,28 @@ const YONGAN_DATA = {
       }
      ]
     }
+   },
+   "milestone_timeline": {
+    "title": "Mt Cattlin 重启进度与计划里程碑（2016历史）",
+    "document": "Galaxy Resources — MT CATTLIN PREPARES FOR PRODUCTION COMMENCEMENT",
+    "date": "2016-11-01",
+    "page": 2,
+    "source_url": "https://announcements.asx.com.au/asxpdf/20161101/pdf/43ckdjcfb731f3.pdf",
+    "summary": "Galaxy截至2016-10-29的进度包括DMS厂机械完工、DMS管线完成95%、反渗透装置安装、过滤区工程及回流分级楼湿调试；随后两周计划完成絮凝剂厂、调试各回路、引入硅铁介质并准备矿石调试。",
+    "note": "这是Galaxy Resources 2016年重启阶段的历史进度，不代表当前复产计划。Mt Cattlin自2025年3月底起处于维护保养状态；截至2026-08，Rio Tinto尚未公布当前复产决定或时间表。",
+    "updates": [
+     {
+      "label": "2016-11-16 矿石调试及首批锂精矿生产确认",
+      "url": "https://announcements.asx.com.au/asxpdf/20161116/pdf/43cy0r8fkqs4wm.pdf"
+     }
+    ],
+    "images": [
+     {
+      "url": "img/mtcattlin_2016_progress_official.png",
+      "src": "Galaxy Resources《MT CATTLIN PREPARES FOR PRODUCTION COMMENCEMENT》2016-11-01，第2页",
+      "cap": "截至2016-10-29已完成进展 + 截至2016-11-12计划里程碑（历史重启进度，点击放大）"
+     }
+    ]
    },
    "quarterly_base": {
     "27Q1": 0.0,
