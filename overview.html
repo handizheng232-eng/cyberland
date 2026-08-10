@@ -174,7 +174,8 @@
   .fc-card.bear .v { color: var(--down); } .fc-card.base .v { color: var(--acc); } .fc-card.bull .v { color: var(--up); }
   .fc-card .d { font-size: 11.5px; color: var(--muted); margin-top: 3px; }
   .fc-card .lbl { font-size: 10.5px; padding: 2px 8px; border-radius: 10px; margin-left: 6px; vertical-align: 2px; }
-  .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; margin: 14px 0; }
+  .chart-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 14px 0; }
+  @media (max-width: 760px) { .chart-grid { grid-template-columns: 1fr; } }
   .chart-panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 12px; }
   .cp-title { font-size: 12px; color: var(--muted); margin-bottom: 8px; font-weight: 600; }
   .chart { width: 100%; }
