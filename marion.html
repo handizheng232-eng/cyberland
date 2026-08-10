@@ -110,6 +110,15 @@
   th, td { padding: 8px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
   th { background: var(--panel2); color: var(--muted); font-weight: 600; white-space: nowrap; }
   td.line { color: var(--acc); white-space: nowrap; font-weight: 600; min-width: 230px; }
+  /* ①② 运行状况表格：大小适配文字 */
+  .op-table { border-radius: 12px; overflow: hidden; }
+  .op-table th, .op-table td { padding: 11px 14px; vertical-align: top; line-height: 1.65; }
+  .op-table td.line { white-space: normal; word-break: break-word; width: 22%; min-width: 200px; font-weight: 700; color: var(--acc); }
+  .op-table th:first-child { width: 22%; }
+  .op-table th:last-child { width: 26%; }
+  .op-table td:nth-child(2), .op-table th:nth-child(2) { background: rgba(77,163,255,0.06); }
+  .op-table td:nth-child(2) { border-left: 2px solid rgba(77,163,255,0.35); }
+  .op-table tbody tr:last-child td { border-bottom: none; }
   td.cell { color: var(--text); }
 
   /* 历史数据 */
@@ -162,7 +171,7 @@ const Q = D.quarters;
 const urlParams = new URLSearchParams(location.search);
 // ** 加粗转换 helper（模板文本含 Markdown 加粗符号时渲染为 <b>）
 const md = t => (t || '').replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
-const MINE_KEY = urlParams.get('mine') || 'Mt Marion';  // 默认第一页 Greenbushes
+const MINE_KEY = urlParams.get('mine') || 'Mt Marion';  // 分页模式
 const MINE = D.mines.find(m => m.mine === MINE_KEY) || D.mines[0];
 // 历史数据源：Greenbushes 用 D.history，其余矿山用 D[<minekey小写>].history
 const HIST = MINE.mine === 'Greenbushes' ? D.history : D[(MINE.mine === 'Mt Marion' ? 'marion' : (MINE.mine === 'Kathleen Valley' ? 'kathleenvalley' : (MINE.mine === 'Bald Hill' ? 'baldhill' : (MINE.mine === 'Mt Cattlin' ? 'mtcattlin' : (MINE.mine === 'Mt Holland' ? 'mtholland' : MINE.mine.toLowerCase())))))].history;
@@ -199,24 +208,24 @@ const m = MINE;
     </div>
     <div class="cat">
       <h3>① 已有产线运行状况表述<span class="q">（本季度 ${m.current_q} vs 上一季度 ${m.prev_q}）</span></h3>
-      <table>
+      <table class="op-table">
         <thead><tr>
-          <th style="width:230px">产线 / 项目</th>
+          <th>产线 / 项目</th>
           <th>本季度（${m.current_q}）</th>
           <th>上一季度（${m.prev_q}）</th>
-          <th style="width:30%">对比 · 超预期</th>
+          <th>对比 · 超预期</th>
         </tr></thead>
         <tbody id="existing_${m.mine}"></tbody>
       </table>
     </div>
     <div class="cat">
       <h3>② 在建/规划中产线运行状况表述<span class="q">（本季度 ${m.current_q} vs 上一季度 ${m.prev_q}）</span></h3>
-      <table>
+      <table class="op-table">
         <thead><tr>
-          <th style="width:230px">项目</th>
+          <th>项目</th>
           <th>本季度（${m.current_q}）</th>
           <th>上一季度（${m.prev_q}）</th>
-          <th style="width:30%">对比 · 超预期</th>
+          <th>对比 · 超预期</th>
         </tr></thead>
         <tbody id="planned_${m.mine}"></tbody>
       </table>
