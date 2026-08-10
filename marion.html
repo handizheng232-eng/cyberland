@@ -92,7 +92,10 @@
   .milestone-block h4 { margin: 0 0 7px; font-size: 14px; color: var(--text); }
   .milestone-grid { grid-template-columns: 1fr; }
   .milestone-grid .img-card .img-wrap { max-height: none; }
-  .milestone-grid .img-card .img-wrap img { width: 100%; max-height: none; cursor: zoom-in; }
+  .milestone-grid .img-card .img-wrap img { width: 82%; max-width: 980px; max-height: none; margin: 0 auto; cursor: zoom-in; }
+  @media (max-width: 700px) {
+    .milestone-grid .img-card .img-wrap img { width: 100%; }
+  }
   .source-link { color: var(--acc); text-decoration: none; }
   .source-link:hover { text-decoration: underline; }
   .timeline-events { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-top: 12px; }
