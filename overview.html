@@ -219,7 +219,8 @@
   <div class="note warn" id="fc_note"></div>
   <div class="chart-grid">
     <div class="chart-panel"><div class="cp-title">分矿山 2027 产量预测（悲观 / 基准 / 乐观 · 万吨 SC6 等效）</div><div class="chart" id="fc_bar" style="height:340px"></div></div>
-    <div class="chart-panel"><div class="cp-title">2027 存量占比（各矿山 2026E 产量份额 · SC6 等效）</div><div class="chart" id="fc_pie_stock" style="height:340px"></div></div>
+    <div class="chart-panel"><div class="cp-title">分矿山 2027 增量（2027E − 2026E · 万吨 SC6 等效）</div><div class="chart" id="fc_bar_delta" style="height:340px"></div></div>
+    <div class="chart-panel"><div class="cp-title">2027 存量占比（各矿山 2027E 产量份额 · SC6 等效）</div><div class="chart" id="fc_pie_stock" style="height:340px"></div></div>
     <div class="chart-panel"><div class="cp-title">2027 增量占比（2027E − 2026E 增量 · SC6 等效，仅计入有完整基数的矿山）</div><div class="chart" id="fc_pie_delta" style="height:340px"></div></div>
   </div>
   <div class="basis-panel" id="fc_basis"></div>
@@ -593,10 +594,10 @@ const CAPEX = D.capex || {
         { name: '乐观', type: 'bar', data: bars.bull, itemStyle: { color: 'rgba(76,217,123,0.75)' } },
       ],
     });
-    // 存量饼图（2026E 各矿山 SC6 份额）
+    // 存量饼图（2027E 各矿山 SC6 份额——2027 存量 = 2027E 基准产量）
     const stock = D.mines.map(m => {
-      const e = yearSum(histOf(m), 'production', 28, 32);
-      return { name: m.mine, value: e != null ? +(e * kf(m)).toFixed(1) : 0 };
+      const f = fcAll(m);
+      return { name: m.mine, value: f && f.base != null ? +(f.base * kf(m)).toFixed(1) : 0 };
     }).filter(x => x.value > 0.5);
     echarts.init(document.getElementById('fc_pie_stock'), 'dark').setOption({
       backgroundColor: 'transparent', tooltip: { trigger: 'item', formatter: '{b}: {c} 万吨 SC6e ({d}%)' },
@@ -604,6 +605,23 @@ const CAPEX = D.capex || {
       series: [{ type: 'pie', radius: ['38%', '68%'], center: ['38%', '52%'], data: stock,
         label: { color: '#dbe4f3', fontSize: 10, formatter: '{b}\n{d}%' },
         itemStyle: { borderColor: '#111a2e', borderWidth: 2 } }],
+    });
+    // 分矿山 2027 增量柱状图（2027E − 2026E · SC6 等效；MH 特判 2026E=38）
+    const deltaBars = D.mines.map(m => {
+      const h = histOf(m), f = fcAll(m);
+      if (!f || f.base == null) return null;
+      const e = m.mine === 'Mt Holland' ? 9.5 * 4 : yearSum(h, 'production', 28, 32);
+      if (e == null) return null;
+      return { name: m.mine, val: +((f.base - e) * kf(m)).toFixed(1) };
+    });
+    echarts.init(document.getElementById('fc_bar_delta'), 'dark').setOption({
+      backgroundColor: 'transparent', tooltip: { trigger: 'axis', formatter: p => `${p[0].name}: ${p[0].value} 万吨 SC6e` },
+      grid: { left: 44, right: 12, top: 30, bottom: 56 },
+      xAxis: { type: 'category', data: deltaBars.map(x => x ? x.name : ''), axisLabel: { color: '#8b98b4', rotate: 35, fontSize: 10 } },
+      yAxis: { type: 'value', name: '万吨 SC6e', nameTextStyle: { color: '#8b98b4' }, axisLabel: { color: '#8b98b4' }, splitLine: { lineStyle: { color: 'rgba(90,120,180,0.15)' } } },
+      series: [{ name: '2027 增量', type: 'bar', data: deltaBars.map(x => x ? x.val : null),
+        itemStyle: { color: p => p.value > 0 ? 'rgba(76,217,123,0.8)' : 'rgba(255,107,107,0.6)' },
+        label: { show: true, position: 'top', color: '#dbe4f3', fontSize: 9, formatter: p => p.value > 0 ? '+' + p.value : p.value } }],
     });
     // 增量饼图（2027E − 2026E，仅计入有完整基数的矿山——26Q3E/26Q4E 均披露的才算 2026E 全年，避免 Mt Holland 类 H2 未披露矿山增量虚高）
     const delta = D.mines.map(m => {
