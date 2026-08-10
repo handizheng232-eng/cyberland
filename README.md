@@ -11,7 +11,7 @@
 | 总览 | overview.html | 主页：矿山运行总览 + 近五年产量汇总（SC6 等效折算）+ 资本开支 + 2027 预测汇总 | — |
 | 1 | index.html | Greenbushes（格林布什） | IGO（25% 份额，Tianqi/Albemarle 合资） |
 | 2 | pilgangoora.html | Pilgangoora（皮尔甘古拉） | Pilbara Minerals（ASX: PLS） |
-| 3 | wodgina.html | Wodgina（沃吉纳） | Mineral Resources（ASX: MIN，POSCO 2025-11 收购 30%） |
+| 3 | wodgina.html | Wodgina（沃吉纳） | Mineral Resources 50% + Albemarle 50%（MRL运营） |
 | 4 | marion.html | Mt Marion（马里恩） | MRL + Ganfeng |
 | 5 | kathleenvalley.html | Kathleen Valley（凯瑟琳谷） | Liontown（ASX: LTR） |
 | 6 | baldhill.html | Bald Hill（秃山，2026-05 复产） | MRL 100% |
@@ -21,6 +21,8 @@
 | 10 | mtholland.html | Mt Holland（荷兰山，矿+精炼一体化） | Covalent（SQM 50% + Wesfarmers 50%） |
 
 每矿山详情页七大板块：① 已有产线运行状况 ② 在建/规划产线 ③ 整体运行 ④ 历史数据（2019Q1 起） ⑤ 2027 年预测 ⑥ 选矿产能核实 ⑦ 原矿产能核实。
+
+②板块已收录9座矿山的企业官方项目进度表、建设甘特图或官网历程时间线，并标注报告日期、页码、官方URL及“历史快照/当前计划”状态：Greenbushes、Pilgangoora、Wodgina、Mt Marion、Kathleen Valley、Bald Hill、Finniss、Manna、Mt Holland。Mt Cattlin未找到可核验同类官方图，不使用二手转载替代。
 
 ## 数据口径
 
@@ -34,9 +36,8 @@
 ## 更新方法
 
 1. 修改 `build_data.py`（数据源：各矿山母公司官方季度报告 ASX/SEC）
-2. `python build_data.py` 生成 `docs/data.js`
-3. `docs/index.html` 为模板，按矿山复制为各详情页（改 MINE_KEY）
-4. 推送 `docs/` 至本仓库 main 分支（GitHub Pages 自动部署，约 1 分钟生效）
+2. `python build_data.py` 生成根目录 `data.js`，并从 `index.html` 模板同步生成十矿静态页（需在含上级Excel工作簿的源项目结构运行）
+3. 推送本仓库 main 分支（GitHub Pages 自动部署，约 1 分钟生效）
 
 ## 数据来源
 

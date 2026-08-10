@@ -88,6 +88,18 @@
   .img-card .img-wrap img { max-width: 100%; max-height: 420px; object-fit: contain; display: block; }
   .img-card .img-cap { padding: 8px 12px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); line-height: 1.5; }
   .img-card .img-cap b { color: var(--acc); font-weight: 600; }
+  .milestone-block { margin-top: 16px; padding: 14px; border: 1px solid var(--line); border-radius: 10px; background: rgba(77,163,255,.035); }
+  .milestone-block h4 { margin: 0 0 7px; font-size: 14px; color: var(--text); }
+  .milestone-grid { grid-template-columns: 1fr; }
+  .milestone-grid .img-card .img-wrap { max-height: none; }
+  .milestone-grid .img-card .img-wrap img { width: 100%; max-height: none; cursor: zoom-in; }
+  .source-link { color: var(--acc); text-decoration: none; }
+  .source-link:hover { text-decoration: underline; }
+  .timeline-events { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-top: 12px; }
+  .timeline-event { border: 1px solid var(--line); border-left: 4px solid var(--acc2); border-radius: 8px; padding: 10px 12px; background: var(--panel); }
+  .timeline-year { color: var(--acc2); font-size: 18px; font-weight: 800; margin-bottom: 5px; }
+  .timeline-items { margin: 0; padding-left: 18px; }
+  .timeline-items li { color: var(--text); margin: 4px 0; line-height: 1.45; }
   .img-zoom { position: fixed; inset: 0; background: rgba(4,8,16,.92); z-index: 1000; display: none; align-items: center; justify-content: center; cursor: zoom-out; }
   .img-zoom img { max-width: 94vw; max-height: 94vh; object-fit: contain; }
 
@@ -147,7 +159,7 @@ const Q = D.quarters;
 const urlParams = new URLSearchParams(location.search);
 // ** 加粗转换 helper（模板文本含 Markdown 加粗符号时渲染为 <b>）
 const md = t => (t || '').replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
-const MINE_KEY = urlParams.get('mine') || 'Finniss';  // 分页模式
+const MINE_KEY = urlParams.get('mine') || 'Finniss';  // 默认第一页 Greenbushes
 const MINE = D.mines.find(m => m.mine === MINE_KEY) || D.mines[0];
 // 历史数据源：Greenbushes 用 D.history，其余矿山用 D[<minekey小写>].history
 const HIST = MINE.mine === 'Greenbushes' ? D.history : D[(MINE.mine === 'Mt Marion' ? 'marion' : (MINE.mine === 'Kathleen Valley' ? 'kathleenvalley' : (MINE.mine === 'Bald Hill' ? 'baldhill' : (MINE.mine === 'Mt Cattlin' ? 'mtcattlin' : (MINE.mine === 'Mt Holland' ? 'mtholland' : MINE.mine.toLowerCase())))))].history;
@@ -205,6 +217,16 @@ const m = MINE;
         </tr></thead>
         <tbody id="planned_${m.mine}"></tbody>
       </table>
+      ${m.milestone_timeline ? `<div class="milestone-block">
+        <h4>项目进展表 / 历程图：${m.milestone_timeline.title}</h4>
+        <p class="desc"><b>官方文件：</b><a class="source-link" href="${m.milestone_timeline.source_url}" target="_blank" rel="noopener">${m.milestone_timeline.document}</a>（${m.milestone_timeline.date}，${Number.isInteger(m.milestone_timeline.page) ? `第${m.milestone_timeline.page}页` : m.milestone_timeline.page}）</p>
+        ${m.milestone_timeline.verification_sources ? `<p class="desc"><b>附件核验：</b>${m.milestone_timeline.verification_sources.map(u => `<a class="source-link" href="${u.url}" target="_blank" rel="noopener">${u.label}</a>`).join('；')}</p>` : ''}
+        ${m.milestone_timeline.updates ? `<p class="desc"><b>最新进展核对：</b>${m.milestone_timeline.updates.map(u => `<a class="source-link" href="${u.url}" target="_blank" rel="noopener">${u.label}</a>`).join('；')}</p>` : ''}
+        <p class="desc"><b>图示要点：</b>${m.milestone_timeline.summary}</p>
+        <div class="note">⚠️ ${m.milestone_timeline.note}</div>
+        ${m.milestone_timeline.events ? `<div class="timeline-events">${m.milestone_timeline.events.map(e => `<div class="timeline-event"><div class="timeline-year">${e.year}</div><ul class="timeline-items">${e.items.map(it => `<li><a class="source-link" href="${it.url}" target="_blank" rel="noopener">${it.label}</a></li>`).join('')}</ul></div>`).join('')}</div>` : ''}
+        ${(m.milestone_timeline.images || []).length ? `<div class="img-grid milestone-grid" id="img_milestone_${m.mine}"></div>` : ''}
+      </div>` : ''}
     </div>
     <div class="cat">
       <h3>③ 整体运行状况表述<span class="q">（本季度 ${m.current_q} vs 上一季度 ${m.prev_q}）</span></h3>
@@ -372,6 +394,7 @@ const m = MINE;
   }
   renderImgs(`img_cv_${m.mine}`, m.capacity_verification.images || []);
   renderImgs(`img_ms_${m.mine}`, m.capacity_verification.mining_side.images || []);
+  if (m.milestone_timeline) renderImgs(`img_milestone_${m.mine}`, m.milestone_timeline.images || []);
   renderSatMap(m);
   // 历史数据表
   renderHist(m.mine);

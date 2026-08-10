@@ -5,7 +5,7 @@
 - 运行状况描述：26Q2（IGO FY26 Q4）最新季度表述，来源 = IGO June 2026 Quarterly Activities Report (2026-07-28)
 
 用法: python build_data.py
-输出: docs/data.js
+输出: data.js + 十矿静态页面（部署仓库根目录）
 """
 import openpyxl
 import json
@@ -13,7 +13,7 @@ import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(HERE, "..", "季度数据_Greenbushes更新至2026Q2.xlsx")
-OUT = os.path.join(HERE, "docs", "data.js")
+OUT = os.path.join(HERE, "data.js")
 
 # ============ 矿山列表（永安期货格式：每个矿山一个块） ============
 # 当前数据源为 IGO 官网（Greenbushes 母公司）；结构可扩展多矿山
@@ -1512,7 +1512,7 @@ MINES = [
         "mine_cn": "Manna（曼纳矿山）",
         "report": "Global Lithium July 2026 Investor Presentation（2026-07-28）；Manna MDCP approved 公告（2026-08-04）；Manna DFS Results 公告（2025-12-04）；Quarterly Activities Report（2026-07-31）",
         "source_url": "https://globallithium.com.au/lithium-assets/manna-lithium-project/",
-        "equity_note": "100% 资产口径（Global Lithium Resources 全资，ASX: GL1）；**未投产/开发阶段矿山**——Kalgoorlie 锂矿区第三大资源；原权属 Breaker Resources（BRB，2018-11 发现），GL1 2021-12-30 收购 80%（A$33M 上限）+ 2022-11-15 收购剩余 20%（A$60M，BRB 保留贵金属权 + 1.5% NSR）；2024-06-12 资源 +43%（51.6Mt）；2025-08-25 ML M28/414 授予（21 年期）；2025-12-03 优化 DFS 完成；2026-08-04 MDCP 批准；FID 目标 Q4 2026；首批 DSO Q2 2027、首产 SC5.5 精矿 2027 年中",
+        "equity_note": "100% 资产口径（Global Lithium Resources 全资，ASX: GL1）；**未投产/开发阶段矿山**——Kalgoorlie 锂矿区第三大资源；原权属 Breaker Resources（BRB，2018-11 发现），GL1 2021-12-30 收购 80%（A$33M 上限）+ 2022-11-15 收购剩余 20%（A$60M，BRB 保留贵金属权 + 1.5% NSR）；2024-06-12 资源 +43%（51.6Mt）；2025-08-25 ML M28/414 授予（21 年期）；2025-12-03 优化 DFS 完成；2026-08-04 MDCP 批准；FID 目标 Q4 2026；DSO生产启动目标 Q1 2027、首产 SC5.5 精矿 2027 年中",
         "history_labels": [
             ("production", "精矿产量（万吨，SC5.5）"),
             ("sales", "销量（万吨）"),
@@ -1538,7 +1538,7 @@ MINES = [
             "future_lines": [
                 {
                     "name": "DSO 运营 + 精矿生产（2027）",
-                    "q26q2": "时间表：FID Q4 2026 → 首批 DSO（直接装运矿石）Q2 2027 → 首产 SC5.5 精矿 2027 年中（Nova 厂改造）；Lopal 40% 包销 + US$75M 预付款（FID 后）",
+                    "q26q2": "时间表：FID Q4 2026 → DSO生产启动目标 Q1 2027（直接装运矿石）→ 首产 SC5.5 精矿 2027 年中（Nova 厂改造）；Lopal 40% 包销 + US$75M 预付款（FID 后）",
                     "q26q1": "DFS 完成后推进 FID 准备",
                     "compare": "DSO 先行是快速现金流策略（Manna-Nova 整合研究捕获 DSO 价值）"
                 }
@@ -1547,9 +1547,9 @@ MINES = [
                 "operation_changes": "26Q2 未投产：开发推进——2026-07-15 Nova 收购公告（A$7m）、2026-08-04 MDCP 批准、FID 目标 Q4 2026；DFS（2025-12-04）经济参数：NPV8 A$472M、IRR 25.7%、Payback 3.5 年、capex A$439.1M（绿地）、AISC US$738/t SC5.5、LOM 14.3 年",
                 "prev_operation_changes": "26Q1 开发推进：Lopal 战略融资（2026-04-22，配售 A$7.3m + 40% 包销 + US$75M 预付款）、Marble Bar 出售（A$14.85M，专注 Manna）",
                 "highlights": [
-                    "MDCP 批准（2026-08-04，DMIRS）——Manna 开发关键许可，略早于内部时间表（超预期）；2024Q4-2025Q1 曾因锂价下行暂停 DFS（2025-01-29 季报官方确认）+ 249D 股东行动/诉讼干扰（2024-09 至 2025-02），2025-12-03 恢复发布优化 DFS",
+                    "MDCP 批准（2026-08-04，DMPE）——Manna 开发关键许可，略早于内部时间表（超预期）；2024Q4-2025Q1 曾因锂价下行暂停 DFS（2025-01-29 季报官方确认）+ 249D 股东行动/诉讼干扰（2024-09 至 2025-02），2025-12-03 恢复发布优化 DFS",
                     "Nova 收购（2026-07-15）：A$7m 获 1.8Mtpa 选矿厂 → 首产精矿目标 2027 年中（vs 绿地厂更晚）",
-                    "FID 目标 Q4 2026 + 首批 DSO Q2 2027——fast-track 时间表",
+                    "FID 目标 Q4 2026 + DSO生产启动目标 Q1 2027——fast-track 时间表（2026年7月投资者演示第18页）",
                     "DFS（2025-12-04）：NPV8 A$472M、IRR 25.7%、Payback 3.5 年、Breakeven US$784/t SC6.0——价格韧性",
                     "Kalgoorlie 锂矿区第三大资源：51.6Mt @ 1.00%（≥0.6% 边界）+ Maiden 储量 19.4Mt @ 0.91%（LOM 14.3 年）；Esperance 港出口 MOU（2025-12-18，Southern Ports）",
                     "Lopal 战略合作（2026-04-22）：40% 产量包销（10 年 SC5.5，前三年地板价 US$1,000/t CIF）+ US$75M 预付款融资 + A$7.32M 配售（2026-05-28 完成，Lopal ~5%）——资金与下游双锁定；既有 Canmax（原 Suzhou TA&A）10 年最低 30% 包销（2022-03-02，2025-04-08 变更续期）"
@@ -1565,7 +1565,7 @@ MINES = [
         "capacity_verification": {
             "title": "选矿产能核实（多来源交叉印证 · 未投产/开发阶段矿山）",
             "method": "以 Global Lithium DFS（2025-12-04）、2026-07 投资者展示、MDCP 公告（2026-08-04）、官网为来源；未投产矿山以 DFS 设计参数与战略路线为核心。",
-            "summary": "Manna 为 Kalgoorlie 锂矿区第三大资源（51.6Mt @ 1.00%）+ Maiden 储量 19.4Mt @ 0.91%（LOM 14.3 年）；DFS（2025-12-04）绿地厂 capex A$439.1M；2026-07-15 Nova 收购战略（1.8Mtpa 选矿厂）将 Manna 矿石运至 Nova 加工，首产 SC5.5 精矿目标 2027 年中；FID 目标 Q4 2026、首批 DSO Q2 2027。",
+            "summary": "Manna 为 Kalgoorlie 锂矿区第三大资源（51.6Mt @ 1.00%）+ Maiden 储量 19.4Mt @ 0.91%（LOM 14.3 年）；DFS（2025-12-04）绿地厂 capex A$439.1M；2026-07-15 Nova 收购战略（1.8Mtpa 选矿厂）将 Manna 矿石运至 Nova 加工，首产 SC5.5 精矿目标 2027 年中；FID 目标 Q4 2026、DSO生产启动目标 Q1 2027。",
             "items": [
                 {
                     "line": "选矿产能（Manna DFS 浮选厂 vs Nova 1.8Mtpa 厂）",
@@ -1583,7 +1583,7 @@ MINES = [
                     "verified": "✓ DFS 原文确认（DMS not suitable）",
                     "sources": [
                         {"src": "Manna 优化 DFS（2025-12-03）", "data": "Dense-Media Separation (DMS) technology is not suitable for the Manna deposit——三段破碎 + 矿石预选（ore sorting）+ 单一球磨 + 浮选 + 脱泥/云母浮选/磁选；2023-11-16 冶金试验确认浮选路线"},
-                        {"src": "2026-07 投资者展示 / MDCP 公告（2026-08-04）", "data": "First SC5.5 Spodumene Concentrate production planned for mid 2027；DSO operation 先行（Q2 2027）"}
+                        {"src": "2026-07 投资者展示 / MDCP 公告（2026-08-04）", "data": "第18页：DSO production expected to commence March quarter 2027；SC5.5 spodumene concentrate production planned for mid 2027"}
                     ]
                 },
                 {
@@ -1595,7 +1595,7 @@ MINES = [
                     ]
                 }
             ],
-            "note": "核实时间：2026-08-05。关键结论：① 未投产矿山——资源 51.6Mt @ 1.00%、储量 19.4Mt @ 0.91%（LOM 14.3 年）；② DFS（2025-12-04）：capex A$439.1M（绿地）、NPV8 A$472M、IRR 25.7%、AISC US$738/t SC5.5；③ Nova 收购（2026-07-15，A$7m）1.8Mtpa 选矿厂 → 首产精矿目标 2027 年中（提前于绿地厂）；④ FID 目标 Q4 2026、首批 DSO Q2 2027；⑤ 精矿产能官方值 236,470 tpa SC5.5（DFS）；⑥ 注意 2023 Scoping Study（2.0Mtpa/NPV A$2.8B@US$2,500 高价假设）与 2025 优化 DFS（1.8Mtpa/NPV A$472M）勿混用——以 DFS 为准。",
+            "note": "核实时间：2026-08-10。关键结论：① 未投产矿山——资源 51.6Mt @ 1.00%、储量 19.4Mt @ 0.91%（LOM 14.3 年）；② DFS（2025-12-04）：capex A$439.1M（绿地）、NPV8 A$472M、IRR 25.7%、AISC US$738/t SC5.5；③ Nova 收购（2026-07-15，A$7m）1.8Mtpa 选矿厂 → 首产精矿目标 2027 年中（提前于绿地厂）；④ FID 目标 Q4 2026、DSO生产启动目标 Q1 2027（2026年7月投资者演示第18页）；⑤ 精矿产能官方值 236,470 tpa SC5.5（DFS）；⑥ 注意 2023 Scoping Study（2.0Mtpa/NPV A$2.8B@US$2,500 高价假设）与 2025 优化 DFS（1.8Mtpa/NPV A$472M）勿混用——以 DFS 为准。",
             "sources_index": {"技术报告": "Manna DFS（2025-12-04）、MRE 更新（2024-06-12）", "公司公告": "MDCP 批准（2026-08-04）、Nova 收购（2026-07-15）、Lopal 融资（2026-04-22）", "公司展示": "July 2026 Investor Presentation", "官网": "globallithium.com.au Manna 项目页", "数据站": "区域位置图（Kalgoorlie 锂矿区对比）"},
             "images": [
                 {"url": "img/sat_manna_z13.jpg", "src": "卫星影像（Yandex Maps）", "cap": "Manna 项目区卫星影像——Kalgoorlie 东 110km（未开发地形）"},
@@ -1626,7 +1626,7 @@ MINES = [
                         "line": "环评与许可（WA 政府）",
                         "status": "✅ MDCP 已批准（2026-08-04）",
                         "sources": [
-                            {"src": "MDCP 公告（2026-08-04）", "data": "Mining Development and Closure Proposal (MDCP) approved by DMIRS（Department of Mines, Petroleum and Exploration），on schedule，slightly ahead of internal timelines"},
+                            {"src": "MDCP 公告（2026-08-04）", "data": "Mining Development and Closure Proposal (MDCP) approved by DMPE（Department of Mines, Petroleum and Exploration），on schedule，slightly ahead of internal timelines"},
                             {"src": "官网/2025 公告", "data": "Mining Lease M28/414 granted 2025-08-25；Native Title Mining Agreement signed with Kakarra Part B Native Title Group 2025-08-13"}
                         ]
                     },
@@ -1638,7 +1638,7 @@ MINES = [
                         ]
                     }
                 ],
-                "note": "核实时间：2026-08-05。采矿侧要点：① 未投产——Manna Main + North + South 露天设计完成、MDCP 2026-08-04 批准；② 资源 51.6Mt @ 1.00%（2024-06，+43%）、Maiden 储量 19.4Mt @ 0.91%（LOM 14.3 年）；③ 环评：MDCP（DMIRS）+ ML M28/414（2025-08-25）+ Native Title 协议（2025-08-13）；④ FID 目标 Q4 2026、首批 DSO Q2 2027、首产精矿 2027 年中；⑤ Kalgoorlie 锂矿区第三大资源（Mt Marion > Bald Hill > Manna）。",
+                "note": "核实时间：2026-08-10。采矿侧要点：① 未投产——Manna Main + North + South 露天设计完成、MDCP 2026-08-04 批准；② 资源 51.6Mt @ 1.00%（2024-06，+43%）、Maiden 储量 19.4Mt @ 0.91%（LOM 14.3 年）；③ 环评：MDCP（DMPE）+ ML M28/414（2025-08-25）+ Native Title 协议（2025-08-13）；④ FID 目标 Q4 2026、DSO生产启动目标 Q1 2027、首产精矿 2027 年中；⑤ Kalgoorlie 锂矿区第三大资源（Mt Marion > Bald Hill > Manna）。",
                 "images": [
                     {"url": "img/manna_core_sample.jpg", "src": "Global Lithium 官网", "cap": "Manna 岩芯样本（spodumene 伟晶岩）"},
                     {"url": "img/manna_drill.jpg", "src": "Global Lithium 官网", "cap": "Manna RC 钻探作业（2022-2024 大规模钻探）"},
@@ -1765,7 +1765,6 @@ MINES = [
                         "status": "✅ 储量确认（西澳前五）",
                         "sources": [
                             {"src": "SQM 20-F FY2025（S-K1300，2025-12-31）", "data": "Mineral Reserves 84.7Mt @ 1.45% Li₂O（Proven 38.5Mt@1.56% + Probable 43.7Mt@1.38% + 堆存 2.5Mt@0.89%；0.5% cut-off；冶金回收率 75%；SQM 50% = 42.4Mt；FY2024 末为 85.6Mt -1% 开采消耗）；Mineral Resource（excl. reserves）121.1Mt（0.5%/0.78% petalite cut-off）——西澳前五、矿山寿命 50+ 年"}, {"src": "Kidman 时代（历史链）", "data": "2016-12-05 首份 MRE 128Mt @ 1.44%（当时 ASX 最大硬岩锂资源）→ 2018-03-19 MRE 189Mt @ 1.50%（+54%，91% M+I）→ 2018-12-18 首份 Ore Reserve 94.2Mt @ 1.5%（IPFS 伴生）"},
-                           
                         ]
                     },
                     {
@@ -1793,6 +1792,196 @@ MINES = [
         }
     }
 ]
+
+# ============ 企业官方项目进展表 / 历程图 ============
+# 仅收录公司官网、官方季度报告或投资者演示中的原图；计划日期是公司当时的
+# 前瞻性安排，不等同于已完成事实。页面放在②在建/规划板块内，避免改变①-⑦编号。
+MILESTONE_TIMELINES = {
+    "Manna": {
+        "title": "Manna-Nova 项目关键里程碑",
+        "document": "Global Lithium Resources Investor Presentation",
+        "date": "2026-07",
+        "page": 15,
+        "source_url": "https://wcsecure.weblink.com.au/pdf/GL1/03114698.pdf",
+        "summary": "公司2026年7月计划：Q3 2026完成整合研究及多项Pre-FID工作，Q4 2026作出FID；Q1-Q2 2027进行Nova选厂转换与调试并开展DSO运营，Q3 2027起生产SC5.5并完成首批SC5.5出口。",
+        "note": "图中日期属于公司发布时的前瞻性目标，并非已完成事实；Nova收购交割、审批、FID、改造和调试均可能影响实际进度。DSO与SC5.5精矿是不同产品，页面预测不把DSO计入SC5.5精矿产量。",
+        "images": [
+            {
+                "url": "img/manna_nova_milestones_official.png",
+                "src": "Global Lithium《Investor Presentation — July 2026》第15页",
+                "cap": "Manna-Nova Project Key Milestones：Pre-FID、FID、Nova选厂转换与调试、DSO运营、SC5.5生产及首批出口的公司计划时序（点击放大）"
+            }
+        ]
+    },
+    "Greenbushes": {
+        "title": "Greenbushes 项目历程与产线进度（2022官方快照）",
+        "document": "IGO Greenbushes Site Visit Presentation",
+        "date": "2022-07-29",
+        "page": "PDF第8、19页（页脚7、18）",
+        "source_url": "https://www.igo.com.au/site/pdf/c5d6ce55-e0f1-49ea-8e94-e3d95b1f3da2/Platform/ListPage/Greenbushes-Site-Visit-Presentation.pdf",
+        "summary": "IGO官方材料以时间线展示1886发现锡矿、1983首次生产锂矿物、1997产能达150ktpa、2021 CGP2重启/TRP开工及FY22产量；产线表列出TGP、CGP1、CGP2、TRP与CGP3在2022年7月的状态、产能和恢复率。",
+        "note": "两图均为2022年历史快照：其中CGP3“预计2025年初调试”已被后续实际进度取代，CGP3已于25Q4首产；CGP4截至2026年中仍未宣布FID。图中产能为公司当时口径，勿直接替代页面当前季度数据。",
+        "images": [
+            {
+                "url": "img/greenbushes_project_timeline_official.png",
+                "src": "IGO《Greenbushes Site Visit Presentation》2022-07-29，PDF第8页（页脚7）",
+                "cap": "Project Timeline：1886年至FY22的Greenbushes项目发展历程（点击放大）"
+            },
+            {
+                "url": "img/greenbushes_line_progress_official.png",
+                "src": "IGO《Greenbushes Site Visit Presentation》2022-07-29，PDF第19页（页脚18）",
+                "cap": "Expanding concentrate production capacity to meet demand：TGP、CGP1、CGP2、TRP与CGP3的2022年状态/产能/进展表（点击放大）"
+            }
+        ]
+    },
+    "Pilgangoora": {
+        "title": "Pilgangoora 扩产至1Mtpa路径（历史官方图）",
+        "document": "PLS December 2022 Quarterly Activities Presentation",
+        "date": "2023-01-19",
+        "page": 8,
+        "source_url": "https://pls.com/wp-content/uploads/2023/01/December2022QuarterlyActivitiesPresentation.pdf",
+        "summary": "PLS图示产能从580ktpa经P680提升至680ktpa，再经P1000提升至约1,000ktpa；发布时P680在建，P1000处于Pre-FID并计划2023年一季度作出FID。",
+        "note": "这是2023年初历史扩产路径，不是当前待建计划；P680和P1000后来均于FY25完成。当前页面的下一阶段是P2000预FID研究，不能套用本图原时序。PLS旧PDF现行路径返回404，原始公司URL通过Wayback归档取回核验。",
+        "images": [
+            {
+                "url": "img/pilgangoora_expansion_pathway_official.png",
+                "src": "PLS《December 2022 Quarterly Activities Presentation》2023-01-19，第8页（官方原URL，Wayback取回核验）",
+                "cap": "Expansion pathway to 1Mtpa：P680与P1000扩产阶梯及当时计划时序（点击放大）"
+            }
+        ]
+    },
+    "Wodgina": {
+        "title": "Wodgina 棕地扩产选择与建设周期",
+        "document": "Mineral Resources Lithium Investor Tour Presentation",
+        "date": "2026-05-19",
+        "page": 25,
+        "source_url": "https://clients3.weblink.com.au/pdf/MIN/03091270.pdf",
+        "summary": "公司评估两条棕地扩产路径：升级现有三条产线及新建4号线，分别可增产约30%；截至演示发布时仍待方案评估、FID和JV批准，获批后至投产预计18个月。",
+        "note": "这是可选扩产方案，不是已批准项目或产量指引；18个月从未来FID/JV批准日起算，不应直接写成固定投产日期。",
+        "images": [
+            {
+                "url": "img/wodgina_growth_timeline_official.png",
+                "src": "MinRes《Lithium Investor Tour Presentation》2026-05-19，第25页",
+                "cap": "Wodgina processing plant layout / Brownfields Growth Optionality：三线升级、4号线选址、审批状态及获批后18个月建设周期（点击放大）"
+            }
+        ]
+    },
+    "Mt Marion": {
+        "title": "Mt Marion 浮选厂与地下开发时序",
+        "document": "Mineral Resources Lithium Investor Tour Presentation",
+        "date": "2026-05-19",
+        "page": 36,
+        "source_url": "https://clients3.weblink.com.au/pdf/MIN/03091270.pdf",
+        "summary": "演示给出的建设周期为：浮选厂从建设到爬坡18个月，地下开发至首矿12个月；方案目标将SC6产能从500ktpa提高至600ktpa并延长矿山寿命。",
+        "note": "图中“FID targeted Q1 FY27”已被2026-05-26正式FID取代；最新FID公告口径为Q1 FY27开工、2H FY28调试和爬坡。时间轴用于展示公司建设路径，不代表当前已投产。",
+        "updates": [
+            {"label": "2026-05-26 Mt Marion 浮选厂与地下开发正式FID公告", "url": "https://clients3.weblink.com.au/pdf/MIN/03093542.pdf"}
+        ],
+        "images": [
+            {
+                "url": "img/marion_growth_timeline_official.png",
+                "src": "MinRes《Lithium Investor Tour Presentation》2026-05-19，第36页",
+                "cap": "Mt Marion Brownfields Growth Optionality：浮选厂18个月建设至爬坡、地下开发12个月至首矿，以及产能和资本开支框架（点击放大）"
+            }
+        ]
+    },
+    "Kathleen Valley": {
+        "title": "Kathleen Valley：从发现到投产及地下生产",
+        "document": "Liontown Kathleen Valley Project Page — Milestones",
+        "date": "官网现行页面（2026-08-10核对）",
+        "page": "Milestones板块",
+        "source_url": "https://www.liontown.com/project/kathleen-valley/#milestones",
+        "summary": "Liontown官网称项目从资源确认到投产不足6年；官方时间线覆盖2017首次钻探、2018资源确认、2021 DFS与Native Title协议、2022 FID/承购/开工、2023采矿启动、2024按期首产、2025地下生产启动。",
+        "note": "本页为Liontown官网原生时间线的响应式结构化重排，不是公司PDF截图；年份与事件文字保持官网口径，每个事件均链接到Liontown原始公告。",
+        "events": [
+            {"year": 2017, "items": [
+                {"label": "首次钻探计划启动", "url": "https://www.liontown.com/wp-content/uploads/2023/06/6810359.pdf"}
+            ]},
+            {"year": 2018, "items": [
+                {"label": "定义矿产资源，确认一级锂矿床", "url": "https://www.liontown.com/wp-content/uploads/2023/06/6898063.pdf"}
+            ]},
+            {"year": 2021, "items": [
+                {"label": "DFS完成", "url": "https://www.liontown.com/wp-content/uploads/2023/06/61062133.pdf"},
+                {"label": "签署Native Title协议", "url": "https://www.liontown.com/wp-content/uploads/2023/06/61063303.pdf"}
+            ]},
+            {"year": 2022, "items": [
+                {"label": "FID、与Tesla/Ford/LG Energy Solution签署承购协议并开工", "url": "https://www.liontown.com/wp-content/uploads/2023/06/61097709.pdf"}
+            ]},
+            {"year": 2023, "items": [
+                {"label": "采矿作业启动", "url": "https://www.liontown.com/wp-content/uploads/2023/06/61134861.pdf"}
+            ]},
+            {"year": 2024, "items": [
+                {"label": "混合能源电站启动", "url": "https://www.liontown.com/latest-news/renewables-power-up-kathleen-valley/"},
+                {"label": "按计划实现首产", "url": "https://www.liontown.com/latest-news/first-production-delivered-on-schedule-at-kathleen-valley/"}
+            ]},
+            {"year": 2025, "items": [
+                {"label": "地下生产按计划启动", "url": "https://www.liontown.com/latest-news/underground-production-commences-on-schedule-at-kathleen-valley-australias-first-underground-lithium-mine/"}
+            ]}
+        ],
+        "images": []
+    },
+    "Bald Hill": {
+        "title": "Bald Hill 重启计划",
+        "document": "Mineral Resources Lithium Investor Tour Presentation",
+        "date": "2026-05-19",
+        "page": 43,
+        "source_url": "https://clients3.weblink.com.au/pdf/MIN/03091270.pdf",
+        "summary": "公司重启计划显示：首批矿石装船目标Q1 FY27，Q2 FY27爬坡至满产；安装产能140ktpa SC6、产品品位5.1%，重启成本A$20M。",
+        "note": "Q1/Q2 FY27是MinRes财季：分别对应日历2026Q3和2026Q4。该图是2026-05-19的公司重启计划，实际进度仍须用后续季报核验。",
+        "updates": [
+            {"label": "2026-05-18 Bald Hill 锂矿重启公告", "url": "https://clients3.weblink.com.au/pdf/MIN/03091219.pdf"}
+        ],
+        "images": [
+            {
+                "url": "img/baldhill_restart_timeline_official.png",
+                "src": "MinRes《Lithium Investor Tour Presentation》2026-05-19，第43页",
+                "cap": "Bald Hill Restart Plan：首矿装船、满产爬坡、重启成本、安装产能及剥采比路径（点击放大）"
+            }
+        ]
+    },
+    "Finniss": {
+        "title": "Finniss 分阶段重启时间表",
+        "document": "Core Lithium Finniss Funding and Restart Presentation",
+        "date": "2026-03-18",
+        "page": 10,
+        "source_url": "https://corelithium.com.au/announcements/7451204",
+        "verification_sources": [
+            {"label": "InvestorPA原ASX附件镜像（用于页面核验）", "url": "https://investorpa.com/announcement-pdf/20260318/270827.pdf"}
+        ],
+        "summary": "公司重启路径显示：Q1 2026融资与FID，Q2部署重启资本并启动Grants露天矿/BP33箱形切口，Q3-Q4选厂启动和首批精矿发运；BP33地下矿目标2027年中首矿、2028年中达到1.2Mtpa满产。",
+        "note": "该图脚注明确说明时序仅供说明，基于当前完工估计，受对手方按时交付、关键风险及其他条件影响并可能变化。季度为日历季度；首批精矿发运目标Q4 2026应继续用后续季报核验。",
+        "images": [
+            {
+                "url": "img/finniss_restart_timeline_official.png",
+                "src": "Core Lithium《Finniss Funding and Restart Presentation》2026-03-18，第10页（官方落地页；InvestorPA原ASX附件镜像取回）",
+                "cap": "RESTART TIMELINE：Grants露天矿、BP33地下开发、选厂启动、首批精矿发运及满产路径（点击放大）"
+            }
+        ]
+    },
+    "Mt Holland": {
+        "title": "Mt Holland 建设进度表（2023历史官方图）",
+        "document": "WesCEF Investor Briefing and Site Tours",
+        "date": "2023-03-23",
+        "page": "PDF第67页（页脚66）",
+        "source_url": "https://www.wesfarmers.com.au/docs/default-source/asx-announcements/wescef-investor-briefing-and-site-tours.pdf?sfvrsn=5cea1ebb_0",
+        "summary": "Wesfarmers项目更新表列出2023年3月时点的状态、当前时序和资本成本：2021年7月开工、2022年12月首矿、选矿厂完成度超过85%并开始早期调试，原计划2023年底选矿厂首产、2025上半年Kwinana炼厂首产。",
+        "note": "这是原项目建设阶段的历史图，不是2026扩产时间表。2026-07-22最新FID为精矿产能约380ktpa扩至约760ktpa，二号选矿厂预计2027H2开工、2030H1首批扩产精矿；最新扩产披露为文字公告，未找到独立甘特图。",
+        "updates": [
+            {"label": "2026-07-22 Mt Holland扩产FID公告", "url": "https://www.wesfarmers.com.au/docs/default-source/asx-announcements/mt-holland-lithium-expansion-final-investment-decision-20260721222532.pdf?sfvrsn=f024a8bb_0"}
+        ],
+        "images": [
+            {
+                "url": "img/mtholland_project_update_official.png",
+                "src": "Wesfarmers《WesCEF Investor Briefing and Site Tours》2023-03-23，PDF第67页（页脚66）",
+                "cap": "Project update：选矿厂/炼厂建设状态、当前时序与资本成本（2023历史快照，点击放大）"
+            }
+        ]
+    }
+}
+
+for _mine in MINES:
+    if _mine["mine"] in MILESTONE_TIMELINES:
+        _mine["milestone_timeline"] = MILESTONE_TIMELINES[_mine["mine"]]
 
 
 
@@ -2577,7 +2766,37 @@ with open(OUT, "w", encoding="utf-8") as f:
     f.write("// 由 build_data.py 生成（永安期货-澳洲锂矿汇总格式）\n")
     f.write("const YONGAN_DATA = " + json.dumps(data, ensure_ascii=False, indent=1) + ";\n")
 
+# 每次构建同步生成十个静态矿山页，避免 index.html 模板与单矿页漂移。
+_DOCS_DIR = os.path.dirname(OUT)
+_INDEX_HTML = os.path.join(_DOCS_DIR, "index.html")
+_MINE_PAGES = {
+    "greenbushes.html": "Greenbushes",
+    "pilgangoora.html": "Pilgangoora",
+    "wodgina.html": "Wodgina",
+    "marion.html": "Mt Marion",
+    "kathleenvalley.html": "Kathleen Valley",
+    "baldhill.html": "Bald Hill",
+    "mtcattlin.html": "Mt Cattlin",
+    "finniss.html": "Finniss",
+    "manna.html": "Manna",
+    "mtholland.html": "Mt Holland",
+}
+_MINE_KEY_NEEDLE = "const MINE_KEY = urlParams.get('mine') || 'Greenbushes';"
+with open(_INDEX_HTML, "r", encoding="utf-8") as f:
+    _template = f.read()
+if _template.count(_MINE_KEY_NEEDLE) != 1:
+    raise RuntimeError("index.html 默认矿山键缺失或不唯一，停止生成静态矿山页")
+for _filename, _mine_key in _MINE_PAGES.items():
+    _page = _template.replace(
+        _MINE_KEY_NEEDLE,
+        f"const MINE_KEY = urlParams.get('mine') || '{_mine_key}';",
+        1,
+    )
+    with open(os.path.join(_DOCS_DIR, _filename), "w", encoding="utf-8") as f:
+        f.write(_page)
+
 print("OK ->", OUT)
+print("static pages:", len(_MINE_PAGES))
 print("quarters:", QUARTERS[-4:], "... 共", len(QUARTERS))
 print("production 21Q3-26Q4:", series(9)[18:])
 print("sales 21Q3-26Q2:", [v for v in series(13)[18:26]])
