@@ -746,7 +746,7 @@ const YONGAN_DATA = {
      },
      {
       "line": "Ngungaju 选矿厂",
-      "excel_capacity": "目标产能（2026年7月重启）",
+      "excel_capacity": "铭牌 ~250ktpa 精矿 SC6（2026-07 重启；品位 ~5.2%）",
       "verified": "⚠️ 铭牌为推算（官方未单独披露精矿口径）",
       "sources": [
        {
@@ -1357,7 +1357,7 @@ const YONGAN_DATA = {
      },
      {
       "line": "地下开发（预生产）",
-      "excel_capacity": "地下预生产开发 $220M",
+      "excel_capacity": "地下预生产开发 $220M（原矿产能未披露——地下采矿非精矿，不折算 SC6）",
       "verified": "✓ FID 确认",
       "sources": [
        {
@@ -2000,7 +2000,7 @@ const YONGAN_DATA = {
     {
      "label": "悲观",
      "val": 12,
-     "note": "满产爬坡延迟（Q2 FY27 未达 140k）+ 锂价回落影响销售节奏"
+     "note": "满产爬坡延迟（Q2 FY27 未达 140k SC6 满产目标·品位 5.1%）+ 锂价回落影响销售节奏"
     },
     {
      "label": "基准",
@@ -2407,7 +2407,7 @@ const YONGAN_DATA = {
      },
      {
       "line": "全矿合计（C&M 状态）",
-      "excel_capacity": "停产（2025 起）",
+      "excel_capacity": "停产 C&M（2025 起；原设计 1.8Mtpa 原矿 → ~143ktpa SC6 折算）",
       "verified": "✓ 力拓官网确认",
       "sources": [
        {
@@ -2953,12 +2953,12 @@ const YONGAN_DATA = {
     {
      "label": "基准",
      "val": 8,
-     "note": "FID Q4 2026 按计划 + Nova 厂 2027 年中投产——H2 精矿爬坡（~15-20kt/季）"
+     "note": "FID Q4 2026 按计划 + Nova 厂 2027 年中投产——H2 精矿爬坡（~15-20kt/季 SC5.5 → SC6 折算 ~14-18kt）"
     },
     {
      "label": "乐观",
      "val": 10,
-     "note": "Nova 改造顺利 + 满产爬坡快——2027 下半年接近 1.8Mtpa 原矿对应产能"
+     "note": "Nova 改造顺利 + 满产爬坡快——2027 下半年接近 1.8Mtpa 原矿对应产能（~236ktpa SC5.5 精矿 = 216kt SC6）"
     }
    ],
    "capacity_verification": {
@@ -3003,7 +3003,7 @@ const YONGAN_DATA = {
      {
       "line": "全矿合计（DFS 设计 vs Nova 路线）",
       "excel_capacity": "DFS：~216ktpa SC6 折算（原 236,470 tpa SC5.5，LOM 14.3 年）；Nova 路线：1.8Mtpa concentrator 改造",
-      "verified": "✓ DFS 官方产能（236,470 tpa）",
+      "verified": "✓ DFS 官方产能（236,470 tpa SC5.5 精矿 = 216kt SC6 折算）",
       "sources": [
        {
         "src": "Manna 优化 DFS（2025-12-03）",

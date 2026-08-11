@@ -458,7 +458,7 @@ MINES = [
                 },
                 {
                     "line": "Ngungaju 选矿厂",
-                    "excel_capacity": "目标产能（2026年7月重启）",
+                    "excel_capacity": "铭牌 ~250ktpa 精矿 SC6（2026-07 重启；品位 ~5.2%）",
                     "verified": "⚠️ 铭牌为推算（官方未单独披露精矿口径）",
                     "sources": [
                         {"src": "June 2026 QAR", "data": "2026年7月1日按计划重启（季报后事件），预计 FY27 前 4 个月（2026年10月底前）达目标产能；26Q2 FOB 成本 +18% 含重启成本"},
@@ -814,7 +814,7 @@ MINES = [
                 },
                 {
                     "line": "地下开发（预生产）",
-                    "excel_capacity": "地下预生产开发 $220M",
+                    "excel_capacity": "地下预生产开发 $220M（原矿产能未披露——地下采矿非精矿，不折算 SC6）",
                     "verified": "✓ FID 确认",
                     "sources": [
                         {"src": "FID 公告 2026-05-26", "data": "地下预生产开发 $220M；Macmahon 任命（2026-07-15）；North/Central portal 支护开工"},
@@ -1116,7 +1116,7 @@ MINES = [
         },
         "fc_unit": "万吨 SC6（官方口径 · 品位 5.1% Li₂O，满产 140k SC6/年）",
         "fc_2027": [
-            {"label": "悲观", "val": 12, "note": "满产爬坡延迟（Q2 FY27 未达 140k）+ 锂价回落影响销售节奏"},
+            {"label": "悲观", "val": 12, "note": "满产爬坡延迟（Q2 FY27 未达 140k SC6 满产目标·品位 5.1%）+ 锂价回落影响销售节奏"},
             {"label": "基准", "val": 14, "note": "Q2 FY27 满产 140k dmt SC6/年兑现，2027 年全年满产运行（= 14 万吨 SC6）"},
             {"label": "乐观", "val": 17, "note": "选矿厂扩建研究通过 + 2027 年内新增产能释放"}
         ],
@@ -1311,7 +1311,7 @@ MINES = [
                 },
                 {
                     "line": "全矿合计（C&M 状态）",
-                    "excel_capacity": "停产（2025 起）",
+                    "excel_capacity": "停产 C&M（2025 起；原设计 1.8Mtpa 原矿 → ~143ktpa SC6 折算）",
                     "verified": "✓ 力拓官网确认",
                     "sources": [
                         {"src": "力拓官网资产页", "data": "Mt Cattlin was placed into care and maintenance in 2025 due to lower spodumene prices"},
@@ -1592,8 +1592,8 @@ MINES = [
         "fc_unit": "万吨 SC6 折算（原 SC5.5 ×0.917；2027 预测：首产精矿 mid-2027 后爬坡）",
         "fc_2027": [
             {"label": "悲观", "val": 4, "note": "FID 延后 + Nova 完成延迟——2027 年仅 DSO 与精矿试产"},
-            {"label": "基准", "val": 8, "note": "FID Q4 2026 按计划 + Nova 厂 2027 年中投产——H2 精矿爬坡（~15-20kt/季）"},
-            {"label": "乐观", "val": 12, "note": "Nova 改造顺利 + 满产爬坡快——2027 下半年接近 1.8Mtpa 原矿对应产能"}
+            {"label": "基准", "val": 8, "note": "FID Q4 2026 按计划 + Nova 厂 2027 年中投产——H2 精矿爬坡（~15-20kt/季 SC5.5 → SC6 折算 ~14-18kt）"},
+            {"label": "乐观", "val": 12, "note": "Nova 改造顺利 + 满产爬坡快——2027 下半年接近 1.8Mtpa 原矿对应产能（~236ktpa SC5.5 精矿 = 216kt SC6）"}
         ],
         "capacity_verification": {
             "title": "选矿产能核实（多来源交叉印证 · 未投产/开发阶段矿山）",
@@ -1622,7 +1622,7 @@ MINES = [
                 {
                     "line": "全矿合计（DFS 设计 vs Nova 路线）",
                     "excel_capacity": "DFS：~216ktpa SC6 折算（原 236,470 tpa SC5.5，LOM 14.3 年）；Nova 路线：1.8Mtpa concentrator 改造",
-                    "verified": "✓ DFS 官方产能（236,470 tpa）",
+                    "verified": "✓ DFS 官方产能（236,470 tpa SC5.5 精矿 = 216kt SC6 折算）",
                     "sources": [
                         {"src": "Manna 优化 DFS（2025-12-03）", "data": "SC5.5 年产能 236,470 t（干吨）、LOM 总 SC5.5 精矿 2.76Mt——官方精矿产能"}, {"src": "2026-07 投资者展示", "data": "Nova 1.8Mtpa concentrator 收购（A$7m）→ capex 削减 + 首产提前（mid-2027）；Manna-Nova Integration Study underway to quantify capex reduction and capture cashflow from DSO production"}
                     ]
