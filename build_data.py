@@ -558,8 +558,8 @@ MINES = [
     {
         "company": "MRL（Mineral Resources）",
         "mine": "Wodgina",
-        "sc6": 0.917,   # SC6 折算系数（用户规范 2026-08-10：精矿产量/产能/预测全站统一 SC6 口径）
-        "sc6_note": "SC6 折算（原 dmt ~5.5% Li₂O；MRL 官方销量即 SC6 口径）",
+        "sc6": 1.0,   # 2026-08-11：数据层已用官方 SC6（MRL 季报 Produced SC6/Sales SC6，50%→×2）
+        "sc6_note": "官方 SC6（MRL 季报 Produced SC6/Sales SC6，100% 口径；50% 权益×2）",
         "lat": -21.1746,  # 卫星影像定位（Yandex/Google Maps）
         "lng": 118.6764,
         "current_q": "26Q2",
@@ -617,7 +617,7 @@ MINES = [
                 ]
             }
         },
-        "fc_unit": "万吨/年 SC6 折算（原混合品位 dmt ~5.5%，×0.917）",
+        "fc_unit": "万吨/年 SC6（官方口径——MRL 季报 Produced SC6/Sales SC6，100%；原混合 dmt ~5.5% 不再折算）",
         "fc_2027": [
             {"label": "悲观", "val": 70, "note": "三线利用率不足 + Stage 3 品位走低（年化低于当前 ~72 万吨）"},
             {"label": "基准", "val": 75, "note": "三线满产 + Stage 4 按时供矿——750ktpa SC5.5% 即实际品位精矿铭牌（75 万吨 mixed；审计修正 2026-08-07 原 80 万吨为二次换算）"},
@@ -720,8 +720,8 @@ MINES = [
     {
         "company": "MRL（Mineral Resources）",
         "mine": "Mt Marion",
-        "sc6": 0.917,   # SC6 折算系数（用户规范 2026-08-10：精矿产量/产能/预测全站统一 SC6 口径）
-        "sc6_note": "SC6 折算（原 dmt ~5.5% Li₂O 双品位混合；MRL 官方销量即 SC6 口径）",
+        "sc6": 1.0,   # 2026-08-11：数据层已用官方 SC6（MRL 季报 Produced SC6/Sales SC6；产 50%×2、销 51%÷0.51）
+        "sc6_note": "官方 SC6（MRL 季报 Produced SC6/Sales SC6，100% 口径；产 50%×2、销 51%÷0.51）",
         "lat": -31.0738,  # 卫星影像定位（Yandex/Google Maps）
         "lng": 121.4611,
         "current_q": "26Q2",
@@ -779,7 +779,7 @@ MINES = [
                 ]
             }
         },
-        "fc_unit": "万吨/年 SC6 折算（原混合品位 dmt ~5.5%，×0.917）",
+        "fc_unit": "万吨/年 SC6（官方口径——MRL 季报 Produced SC6/Sales SC6，100%；原混合 dmt ~5.5% 不再折算）",
         "fc_2027": [
             {"label": "悲观", "val": 58, "note": "浮选厂延期 + N9→N11 过渡品位波动 + 回收率维持 59%（年化低于当前 ~66 万吨）"},
             {"label": "基准", "val": 65.6, "note": "存量 DMS 满产年化 65.6 万吨 mixed（FY26 销量 242k SC6 为 MRL 51% 承购口径）——删浮选贡献（FID 装机 500→600ktpa SC6、调试爬坡 2H FY28 即 2028H1，不计入 2027）"},
@@ -1048,8 +1048,8 @@ MINES = [
     {
         "company": "MRL（Mineral Resources）",
         "mine": "Bald Hill",
-        "sc6": 1.0,   # SC6 折算系数（用户规范 2026-08-10：精矿产量/产能/预测全站统一 SC6 口径）
-        "sc6_note": "官方 SC6 口径（MRL 披露 140k SC6）",
+        "sc6": 1.0,   # 数据层官方 SC6（MRL 季报 Produced SC6 1k/100% basis；FY25 54k）
+        "sc6_note": "官方 SC6（MRL 季报 Produced SC6/Sales SC6，100% 资产口径）",
         "lat": -31.52,  # 卫星影像定位（Yandex/Google Maps）
         "lng": 121.97,
         "current_q": "26Q2",
@@ -2167,6 +2167,22 @@ for q, p, s in [
     if p and s:
         wod_set(wod_ratio, q, round(s / p, 3))
 
+# ===== 官方 SC6 覆盖（2026-08-11 用户要求：MRL 季报明确披露 Produced SC6/Sales SC6，必须用官方值）=====
+# Wodgina 表格 50% attributable → ×2 = 100% SC6；来源 MRL Q1-Q4 FY26 季报 LITHIUM 表（Q4: 2026-07-29, Q3: 2026-04-30, Q2: 2026-01-29, Q1: 2025-10）
+# Produced SC6 / Sales SC6（k dmt, 50%）：2025Q3(Q1FY26)=83/88、2025Q4(Q2FY26)=80/76、2026Q1(Q3FY26)=71/62、2026Q2(Q4FY26)=83/91
+# FY25 年度 231/214k SC6（50%）→ 2025Q1/Q2 按 FY25 SC6/dmt 比例 0.92 折算；2024 及更早同比例（MRL FY25 起披露 SC6）
+for _q, _p, _s in [("2025Q1", 12.6 * 0.92, 11.8 * 0.92), ("2025Q2", 16.6 * 0.92, 13.6 * 0.92),
+                   ("2025Q3", 16.6, 17.6), ("2025Q4", 16.0, 15.2),
+                   ("2026Q1", 14.2, 12.4), ("2026Q2", 16.6, 18.2)]:
+    wod_set(wod_prod, _q, round(_p, 2))
+    wod_set(wod_sales, _q, round(_s, 2))
+for _i in range(0, 24):   # 2021Q3-2024Q4 更早季度 ×FY25 官方 SC6/dmt 比例 0.92（231/251）
+    if wod_prod[_i] is not None: wod_prod[_i] = round(wod_prod[_i] * 0.92, 2)
+    if wod_sales[_i] is not None: wod_sales[_i] = round(wod_sales[_i] * 0.92, 2)
+# 26Q3E/26Q4E：三线 Q1 FY27 全开满产 SC6 ≈ 83k×2 季度（官方 Q4 趋势）→ 17.0/17.3
+wod_set(wod_prod, "2026Q3", 17.0); wod_set(wod_prod, "2026Q4", 17.3)
+wod_set(wod_sales, "2026Q3", 17.0); wod_set(wod_sales, "2026Q4", 17.3)
+
 for q, pr, c in [
     ("2024Q2", 1243, 949),   # Q4FY24: US$1,243 SC6 / A$949 FOB（50%）
     ("2024Q3", 842, 1217),   # Q1FY25
@@ -2223,6 +2239,21 @@ for q, p, s in [
     mar_set(mar_sales, q, s)
     if p and s:
         mar_set(mar_ratio, q, round(s / p, 3))
+
+# ===== 官方 SC6 覆盖（2026-08-11：MRL 季报 Produced SC6/Sales SC6）=====
+# Marion 产 50% → ×2；销 51% → ÷0.51；来源 MRL Q1-Q4 FY26 季报（产 SC6 k dmt：Q1FY26=52、Q2FY26=59、Q3FY26=57、Q4FY26=59；销 SC6(51%)：55/67/53/67）
+# FY25 官方 SC6/dmt = 180/257 = 0.70 → 2025Q1/Q2 及更早 ×0.70
+for _q, _p, _s in [("2025Q1", 14.6 * 0.70, 14.2 * 0.70), ("2025Q2", 16.2 * 0.70, 17.8 * 0.70),
+                   ("2025Q3", 10.4, 10.8), ("2025Q4", 11.8, 13.1),
+                   ("2026Q1", 11.4, 10.4), ("2026Q2", 11.8, 13.1)]:
+    mar_set(mar_prod, _q, round(_p, 2))
+    mar_set(mar_sales, _q, round(_s, 2))
+for _i in range(0, 24):
+    if mar_prod[_i] is not None: mar_prod[_i] = round(mar_prod[_i] * 0.70, 2)
+    if mar_sales[_i] is not None: mar_sales[_i] = round(mar_sales[_i] * 0.70, 2)
+# 26Q3E/26Q4E：DMS 稳态满产 SC6（FY26 227k×2=45.4 万吨/年 → 季均 11.4；浮选 2027 中投产）→ 11.6/11.8
+mar_set(mar_prod, "2026Q3", 11.6); mar_set(mar_prod, "2026Q4", 11.8)
+mar_set(mar_sales, "2026Q3", 11.6); mar_set(mar_sales, "2026Q4", 11.8)
 
 for q, pr, c in [
     ("2022Q3", 3262, None),  # Q1FY23（重述）
@@ -2313,6 +2344,14 @@ for q, p, s in [
     bh_set(bh_sales, q, s)
     if p and s:
         bh_set(bh_ratio, q, round(s / p, 3))
+
+# ===== 官方 SC6 覆盖（2026-08-11：MRL 季报 Produced SC6/Sales SC6，100% basis）=====
+# BH FY25 产 SC6 54k（38/25k dmt → 3.3/2.2 万吨 SC6）；FY25 SC6/dmt = 54/63 = 0.86；2026Q2 产 1k SC6 ✓ 已对
+bh_set(bh_prod, "2024Q3", 3.3); bh_set(bh_sales, "2024Q3", 3.7)   # FY25 销 SC6 59k 拆分（43×0.86）
+bh_set(bh_prod, "2024Q4", 2.2); bh_set(bh_sales, "2024Q4", 2.3)   # 27×0.86
+# 26Q3E/26Q4E：爬坡 → Q2 FY27 满产 140k SC6 = 3.5/季（原 4.1 dmt ≈ 3.5 SC6）
+bh_set(bh_prod, "2026Q3", 1.7); bh_set(bh_sales, "2026Q3", 1.5)
+bh_set(bh_prod, "2026Q4", 3.5); bh_set(bh_sales, "2026Q4", 3.5)
 
 for q, pr, c in [
     ("2024Q3", 808, 1148),   # MRL Q1 FY25 QAR：US$808 SC6 / FOB A$1,148
@@ -2704,8 +2743,8 @@ data = {
 LIN = {
     "history": {"A": 38.7, "B": 41.25, "cap": 43.5},   # GB：26Q2=38.7 → FY27 指引中值 165/4=41.25 → CGP 满产 43.5
     "pilgangoora": {"A": 21.43, "B": 26.6, "cap": 27.5},
-    "wodgina": {"A": 18.8, "B": 18.75, "cap": 18.75},   # 审计修正：750ktpa 铭牌 → 季均 18.75（原 20.0 为二次换算的 mixed 口径）
-    "marion": {"A": 16.4, "B": 16.5, "cap": 16.5},
+    "wodgina": {"A": 16.6, "B": 17.3, "cap": 17.3},   # 2026-08-11 官方 SC6：Q4 产 83k×2=16.6 → 三线全开满产 ~17.3/季 SC6（原 dmt 18.75）
+    "marion": {"A": 11.8, "B": 11.8, "cap": 11.8},   # 2026-08-11 官方 SC6：Q4 产 59k×2=11.8（原 dmt 16.4；Marion 实际品位 4.3-4.5% 非 5.5%）
     "kathleenvalley": {"A": 10.3, "B": 10.4, "cap": 10.6},
     "baldhill": {"A": 0.1, "B": 3.5, "cap": 3.5},
     "finniss": {"A": 0.5, "B": 4.0, "cap": 5.1, "steps": 4},   # 首产矿山：4 步等差爬坡
@@ -2726,8 +2765,8 @@ for key, p in LIN.items():
 FC27 = {
     "history":         {"bear": 164, "base": 168, "bull": 173, "q": [41.25, 41.25, 42.5, 43.5]},
     "pilgangoora":     {"bear": 104, "base": 108, "bull": 110, "q": [26.6, 26.6, 27.5, 27.5]},
-    "wodgina":         {"bear": 72,  "base": 75,  "bull": 80,  "q": [18.75, 18.75, 18.75, 18.75]},   # 审计修正：基准=750ktpa 铭牌 75；80 仅乐观超铭牌
-    "marion":          {"bear": 63,  "base": 65.6, "bull": 69, "q": [16.4, 16.4, 16.4, 16.4]},   # 审计修正：基准=存量 DMS 年化 65.6（删浮选贡献，浮选 2H FY28 才调试）
+    "wodgina":         {"bear": 66.2, "base": 69.0, "bull": 73.6, "q": [17.25, 17.25, 17.25, 17.25]},   # 2026-08-11 SC6：原 72/75/80 dmt ×0.92（FY25 官方比例 231/251）
+    "marion":          {"bear": 44.1, "base": 45.9, "bull": 48.3, "q": [11.5, 11.5, 11.5, 11.5]},   # 2026-08-11 SC6：原 63/65.6/69 dmt ×0.70（FY25 官方比例 180/257；Marion 品位 4.3-4.5%）
     "kathleenvalley":  {"bear": 40,  "base": 41.9, "bull": 44, "q": [10.4, 10.4, 10.5, 10.6]},   # 基准统一 41.9（季度合计，审计修正）
     "baldhill":        {"bear": 12,  "base": 14,  "bull": 14,  "q": [3.5, 3.5, 3.5, 3.5]},
     "mtcattlin":       {"bear": 0,   "base": 0,   "bull": 8,   "q": [0.0, 0.0, 0.0, 0.0]},  # 审计修正：严谨基准=0（无复产决定）；3/8 仅列纯上行情景（q 按 0 基准）

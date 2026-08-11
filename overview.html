@@ -288,8 +288,8 @@ const qOf = (q) => Q.indexOf(q);
 const SC6_FACTOR = {
   'Greenbushes': 1.0,      // 已 SC6
   'Pilgangoora': 0.867,    // dmt ~5.2% → SC6
-  'Wodgina': 0.917,        // 混合 ~5.5% → SC6
-  'Mt Marion': 0.917,      // 混合 ~5.5% → SC6
+  'Wodgina': 1.0,          // 2026-08-11 数据层官方 SC6（MRL 季报 Produced SC6）
+  'Mt Marion': 1.0,        // 2026-08-11 数据层官方 SC6（MRL 季报 Produced SC6）
   'Kathleen Valley': 0.833,// dmt ~5.0% → SC6
   'Bald Hill': 1.0,        // 已 SC6（满产 140k SC6）
   'Mt Cattlin': 0.892,     // dmt ~5.35% → SC6
@@ -430,8 +430,8 @@ const FY27_QGUIDE = {
   const E26_NOTE = {
     'Greenbushes': ['26Q1/26Q2 为公布实际（35.1/38.7）；26Q3E/26Q4E 用指引值 = FY27 指引中值 165÷4 = 41.25/季（线性爬坡）'],
     'Pilgangoora': ['26Q1/26Q2 为公布实际（23.2/21.4 dmt → SC6 折算 20.1/18.6）；26Q3E/26Q4E 用指引值 = FY27 指引中值 106.5 万吨 dmt → SC6 折算 92.3，÷4 ≈ 23.1/季（Ngungaju 重启双厂线性爬坡）'],
-    'Wodgina': ['26Q1/26Q2 为公布实际（15.6/18.8 dmt → SC6 折算 14.3/17.2）；无年度指引 → 26Q3E/26Q4E 用推测值 = 三线满产年化 80 dmt → SC6 折算 73.4÷4 ≈ 18.3/季（线性）'],
-    'Mt Marion': ['26Q1/26Q2 为公布实际（16.0/16.4 dmt → SC6 折算 14.7/15.0）；无年度指引 → 26Q3E/26Q4E 用推测值 = 稳态年化 66 dmt → SC6 折算 60.5÷4 ≈ 15.1/季（线性）'],
+    'Wodgina': ['26Q1/26Q2 官方 SC6 实际（14.2/16.6，MRL 季报 Produced SC6 50%×2）；无年度指引 → 26Q3E/26Q4E 用推测值 = 三线 Q1 FY27 全开满产 ~17.3/季 SC6（线性）'],
+    'Mt Marion': ['26Q1/26Q2 官方 SC6 实际（11.4/11.8，MRL 季报 Produced SC6 50%×2）；无年度指引 → 26Q3E/26Q4E 用推测值 = DMS 稳态满产 ~11.8/季 SC6（线性）'],
     'Kathleen Valley': ['26Q1/26Q2 为公布实际（9.6/10.3 dmt → SC6 折算 8.0/8.6）；26Q3E/26Q4E 用指引值 = FY27 指引中值 415k dmt → SC6 折算 346k，÷4 ≈ 8.6/季 SC6'],
     'Bald Hill': ['26Q1 公布实际 0（C&M）、26Q2 0.1（2026-05 复产首月）；26Q3E/26Q4E 用指引值 = 满产 140k SC6 目标季均 3.5（Q2 FY27 满产，线性爬坡）'],
     'Mt Cattlin': ['C&M 停产（力拓 2025-03 收购后无生产）——**预估依据**：力拓官网确认 C&M、无复产公告；2026 全年产量为零（26Q3E/26Q4E 按 C&M 延续预估 0）'],
