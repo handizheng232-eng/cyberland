@@ -482,9 +482,9 @@ function renderHist(mine) {
       if (v === null || v === undefined) { txt = 'N.D.'; cls = 'emp'; }
       else if (key === 'prod_sales_ratio') txt = Number(v).toFixed(3);
       else {
-        // 逐季品位折算（用户规范 2026-08-11：报告披露每季平均品位时按该季品位折算 6%）
+        // 逐季品位折算（用户规范 2026-08-11：报告披露每季平均品位时按该季品位折算 6%——仅产量/销量行，价格/成本/库存不折算）
         const qGrade = (mineObj.grade_series || {})[Q[j]];
-        const rowScaleQ = qGrade ? qGrade / 6 : rowScale;
+        const rowScaleQ = (key === 'production' || key === 'sales') ? (qGrade ? qGrade / 6 : rowScale) : 1;
         txt = Number(v * rowScaleQ).toLocaleString('zh-CN', { maximumFractionDigits: 2 }) + (isPred ? 'E' : '');
       }
       html += `<td class="${cls}">${txt}</td>`;
