@@ -236,7 +236,7 @@ const YONGAN_DATA = {
     "items": [
      {
       "line": "CGP1（化学级1号）",
-      "excel_capacity": "60 万吨精矿/年",
+      "excel_capacity": "60 万吨/年 SC6（IGO 官方 SC6 折算口径）",
       "verified": "⚠️ 多来源矿石口径交叉确认，精矿口径为推算",
       "sources": [
        {
@@ -260,7 +260,7 @@ const YONGAN_DATA = {
      },
      {
       "line": "CGP2（化学级2号）",
-      "excel_capacity": "60 万吨精矿/年",
+      "excel_capacity": "60 万吨/年 SC6（IGO 官方 SC6 折算口径）",
       "verified": "⚠️ 多来源矿石口径交叉确认，精矿口径为推算",
       "sources": [
        {
@@ -324,7 +324,7 @@ const YONGAN_DATA = {
      },
      {
       "line": "CGP3（化学级3号）",
-      "excel_capacity": "52 万吨精矿/年",
+      "excel_capacity": "52 万吨/年 SC6（IGO 官方 SC6 折算口径）",
       "verified": "✓ 官方精矿口径确认（520ktpa）",
       "sources": [
        {
@@ -979,13 +979,13 @@ const YONGAN_DATA = {
    "status_26q2": {
     "existing_lines": [
      {
-      "name": "已有产能1：选矿厂 Train 1（A1 产线）— 设计 ~229ktpa SC6（原 250ktpa 精矿 SC5.5）",
+      "name": "已有产能1：选矿厂 Train 1（A1 产线）— 设计 ~250ktpa 精矿 dmt（SC5.5 品位产品吨位；SC6 折算 ~229kt）",
       "q26q2": "26Q2 三线利用率提升（产 94k dmt，+21% qoq）；2026-05-19 投资者现场会披露 Q1 FY27 起三线全开；回收率 68%（Stage 2 耗尽、全面转 Stage 3 矿石）；FY26 销量 317k dmt SC6 超指引上限（270-290k）",
       "q26q1": "26Q1 产 78k dmt（-8% qoq），高品位 Stage 2 矿石减少、更多 Stage 3 低品位矿石入厂，回收率约 69%",
       "compare": "产量环比 +21% 超预期（94 vs 78k dmt），三线利用改善；但回收率降至 68%——Stage 2 高品位矿石枯竭、Stage 3 全面供矿是中期观察点"
      },
      {
-      "name": "已有产能2：选矿厂 Train 2 / Train 3（A2/A3 产线）— 设计各 ~229ktpa SC6（原 250ktpa 精矿 SC5.5；三线合计 688-752kt SC6）",
+      "name": "已有产能2：选矿厂 Train 2 / Train 3（A2/A3 产线）— 设计各 ~250ktpa 精矿 dmt（SC5.5 品位；SC6 折算各 ~229kt；三线合计 688-752kt SC6）",
       "q26q2": "与 Train 1 同为三线运行的一部分；Q1 FY27 起三线全开（此前部分产线间歇运行）；矿石来自 Stage 3 与库存矿石混合",
       "q26q1": "26Q1 亦在三线运行框架内，但产量受 Stage 2/3 矿石切换影响",
       "compare": "三线全开是 Q1 FY27 明确指引（2026-05-19 现场会），Q4 已为三线运行铺路——产能利用率提升超预期"
@@ -1042,7 +1042,7 @@ const YONGAN_DATA = {
     "items": [
      {
       "line": "选矿厂 Train 1/2/3（A1-A3）",
-      "excel_capacity": "~229kt × 3 = 688kt SC6 折算（原 750kt SC5.5）",
+      "excel_capacity": "~250kt × 3 = 750kt dmt（SC5.5 品位；SC6 折算 ~688kt）",
       "verified": "✓ 官方确认（总产能口径）",
       "sources": [
        {
@@ -1076,7 +1076,7 @@ const YONGAN_DATA = {
      },
      {
       "line": "全矿合计（100% 口径）",
-      "excel_capacity": "~688-752kt SC6 折算（原 750-820kt SC5.5）",
+      "excel_capacity": "~750-820kt dmt（SC5.5 品位；SC6 折算 ~688-752kt）",
       "verified": "✓ 官网双表述（750/820）",
       "sources": [
        {
@@ -1278,7 +1278,7 @@ const YONGAN_DATA = {
    "status_26q2": {
     "existing_lines": [
      {
-      "name": "已有产能1：DMS 重介质选矿厂（主回路）— 设计 ~459ktpa SC6 折算（原 ~500ktpa SC，5%/3.5% 双品位混合）",
+      "name": "已有产能1：DMS 重介质选矿厂（主回路）— 设计 ~500ktpa 精矿 dmt（5%/3.5% 双品位混合产品；SC6 折算 ~459kt）",
       "q26q2": "26Q2 产 82k dmt（+3% qoq）；回收率 59%（26Q1: 60%）；矿石分选机（ore sorting）已投产，FY27 处理低品位接触矿堆；矿石来源 N9（N4 完成开采）；DMS 回路按粒度分 3 个产品流",
       "q26q1": "26Q1 产 80k dmt（-1% qoq），回收率 60%；矿石来自 N9/N4；预剥离在 N11 推进",
       "compare": "产量温和 +3%，回收率 59-60% 稳定；ore sorting 投产是 FY27 低品位矿石处理的关键变量——技术升级超预期"
@@ -1341,7 +1341,7 @@ const YONGAN_DATA = {
     "items": [
      {
       "line": "DMS 重介质选矿厂",
-      "excel_capacity": "~459ktpa SC6 折算（原 ~500kt SC 双品位混合）",
+      "excel_capacity": "~500ktpa 精矿 dmt（5%/3.5% 双品位混合；SC6 折算 ~459kt）",
       "verified": "✓ 官网确认（总产能口径）",
       "sources": [
        {
@@ -1585,7 +1585,7 @@ const YONGAN_DATA = {
    "status_26q2": {
     "existing_lines": [
      {
-      "name": "已有产能1：选矿厂（第四代浮选流程）— 设计 ~500ktpa SC6（2.5Mtpa 原矿）",
+      "name": "已有产能1：选矿厂（第四代浮选流程）— 设计 ~500ktpa 精矿 dmt（Liontown 官网 nameplate concentrate 产品吨位；2.5Mtpa 原矿；SC6 折算 ~417kt）",
       "q26q2": "26Q2 产 103,111 dmt（+7% qoq）、销 108,489 dmt（+29%）；平均品位 5.0%；回收率 ~63%（纯净地下矿时 70%）；工厂可用率 92%；55% 地下矿 + 45% 露天库存料入厂（露天采矿已于 2025-12 结束——审计修正）",
       "q26q1": "26Q1 产 96,367 dmt（-9% qoq，高基数）；回收率受入料混合影响；露天矿接近收尾（2025-12 完成）",
       "compare": "产量 +7%、销量 +29% 超预期；回收率 63% 仍受露天矿污染拖累——2026 转纯地下后回收率有望升至 70%"
@@ -1648,7 +1648,7 @@ const YONGAN_DATA = {
     "items": [
      {
       "line": "选矿厂（第四代浮选流程）",
-      "excel_capacity": "~500ktpa SC6（2.5Mtpa 原矿）",
+      "excel_capacity": "~500ktpa 精矿 dmt（concentrate 产品吨位；SC6 折算 ~417kt；2.5Mtpa 原矿）",
       "verified": "✓ DFS 官方确认（设计口径）",
       "sources": [
        {
@@ -2984,7 +2984,7 @@ const YONGAN_DATA = {
     "items": [
      {
       "line": "选矿产能（Manna DFS 浮选厂 vs Nova 1.8Mtpa 厂）",
-      "excel_capacity": "Manna DFS：1.8Mtpa 磨机 → ~216ktpa SC6 折算（原 236,470 tpa SC5.5；Nova：1.8Mtpa concentrator（收购）",
+      "excel_capacity": "Manna DFS：1.8Mtpa 磨机 → ~236ktpa 精矿 dmt（236,470 tpa SC5.5 目标品位；SC6 折算 ~216kt；Nova：1.8Mtpa concentrator（收购）",
       "verified": "✓ 2026-07 展示 + DFS 双来源",
       "sources": [
        {
@@ -3209,7 +3209,7 @@ const YONGAN_DATA = {
    "status_26q2": {
     "existing_lines": [
      {
-      "name": "已有产能1：Mt Holland 矿 + 选矿厂（Earl Grey 伟晶岩）— ~348ktpa SC6 折算（原 380ktpa 精矿 SC5.5，100%；原矿由 Earl Grey 露天矿供给，原矿产能未单独披露）",
+      "name": "已有产能1：Mt Holland 矿 + 选矿厂（Earl Grey 伟晶岩）— ~380ktpa 精矿 dmt（SC5.5 品位产品吨位，100%；SC6 折算 ~348kt；原矿由 Earl Grey 露天矿供给，原矿产能未单独披露）",
       "q26q2": "26Q2 数据未发布（SQM 美式财季 Q2 2026 报告 2026 年 8 月下旬发布）；**期后事项（2026-07-21）**：扩产 FID 380→760ktpa（第二选矿厂 2027 H2 建设、扩产首产 H1 2030），FID 确认矿山满产运营（SQM 2026Q1 口径）；1Q2026 精矿销量 38.1kt（SQM 50% 份额 SC6）；选矿工艺 = DMS + 浮选混合",
       "q26q1": "26Q1 满产运营（SQM 1Q2026 确认 'operating at full capacity'）；1Q2026 精矿销量 38.1kt（SQM 50%）；2025 全年 156.4kt（SQM 50%）为首个完整生产年",
       "compare": "26Q2 实际待 Q2 财报（8 月下旬）确认——当前信息以 26Q1 口径 + 期后 FID 为准；扩产 FID（2026-07-21，SQM 份额 capex US$450-500M）确认满产运营并进入倍增阶段"
@@ -3223,7 +3223,7 @@ const YONGAN_DATA = {
     ],
     "future_lines": [
      {
-      "name": "扩产项目（380→760ktpa 精矿 SC5.5 = 348→697kt SC6 折算，FID 2026-07-21）",
+      "name": "扩产项目（380→760ktpa 精矿 dmt SC5.5，SC6 折算 348→697kt，FID 2026-07-21）",
       "q26q2": "扩产 FID 通过（2026-07-21，期后事项）：矿 + 选矿厂 + 新集成矿石分选设施；第二选矿厂 2027 H2 开工、扩产首产精矿 H1 2030；SQM 份额 capex US$450-500M（Wesfarmers 份额 A$645-715M）；FID 公告称相关审批 'secured or underway'——LOM 扩建 EPA 部长决定仍待定（2026-08）；扩产提供 Kwinana 下游扩产或直接卖精矿的选择权",
       "q26q1": "扩产 DFS 研究中（2026 年前）",
       "compare": "FID 后 12 个月开工——2027 H2 建设启动是下一催化剂"
@@ -3267,7 +3267,7 @@ const YONGAN_DATA = {
     "items": [
      {
       "line": "Mt Holland 选矿厂（DMS + 浮选混合）",
-      "excel_capacity": "~348ktpa SC6 折算（原 380ktpa SC5.5，100% 基准）",
+      "excel_capacity": "~380ktpa 精矿 dmt（SC5.5，100% 基准；SC6 折算 ~348kt）",
       "verified": "✓ 官网 + SQM 报告双确认",
       "sources": [
        {
@@ -3305,7 +3305,7 @@ const YONGAN_DATA = {
      },
      {
       "line": "全矿合计（一体化）",
-      "excel_capacity": "~348kt SC6 折算 + 50kt LOH（原 380kt SC5.5）→ 扩产 ~697kt SC6 折算（原 760kt SC55",
+      "excel_capacity": "~380kt 精矿 dmt（SC5.5）+ 50kt LOH → 扩产 ~760kt dmt（SC6 折算 348→697kt）",
       "verified": "✓ 官方确认（FID）",
       "sources": [
        {
