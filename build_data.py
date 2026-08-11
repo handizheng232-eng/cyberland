@@ -21,6 +21,8 @@ MINES = [
     {
         "company": "IGO",
         "mine": "Greenbushes",
+        "sc6": 1.0,   # SC6 折算系数（用户规范 2026-08-10：精矿产量/产能/预测全站统一 SC6 口径）
+        "sc6_note": "官方 SC6 折算（6% Li₂O）口径",
         "lat": -33.8567,  # 卫星影像定位（Yandex/Google Maps）
         "lng": 116.0622,
         "current_q": "26Q2",
@@ -351,6 +353,8 @@ MINES = [
     {
         "company": "PLS（Pilbara Minerals）",
         "mine": "Pilgangoora",
+        "sc6": 0.867,   # SC6 折算系数（用户规范 2026-08-10：精矿产量/产能/预测全站统一 SC6 口径）
+        "sc6_note": "SC6 折算（原 dmt ~5.2% Li₂O；PLS 披露实际品位）",
         "lat": -21.7939,  # 卫星影像定位（Yandex/Google Maps）
         "lng": 119.6346,
         "current_q": "26Q2",
@@ -554,6 +558,8 @@ MINES = [
     {
         "company": "MRL（Mineral Resources）",
         "mine": "Wodgina",
+        "sc6": 0.917,   # SC6 折算系数（用户规范 2026-08-10：精矿产量/产能/预测全站统一 SC6 口径）
+        "sc6_note": "SC6 折算（原 dmt ~5.5% Li₂O；MRL 官方销量即 SC6 口径）",
         "lat": -21.1746,  # 卫星影像定位（Yandex/Google Maps）
         "lng": 118.6764,
         "current_q": "26Q2",
@@ -573,13 +579,13 @@ MINES = [
         "status_26q2": {
             "existing_lines": [
                 {
-                    "name": "已有产能1：选矿厂 Train 1（A1 产线）— 设计 ~250ktpa 精矿 SC5.5",
+                    "name": "已有产能1：选矿厂 Train 1（A1 产线）— 设计 ~229ktpa SC6（原 250ktpa 精矿 SC5.5）",
                     "q26q2": "26Q2 三线利用率提升（产 94k dmt，+21% qoq）；2026-05-19 投资者现场会披露 Q1 FY27 起三线全开；回收率 68%（Stage 2 耗尽、全面转 Stage 3 矿石）；FY26 销量 317k dmt SC6 超指引上限（270-290k）",
                     "q26q1": "26Q1 产 78k dmt（-8% qoq），高品位 Stage 2 矿石减少、更多 Stage 3 低品位矿石入厂，回收率约 69%",
                     "compare": "产量环比 +21% 超预期（94 vs 78k dmt），三线利用改善；但回收率降至 68%——Stage 2 高品位矿石枯竭、Stage 3 全面供矿是中期观察点"
                 },
                 {
-                    "name": "已有产能2：选矿厂 Train 2 / Train 3（A2/A3 产线）— 设计各 ~250ktpa 精矿 SC5.5（三线合计 750-820ktpa）",
+                    "name": "已有产能2：选矿厂 Train 2 / Train 3（A2/A3 产线）— 设计各 ~229ktpa SC6（原 250ktpa 精矿 SC5.5；三线合计 688-752kt SC6）",
                     "q26q2": "与 Train 1 同为三线运行的一部分；Q1 FY27 起三线全开（此前部分产线间歇运行）；矿石来自 Stage 3 与库存矿石混合",
                     "q26q1": "26Q1 亦在三线运行框架内，但产量受 Stage 2/3 矿石切换影响",
                     "compare": "三线全开是 Q1 FY27 明确指引（2026-05-19 现场会），Q4 已为三线运行铺路——产能利用率提升超预期"
@@ -593,7 +599,7 @@ MINES = [
             ],
             "future_lines": [
                 {
-                    "name": "Stage 4 矿坑预剥离（2026-07 起；原矿扩能——新增原矿产能未披露）",
+                    "name": "Stage 4 矿坑预剥离（2026-07 起；原矿扩能——新增原矿产能未披露，原矿非精矿不折算 SC6）",
                     "q26q2": "Q1 FY27 启动 Stage 4 预剥离——为下一阶段矿石供应做准备；目前无 Train 4 计划（官网未提及）",
                     "q26q1": "26Q1 提及 Stage 4 预剥离计划",
                     "compare": "按计划推进；产能扩张路径为矿坑扩展而非新选矿列车"
@@ -611,7 +617,7 @@ MINES = [
                 ]
             }
         },
-        "fc_unit": "万吨/年（100% 推算 · 混合品位 dmt）",
+        "fc_unit": "万吨/年 SC6 折算（原混合品位 dmt ~5.5%，×0.917）",
         "fc_2027": [
             {"label": "悲观", "val": 70, "note": "三线利用率不足 + Stage 3 品位走低（年化低于当前 ~72 万吨）"},
             {"label": "基准", "val": 75, "note": "三线满产 + Stage 4 按时供矿——750ktpa SC5.5% 即实际品位精矿铭牌（75 万吨 mixed；审计修正 2026-08-07 原 80 万吨为二次换算）"},
@@ -624,7 +630,7 @@ MINES = [
             "items": [
                 {
                     "line": "选矿厂 Train 1/2/3（A1-A3）",
-                    "excel_capacity": "~250ktpa × 3 = 750ktpa",
+                    "excel_capacity": "~229kt × 3 = 688kt SC6 折算（原 750kt SC5.5）",
                     "verified": "✓ 官方确认（总产能口径）",
                     "sources": [
                         {"src": "MRL 官网资产页（2025-10 快照）", "data": "three processing trains with a total annual production capacity of approximately 820,000 tonnes of spodumene concentrate at a grade of 5.5% Li2O——三列列车总产能官方确认；每列车含球磨机+脱泥旋流器+磁选+浮选"},
@@ -643,7 +649,7 @@ MINES = [
                 },
                 {
                     "line": "全矿合计（100% 口径）",
-                    "excel_capacity": "~750-820ktpa SC5.5%",
+                    "excel_capacity": "~688-752kt SC6 折算（原 750-820kt SC5.5）",
                     "verified": "✓ 官网双表述（750/820）",
                     "sources": [
                         {"src": "MRL 官网", "data": "三列列车总产能 750-820ktpa（官网两处表述差异）——页面取 750ktpa 保守值"},
@@ -714,6 +720,8 @@ MINES = [
     {
         "company": "MRL（Mineral Resources）",
         "mine": "Mt Marion",
+        "sc6": 0.917,   # SC6 折算系数（用户规范 2026-08-10：精矿产量/产能/预测全站统一 SC6 口径）
+        "sc6_note": "SC6 折算（原 dmt ~5.5% Li₂O 双品位混合；MRL 官方销量即 SC6 口径）",
         "lat": -31.0738,  # 卫星影像定位（Yandex/Google Maps）
         "lng": 121.4611,
         "current_q": "26Q2",
@@ -733,7 +741,7 @@ MINES = [
         "status_26q2": {
             "existing_lines": [
                 {
-                    "name": "已有产能1：DMS 重介质选矿厂（主回路）— 设计 ~500ktpa SC（5%/3.5% 双品位）",
+                    "name": "已有产能1：DMS 重介质选矿厂（主回路）— 设计 ~459ktpa SC6 折算（原 ~500ktpa SC，5%/3.5% 双品位混合）",
                     "q26q2": "26Q2 产 82k dmt（+3% qoq）；回收率 59%（26Q1: 60%）；矿石分选机（ore sorting）已投产，FY27 处理低品位接触矿堆；矿石来源 N9（N4 完成开采）；DMS 回路按粒度分 3 个产品流",
                     "q26q1": "26Q1 产 80k dmt（-1% qoq），回收率 60%；矿石来自 N9/N4；预剥离在 N11 推进",
                     "compare": "产量温和 +3%，回收率 59-60% 稳定；ore sorting 投产是 FY27 低品位矿石处理的关键变量——技术升级超预期"
@@ -771,7 +779,7 @@ MINES = [
                 ]
             }
         },
-        "fc_unit": "万吨/年（100% 推算 · 混合品位 dmt）",
+        "fc_unit": "万吨/年 SC6 折算（原混合品位 dmt ~5.5%，×0.917）",
         "fc_2027": [
             {"label": "悲观", "val": 58, "note": "浮选厂延期 + N9→N11 过渡品位波动 + 回收率维持 59%（年化低于当前 ~66 万吨）"},
             {"label": "基准", "val": 65.6, "note": "存量 DMS 满产年化 65.6 万吨 mixed（FY26 销量 242k SC6 为 MRL 51% 承购口径）——删浮选贡献（FID 装机 500→600ktpa SC6、调试爬坡 2H FY28 即 2028H1，不计入 2027）"},
@@ -784,7 +792,7 @@ MINES = [
             "items": [
                 {
                     "line": "DMS 重介质选矿厂",
-                    "excel_capacity": "~500ktpa SC（双品位）",
+                    "excel_capacity": "~459ktpa SC6 折算（原 ~500kt SC 双品位混合）",
                     "verified": "✓ 官网确认（总产能口径）",
                     "sources": [
                         {"src": "MRL 官网资产页", "data": "DMS 回路按粒度分 3 个产品流；设计年产能约 500,000 t spodumene concentrate（典型 5% 与 3.5% Li₂O 两种品位）"},
@@ -875,6 +883,8 @@ MINES = [
     {
         "company": "Liontown（Liontown Resources）",
         "mine": "Kathleen Valley",
+        "sc6": 0.833,   # SC6 折算系数（用户规范 2026-08-10：精矿产量/产能/预测全站统一 SC6 口径）
+        "sc6_note": "SC6 折算（原 dmt ~5.0% Li₂O；Liontown 披露实际品位精矿）",
         "lat": -27.4678,  # 卫星影像定位（Yandex/Google Maps）
         "lng": 120.7047,
         "current_q": "26Q2",
@@ -932,7 +942,7 @@ MINES = [
                 ]
             }
         },
-        "fc_unit": "万吨实际精矿 dmt（FY27 指引 390-440k dmt concentrate——Liontown 2026-07-29 澄清删除 SC6 引用，非 SC6）",
+        "fc_unit": "万吨 SC6 折算（原 dmt ~5.0%：FY27 指引 390-440k dmt ×0.833，Liontown 披露实际品位精矿）",
         "fc_2027": [
             {"label": "悲观", "val": 40, "note": "地下爬坡不及预期 + 回收率维持 63%（FY27 指引下沿 390k dmt concentrate）"},
             {"label": "基准", "val": 44, "note": "FY27 指引中值 415k dmt concentrate（390-440k，实际精矿 dmt）+ 2.8Mtpa 原矿运行率 FY27 底达成"},
@@ -1038,6 +1048,8 @@ MINES = [
     {
         "company": "MRL（Mineral Resources）",
         "mine": "Bald Hill",
+        "sc6": 1.0,   # SC6 折算系数（用户规范 2026-08-10：精矿产量/产能/预测全站统一 SC6 口径）
+        "sc6_note": "官方 SC6 口径（MRL 披露 140k SC6）",
         "lat": -31.52,  # 卫星影像定位（Yandex/Google Maps）
         "lng": 121.97,
         "current_q": "26Q2",
@@ -1096,7 +1108,7 @@ MINES = [
                 ]
             }
         },
-        "fc_unit": "万吨 SC6（满产 140k dmt SC6/年对应）",
+        "fc_unit": "万吨 SC6（官方口径，满产 140k SC6/年）",
         "fc_2027": [
             {"label": "悲观", "val": 12, "note": "满产爬坡延迟（Q2 FY27 未达 140k）+ 锂价回落影响销售节奏"},
             {"label": "基准", "val": 14, "note": "Q2 FY27 满产 140k dmt SC6/年兑现，2027 年全年满产运行（= 14 万吨 SC6）"},
@@ -1206,6 +1218,8 @@ MINES = [
     {
         "company": "Rio Tinto（力拓）",
         "mine": "Mt Cattlin",
+        "sc6": 0.892,   # SC6 折算系数（用户规范 2026-08-10：精矿产量/产能/预测全站统一 SC6 口径）
+        "sc6_note": "SC6 折算（原 dmt ~5.35% Li₂O）",
         "lat": -33.5625,  # 卫星影像定位（Yandex/Google Maps）
         "lng": 120.0352,
         "est_qs": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],  # 2019Q1-2023Q4 年度值均分估算（审计修正 2026-08-07 标 E）
@@ -1258,7 +1272,7 @@ MINES = [
                 ]
             }
         },
-        "fc_unit": "万吨 SC 5.2-5.5%（C&M 状态：2027 严谨基准=0；3/8 万吨仅列纯上行情景——审计修正）",
+        "fc_unit": "万吨 SC6 折算（原 SC 5.2-5.5% ×0.892；C&M 状态：2027 严谨基准=0；3/8 万吨仅列纯上行情景）",
         "fc_2027": [
             {"label": "悲观", "val": 0, "note": "持续 C&M——锂价未回升、资源枯竭无复产动力（基准情形概率最高）"},
             {"label": "基准", "val": 3, "note": "2027 年锂价回升 + 力拓决定有限复产（低品位库存处理，~40-80kt SC/年）"},
@@ -1271,7 +1285,7 @@ MINES = [
             "items": [
                 {
                     "line": "选矿厂（破碎+光选+DMS+重力选）",
-                    "excel_capacity": "1.8Mtpa 原矿 → ~160ktpa SC",
+                    "excel_capacity": "1.8Mtpa 原矿 → ~143ktpa SC6 折算（原 ~160kt SC，品位 ~5.35%）",
                     "verified": "✓ NI 43-101 设计口径 + 历史产量验证",
                     "sources": [
                         {"src": "Allkem NI 43-101（2023）", "data": "Ore mining rates are based on providing continuous feed to the nominal 1.8 Mtpa processing plant；plant consists of crushing circuit, optical beneficiation circuit, DMS circuit, product handling, TSF"},
@@ -1354,6 +1368,8 @@ MINES = [
     {
         "company": "Core Lithium（ASX: CXO）",
         "mine": "Finniss",
+        "sc6": 1.0,   # SC6 折算系数（用户规范 2026-08-10：精矿产量/产能/预测全站统一 SC6 口径）
+        "sc6_note": "官方 SC6 等效口径（Core 披露 SC6e）",
         "lat": -12.713,  # 卫星影像定位（Yandex/Google Maps）
         "lng": 130.789,
         "current_q": "26Q2",
@@ -1405,7 +1421,7 @@ MINES = [
                 ]
             }
         },
-        "fc_unit": "万吨 SC6 等效（2027 预测：重启满产 20.5 万吨/年对应）",
+        "fc_unit": "万吨 SC6 等效（官方口径，重启满产 20.5 万吨/年对应）",
         "fc_2027": [
             {"label": "悲观", "val": 10, "note": "重启爬坡慢于计划 + 锂价波动——2027 年运行率 50%"},
             {"label": "基准", "val": 16, "note": "2027 年全年运行 + BP33 地下爬坡——~70% 名称产能（15/21.4，214ktpa SC6e 2026 FID 口径；研究情景非公司指导）"},
@@ -1503,6 +1519,8 @@ MINES = [
     {
         "company": "Global Lithium（ASX: GL1）",
         "mine": "Manna",
+        "sc6": 0.917,   # SC6 折算系数（用户规范 2026-08-10：精矿产量/产能/预测全站统一 SC6 口径）
+        "sc6_note": "SC6 折算（原 SC5.5 目标品位 ≥5.5% Li₂O）",
         "lat": -30.864,  # 卫星影像定位（Yandex/Google Maps）
         "lng": 122.574,
         "est_qs": [28, 29],  # 26Q1/26Q2 未披露 → 按投产进度推测 0（未投产）
@@ -1531,13 +1549,13 @@ MINES = [
             ],
             "future_lines": [
                 {
-                    "name": "拟建产线1：Manna 露天矿（Manna Main + North + South）——原矿产能未披露（DFS 支撑 ~236ktpa SC5.5 精矿/年）",
+                    "name": "拟建产线1：Manna 露天矿（Manna Main + North + South）——原矿产能未披露（DFS 支撑 ~216ktpa SC6 折算/年，原 236,470tpa SC5.5）",
                     "q26q2": "26Q2 未投产（开发阶段）：Manna Main 主坑 + Manna North/South 卫星坑设计完成；MDCP 2026-08-04 批准（含多个露天坑、废石堆、干堆尾矿、营地、水井场）；FID 目标 Q4 2026",
                     "q26q1": "26Q1 同（开发阶段）：ML M28/414（2025-08-25）+ Native Title 协议（2025-08-13）已就绪",
                     "compare": "MDCP 批准（2026-08-04，略早于内部时间表）是超预期点——进一步去风险、支持 Manna-Nova 战略早期工程"
                 },
                 {
-                    "name": "拟建产线2：选矿厂（Nova 1.8Mtpa 原矿路线 vs Manna 绿地厂）——Nova 方案：1.8Mtpa 原矿 → ~236ktpa SC5.5 精矿",
+                    "name": "拟建产线2：选矿厂（Nova 1.8Mtpa 原矿路线 vs Manna 绿地厂）——Nova 方案：1.8Mtpa 原矿 → ~216ktpa SC6 折算（原 ~236kt SC5.5）",
                     "q26q2": "选矿策略：收购 Nova Operation（Manna 南 170km，A$7m，2026-11/12 完成）——Nova 1.8Mtpa 选矿厂可大幅降 capex、加速首产（首产精矿目标 2027 年中 vs Manna 绿地厂）；Manna-Nova 整合研究进行中（量化 capex 削减 + DSO 现金流）",
                     "q26q1": "DFS（2025-12-04）：Manna 绿地厂 capex A$439.1M、LOM 14.3 年",
                     "compare": "Nova 收购（2026-07-15 公告）改变产能路径——从绿地建厂转向收购现成厂改造，首产时间大幅提前"
@@ -1562,7 +1580,7 @@ MINES = [
                 ]
             }
         },
-        "fc_unit": "万吨 SC5.5（2027 预测：首产精矿 mid-2027 后爬坡）",
+        "fc_unit": "万吨 SC6 折算（原 SC5.5 ×0.917；2027 预测：首产精矿 mid-2027 后爬坡）",
         "fc_2027": [
             {"label": "悲观", "val": 4, "note": "FID 延后 + Nova 完成延迟——2027 年仅 DSO 与精矿试产"},
             {"label": "基准", "val": 8, "note": "FID Q4 2026 按计划 + Nova 厂 2027 年中投产——H2 精矿爬坡（~15-20kt/季）"},
@@ -1575,7 +1593,7 @@ MINES = [
             "items": [
                 {
                     "line": "选矿产能（Manna DFS 浮选厂 vs Nova 1.8Mtpa 厂）",
-                    "excel_capacity": "Manna DFS：1.8Mtpa 磨机 → 236,470 tpa SC5.5；Nova：1.8Mtpa concentrator（收购）",
+                    "excel_capacity": "Manna DFS：1.8Mtpa 磨机 → ~216ktpa SC6 折算（原 236,470 tpa SC5.5；Nova：1.8Mtpa concentrator（收购）",
                     "verified": "✓ 2026-07 展示 + DFS 双来源",
                     "sources": [
                         {"src": "2026-07 投资者展示", "data": "GL1 to acquire 100% of Nova Operation (approx. 170km south of Manna) securing an established processing plant——1.8Mtpa concentrator plus power, camp and site infrastructure；substantial capex savings vs Manna greenfield plant；first spodumene concentrate targeted mid-2027"},
@@ -1594,7 +1612,7 @@ MINES = [
                 },
                 {
                     "line": "全矿合计（DFS 设计 vs Nova 路线）",
-                    "excel_capacity": "DFS：236,470 tpa SC5.5（LOM 14.3 年）；Nova 路线：1.8Mtpa concentrator 改造",
+                    "excel_capacity": "DFS：~216ktpa SC6 折算（原 236,470 tpa SC5.5，LOM 14.3 年）；Nova 路线：1.8Mtpa concentrator 改造",
                     "verified": "✓ DFS 官方产能（236,470 tpa）",
                     "sources": [
                         {"src": "Manna 优化 DFS（2025-12-03）", "data": "SC5.5 年产能 236,470 t（干吨）、LOM 总 SC5.5 精矿 2.76Mt——官方精矿产能"}, {"src": "2026-07 投资者展示", "data": "Nova 1.8Mtpa concentrator 收购（A$7m）→ capex 削减 + 首产提前（mid-2027）；Manna-Nova Integration Study underway to quantify capex reduction and capture cashflow from DSO production"}
@@ -1657,6 +1675,8 @@ MINES = [
     {
         "company": "Covalent Lithium（SQM 50% + Wesfarmers 50%）",
         "mine": "Mt Holland",
+        "sc6": 0.917,   # SC6 折算系数（用户规范 2026-08-10：精矿产量/产能/预测全站统一 SC6 口径）
+        "sc6_note": "SC6 折算（原 dmt SC5.5 名义品位；SQM 官方销量即 SC6）",
         "lat": -32.083,  # 卫星影像定位（Yandex/Google Maps）
         "lng": 119.748,
         "est_qs": [28, 29],  # 26Q1/26Q2 未披露（SQM 不披露季度产量）→ 按满产推测 9.5
@@ -1675,7 +1695,7 @@ MINES = [
         "status_26q2": {
             "existing_lines": [
                 {
-                    "name": "已有产能1：Mt Holland 矿 + 选矿厂（Earl Grey 伟晶岩）— 380ktpa 精矿 SC5.5（100%；原矿由 Earl Grey 露天矿供给，原矿产能未单独披露）",
+                    "name": "已有产能1：Mt Holland 矿 + 选矿厂（Earl Grey 伟晶岩）— ~348ktpa SC6 折算（原 380ktpa 精矿 SC5.5，100%；原矿由 Earl Grey 露天矿供给，原矿产能未单独披露）",
                     "q26q2": "26Q2 数据未发布（SQM 美式财季 Q2 2026 报告 2026 年 8 月下旬发布）；**期后事项（2026-07-21）**：扩产 FID 380→760ktpa（第二选矿厂 2027 H2 建设、扩产首产 H1 2030），FID 确认矿山满产运营（SQM 2026Q1 口径）；1Q2026 精矿销量 38.1kt（SQM 50% 份额 SC6）；选矿工艺 = DMS + 浮选混合",
                     "q26q1": "26Q1 满产运营（SQM 1Q2026 确认 'operating at full capacity'）；1Q2026 精矿销量 38.1kt（SQM 50%）；2025 全年 156.4kt（SQM 50%）为首个完整生产年",
                     "compare": "26Q2 实际待 Q2 财报（8 月下旬）确认——当前信息以 26Q1 口径 + 期后 FID 为准；扩产 FID（2026-07-21，SQM 份额 capex US$450-500M）确认满产运营并进入倍增阶段"
@@ -1689,7 +1709,7 @@ MINES = [
             ],
             "future_lines": [
                 {
-                    "name": "扩产项目（380→760ktpa，FID 2026-07-21）",
+                    "name": "扩产项目（380→760ktpa 精矿 SC5.5 = 348→697kt SC6 折算，FID 2026-07-21）",
                     "q26q2": "扩产 FID 通过（2026-07-21，期后事项）：矿 + 选矿厂 + 新集成矿石分选设施；第二选矿厂 2027 H2 开工、扩产首产精矿 H1 2030；SQM 份额 capex US$450-500M（Wesfarmers 份额 A$645-715M）；FID 公告称相关审批 'secured or underway'——LOM 扩建 EPA 部长决定仍待定（2026-08）；扩产提供 Kwinana 下游扩产或直接卖精矿的选择权",
                     "q26q1": "扩产 DFS 研究中（2026 年前）",
                     "compare": "FID 后 12 个月开工——2027 H2 建设启动是下一催化剂"
@@ -1708,7 +1728,7 @@ MINES = [
                 ]
             }
         },
-        "fc_unit": "万吨 SC5.5（100% 基准；名义产能 383ktpa——MH 无官方 FY27 指引，按产能利用率情景，非线性）",
+        "fc_unit": "万吨 SC6 折算（原 SC5.5 ×0.917；名义产能 383ktpa→351kt SC6——MH 无官方 FY27 指引，按产能利用率情景，非线性）",
         "fc_2027": [
             {"label": "悲观", "val": 36, "note": "名义产能 383ktpa 的 94.0% 利用率（36.0/38.3）——需求/发运节奏影响下的保守运行；2027 扩产不贡献产量（2027 H2 才开工、首产 H1 2030）"},
             {"label": "基准", "val": 38, "note": "约 380kt ≈ 名义产能 99.2%（38.0/38.3）——Wesfarmers FY27 项目口径约 380kt 为依据的满产稳定运行"},
@@ -1721,7 +1741,7 @@ MINES = [
             "items": [
                 {
                     "line": "Mt Holland 选矿厂（DMS + 浮选混合）",
-                    "excel_capacity": "380ktpa SC5.5（100% 基准）",
+                    "excel_capacity": "~348ktpa SC6 折算（原 380ktpa SC5.5，100% 基准）",
                     "verified": "✓ 官网 + SQM 报告双确认",
                     "sources": [
                         {"src": "SQM 20-F FY2025", "data": "concentrator nameplate 383,000 dmtpa SC 5.5% Li₂O；2023=15.0kt / 2024=232.4kt / 2025=329.6kt（100%，dmt SC5.5）；首采 2022、选厂 2023Q3 调试、2023Q4 双回路首产、2024 H1 首出口、2025 达名义产能；流程：DMS 粗粒 + 球磨/磁选/脱泥 + 浮选细粒"}, {"src": "SQM-I 官网", "data": "hybrid Dense Media Separation (DMS) and flotation process；expected annual output of approximately 380,000 dry tonnes at 5.5% Li₂O"},
@@ -1740,7 +1760,7 @@ MINES = [
                 },
                 {
                     "line": "全矿合计（一体化）",
-                    "excel_capacity": "380kt SC5.5 + 50kt LOH → 扩产 760kt SC5.5",
+                    "excel_capacity": "~348kt SC6 折算 + 50kt LOH（原 380kt SC5.5）→ 扩产 ~697kt SC6 折算（原 760kt SC55",
                     "verified": "✓ 官方确认（FID）",
                     "sources": [
                         {"src": "扩产 FID（2026-07-21）", "data": "expansion provides optionality to supply any future expansion of downstream processing at Kwinana refinery or sell expanded production as spodumene concentrate"},
@@ -2748,19 +2768,19 @@ FC_BASIS = {
         "assumptions": ["CGP3 复产爬坡按线性：26Q4 达指引季均、2027 上半年爬满 52 万吨/年", "存量产线维持 FY26 实际 ~130 万吨/年水平", "CGP4 2027 年内不贡献（投资决策未定）", "悲观=爬坡延迟（164）、乐观=满产提前+回收率改善（173）"],
     },
     "Pilgangoora": {
-        "basis": "FY27 官方指引 103-110 万吨（中值 106.5）→ 季均 26.6；26Q2 实际 21.43（Ngungaju 2026-07 重启后双厂爬坡中）→ 线性 26Q3E=24.0、26Q4E=26.6；27Q1/27Q2=26.6、27Q3/27Q4 线性至满产 27.5（双厂 ~1.25Mtpa）；2027 基准=108.2 万吨。",
+        "basis": "FY27 官方指引 103-110 万吨（中值 106.5）→ 季均 26.6；26Q2 实际 21.43（Ngungaju 2026-07 重启后双厂爬坡中）→ 线性 26Q3E=24.0、26Q4E=26.6；27Q1/27Q2=26.6、27Q3/27Q4 线性至满产 27.5（双厂 ~1.25Mtpa）；2027 基准=93.6 万吨 SC6（108.2 dmt ×0.867）。",
         "assumptions": ["Ngungaju 2026-10 前达目标产能（官方指引基础）", "Pilgan 维持 ~200-215kt/季高利用率", "P2000 2027 年内不贡献（可研 2026-12、FID+建设 >2 年）", "悲观=Ngungaju 爬坡慢（104）、乐观=双厂超产（110）"],
     },
     "Wodgina": {
-        "basis": "无年度指引（MRL 不发布季度/年度产量指引）；当前官网三线合计约 750ktpa、产品 5.5% Li₂O（即实际品位铭牌，不再换算 mixed）→ 季均 18.75；26Q2 实际 18.8（100% 推算 mixed）→ 26Q3E/26Q4E=18.75，CY2026E ≈ 71.9；2027 基准=75 万吨 mixed（铭牌；80 仅乐观超铭牌情景）。",
+        "basis": "无年度指引（MRL 不发布季度/年度产量指引）；当前官网三线合计约 750ktpa、产品 5.5% Li₂O（即实际品位铭牌，不再换算 mixed）→ 季均 18.75；26Q2 实际 18.8（100% 推算 mixed）→ 26Q3E/26Q4E=18.75，CY2026E ≈ 71.9；2027 基准=68.8 万吨 SC6 折算（原 75 万吨 mixed 铭牌 ×0.917；80 dmt 仅乐观超铭牌情景）。",
         "assumptions": ["三线 750ktpa SC5.5% 产能满负荷（Q1 FY27 起三线全开）", "Stage 4 预剥离 Q1 FY27 启动保障 3 年矿石供应", "悲观=利用率不足（72）、乐观=超铭牌（80）"],
     },
     "Mt Marion": {
-        "basis": "无年度指引；2026 稳态 ~66 万吨/年（FY26 销量 242k SC6 100% 口径）→ 季均 16.5；26Q2 实际 16.4 → 线性 26Q3E=16.4、26Q4E=16.5；2027 基准=66 万吨（DMS 满产 + 浮选厂 2027 年中投产）。",
+        "basis": "无年度指引；2026 稳态 ~66 万吨/年（FY26 销量 242k SC6 100% 口径）→ 季均 16.5；26Q2 实际 16.4 → 线性 26Q3E=16.4、26Q4E=16.5；2027 基准=60.5 万吨 SC6 折算（原 66 万吨 dmt ×0.917；DMS 满产 + 浮选厂 2027 年中投产）。",
         "assumptions": ["浮选厂（FID 2026-05-26 $490M）2027 年中投产提升回收率", "N9→N11 矿坑过渡品位波动可控", "Ganfeng 合资运营稳定", "悲观=浮选延期品位波动（63）、乐观=提前投产+地下开发（69）"],
     },
     "Kathleen Valley": {
-        "basis": "FY27 官方指引 390-440k dmt concentrate（2026-07-29 澄清非 SC6，中值 415k）→ 季均 10.4；26Q2 实际 10.3（dmt）→ 线性 26Q3E=10.3、26Q4E=10.4；27Q1/27Q2=10.4（FY27 指引期）、27Q3/27Q4 为 FY28 研究外推；2027 基准=41.9 万吨实际精矿 dmt。",
+        "basis": "FY27 官方指引 390-440k dmt concentrate（2026-07-29 澄清非 SC6，中值 415k）→ 季均 10.4；26Q2 实际 10.3（dmt）→ 线性 26Q3E=10.3、26Q4E=10.4；27Q1/27Q2=10.4（FY27 指引期）、27Q3/27Q4 为 FY28 研究外推；2027 基准=34.9 万吨 SC6 折算（原 41.9 万吨实际精矿 dmt ×0.833）。",
         "assumptions": ["2.8Mtpa 原矿运行率 FY27 底达成（地下爬坡）", "回收率维持 ~63% 逐步改善", "悲观=地下爬坡不及预期（40）、乐观=回收率 70%+（44）"],
     },
     "Bald Hill": {
@@ -2780,7 +2800,7 @@ FC_BASIS = {
         "assumptions": ["Nova Operation（A$7m 收购）改造后 2027 年中加工 Manna 矿石", "Lopal 40% 包销 + US$75M 预付款（FID 后）+ Canmax 30% 包销", "DFS 参数：NPV A$472M、capex A$439.1M、首产 SC5.5 精矿", "悲观=FID 延后仅 DSO（6）、乐观=Nova 改造顺利（10）"],
     },
     "Mt Holland": {
-        "basis": "MH 无官方 FY27 产量指引——按名义产能 383ktpa 利用率情景（非线性，非指引外推）：26Q1 满产运营（SQM 确认 'operating at full capacity'）；26Q2 美式财季报告未发布（N.D.，8 月下旬）；2027 基准=38 万吨 ≈ 名义产能 99.2%（38.0/38.3），有 Wesfarmers FY27 项目口径约 380kt 依据；2027 扩产不贡献产量（第二选矿厂 2027 H2 才开工、扩产首产 H1 2030）。",
+        "basis": "MH 无官方 FY27 产量指引——按名义产能 383ktpa 利用率情景（非线性，非指引外推）：26Q1 满产运营（SQM 确认 'operating at full capacity'）；26Q2 美式财季报告未发布（N.D.，8 月下旬）；2027 基准=34.8 万吨 SC6 折算（原 38 万吨 SC5.5 ×0.917 ≈ 名义产能 99.2%），有 Wesfarmers FY27 项目口径约 380kt 依据；2027 扩产不贡献产量（第二选矿厂 2027 H2 才开工、扩产首产 H1 2030）。",
         "assumptions": ["悲观 36 万吨 = 名义产能 94.0%（36.0/38.3）——需求/发运节奏影响的保守运行", "基准 38 万吨 = 99.2%——满产稳定运行（Wesfarmers FY27 ~380kt 口径）", "乐观 40 万吨 = 104.4%——超名义产能的乐观假设（扩产前期/直接销售增加）", "Kwinana 精炼厂 2027 达名称产能（50ktpa LOH）；扩产 FID（2026-07-21）2027 H2 建设启动不影响存量产线"],
     },
 }

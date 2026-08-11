@@ -298,9 +298,9 @@ const SC6_FACTOR = {
   'Mt Holland': 0.917,     // SC5.5 → SC6
 };
 const UNIT_LABEL = {
-  'Greenbushes': 'SC6 折算', 'Pilgangoora': 'dmt ~5.2%', 'Wodgina': '混合 dmt ~5.5%',
-  'Mt Marion': '混合 dmt ~5.5%', 'Kathleen Valley': 'dmt ~5.0%', 'Bald Hill': 'SC6',
-  'Mt Cattlin': 'dmt ~5.35%', 'Finniss': 'SC6 等效', 'Manna': 'SC5.5', 'Mt Holland': 'SC5.5（100%）'
+  'Greenbushes': 'SC6 折算', 'Pilgangoora': 'SC6 折算（原 dmt ~5.2%）', 'Wodgina': 'SC6 折算（原 dmt ~5.5%）',
+  'Mt Marion': 'SC6 折算（原 dmt ~5.5%）', 'Kathleen Valley': 'SC6 折算（原 dmt ~5.0%）', 'Bald Hill': 'SC6',
+  'Mt Cattlin': 'SC6 折算（原 dmt ~5.35%）', 'Finniss': 'SC6 等效', 'Manna': 'SC6 折算（原 SC5.5）', 'Mt Holland': 'SC6 折算（原 SC5.5）'
 };
 
 /* 年度聚合：CY2022-CY2026E 产量（万吨，披露口径）+ SC6 等效；2026E = 2026H1 实际 + 26Q3E/26Q4E 预测 */
@@ -429,15 +429,15 @@ const FY27_QGUIDE = {
   // 26Q3E/26Q4E 取值：指引值（FY27 指引季均）优先，无指引 → 线性推测值（现状年化/爬坡目标）
   const E26_NOTE = {
     'Greenbushes': ['26Q1/26Q2 为公布实际（35.1/38.7）；26Q3E/26Q4E 用指引值 = FY27 指引中值 165÷4 = 41.25/季（线性爬坡）'],
-    'Pilgangoora': ['26Q1/26Q2 为公布实际（23.2/21.4）；26Q3E/26Q4E 用指引值 = FY27 指引中值 106.5÷4 = 26.6/季（Ngungaju 重启双厂线性爬坡）'],
-    'Wodgina': ['26Q1/26Q2 为公布实际（15.6/18.8）；无年度指引 → 26Q3E/26Q4E 用推测值 = 三线满产年化 80÷4 = 20/季（线性）'],
-    'Mt Marion': ['26Q1/26Q2 为公布实际（16.0/16.4）；无年度指引 → 26Q3E/26Q4E 用推测值 = 稳态年化 66÷4 = 16.5/季（线性）'],
-    'Kathleen Valley': ['26Q1/26Q2 为公布实际（9.6/10.3）；26Q3E/26Q4E 用指引值 = FY27 指引中值 415k÷4 = 10.4/季'],
+    'Pilgangoora': ['26Q1/26Q2 为公布实际（23.2/21.4 dmt → SC6 折算 20.1/18.6）；26Q3E/26Q4E 用指引值 = FY27 指引中值 106.5 万吨 dmt → SC6 折算 92.3，÷4 ≈ 23.1/季（Ngungaju 重启双厂线性爬坡）'],
+    'Wodgina': ['26Q1/26Q2 为公布实际（15.6/18.8 dmt → SC6 折算 14.3/17.2）；无年度指引 → 26Q3E/26Q4E 用推测值 = 三线满产年化 80 dmt → SC6 折算 73.4÷4 ≈ 18.3/季（线性）'],
+    'Mt Marion': ['26Q1/26Q2 为公布实际（16.0/16.4 dmt → SC6 折算 14.7/15.0）；无年度指引 → 26Q3E/26Q4E 用推测值 = 稳态年化 66 dmt → SC6 折算 60.5÷4 ≈ 15.1/季（线性）'],
+    'Kathleen Valley': ['26Q1/26Q2 为公布实际（9.6/10.3 dmt → SC6 折算 8.0/8.6）；26Q3E/26Q4E 用指引值 = FY27 指引中值 415k dmt → SC6 折算 346k，÷4 ≈ 8.6/季 SC6'],
     'Bald Hill': ['26Q1 公布实际 0（C&M）、26Q2 0.1（2026-05 复产首月）；26Q3E/26Q4E 用指引值 = 满产 140k SC6 目标季均 3.5（Q2 FY27 满产，线性爬坡）'],
     'Mt Cattlin': ['C&M 停产（力拓 2025-03 收购后无生产）——**预估依据**：力拓官网确认 C&M、无复产公告；2026 全年产量为零（26Q3E/26Q4E 按 C&M 延续预估 0）'],
     'Finniss': ['26Q1/Q2 无生产（2026-05 恢复采矿）；26Q3E/26Q4E 用推测值 = 26Q3 首产精矿目标 4 步线性爬坡（1.4/2.3）'],
     'Manna': ['**推测依据**：未投产（MDCP 2026-08-04 批准、FID Q4 2026、首产精矿 2027 年中）——按投产进度推测 2026 全年产量为零（26Q1-26Q4E 均无精矿产出）'],
-    'Mt Holland': ['26Q1/Q2 官方未披露季度产量（SQM 仅披露 50% 份额 SC6 销量）；**预估依据**：SQM 2026Q1 确认矿山满产运营 + 名义产能 383ktpa ÷ 4 ≈ 9.5 万吨/季（100% dmt SC5.5）+ 2026-07-21 扩产 FID 再确认满产——26Q2E-26Q4E 按满产预估、26Q1 按满产推算，2026E ≈ 38 万吨'],
+    'Mt Holland': ['26Q1/Q2 官方未披露季度产量（SQM 仅披露 50% 份额 SC6 销量）；**预估依据**：SQM 2026Q1 确认矿山满产运营 + 名义产能 383ktpa SC5.5 ÷ 4 ≈ 9.5 万吨/季 → SC6 折算 8.7/季 + 2026-07-21 扩产 FID 再确认满产——26Q2E-26Q4E 按满产预估、26Q1 按满产推算，2026E ≈ 34.8 万吨 SC6（38×0.917）'],
   };
   // 表头：年份分组行 + 季度行；最右：2026E/2027E 全年预估 + 依据
   let html = '<thead><tr><th class="sticky" rowspan="2">矿山</th><th rowspan="2">披露口径</th>';
@@ -470,26 +470,33 @@ const FY27_QGUIDE = {
     const v24 = isMH ? 23.24 : yearSum(h, 'production', 20, 24);
     html += `<tr><td class="rowhead sticky"><a href="${pageOf(m)}" style="color:var(--acc);text-decoration:none">${m.mine}</a></td><td style="font-size:10.5px;color:var(--muted)">${UNIT_LABEL[m.mine] || '—'}</td>`;
     qIdx.forEach(i => {
-      const v = h.production[i];
-      const est = i >= 30 || ((m.est_qs || []).includes(i) && h.production[i] != null);  // 预测列 + 推测季度（est_qs：未披露按产能/投产进度推测）
+      const raw = h.production[i];
+      const v = raw != null ? raw * (m.sc6 || 1) : null;  // 全站统一 SC6 口径（用户规范 2026-08-10）
+      const est = i >= 30 || ((m.est_qs || []).includes(i) && raw != null);  // 预测列 + 推测季度（est_qs：未披露按产能/投产进度推测）
       const yr = yearOf(i);
       html += `<td class="num y${yr} ${v == null ? '' : (est ? 'acc' : '')}">${v == null ? '<span class="warn">N.D.</span>' : v.toFixed(1) + (est ? '<small style="font-size:9px;color:var(--acc)">E</small>' : '')}</td>`;
     });
-    // 2025 全年实际（同比 vs 2024；MH 用 20-F 年度产量 32.96，同比基数 v24 同 20-F；格式与 2026E 列一致 + 居中）
-    html += `<td class="num" style="text-align:center">${v25 != null ? `<b>${v25.toFixed(1)}</b>` + yoy2(v25, v24) + (isMH ? '<small style="display:block;font-size:9px;color:var(--muted)">20-F</small>' : '') : '<span class="warn">N.D.</span>'}</td>`;
-    // 2026E 全年（今年；严谨：H2 未披露 → N.D. + H1 注记）
+    // 2025 全年实际（同比 vs 2024；MH 用 20-F 年度产量 32.96 → SC6 折算；格式与 2026E 列一致 + 居中）
+    const sc6 = m.sc6 || 1;
+    const v25s = v25 != null ? v25 * sc6 : null;
+    const v24s = v24 != null ? v24 * sc6 : null;
+    html += `<td class="num" style="text-align:center">${v25s != null ? `<b>${v25s.toFixed(1)}</b>` + yoy2(v25s, v24s) + (isMH ? '<small style="display:block;font-size:9px;color:var(--muted)">20-F·SC6</small>' : '') : '<span class="warn">N.D.</span>'}</td>`;
+    // 2026E 全年（今年；严谨：H2 未披露 → N.D. + H1 注记；SC6 折算）
+    const e26s = e26 != null ? e26 * sc6 : null;
+    const h1s = h1 != null ? h1 * sc6 : null;
     if (full26) {
-      html += `<td class="num acc"><b>${e26.toFixed(1)}</b>${yoy2(e26, v25)}</td>`;
-    } else if (h1 != null) {
-      html += `<td class="num"><span class="warn">N.D.</span><small style="display:block;font-size:9px;color:var(--muted)">H1 实际 ${h1.toFixed(1)}，H2 未披露</small></td>`;
+      html += `<td class="num acc"><b>${e26s.toFixed(1)}</b>${yoy2(e26s, v25s)}</td>`;
+    } else if (h1s != null) {
+      html += `<td class="num"><span class="warn">N.D.</span><small style="display:block;font-size:9px;color:var(--muted)">H1 实际 ${h1s.toFixed(1)}，H2 未披露</small></td>`;
     } else {
       html += `<td class="num"><span class="warn">N.D.</span></td>`;
     }
     // 2026E 预估依据（td 内 div 容器：块级 max-width 强制换行 + 高行高）
     html += `<td style="padding:10px 8px"><div style="font-size:9.5px;color:var(--muted);line-height:2.2;max-width:210px;word-break:break-all;white-space:normal">${md(e26note)}</div></td>`;
-    // 2027E 全年（明年）
-    html += `<td class="num" style="color:var(--warn);font-weight:700">${f27 != null ? f27.toFixed(1) : '<span class="warn">N.D.</span>'}` +
-      (f27 != null ? (full26 ? yoy2(f27, e26) : (h1 != null ? '<span class="yoy d">基数 H1 口径</span>' : '<span class="yoy d">同比 N.D.</span>')) : '') + `</td>`;
+    // 2027E 全年（明年；SC6 折算）
+    const f27s = f27 != null ? f27 * sc6 : null;
+    html += `<td class="num" style="color:var(--warn);font-weight:700">${f27s != null ? f27s.toFixed(1) : '<span class="warn">N.D.</span>'}` +
+      (f27s != null ? (full26 ? yoy2(f27s, e26s) : (h1s != null ? '<span class="yoy d">基数 H1 口径</span>' : '<span class="yoy d">同比 N.D.</span>')) : '') + `</td>`;
     // 2027E 预估依据（td 内 div 容器：块级 max-width 强制换行 + 高行高）
     html += `<td style="padding:10px 8px"><div style="font-size:9.5px;color:var(--muted);line-height:2.2;max-width:210px;word-break:break-all;white-space:normal">${md(basis27)}</div></td></tr>`;
   });
@@ -498,14 +505,15 @@ const FY27_QGUIDE = {
   let totE26 = 0, totE26Any = false, totF27 = 0, totF27Any = false, totV25 = 0, totV25Any = false, totV24 = 0, totV24Any = false;
   D.mines.forEach(m => {
     const h = histOf(m);
-    qIdx.forEach((i, k) => { if (h.production[i] != null) { tot[k] += h.production[i]; totAny[k] = true; } });
-    if (h.production[30] != null && h.production[31] != null) { totE26 += (m.mine === 'Mt Holland' ? 9.5 * 4 : yearSum(h, 'production', 28, 32)); totE26Any = true; }
+    const sc6 = m.sc6 || 1;  // SC6 折算（全站统一口径）
+    qIdx.forEach((i, k) => { if (h.production[i] != null) { tot[k] += h.production[i] * sc6; totAny[k] = true; } });
+    if (h.production[30] != null && h.production[31] != null) { totE26 += (m.mine === 'Mt Holland' ? 9.5 * 4 : yearSum(h, 'production', 28, 32)) * sc6; totE26Any = true; }
     const f = fcBaseVal(m);
-    if (f != null) { totF27 += f; totF27Any = true; }
+    if (f != null) { totF27 += f * sc6; totF27Any = true; }
     const v25 = m.mine === 'Mt Holland' ? 32.96 : yearSum(h, 'production', 24, 28);
-    if (v25 != null) { totV25 += v25; totV25Any = true; }
+    if (v25 != null) { totV25 += v25 * sc6; totV25Any = true; }
     const v24 = m.mine === 'Mt Holland' ? 23.24 : yearSum(h, 'production', 20, 24);
-    if (v24 != null) { totV24 += v24; totV24Any = true; }
+    if (v24 != null) { totV24 += v24 * sc6; totV24Any = true; }
   });
   html += `<tr class="tot"><td class="sticky">行业合计</td><td>披露口径相加（近似）</td>` +
     qIdx.map((i, k) => `<td class="num">${totAny[k] ? tot[k].toFixed(0) : 'N.D.'}</td>`).join('') +
