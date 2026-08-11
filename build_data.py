@@ -35,8 +35,8 @@ MINES = [
         "equity_note": "100% 资产口径（Talison 运营）；IGO→TLEA 49%，TLEA/Windfield→Greenbushes 51%，Albemarle 49%",
         "history_labels": [
             ("production", "精矿产量（万吨，SC6 折算 6% Li₂O）"),
-            ("tech_grade", "技术级精矿产量（万吨，实际品位）"),
-            ("chem_grade", "化学级精矿产量（万吨，实际品位）"),
+            ("tech_grade", "技术级精矿产量（万吨，~5.0% Li₂O 技术级规格；官方未单独披露逐季品位）"),
+            ("chem_grade", "化学级精矿产量（万吨，SC6.0 即 6% Li₂O）"),
             ("sales", "销量（万吨，SC6 折算 6% Li₂O）"),
             ("inv_change", "库存变动量（万吨）"),
             ("inventory", "库存（万吨）"),
@@ -168,7 +168,7 @@ MINES = [
         "capacity_verification": {
             "title": "产能核实（多来源交叉印证）",
             "method": "对每条产线产能，交叉核对 4 类独立公开来源：① 公司年报（IGO AR 2022/2023/2025）；② 公司官网资产页（IGO Our Business）；③ 美股监管披露（Albemarle 10-K + SLR S-K1300 技术报告，SEC 公开文件）；④ 行业/第三方（券商研报、咨询机构、天齐锂业 H 股披露——公开可获取部分）。",
-            "summary": "口径差异是关键：官方来源披露的是矿石处理能力（Mtpa 矿石）与精矿产能两个维度。SLR 技术报告逐厂矿石能力：CGP1=1.8、CGP2=2.4、TRP=2.0、TGP=0.35、CGP3=2.4（合计 8.95 Mtpa）；IGO 官网与 SLR 一致（存量 6.55→精矿 ~1.5Mtpa，CGP3 后 8.25→精矿 ~1.8Mtpa）。Excel 的 60/60/14/28 万吨是精矿铭牌口径，与官方矿石能力口径不同维度，不可直接对比；精矿产率按官方口径约 23-30%（品位/回收率而异）。",
+            "summary": "口径差异是关键：官方披露矿石处理能力（Mtpa 矿石）与精矿产能两个维度。IGO 官网（2026-08 原文）存量四厂矿石 6.5 Mtpa → 精矿 up to 1.5 Mtpa；CGP3 矿石 2.4 Mtpa → 精矿 up to 0.5 Mtpa——合计矿石 8.9 Mtpa → 精矿 up to 2.0 Mtpa（用户核对 2026-08-11：1.5+0.5=2.0）。IGO 2022 Site Visit 官方产能表印证：TGP=150ktpa、CGP1/CGP2=各 600ktpa SC6.0、CGP3=520ktpa（含 CGP4 潜在共 2.5 Mtpa，天齐 CP Report 图）。SLR 技术报告（2026-02）保守口径：8.95 Mtpa 矿石 × 产率 ~20% ≈ 1.8 Mtpa 精矿。Excel 的 60/60/14/28 万吨是精矿铭牌口径，合计 214 万吨（含 TGP 14）与官网 200 万吨（1.5+0.5）差 ~14 万吨（技术级是否计入口径差异）。",
             "items": [
                 {
                     "line": "CGP1（化学级1号）",
@@ -222,7 +222,7 @@ MINES = [
                     "verified": "✓ 官方精矿口径确认（520ktpa）",
                     "sources": [
                         {"src": "IGO 年报 2022/2023", "data": "'contribute an additional 520ktpa'；'designed to deliver approximately 0.52Mtpa'"},
-                        {"src": "IGO 官网", "data": "处理能力 2.4Mtpa 矿石 → up to 500ktpa 精矿"},
+                        {"src": "IGO 官网（2026-08 原文）", "data": "CGP3 processing capacity 2.4Mtpa → producing up to 500,000tpa of lithium mineral concentrate；first ore processed December 2025"},
                         {"src": "SLR 技术报告 (2026-02)", "data": "矿石处理能力 2.4 Mtpa；CGP3 后 LOM 合计 8.95 Mtpa、精矿 up to 1.8 Mtpa"},
                         {"src": "Albemarle 10-K", "data": "第三座化学级厂建成，商业化生产预计 2026 年；2026-06-10 火灾公告确认 CGP1/CGP2 不受影响"}
                     ],
@@ -242,10 +242,10 @@ MINES = [
                 {
                     "line": "全矿合计",
                     "excel_capacity": "214 万吨精矿/年（162 存量 + 52 CGP3）",
-                    "verified": "⚠️ 官方矿石口径 6.55→8.95 Mtpa；精矿口径 1.5→1.8 Mtpa",
+                    "verified": "✓ 官网口径合计 2.0 Mtpa 精矿（存量 1.5 + CGP3 0.5；IGO 官网 2026 原文）——Excel 214 万吨含 TGP 14，口径差 ~14 万吨",
                     "sources": [
-                        {"src": "IGO 官网 + SLR", "data": "存量四厂 6.55 Mtpa 矿石 → 精矿 up to 1.5 Mtpa；含 CGP3 后 8.95 Mtpa → 精矿 up to 1.8 Mtpa——官方精矿上限（150-180 万吨/年）低于 Excel 的 214 万吨"},
-                        {"src": "IGO 年报 2023", "data": "'~2.5Mtpa by FY27'——该口径显著高于官网/SLR 的 1.8Mtpa，疑含 CGP4 或更高有效产能假设，未被第三方技术报告支持"},
+                        {"src": "IGO 官网（2026-08 原文）", "data": "存量四厂 6.5 Mtpa 矿石 → 精矿 up to 1.5 Mtpa；CGP3 2.4 Mtpa 矿石 → 精矿 up to 0.5 Mtpa——合计 up to 2.0 Mtpa（用户核对 2026-08-11）"},
+                        {"src": "IGO 年报 2023", "data": "'~2.5Mtpa by FY27'——该口径 = 含 CGP4 潜在产能（2.0+0.5=2.5，与天齐 CP Report 2022 图一致）；2026 年中 CGP4 FID 未做、SLR 按无 CGP4 处理"},
                         {"src": "SLR 技术报告 (2026-02)", "data": "2025 实际：5.85 Mtpa 矿石 → ~1.4 Mtpa SC6.0（作为可兑现基准）"}
                     ],
                     "status": "warn"
@@ -2579,8 +2579,8 @@ data = {
     },
     "history_labels": [
         ("production", "精矿产量（万吨，SC6 折算 6% Li₂O）"),
-        ("tech_grade", "技术级精矿产量（万吨，实际品位）"),
-        ("chem_grade", "化学级精矿产量（万吨，实际品位）"),
+        ("tech_grade", "技术级精矿产量（万吨，~5.0% Li₂O 技术级规格；官方未单独披露逐季品位）"),
+        ("chem_grade", "化学级精矿产量（万吨，SC6.0 即 6% Li₂O）"),
         ("sales", "销量（万吨，SC6 折算 6% Li₂O）"),
         ("inv_change", "库存变动量（万吨）"),
         ("inventory", "库存（万吨）"),
