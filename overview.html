@@ -287,7 +287,7 @@ const qOf = (q) => Q.indexOf(q);
 /* SC6 等效折算系数（× 披露品位 / 6%） */
 const SC6_FACTOR = {
   'Greenbushes': 1.0,      // 已 SC6
-  'Pilgangoora': 0.867,    // dmt ~5.2% → SC6
+  'Pilgangoora': 0.883,    // dmt ~5.3% → SC6（PLS Jun2026 QAR 品位 5.3%，2026-08-11 修正）
   'Wodgina': 1.0,          // 2026-08-11 数据层官方 SC6（MRL 季报 Produced SC6）
   'Mt Marion': 1.0,        // 2026-08-11 数据层官方 SC6（MRL 季报 Produced SC6）
   'Kathleen Valley': 0.833,// dmt ~5.0% → SC6
@@ -298,7 +298,7 @@ const SC6_FACTOR = {
   'Mt Holland': 0.917,     // SC5.5 → SC6
 };
 const UNIT_LABEL = {  // 全站 SC6 口径 + 品位标注（用户规范 2026-08-11：产量/销量描述必须明确品位）
-  'Greenbushes': 'SC6 折算（品位 6%）', 'Pilgangoora': 'SC6 折算（品位 ~5.2%）', 'Wodgina': 'SC6 官方（品位 5.5%）',
+  'Greenbushes': 'SC6 折算（品位 6%）', 'Pilgangoora': 'SC6 折算（品位 ~5.3%）', 'Wodgina': 'SC6 官方（品位 5.5%）',
   'Mt Marion': 'SC6 官方（品位 4.3-4.5%）', 'Kathleen Valley': 'SC6 折算（品位 ~5.0%）', 'Bald Hill': 'SC6 官方（品位 5.1%）',
   'Mt Cattlin': 'SC6 折算（品位 ~5.35%）', 'Finniss': 'SC6 等效', 'Manna': 'SC6 折算（品位 ≥5.5%）', 'Mt Holland': 'SC6 折算（品位 5.5%）'
 };
@@ -429,7 +429,7 @@ const FY27_QGUIDE = {
   // 26Q3E/26Q4E 取值：指引值（FY27 指引季均）优先，无指引 → 线性推测值（现状年化/爬坡目标）
   const E26_NOTE = {
     'Greenbushes': ['26Q1/26Q2 为公布实际（35.1/38.7）；26Q3E/26Q4E 用指引值 = FY27 指引中值 165÷4 = 41.25/季（线性爬坡）'],
-    'Pilgangoora': ['26Q1/26Q2 为公布实际（23.2/21.4 dmt → SC6 折算 20.1/18.6）；26Q3E/26Q4E 用指引值 = FY27 指引中值 106.5 万吨 dmt → SC6 折算 92.3，÷4 ≈ 23.1/季（Ngungaju 重启双厂线性爬坡）'],
+    'Pilgangoora': ['26Q1/26Q2 为公布实际（23.2/21.4 dmt → SC6 折算 20.5/18.9，品位 5.3%）；26Q3E/26Q4E 用指引值 = FY27 指引中值 106.5 万吨 dmt → SC6 折算 94.0，÷4 ≈ 23.5/季（Ngungaju 重启双厂线性爬坡）'],
     'Wodgina': ['26Q1/26Q2 官方 SC6 实际（14.2/16.6，MRL 季报 Produced SC6 50%×2）；无年度指引 → 26Q3E/26Q4E 用推测值 = 三线 Q1 FY27 全开满产 ~17.3/季 SC6（线性）'],
     'Mt Marion': ['26Q1/26Q2 官方 SC6 实际（11.4/11.8，MRL 季报 Produced SC6 50%×2）；无年度指引 → 26Q3E/26Q4E 用推测值 = DMS 稳态满产 ~11.8/季 SC6（线性）'],
     'Kathleen Valley': ['26Q1/26Q2 为公布实际（9.6/10.3 dmt → SC6 折算 8.0/8.6）；26Q3E/26Q4E 用指引值 = FY27 指引中值 415k dmt → SC6 折算 346k，÷4 ≈ 8.6/季 SC6'],

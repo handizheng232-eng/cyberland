@@ -590,9 +590,9 @@ const YONGAN_DATA = {
   {
    "company": "PLS（Pilbara Minerals）",
    "mine": "Pilgangoora",
-   "sc6": 0.867,
-   "sc6_note": "SC6 折算（原 dmt ~5.2% Li₂O；PLS 披露实际品位）",
-   "grade": "~5.2% Li₂O（dmt 实际品位）",
+   "sc6": 0.883,
+   "sc6_note": "SC6 折算（原 dmt ~5.3% Li₂O；PLS Jun2026 QAR 披露实际品位）",
+   "grade": "~5.3% Li₂O（dmt 实际品位）",
    "lat": -21.7939,
    "lng": 119.6346,
    "current_q": "26Q2",
@@ -605,11 +605,11 @@ const YONGAN_DATA = {
    "history_labels": [
     [
      "production",
-     "精矿产量（万吨，dmt 实际品位 ~5.2% SC）"
+     "精矿产量（万吨，dmt 实际品位 ~5.3% SC）"
     ],
     [
      "sales",
-     "销量（万吨，dmt 实际品位 ~5.2% SC）"
+     "销量（万吨，dmt 实际品位 ~5.3% SC）"
     ],
     [
      "prod_sales_ratio",
@@ -676,7 +676,7 @@ const YONGAN_DATA = {
      ]
     }
    },
-   "forecast_unit": "万吨 dmt（实际品位 ~5.2% SC；FY27 指引 1,030-1,100kt 对应）",
+   "forecast_unit": "万吨 dmt（实际品位 ~5.3% SC；FY27 指引 1,030-1,100kt 对应）",
    "forecast_2027": {
     "basis": "PLS FY27 官方指引已发布（2026-07-30 June QAR）：产量 1,030-1,100kt（财年口径 = 2026年7月-2027年6月，中值 ~1,065kt）；日历 2027 = FY27 后两季（含 Ngungaju 满产）+ FY28 前两季（满产稳态），预计落在指引区间上沿附近；产能基础：Pilgan ~1.0Mtpa（P1000 后）+ Ngungaju 重启后目标产能 → 双厂合计 ~1.25Mtpa；P2000 可研 2026-12 出结果、FID 若通过则 2028H2 起贡献（2027 年内不纳入）。",
     "assumptions": [
@@ -746,7 +746,7 @@ const YONGAN_DATA = {
      },
      {
       "line": "Ngungaju 选矿厂",
-      "excel_capacity": "铭牌 ~250ktpa 精矿 SC6（2026-07 重启；品位 ~5.2%）",
+      "excel_capacity": "铭牌 ~250ktpa 精矿 SC6（2026-07 重启；品位 ~5.3%）",
       "verified": "⚠️ 铭牌为推算（官方未单独披露精矿口径）",
       "sources": [
        {

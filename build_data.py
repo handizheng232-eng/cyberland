@@ -354,9 +354,9 @@ MINES = [
     {
         "company": "PLS（Pilbara Minerals）",
         "mine": "Pilgangoora",
-        "sc6": 0.867,   # SC6 折算系数（用户规范 2026-08-10：精矿产量/产能/预测全站统一 SC6 口径）
-        "sc6_note": "SC6 折算（原 dmt ~5.2% Li₂O；PLS 披露实际品位）",
-        "grade": "~5.2% Li₂O（dmt 实际品位）",   # 精矿品位标注（用户规范 2026-08-11：产量/销量描述必须明确品位）
+        "sc6": 0.883,   # SC6 折算系数（2026-08-11 用户指正：PLS Jun2026 QAR 披露品位 5.3%，5.3/6=0.883，原 5.2% 有误）
+        "sc6_note": "SC6 折算（原 dmt ~5.3% Li₂O；PLS Jun2026 QAR 披露实际品位）",
+        "grade": "~5.3% Li₂O（dmt 实际品位）",   # 精矿品位标注（PLS Jun2026 QAR 5.3%）（用户规范 2026-08-11：产量/销量描述必须明确品位）
         "lat": -21.7939,  # 卫星影像定位（Yandex/Google Maps）
         "lng": 119.6346,
         "current_q": "26Q2",
@@ -367,8 +367,8 @@ MINES = [
         "source_url": "https://www.pls.com/invest/asx-announcements",
         "equity_note": "100% 资产口径（PLS 全资拥有并运营）；Pilgangoora 为世界最大独立拥有的硬岩锂矿",
         "history_labels": [
-            ("production", "精矿产量（万吨，dmt 实际品位 ~5.2% SC）"),
-            ("sales", "销量（万吨，dmt 实际品位 ~5.2% SC）"),
+            ("production", "精矿产量（万吨，dmt 实际品位 ~5.3% SC）"),
+            ("sales", "销量（万吨，dmt 实际品位 ~5.3% SC）"),
             ("prod_sales_ratio", "产销比"),
             ("avg_price", "平均售价（US$/t，CIF China ~SC5.2）"),
             ("cash_cost", "单位成本 FOB（A$/t，dmt）"),
@@ -422,7 +422,7 @@ MINES = [
                 ]
             }
         },
-"forecast_unit": "万吨 dmt（实际品位 ~5.2% SC；FY27 指引 1,030-1,100kt 对应）",
+"forecast_unit": "万吨 dmt（实际品位 ~5.3% SC；FY27 指引 1,030-1,100kt 对应）",
         "forecast_2027": {
             "basis": "PLS FY27 官方指引已发布（2026-07-30 June QAR）：产量 1,030-1,100kt（财年口径 = 2026年7月-2027年6月，中值 ~1,065kt）；日历 2027 = FY27 后两季（含 Ngungaju 满产）+ FY28 前两季（满产稳态），预计落在指引区间上沿附近；产能基础：Pilgan ~1.0Mtpa（P1000 后）+ Ngungaju 重启后目标产能 → 双厂合计 ~1.25Mtpa；P2000 可研 2026-12 出结果、FID 若通过则 2028H2 起贡献（2027 年内不纳入）。",
             "assumptions": [
@@ -458,7 +458,7 @@ MINES = [
                 },
                 {
                     "line": "Ngungaju 选矿厂",
-                    "excel_capacity": "铭牌 ~250ktpa 精矿 SC6（2026-07 重启；品位 ~5.2%）",
+                    "excel_capacity": "铭牌 ~250ktpa 精矿 SC6（2026-07 重启；品位 ~5.3%）",
                     "verified": "⚠️ 铭牌为推算（官方未单独披露精矿口径）",
                     "sources": [
                         {"src": "June 2026 QAR", "data": "2026年7月1日按计划重启（季报后事件），预计 FY27 前 4 个月（2026年10月底前）达目标产能；26Q2 FOB 成本 +18% 含重启成本"},
