@@ -378,13 +378,13 @@ MINES = [
         "status_26q2": {
             "existing_lines": [
                 {
-                    "name": "已有产能1：Pilgan 选矿厂（Pilgan Plant）— 铭牌 ~1.0Mtpa 精矿 SC6（P1000 扩产后；配套原矿处理未单独披露）",
+                    "name": "已有产能1：Pilgan 选矿厂（Pilgan Plant）— 铭牌 ~1.0Mtpa 精矿 dmt（P1000 扩产后；官网口径 spodumene concentrate=产品吨位，实际品位 ~SC5.2-5.3%；配套原矿处理未单独披露）",
                     "q26q2": "26Q2（Jun Q）产量 214.3kt（环比 -8%，主因上季创纪录高基数）；回收率小幅升至 76.8%；矿石分选机（世界最大）性能改善提供运营灵活性；FY26 全年 879.5kt 超指引上限",
                     "q26q1": "26Q1（Mar Q）创纪录产量 232.4kt，回收率 ~75%；P1000 扩建（2025年1月完成）使 Pilgan 产能达 ~1.0Mtpa 基础",
                     "compare": "产量环比 -8% 属高基数回落（232.4→214.3kt），但 FY26 全年 879.5kt 超指引上限 ~10kt；回收率 76.8% 创改善——全年表现超预期"
                 },
                 {
-                    "name": "已有产能2：Ngungaju 选矿厂（Ngungaju Plant）— 铭牌 ~250ktpa 精矿 SC6（2026-07 重启）",
+                    "name": "已有产能2：Ngungaju 选矿厂（Ngungaju Plant）— 铭牌 ~250ktpa 精矿 dmt（2026-07 重启；产品吨位口径）",
                     "q26q2": "26Q2 处于重启准备期（临时维护状态，无产量）；季报后事件：**2026 年 7 月 1 日正式重启**，预计 FY27 前 4 个月（2026年10月底前）达到目标产能；26Q2 FOB 成本上升主因之一即 Ngungaju 重启成本",
                     "q26q1": "25Q4（Dec Q）同处于维护状态；2026-02-19 董事会批准重启，计划 2026年7月初复产",
                     "compare": "重大正面进展：7 月 1 日按计划重启、比 3 月预期更明确（原计划「7月初+9月爬坡」，现明确「FY27 前 4 个月内达目标产能」）；26Q2 已开始计重启成本"
@@ -423,9 +423,9 @@ MINES = [
                 ]
             }
         },
-"forecast_unit": "万吨 SC6 折算（原 dmt，品位 ~SC5.2——FY27 官方指引品位假设；逐季 grade produced 5.1-5.3%；FY27 指引 1,030-1,100kt dmt → SC6 893-953kt 对应）",
+"forecast_unit": "万吨 SC6 折算（原 dmt，品位 ~SC5.2——FY27 官方指引品位假设；逐季 grade produced 5.1-5.3%；FY27 指引 1,030-1,100kt dmt → SC6 893-953kt；双厂 dmt 产能 ~1.25Mtpa → SC6 ~1.1Mt，2027 预测利用率 83-88%）",
         "forecast_2027": {
-            "basis": "PLS FY27 官方指引已发布（2026-07-30 June QAR）：产量 1,030-1,100kt（财年口径 = 2026年7月-2027年6月，中值 ~1,065kt）；日历 2027 = FY27 后两季（含 Ngungaju 满产）+ FY28 前两季（满产稳态），预计落在指引区间上沿附近；产能基础：Pilgan ~1.0Mtpa（P1000 后）+ Ngungaju 重启后目标产能 → 双厂合计 ~1.25Mtpa；P2000 可研 2026-12 出结果、FID 若通过则 2028H2 起贡献（2027 年内不纳入）。",
+            "basis": "PLS FY27 官方指引已发布（2026-07-30 June QAR）：产量 1,030-1,100kt（财年口径 = 2026年7月-2027年6月，中值 ~1,065kt）；日历 2027 = FY27 后两季（含 Ngungaju 满产）+ FY28 前两季（满产稳态），预计落在指引区间上沿附近；产能基础：Pilgan ~1.0Mtpa（P1000 后，dmt 产品吨位）+ Ngungaju 重启后目标产能 ~250ktpa → 双厂合计 ~1.25Mtpa dmt（SC6 折算 ~1.1Mt）；P2000 可研 2026-12 出结果、FID 若通过则 2028H2 起贡献（2027 年内不纳入）。",
             "assumptions": [
                 "Ngungaju 2026年7月重启，FY27 前 4 个月（2026年10月底前）达目标产能——2027 年全年双厂运行",
                 "Pilgan 维持 ~200-215kt/季（FY26 后两季实际 205.3/214.3kt，利用率高）",
@@ -448,7 +448,7 @@ MINES = [
             "items": [
                 {
                     "line": "Pilgan 选矿厂",
-                    "excel_capacity": "~1.0Mtpa（P1000 后）",
+                    "excel_capacity": "~1.0Mtpa dmt（P1000 后；SC6 折算 ~875kt）",
                     "verified": "✓ 官方确认（合计口径）",
                     "sources": [
                         {"src": "PLS 官网（2026-06 存档）", "data": "'Following completion of the P1000 Expansion Project in 2025, Pilgangoora has the capacity to produce up to one million tonnes of spodumene concentrate per annum'——1.0Mtpa 官方确认"},
@@ -459,7 +459,7 @@ MINES = [
                 },
                 {
                     "line": "Ngungaju 选矿厂",
-                    "excel_capacity": "铭牌 ~250ktpa 精矿 SC6（2026-07 重启；品位 ~5.3%）",
+                    "excel_capacity": "铭牌 ~250ktpa 精矿 dmt（2026-07 重启；品位 ~5.3%，SC6 折算 ~220kt）",
                     "verified": "⚠️ 铭牌为推算（官方未单独披露精矿口径）",
                     "sources": [
                         {"src": "June 2026 QAR", "data": "2026年7月1日按计划重启（季报后事件），预计 FY27 前 4 个月（2026年10月底前）达目标产能；26Q2 FOB 成本 +18% 含重启成本"},
@@ -479,7 +479,7 @@ MINES = [
                 },
                 {
                     "line": "全矿合计（双厂）",
-                    "excel_capacity": "~1.25Mtpa",
+                    "excel_capacity": "~1.25Mtpa dmt（Pilgan 1.0 + Ngungaju ~0.25；SC6 折算 ~1.1Mt）",
                     "verified": "⚠️ 官方 FY27 指引 1.03-1.10Mtpa（双厂口径）",
                     "sources": [
                         {"src": "June 2026 QAR", "data": "FY27 指引产量 1,030-1,100kt——首次含 Ngungaju 重启后的双厂口径；FY26 实际 879.5kt 超指引上限"},
@@ -2833,7 +2833,7 @@ FC_BASIS = {
         "assumptions": ["CGP3 复产爬坡按线性：26Q4 达指引季均、2027 上半年爬满 52 万吨/年", "存量产线维持 FY26 实际 ~130 万吨/年水平", "CGP4 2027 年内不贡献（投资决策未定）", "悲观=爬坡延迟（164）、乐观=满产提前+回收率改善（173）"],
     },
     "Pilgangoora": {
-        "basis": "FY27 官方指引 103-110 万吨（中值 106.5）→ 季均 26.6；26Q2 实际 23.24 dmt（FY26Q4 官方；Ngungaju 2026-07 重启后双厂爬坡中）→ 线性 26Q3E=24.0、26Q4E=26.6；27Q1/27Q2=26.6、27Q3/27Q4 线性至满产 27.5（双厂 ~1.25Mtpa）；2027 基准=95.5 万吨 SC6（108.2 dmt ×0.883，品位 ~SC5.2）。",
+        "basis": "FY27 官方指引 103-110 万吨（中值 106.5）→ 季均 26.6；26Q2 实际 23.24 dmt（FY26Q4 官方；Ngungaju 2026-07 重启后双厂爬坡中）→ 线性 26Q3E=24.0、26Q4E=26.6；27Q1/27Q2=26.6、27Q3/27Q4 线性至指引上限季均 27.5（110/4，双厂 dmt 产能 ~1.25Mtpa 的 88%）；2027 基准=95.5 万吨 SC6（108.2 dmt ×0.883，品位 ~SC5.2）。",
         "assumptions": ["Ngungaju 2026-10 前达目标产能（官方指引基础）", "Pilgan 维持 ~200-215kt/季高利用率", "P2000 2027 年内不贡献（可研 2026-12、FID+建设 >2 年）", "悲观=Ngungaju 爬坡慢（104）、乐观=双厂超产（110）"],
     },
     "Wodgina": {
