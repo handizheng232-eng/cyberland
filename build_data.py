@@ -2120,6 +2120,7 @@ for q, p, s in [
 for q, p, c in [
     ("2022Q4", 5668, 579),   # PLS Dec2022 QAR: US$5,668/dmt (SC5.4 CIF), A$579 FOB
     ("2025Q4", 1488, 616),   # PLS FY26Q2 (Dec2025 QAR): US$1,488/t (SC5.2 CIF), A$616 FOB
+    ("2025Q3", 672, None),   # PLS FY26Q1 (Sep2025 QAR): US$672/t (SC5.2 CIF China)
     ("2026Q1", 1867, 520),   # PLS Mar2026 QAR
     ("2026Q2", 2107, 616),   # PLS Jun2026 QAR: US$2,107/t (SC5.2 CIF), A$616 FOB
 ]:

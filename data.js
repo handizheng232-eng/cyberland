@@ -4322,7 +4322,7 @@ const YONGAN_DATA = {
     null,
     null,
     null,
-    null,
+    672,
     1488,
     1867,
     2107,
