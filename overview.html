@@ -298,7 +298,7 @@ const SC6_FACTOR = {
   'Mt Holland': 0.917,     // SC5.5 → SC6
 };
 const UNIT_LABEL = {  // 全站 SC6 口径 + 品位标注（用户规范 2026-08-11：产量/销量描述必须明确品位）
-  'Greenbushes': 'SC6 折算（品位 6%）', 'Pilgangoora': 'SC6 折算（品位 ~5.3%）', 'Wodgina': 'SC6 官方（品位 5.5%）',
+  'Greenbushes': 'SC6 折算', 'Pilgangoora': 'SC6 折算（逐季品位 5.1-5.3%）', 'Wodgina': 'SC6 官方（品位 5.5%）',
   'Mt Marion': 'SC6 官方（品位 4.3-4.5%）', 'Kathleen Valley': 'SC6 折算（品位 ~5.0%）', 'Bald Hill': 'SC6 官方（品位 5.1%）',
   'Mt Cattlin': 'SC6 折算（品位 ~5.35%）', 'Finniss': 'SC6 等效', 'Manna': 'SC6 折算（品位 ≥5.5%）', 'Mt Holland': 'SC6 折算（品位 5.5%）'
 };
@@ -471,18 +471,20 @@ const FY27_QGUIDE = {
     html += `<tr><td class="rowhead sticky"><a href="${pageOf(m)}" style="color:var(--acc);text-decoration:none">${m.mine}</a></td><td style="font-size:10.5px;color:var(--muted)">${UNIT_LABEL[m.mine] || '—'}</td>`;
     qIdx.forEach(i => {
       const raw = h.production[i];
-      const v = raw != null ? raw * (m.sc6 || 1) : null;  // 全站统一 SC6 口径（用户规范 2026-08-10）
+      const gQ = (m.grade_series || {})[Q[i]];  // 逐季 grade produced（PLS 等披露逐季品位时按该季折算，用户规范 2026-08-11）
+      const v = raw != null ? raw * (gQ ? gQ / 6 : (m.sc6 || 1)) : null;  // 全站统一 SC6 口径
       const est = i >= 30 || ((m.est_qs || []).includes(i) && raw != null);  // 预测列 + 推测季度（est_qs：未披露按产能/投产进度推测）
       const yr = yearOf(i);
       html += `<td class="num y${yr} ${v == null ? '' : (est ? 'acc' : '')}">${v == null ? '<span class="warn">N.D.</span>' : v.toFixed(1) + (est ? '<small style="font-size:9px;color:var(--acc)">E</small>' : '')}</td>`;
     });
     // 2025 全年实际（同比 vs 2024；MH 用 20-F 年度产量 32.96 → SC6 折算；格式与 2026E 列一致 + 居中）
     const sc6 = m.sc6 || 1;
-    const v25s = v25 != null ? v25 * sc6 : null;
-    const v24s = v24 != null ? v24 * sc6 : null;
+    const yrSc6 = (a, b) => { let s2 = 0; for (let j = a; j < b; j++) { const vv = h.production[j]; if (vv == null) continue; const g2 = (m.grade_series || {})[Q[j]]; s2 += vv * (g2 ? g2 / 6 : (m.sc6 || 1)); } return s2; };
+    const v25s = v25 != null ? yrSc6(24, 28) : null;
+    const v24s = v24 != null ? yrSc6(20, 24) : null;
     html += `<td class="num" style="text-align:center">${v25s != null ? `<b>${v25s.toFixed(1)}</b>` + yoy2(v25s, v24s) + (isMH ? '<small style="display:block;font-size:9px;color:var(--muted)">20-F·SC6</small>' : '') : '<span class="warn">N.D.</span>'}</td>`;
     // 2026E 全年（今年；严谨：H2 未披露 → N.D. + H1 注记；SC6 折算）
-    const e26s = e26 != null ? e26 * sc6 : null;
+    const e26s = e26 != null ? yrSc6(28, 32) : null;
     const h1s = h1 != null ? h1 * sc6 : null;
     if (full26) {
       html += `<td class="num acc"><b>${e26s.toFixed(1)}</b>${yoy2(e26s, v25s)}</td>`;
@@ -506,7 +508,7 @@ const FY27_QGUIDE = {
   D.mines.forEach(m => {
     const h = histOf(m);
     const sc6 = m.sc6 || 1;  // SC6 折算（全站统一口径）
-    qIdx.forEach((i, k) => { if (h.production[i] != null) { tot[k] += h.production[i] * sc6; totAny[k] = true; } });
+    qIdx.forEach((i, k) => { if (h.production[i] != null) { const gT = (m.grade_series || {})[Q[i]]; tot[k] += h.production[i] * (gT ? gT / 6 : sc6); totAny[k] = true; } });
     if (h.production[30] != null && h.production[31] != null) { totE26 += (m.mine === 'Mt Holland' ? 9.5 * 4 : yearSum(h, 'production', 28, 32)) * sc6; totE26Any = true; }
     const f = fcBaseVal(m);
     if (f != null) { totF27 += f * sc6; totF27Any = true; }
