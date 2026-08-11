@@ -362,12 +362,12 @@ const m = MINE;
     }).join('');
     qb = f.quarterly_base;
     qRows = ['27Q1', '27Q2', '27Q3', '27Q4'].map(q => {
-      return `<div class="fc-q"><span>${q}</span><b>${qb[q]}</b><small>万吨</small></div>`;
+      return `<div class="fc-q"><span>${q}</span><b>${(qb[q] * fcSc6).toFixed(1)}</b><small>万吨 SC6</small></div>`;
     }).join('');
   }
   fc.innerHTML = `<div class="fc-scen">${scenCards}</div>` + (qb ? `<div class="fc-quart">
-      <div class="fc-qh">基准情形季度拆分（日历 2027）</div>
-      <div class="fc-qs">${qRows}<div class="fc-q total"><span>全年</span><b>${qb.total}</b><small>万吨</small></div></div>
+      <div class="fc-qh">基准情形季度拆分（日历 2027 · SC6 折算）</div>
+      <div class="fc-qs">${qRows}<div class="fc-q total"><span>全年</span><b>${(qb.total * fcSc6).toFixed(1)}</b><small>万吨 SC6</small></div></div>
     </div>` : '');
   // 产能核实表
   const cvTb = document.getElementById(`cv_${m.mine}`);
