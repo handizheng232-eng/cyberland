@@ -207,7 +207,7 @@ const m = MINE;
       <span class="src">最新报告：${m.report} ｜ <a href="${m.source_url}" target="_blank" rel="noopener">${m.mine} 官方页面 →</a></span>
     </div>
     <div class="cat">
-      <h3>① 已有产线运行状况表述<span class="q">（本季度 ${m.current_q} vs 上一季度 ${m.prev_q}）</span></h3>
+      <h3>① 已有产线运行状况表述<span class="q">（精矿品位：${m.grade || '—'} · 本季度 ${m.current_q} vs 上一季度 ${m.prev_q}）</span></h3>
       <table class="op-table">
         <thead><tr>
           <th>产线 / 项目</th>
@@ -219,7 +219,7 @@ const m = MINE;
       </table>
     </div>
     <div class="cat">
-      <h3>② 在建/规划中产线运行状况表述<span class="q">（本季度 ${m.current_q} vs 上一季度 ${m.prev_q}）</span></h3>
+      <h3>② 在建/规划中产线运行状况表述<span class="q">（精矿品位：${m.grade || '—'} · 本季度 ${m.current_q} vs 上一季度 ${m.prev_q}）</span></h3>
       <table class="op-table">
         <thead><tr>
           <th>项目</th>
@@ -458,18 +458,17 @@ function renderHist(mine) {
   const mineObj = (D.mines || []).find(x => x.mine === mine) || {};
   const sc6 = mineObj.sc6 || 1;   // SC6 折算系数（用户规范 2026-08-10：精矿产量全站统一 SC6 口径）
   const sc6Note = mineObj.sc6_note || '';
+  const gradeNote = mineObj.grade ? `，品位 ${mineObj.grade}` : '';   // 精矿品位标注（用户规范 2026-08-11：产量/销量描述必须明确品位）
   const salesOfficialSC6 = /官方.*SC6|SC6.*官方|官方销量即 SC6|即 SC6 口径/.test(sc6Note);  // 官方 SC6 销量的矿山（Wodgina/Marion/MH 等）销量不再折算
   labels.forEach(([key, lb]) => {
     let dispLb = lb;
     let rowScale = 1;
     if (key === 'production') {
       rowScale = sc6;
-      const grade = sc6Note.includes('原 dmt') ? sc6Note.split('原 dmt')[1].split('；')[0].split('；')[0].replace(' Li₂O', '') : (sc6Note.includes('原 SC5.5') ? '5.5%' : (sc6Note.includes('原 dmt SC5.5') ? '5.5%' : ''));
-      dispLb = `精矿产量（万吨，SC6 折算${sc6 !== 1 && grade ? '，原品位 ' + grade + ' Li₂O' : ''}${sc6 !== 1 ? '，官方未披露 SC6 产量按品位折算' : ''}）`;
-      if (sc6 === 1) dispLb = `精矿产量（万吨，SC6 官方口径）`;
+      dispLb = `精矿产量（万吨，SC6 口径${gradeNote}）`;
     } else if (key === 'sales') {
       rowScale = salesOfficialSC6 ? 1 : sc6;
-      dispLb = salesOfficialSC6 ? '销量（万吨，SC6 官方口径）' : `销量（万吨，SC6 折算${sc6 !== 1 ? '，官方未披露按品位折算' : ''}）`;
+      dispLb = `销量（万吨，SC6 口径${gradeNote}）`;
     }
     html += `<tr><td>${dispLb}</td>`;
     HIST[key].forEach((v, j) => {

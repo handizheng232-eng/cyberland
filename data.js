@@ -75,6 +75,7 @@ const YONGAN_DATA = {
    "mine": "Greenbushes",
    "sc6": 1.0,
    "sc6_note": "官方 SC6 折算（6% Li₂O）口径",
+   "grade": "6% Li₂O（SC6 官方折算）",
    "lat": -33.8567,
    "lng": 116.0622,
    "current_q": "26Q2",
@@ -591,6 +592,7 @@ const YONGAN_DATA = {
    "mine": "Pilgangoora",
    "sc6": 0.867,
    "sc6_note": "SC6 折算（原 dmt ~5.2% Li₂O；PLS 披露实际品位）",
+   "grade": "~5.2% Li₂O（dmt 实际品位）",
    "lat": -21.7939,
    "lng": 119.6346,
    "current_q": "26Q2",
@@ -928,6 +930,7 @@ const YONGAN_DATA = {
    "mine": "Wodgina",
    "sc6": 1.0,
    "sc6_note": "官方 SC6（MRL 季报 Produced SC6/Sales SC6，100% 口径；50% 权益×2）",
+   "grade": "5.5% Li₂O（官方 SC6）",
    "lat": -21.1746,
    "lng": 118.6764,
    "current_q": "26Q2",
@@ -1000,7 +1003,7 @@ const YONGAN_DATA = {
      ]
     }
    },
-   "fc_unit": "万吨/年 SC6（官方口径——MRL 季报 Produced SC6/Sales SC6，100%；原混合 dmt ~5.5% 不再折算）",
+   "fc_unit": "万吨/年 SC6（官方口径 · 品位 5.5% Li₂O——MRL 季报 Produced SC6/Sales SC6，100%）",
    "fc_2027": [
     {
      "label": "悲观",
@@ -1010,7 +1013,7 @@ const YONGAN_DATA = {
     {
      "label": "基准",
      "val": 69.0,
-     "note": "三线满产 + Stage 4 按时供矿——750ktpa SC5.5% 即实际品位精矿铭牌（75 万吨 mixed；审计修正 2026-08-07 原 80 万吨为二次换算）"
+     "note": "三线满产 + Stage 4 按时供矿——SC6 折算 69 万吨（原 750ktpa SC5.5% 精矿铭牌 75 万吨 dmt ×0.92，官方 FY25 SC6/dmt 比例）"
     },
     {
      "label": "乐观",
@@ -1226,6 +1229,7 @@ const YONGAN_DATA = {
    "mine": "Mt Marion",
    "sc6": 1.0,
    "sc6_note": "官方 SC6（MRL 季报 Produced SC6/Sales SC6，100% 口径；产 50%×2、销 51%÷0.51）",
+   "grade": "4.3-4.5% Li₂O（官方 SC6；双品位混合）",
    "lat": -31.0738,
    "lng": 121.4611,
    "current_q": "26Q2",
@@ -1298,7 +1302,7 @@ const YONGAN_DATA = {
      ]
     }
    },
-   "fc_unit": "万吨/年 SC6（官方口径——MRL 季报 Produced SC6/Sales SC6，100%；原混合 dmt ~5.5% 不再折算）",
+   "fc_unit": "万吨/年 SC6（官方口径 · 品位 4.3-4.5% Li₂O——MRL 季报 Produced SC6/Sales SC6，100%）",
    "fc_2027": [
     {
      "label": "悲观",
@@ -1308,7 +1312,7 @@ const YONGAN_DATA = {
     {
      "label": "基准",
      "val": 45.9,
-     "note": "存量 DMS 满产年化 65.6 万吨 mixed（FY26 销量 242k SC6 为 MRL 51% 承购口径）——删浮选贡献（FID 装机 500→600ktpa SC6、调试爬坡 2H FY28 即 2028H1，不计入 2027）"
+     "note": "存量 DMS 满产 SC6 折算 45.9 万吨（原 65.6 万吨 dmt ×0.70，FY25 官方 SC6/dmt 比例；FY26 销量 242k SC6 为 MRL 51% 承购口径）——删浮选贡献（FID 装机 500→600ktpa SC6、调试爬坡 2H FY28 即 2028H1，不计入 2027）"
     },
     {
      "label": "乐观",
@@ -1531,6 +1535,7 @@ const YONGAN_DATA = {
    "mine": "Kathleen Valley",
    "sc6": 0.833,
    "sc6_note": "SC6 折算（原 dmt ~5.0% Li₂O；Liontown 披露实际品位精矿）",
+   "grade": "~5.0% Li₂O（dmt 实际品位）",
    "lat": -27.4678,
    "lng": 120.7047,
    "current_q": "26Q2",
@@ -1916,6 +1921,7 @@ const YONGAN_DATA = {
    "mine": "Bald Hill",
    "sc6": 1.0,
    "sc6_note": "官方 SC6（MRL 季报 Produced SC6/Sales SC6，100% 资产口径）",
+   "grade": "5.1% Li₂O（官方 SC6）",
    "lat": -31.52,
    "lng": 121.97,
    "current_q": "26Q2",
@@ -1989,7 +1995,7 @@ const YONGAN_DATA = {
      ]
     }
    },
-   "fc_unit": "万吨 SC6（官方口径，满产 140k SC6/年）",
+   "fc_unit": "万吨 SC6（官方口径 · 品位 5.1% Li₂O，满产 140k SC6/年）",
    "fc_2027": [
     {
      "label": "悲观",
@@ -2245,6 +2251,7 @@ const YONGAN_DATA = {
    "mine": "Mt Cattlin",
    "sc6": 0.892,
    "sc6_note": "SC6 折算（原 dmt ~5.35% Li₂O）",
+   "grade": "~5.35% Li₂O（dmt 实际品位）",
    "lat": -33.5625,
    "lng": 120.0352,
    "est_qs": [
@@ -2560,6 +2567,7 @@ const YONGAN_DATA = {
    "mine": "Finniss",
    "sc6": 1.0,
    "sc6_note": "官方 SC6 等效口径（Core 披露 SC6e）",
+   "grade": "SC6e（官方口径）",
    "lat": -12.713,
    "lng": 130.789,
    "current_q": "26Q2",
@@ -2626,7 +2634,7 @@ const YONGAN_DATA = {
      ]
     }
    },
-   "fc_unit": "万吨 SC6 等效（官方口径，重启满产 20.5 万吨/年对应）",
+   "fc_unit": "万吨 SC6 等效（官方口径 · SC6e 品位，重启满产 20.5 万吨/年对应）",
    "fc_2027": [
     {
      "label": "悲观",
@@ -2857,6 +2865,7 @@ const YONGAN_DATA = {
    "mine": "Manna",
    "sc6": 0.917,
    "sc6_note": "SC6 折算（原 SC5.5 目标品位 ≥5.5% Li₂O）",
+   "grade": "≥5.5% Li₂O（SC5.5 目标品位）",
    "lat": -30.864,
    "lng": 122.574,
    "est_qs": [
@@ -3153,6 +3162,7 @@ const YONGAN_DATA = {
    "mine": "Mt Holland",
    "sc6": 0.917,
    "sc6_note": "SC6 折算（原 dmt SC5.5 名义品位；SQM 官方销量即 SC6）",
+   "grade": "5.5% Li₂O（SC5.5）",
    "lat": -32.083,
    "lng": 119.748,
    "est_qs": [
