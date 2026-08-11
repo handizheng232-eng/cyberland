@@ -212,6 +212,7 @@
   <div class="table-wrap">
     <table class="tbl" id="q_tbl"></table>
   </div>
+  <div class="chart-panel" style="margin-top:14px"><div class="cp-title">全矿山年度产量（2025 实际 / 2026E / 2027E · 万吨，披露口径直接相加近似）</div><div class="chart" id="yr_bar" style="height:360px"></div></div>
   <div class="note" id="q_note"></div>
 
   <!-- ② 未来产量预测汇总 -->
@@ -443,7 +444,8 @@ const FY27_QGUIDE = {
   yearGroups.forEach(([yr, idxs]) => {
     html += `<th colspan="${idxs.length}" class="year-head">${yr}</th>`;
   });
-  html += `<th rowspan="2" class="q-head" style="background:rgba(77,163,255,0.16)!important;color:var(--acc);min-width:100px">2026E<br>全年预估<small style="display:block;font-size:8.5px;color:var(--muted)">今年</small></th>` +
+  html += `<th rowspan="2" class="q-head" style="background:rgba(235,139,181,0.14)!important;color:var(--acc2);min-width:90px">2025<br>全年实际<small style="display:block;font-size:8.5px;color:var(--muted)">同比基数</small></th>` +
+    `<th rowspan="2" class="q-head" style="background:rgba(77,163,255,0.16)!important;color:var(--acc);min-width:100px">2026E<br>全年预估<small style="display:block;font-size:8.5px;color:var(--muted)">今年</small></th>` +
     `<th rowspan="2" class="q-head" style="background:rgba(77,163,255,0.16)!important;color:var(--acc);min-width:150px">2026E 预估依据<small style="display:block;font-size:8.5px;color:var(--muted)">公布/指引/推测</small></th>` +
     `<th rowspan="2" class="q-head" style="background:rgba(240,193,90,0.12)!important;color:var(--warn);min-width:100px">2027E<br>全年预估<small style="display:block;font-size:8.5px;color:var(--muted)">明年</small></th>` +
     `<th rowspan="2" class="q-head" style="background:rgba(240,193,90,0.12)!important;color:var(--warn);min-width:190px">2027E 预估依据<small style="display:block;font-size:8.5px;color:var(--muted)">指引/公开进度</small></th></tr><tr>`;
@@ -472,6 +474,8 @@ const FY27_QGUIDE = {
       const yr = yearOf(i);
       html += `<td class="num y${yr} ${v == null ? '' : (est ? 'acc' : '')}">${v == null ? '<span class="warn">N.D.</span>' : v.toFixed(1) + (est ? '<small style="font-size:9px;color:var(--acc)">E</small>' : '')}</td>`;
     });
+    // 2025 全年实际（同比基数；MH 用 20-F 年度产量 32.96）
+    html += `<td class="num">${v25 != null ? v25.toFixed(1) + (isMH ? '<small style="display:block;font-size:9px;color:var(--muted)">20-F</small>' : '') : '<span class="warn">N.D.</span>'}</td>`;
     // 2026E 全年（今年；严谨：H2 未披露 → N.D. + H1 注记）
     if (full26) {
       html += `<td class="num acc"><b>${e26.toFixed(1)}</b>${yoy2(e26, v25)}</td>`;
@@ -497,16 +501,42 @@ const FY27_QGUIDE = {
     if (h.production[30] != null && h.production[31] != null) { totE26 += (m.mine === 'Mt Holland' ? 9.5 * 4 : yearSum(h, 'production', 28, 32)); totE26Any = true; }
     const f = fcBaseVal(m);
     if (f != null) { totF27 += f; totF27Any = true; }
-    const v25 = yearSum(h, 'production', 24, 28);
+    const v25 = m.mine === 'Mt Holland' ? 32.96 : yearSum(h, 'production', 24, 28);
     if (v25 != null) { totV25 += v25; totV25Any = true; }
   });
   html += `<tr class="tot"><td class="sticky">行业合计</td><td>披露口径相加（近似）</td>` +
     qIdx.map((i, k) => `<td class="num">${totAny[k] ? tot[k].toFixed(0) : 'N.D.'}</td>`).join('') +
+    `<td class="num">${totV25Any ? totV25.toFixed(0) : 'N.D.'}</td>` +
     `<td class="num">${totE26Any ? totE26.toFixed(0) + yoy2(totE26, totV25Any ? totV25 : null) : 'N.D.'}</td>` +
     '<td style="padding:10px 8px"><div style="font-size:9.5px;color:var(--muted);line-height:2.2;max-width:210px;word-break:break-all;white-space:normal">2026E 合计 = 各矿山全年预估之和（披露口径直接相加，近似；含 Mt Holland 满产预估 38——估算计入已标注；原始吨位跨品位/产品相加仅供总量参考，非行业供给口径）</div></td>' +
     `<td class="num">${totF27Any ? totF27.toFixed(0) + (totE26Any ? yoy2(totF27, totE26) : '<span class="yoy d">同比 N.D.</span>') : 'N.D.'}</td>` +
     '<td style="padding:10px 8px"><div style="font-size:9.5px;color:var(--muted);line-height:2.2;max-width:210px;word-break:break-all;white-space:normal">2027E 合计 = 各矿山基准情景之和（口径同上：披露与估算混合相加、跨品位近似——参考总量）</div></td></tr></tbody>';
   document.getElementById('q_tbl').innerHTML = html;
+  // 全矿山年度产量柱状图（2025 实际 / 2026E / 2027E · 披露口径）
+  if (window.echarts) {
+    const yrData = { y25: [], y26: [], y27: [] };
+    D.mines.forEach(m => {
+      const h = histOf(m);
+      const y25 = m.mine === 'Mt Holland' ? 32.96 : yearSum(h, 'production', 24, 28);
+      const y26 = m.mine === 'Mt Holland' ? 9.5 * 4 : (h.production[30] != null && h.production[31] != null ? yearSum(h, 'production', 28, 32) : null);
+      const y27 = fcBaseVal(m);
+      yrData.y25.push(y25 != null ? +y25.toFixed(1) : null);
+      yrData.y26.push(y26 != null ? +y26.toFixed(1) : null);
+      yrData.y27.push(y27 != null ? +y27.toFixed(1) : null);
+    });
+    echarts.init(document.getElementById('yr_bar'), 'dark').setOption({
+      backgroundColor: 'transparent', tooltip: { trigger: 'axis' },
+      legend: { data: ['2025 实际', '2026E', '2027E'], textStyle: { color: '#8b98b4' }, top: 0 },
+      grid: { left: 44, right: 12, top: 34, bottom: 56 },
+      xAxis: { type: 'category', data: D.mines.map(m => m.mine), axisLabel: { color: '#8b98b4', rotate: 35, fontSize: 10 } },
+      yAxis: { type: 'value', name: '万吨', nameTextStyle: { color: '#8b98b4' }, axisLabel: { color: '#8b98b4' }, splitLine: { lineStyle: { color: 'rgba(90,120,180,0.15)' } } },
+      series: [
+        { name: '2025 实际', type: 'bar', data: yrData.y25, itemStyle: { color: 'rgba(235,139,181,0.75)' }, barGap: '20%' },
+        { name: '2026E', type: 'bar', data: yrData.y26, itemStyle: { color: 'rgba(77,163,255,0.85)' } },
+        { name: '2027E', type: 'bar', data: yrData.y27, itemStyle: { color: 'rgba(240,193,90,0.85)' } },
+      ],
+    });
+  }
   document.getElementById('q_note').innerHTML =
     '· <b>季度数据</b>：2021Q3-2026Q2 实际（日历季度，各矿山披露口径）+ 26Q3E/26Q4E 预测（E 标记）——<b>今年各季度取值</b>：已公布用公布值；未公布且有官方指引（FY27 指引季均）用指引值；无指引用推测值（线性爬坡/现状年化）——具体依据见各行 2026E 预估依据列；灰色 N.D.=官方未披露。<br>' +
     '· <b>全年预估（最右四列）</b>：2026E = 今年各季度之和（有官方全年指引则优先采用）；2027E = 未来产量预测汇总中的基准情景（同一线性口径）；两列各附<b>预估依据</b>（公布值/指引/推测、公开言论与进度）。<br>' +
