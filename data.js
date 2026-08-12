@@ -368,8 +368,8 @@ const YONGAN_DATA = {
      },
      {
       "line": "全矿合计",
-      "excel_capacity": "214 万吨精矿/年（162 存量 + 52 CGP3）",
-      "verified": "✓ 官网口径合计 2.0 Mtpa 精矿（存量 1.5 + CGP3 0.5；IGO 官网 2026 原文）——Excel 214 万吨含 TGP 14，口径差 ~14 万吨",
+      "excel_capacity": "214 万吨精矿/年（存量 162 + CGP3 52；存量= TGP + CGP1 + CGP2）",
+      "verified": "✓ IGO 官网（2026-08 原文）：存量工厂= TGP（技术级 ~150ktpa）+ CGP1/CGP2（化学级各 600ktpa SC6.0），精矿合计 1.5 Mtpa → 折算 162 万吨/年 SC6；CGP3（520ktpa SC6）→ 52 万吨；官网合计 2.0 Mtpa SC6。Excel 214 万吨含 TGP 14（技术级非 SC6 口径），口径差 ~14 万吨",
       "sources": [
        {
         "src": "IGO 官网（2026-08 原文）",
