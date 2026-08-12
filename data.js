@@ -232,7 +232,7 @@ const YONGAN_DATA = {
    "capacity_verification": {
     "title": "产能核实（多来源交叉印证）",
     "method": "对每条产线产能，交叉核对 4 类独立公开来源：① 公司年报（IGO AR 2022/2023/2025）；② 公司官网资产页（IGO Our Business）；③ 美股监管披露（Albemarle 10-K + SLR S-K1300 技术报告，SEC 公开文件）；④ 行业/第三方（券商研报、咨询机构、天齐锂业 H 股披露——公开可获取部分）。",
-    "summary": "口径差异是关键：官方披露矿石处理能力（Mtpa 矿石）与精矿产能两个维度。IGO 官网（2026-08 原文）存量四厂矿石 6.5 Mtpa → 精矿 up to 1.5 Mtpa；CGP3 矿石 2.4 Mtpa → 精矿 up to 0.5 Mtpa——合计矿石 8.9 Mtpa → 精矿 up to 2.0 Mtpa（用户核对 2026-08-11：1.5+0.5=2.0）。IGO 2022 Site Visit 官方产能表印证：TGP=150ktpa、CGP1/CGP2=各 600ktpa SC6.0、CGP3=520ktpa（含 CGP4 潜在共 2.5 Mtpa，天齐 CP Report 图）。SLR 技术报告（2026-02，Albemarle 10-K 附件 EX-96.1）原文：CGP3 投产后精矿年产能「1.8 to 2.0 Mtpa of concentrate」（区间上限 2.0 = 官网口径，完全吻合）；Table 1-1 矿石能力 CGP1=1.8/CGP2=2.4/TRP=2.0/TGP=0.35/CGP3=2.4（存量 6.55、LOM 8.95）；2025 实际 5.85 Mtpa 矿石 → ~1.4 Mtpa SC6.0。Excel 的 60/60/14/28 万吨是精矿铭牌口径，合计 214 万吨（含 TGP 14）与官网 200 万吨（1.5+0.5）差 ~14 万吨（技术级是否计入口径差异）。**存量四厂 162 vs 官网 150 万吨差异说明（用户问询 2026-08-12）**：162 = 分厂铭牌设计加总（综合产率 24.7%：CGP1/2 4.2Mtpa 矿石→120 万吨 ~28.6%、TRP 2.0→28 万吨 ~14%、TGP 0.35→14 万吨 ~40%）；150 = 官网综合实际可达上限（6.5 Mtpa × ~23.1%，SLR 2025 实际仅 ~1.4 Mtpa SC6.0）——差异来自产率假设（实际品位下降/回收率波动/停机损耗 ~1.6pp）+ TGP 口径（Excel 14 为推算，官方铭牌 150ktpa=15 万吨）。",
+    "summary": "口径差异是关键：官方披露矿石处理能力（Mtpa 矿石）与精矿产能两个维度。IGO 官网（2026-08 原文）存量四厂（TGP 技术级 + CGP1/CGP2 化学级 SC6.0 + TRP 尾矿再处理厂）矿石 6.5 Mtpa → 精矿 up to 1.5 Mtpa（含技术级，非纯 SC6 口径）；CGP3 矿石 2.4 Mtpa → 精矿 up to 0.5 Mtpa——合计矿石 8.9 Mtpa → 精矿 up to 2.0 Mtpa（用户核对 2026-08-11：1.5+0.5=2.0）。IGO 2022 Site Visit 官方产能表印证：TGP=150ktpa、CGP1/CGP2=各 600ktpa SC6.0、CGP3=520ktpa（含 CGP4 潜在共 2.5 Mtpa，天齐 CP Report 图）。SLR 技术报告（2026-02，Albemarle 10-K 附件 EX-96.1）原文：CGP3 投产后精矿年产能「1.8 to 2.0 Mtpa of concentrate」（区间上限 2.0 = 官网口径，完全吻合）；Table 1-1 矿石能力 CGP1=1.8/CGP2=2.4/TRP=2.0/TGP=0.35/CGP3=2.4（存量 6.55、LOM 8.95）；2025 实际 5.85 Mtpa 矿石 → ~1.4 Mtpa SC6.0。Excel 的 60/60/14/28 万吨是精矿铭牌口径，合计 214 万吨（含 TGP 14）与官网 200 万吨（1.5+0.5）差 ~14 万吨（技术级是否计入口径差异）。**存量四厂 162 vs 官网 150 万吨差异说明（用户问询 2026-08-12）**：162 = 分厂铭牌设计加总（综合产率 24.7%：CGP1/2 4.2Mtpa 矿石→120 万吨 ~28.6%、TRP 2.0→28 万吨 ~14%、TGP 0.35→14 万吨 ~40%）；150 = 官网综合实际可达上限（6.5 Mtpa × ~23.1%，SLR 2025 实际仅 ~1.4 Mtpa SC6.0）——差异来自产率假设（实际品位下降/回收率波动/停机损耗 ~1.6pp）+ TGP 口径（Excel 14 为推算，官方铭牌 150ktpa=15 万吨）。",
     "items": [
      {
       "line": "CGP1（化学级1号）",
@@ -368,12 +368,12 @@ const YONGAN_DATA = {
      },
      {
       "line": "全矿合计",
-      "excel_capacity": "214 万吨精矿/年（存量 162 + CGP3 52；存量= TGP + CGP1 + CGP2）",
-      "verified": "✓ IGO 官网（2026-08 原文）：存量工厂= TGP（技术级 ~150ktpa）+ CGP1/CGP2（化学级各 600ktpa SC6.0），精矿合计 1.5 Mtpa → 折算 162 万吨/年 SC6；CGP3（520ktpa SC6）→ 52 万吨；官网合计 2.0 Mtpa SC6。Excel 214 万吨含 TGP 14（技术级非 SC6 口径），口径差 ~14 万吨",
+      "excel_capacity": "214 万吨精矿/年（存量四厂 162 + CGP3 52；存量四厂= TGP 14 + CGP1 60 + CGP2 60 + TRP 28）",
+      "verified": "✓ IGO 官网（2026-08 原文）存量四厂= TGP（技术级）+ CGP1/CGP2（化学级 SC6.0）+ TRP（尾矿再处理厂），矿石 6.5 Mtpa → 精矿 up to 1.5 Mtpa（含技术级产品，非纯 SC6 口径）；四厂精矿构成：CGP1 60 + CGP2 60 + TGP 14 + TRP 28 = 162 万吨/年；CGP3（520ktpa SC6）→ 52 万吨；官网合计 2.0 Mtpa。Excel 214 万吨含 TGP 14（技术级非 SC6 口径），口径差 ~14 万吨",
       "sources": [
        {
         "src": "IGO 官网（2026-08 原文）",
-        "data": "存量四厂 6.5 Mtpa 矿石 → 精矿 up to 1.5 Mtpa；CGP3 2.4 Mtpa 矿石 → 精矿 up to 0.5 Mtpa——合计 up to 2.0 Mtpa（用户核对 2026-08-11）"
+        "data": "存量四厂（TGP 技术级 + CGP1/CGP2 化学级 + TRP 尾矿再处理厂）矿石 6.5 Mtpa → 精矿 up to 1.5 Mtpa（含技术级产品）；CGP3 2.4 Mtpa 矿石 → 精矿 up to 0.5 Mtpa——合计 up to 2.0 Mtpa（用户核对 2026-08-11）"
        },
        {
         "src": "IGO 年报 2023",
