@@ -70,6 +70,8 @@
   .cv-ok { color: var(--up); font-weight: 600; }
   .cv-warn { color: var(--acc2); font-weight: 600; }
   .cv-src { font-size: 12px; color: var(--text); margin-bottom: 4px; line-height: 1.45; }
+  .cv-cat b { color: var(--acc2); font-weight: 700; }
+  .cv-cat .desc > b:first-child, .cv-cat .note > b:first-child { color: var(--muted); font-weight: 600; }
   .cv-srcname { display: inline-block; background: var(--panel2); border: 1px solid var(--line); border-radius: 4px; padding: 0 6px; margin-right: 6px; font-size: 11px; color: var(--acc); white-space: nowrap; }
 
   /* 图片画廊 */
@@ -283,10 +285,10 @@ const m = MINE;
         ${(() => { const a = (m.forecast_2027 && m.forecast_2027.assumptions_detail) || m.assumptions_detail; const conf = m.forecast_2027 && m.forecast_2027.confidence; const disc = (m.forecast_2027 && m.forecast_2027.disclaimer) || '研究性判断，不构成投资建议。'; return `${a ? `<b>假设条件：</b>${a.join('；')}。<br>` : ''}${conf ? `<b>确定性：</b>${conf}<br>` : ''}<b>免责：</b>${disc}`; })()}
       </div>
     </div>
-    <div class="cat">
+    <div class="cat cv-cat">
       <h3>⑥ 选矿产能核实<span class="q">（多来源交叉印证 · ${m.capacity_verification.note}）</span></h3>
       <p class="desc"><b>核实方法：</b>${m.capacity_verification.method}</p>
-      <p class="desc"><b>核实结论摘要：</b>${m.capacity_verification.summary}</p>
+      <p class="desc"><b>核实结论摘要：</b>${md(m.capacity_verification.summary)}</p>
       <table>
         <thead><tr>
           <th style="width:170px">产线 / 项目</th>
@@ -297,7 +299,7 @@ const m = MINE;
         <tbody id="cv_${m.mine}"></tbody>
       </table>
       <div class="note" style="margin-top:10px"><b>来源索引：</b>
-        ${Object.entries(m.capacity_verification.sources_index).map(([k,v]) => `【${k}】${v}`).join('；')}
+        ${Object.entries(m.capacity_verification.sources_index).map(([k,v]) => `【${k}】${md(v)}`).join('；')}
       </div>
       <div class="img-grid" id="img_cv_${m.mine}"></div>
     </div>
