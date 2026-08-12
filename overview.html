@@ -285,18 +285,8 @@ const fmt = (v) => v == null ? 'N.D.' : v.toFixed(2);
 const qOf = (q) => Q.indexOf(q);
 
 /* SC6 等效折算系数（× 披露品位 / 6%） */
-const SC6_FACTOR = {
-  'Greenbushes': 1.0,      // 已 SC6
-  'Pilgangoora': 0.883,    // dmt ~5.3% → SC6（PLS Jun2026 QAR 品位 5.3%，2026-08-11 修正）
-  'Wodgina': 1.0,          // 2026-08-11 数据层官方 SC6（MRL 季报 Produced SC6）
-  'Mt Marion': 1.0,        // 2026-08-11 数据层官方 SC6（MRL 季报 Produced SC6）
-  'Kathleen Valley': 0.833,// dmt ~5.0% → SC6
-  'Bald Hill': 1.0,        // 已 SC6（满产 140k SC6）
-  'Mt Cattlin': 0.892,     // dmt ~5.35% → SC6
-  'Finniss': 1.0,          // 已 SC6 等效
-  'Manna': 0.917,          // SC5.5 → SC6
-  'Mt Holland': 0.917,     // SC5.5 → SC6
-};
+// SC6 系数单一数据源：统一从 data.js 每矿山 m.sc6 字段读取（build_data.py 维护，2026-08-12 起
+// 图表不再用硬编码 SC6_FACTOR——曾出现 PL 0.867(表格) vs 0.883(图表) 双源矛盾；MRL 三矿山官方 SC6=1
 const UNIT_LABEL = {  // 全站 SC6 口径 + 品位标注（用户规范 2026-08-11：产量/销量描述必须明确品位）
   'Greenbushes': 'SC6 折算（品位 6%）', 'Pilgangoora': 'SC6 折算（逐季品位 5.1-5.3%）', 'Wodgina': 'SC6 官方（品位 5.5%）',
   'Mt Marion': 'SC6 官方（品位 4.3-4.5%）', 'Kathleen Valley': 'SC6 折算（品位 ~5.0%）', 'Bald Hill': 'SC6 官方（品位 5.1%）',
@@ -324,7 +314,7 @@ function yearSum(h, arrName, s, e) {
   let fcSum = 0;
   D.mines.forEach(m => {
     const f = fcBaseVal(m);
-    if (f != null) fcSum += f * (SC6_FACTOR[m.mine] || 1);
+    if (f != null) fcSum += f * (m.sc6 || 1);
   });
   document.getElementById('kpi_row').innerHTML = `
     <div class="kpi"><div class="k">26Q2 全行业精矿产量（披露口径）</div><div class="v">${totP.toFixed(1)} <small style="font-size:12px">万吨</small></div><div class="d">${cnt}/${D.mines.length} 矿山有披露</div></div>
@@ -599,7 +589,7 @@ const CAPEX = D.capex || {
   D.mines.forEach(m => {
     const f = fcAll(m);
     if (!f) return;
-    const k = SC6_FACTOR[m.mine] || 1;
+    const k = m.sc6 || 1;
     if (f.bear != null) bear += f.bear * k;
     if (f.base != null) base += f.base * k;
     if (f.bull != null) bull += f.bull * k;
@@ -610,7 +600,7 @@ const CAPEX = D.capex || {
     const h = histOf(m);
     if (h.production[30] == null || h.production[31] == null) return;
     const e = m.mine === 'Mt Holland' ? 9.5 * 4 : yearSum(h, 'production', 28, 32);
-    if (e != null) totE += e * (SC6_FACTOR[m.mine] || 1);
+    if (e != null) totE += e * (m.sc6 || 1);
   });
   const yoy = (cur, prev) => {
     if (cur == null || prev == null || prev === 0) return '';
@@ -632,7 +622,7 @@ const CAPEX = D.capex || {
 
   // 分矿山柱状图（悲观/基准/乐观，SC6 等效）
   const names = D.mines.map(m => m.mine);
-  const kf = m => SC6_FACTOR[m.mine] || 1;
+  const kf = m => m.sc6 || 1;
   const bars = { bear: [], base: [], bull: [] };
   D.mines.forEach(m => { const f = fcAll(m); const k = kf(m);
     bars.bear.push(f && f.bear != null ? +(f.bear * k).toFixed(1) : null);
