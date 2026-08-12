@@ -173,7 +173,6 @@ MINES = [
                 {
                     "line": "CGP1（化学级1号）",
                     "excel_capacity": "60 万吨/年 SC6（IGO 官方 SC6 折算口径）",
-                    "vs_official": "分厂铭牌计入官方综合口径（存量 6.5Mtpa 矿石 → 精矿 up to 1.5Mtpa 即 150 万吨内）；铭牌按设计产率 ~28.6%（1.8Mtpa 矿石 × 60/420）折算，高于官方综合实际产率 ~23.1%",
                     "verified": "⚠️ 多来源矿石口径交叉确认，精矿口径为推算",
                     "sources": [
                         {"src": "SLR 技术报告 (2026-02)", "data": "矿石处理能力 1.8 Mtpa；2025 实际年处理 ~1.7-1.8Mt、入选品位 ~2.7% Li₂O"},
@@ -186,7 +185,6 @@ MINES = [
                 {
                     "line": "CGP2（化学级2号）",
                     "excel_capacity": "60 万吨/年 SC6（IGO 官方 SC6 折算口径）",
-                    "vs_official": "同 CGP1：计入官方综合 150 万吨口径；设计产率 ~28.6%（2.4Mtpa 矿石 × 60/240）高于实际综合产率——实际入选品位降至 ~2.0% 后产率走低",
                     "verified": "⚠️ 多来源矿石口径交叉确认，精矿口径为推算",
                     "sources": [
                         {"src": "SLR 技术报告 (2026-02)", "data": "矿石处理能力 2.4 Mtpa（设计）；实际仅 ~2.0 Mt（品位 2.0% Li₂O 偏低，未达设计）"},
@@ -199,7 +197,6 @@ MINES = [
                 {
                     "line": "TGP（技术级）",
                     "excel_capacity": "14 万吨精矿/年",
-                    "vs_official": "Excel 14 万吨为推算（0.35Mtpa 矿石 × 40%），官方铭牌 150ktpa（15 万吨，IGO 2022 Site Visit）——差 1 万吨；技术级（4 种产品 5-7.2% 品位）是否计入官方 150 万吨综合口径存在口径差异（SLR 按 6.55Mtpa 矿石总量折算）",
                     "verified": "⚠️ 官方矿石口径远低于 Excel 精矿口径",
                     "sources": [
                         {"src": "SLR 技术报告 (2026-02)", "data": "矿石处理能力仅 0.35 Mtpa——按 40% 产率推算精矿约 14 万吨/年，与 Excel 一致；但近年技术级占比已降至 1% 以下（IGO 不再单独披露）"},
@@ -211,7 +208,6 @@ MINES = [
                 {
                     "line": "TRP（尾矿再处理厂）",
                     "excel_capacity": "28 万吨精矿/年",
-                    "vs_official": "280ktpa 官方确认；产率仅 ~14%（2.0Mtpa 处理 1.4% 低品位尾矿）——显著低于 CGP 产率，是官方综合产率（~23%）低于铭牌加总产率（~24.7%）的主因",
                     "verified": "✓ 官方精矿口径确认（280ktpa）",
                     "sources": [
                         {"src": "IGO 年报 2022", "data": "'Nominal production from the TRP is expected to be 280ktpa...nameplate capacity expected FY23'——28 万吨精矿/年官方确认"},
@@ -223,7 +219,6 @@ MINES = [
                 {
                     "line": "CGP3（化学级3号）",
                     "excel_capacity": "52 万吨/年 SC6（IGO 官方 SC6 折算口径）",
-                    "vs_official": "520ktpa 官方单独确认；官网口径 CGP3 矿石 2.4Mtpa → 精矿 up to 0.5Mtpa，与存量 1.5 相加 = 2.0 Mtpa 官方总口径（分厂加总则 1.62+0.52 = 2.14 Mtpa）",
                     "verified": "✓ 官方精矿口径确认（520ktpa）",
                     "sources": [
                         {"src": "IGO 年报 2022/2023", "data": "'contribute an additional 520ktpa'；'designed to deliver approximately 0.52Mtpa'"},
@@ -236,7 +231,6 @@ MINES = [
                 {
                     "line": "CGP4（化学级4号）",
                     "excel_capacity": "52 万吨精矿/年（规划）",
-                    "vs_official": "规划未 FID（2026 年中无决定）；若投产则官方总口径 2.0+0.5 = 2.5 Mtpa（IGO 年报 2023 ~2.5Mtpa by FY27、天齐 CP Report 图一致）",
                     "verified": "⚠️ 规划未定，多来源均无最新进展",
                     "sources": [
                         {"src": "IGO 年报 2023", "data": "'IGO expects a decision on the FID on CGP4 during FY24'——FY24 已过，截至 2026 年中无 FID 公告，项目实际推迟"},
@@ -248,7 +242,6 @@ MINES = [
                 {
                     "line": "全矿合计",
                     "excel_capacity": "214 万吨精矿/年（162 存量 + 52 CGP3）",
-                    "vs_official": "Excel 214（60+60+14+28+52）vs 官网 2.0 Mtpa（存量 1.5 + CGP3 0.5 = 200 万吨）差 ~14 万吨：①存量产率假设差（铭牌加总 24.7% vs 官方综合 ~23.1%，约 12 万吨）；②TGP 口径（Excel 14 推算 vs 官方铭牌 15）；③技术级是否计入官方综合口径",
                     "verified": "✓ 官网口径合计 2.0 Mtpa 精矿（存量 1.5 + CGP3 0.5；IGO 官网 2026 原文）——Excel 214 万吨含 TGP 14，口径差 ~14 万吨",
                     "sources": [
                         {"src": "IGO 官网（2026-08 原文）", "data": "存量四厂 6.5 Mtpa 矿石 → 精矿 up to 1.5 Mtpa；CGP3 2.4 Mtpa 矿石 → 精矿 up to 0.5 Mtpa——合计 up to 2.0 Mtpa（用户核对 2026-08-11）"},

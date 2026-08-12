@@ -293,7 +293,6 @@ const m = MINE;
           <th style="width:140px">Excel/页面采用</th>
           <th style="width:200px">核实结果</th>
           <th>多来源交叉印证</th>
-          <th style="width:220px">加总 vs 官方总口径差异说明</th>
         </tr></thead>
         <tbody id="cv_${m.mine}"></tbody>
       </table>
@@ -376,7 +375,7 @@ const m = MINE;
     const tr = document.createElement('tr');
     const cls = (it.status === 'ok' || (it.verified || '').startsWith('✓')) ? 'cv-ok' : 'cv-warn';
     const srcs = it.sources.map(s => `<div class="cv-src"><span class="cv-srcname">${md(s.src)}</span>${md(s.data)}</div>`).join('');
-    tr.innerHTML = `<td class="line">${md(it.line)}</td><td class="cell">${md(it.excel_capacity)}</td><td class="cell ${cls}">${md(it.verified)}</td><td class="cell">${srcs}</td><td class="cell">${md(it.vs_official || '—')}</td>`;
+    tr.innerHTML = `<td class="line">${md(it.line)}</td><td class="cell">${md(it.excel_capacity)}</td><td class="cell ${cls}">${md(it.verified)}</td><td class="cell">${srcs}</td>`;
     cvTb.appendChild(tr);
   });
   // 采矿侧（矿坑/尾矿库）核实表
